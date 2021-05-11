@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  controller:
+    image: ixiacom/ixia-c-controller:${CONTROLLER_VERSION:-latest}
+    network_mode: "host"
+    restart: always
+  traffic_engine:
+    image: ixiacom/ixia-c-traffic-engine:${TRAFFIC_ENGINE_VERSION:-latest}
+    network_mode: "host"
+    restart: always
+    privileged: true
+    cpuset: ${CPU_CORES_IFC1:-"0,1,2"}
+    environment:
+    - OPT_LISTEN_PORT=${TCP_PORT_IFC1:-5555}
+    - ARG_IFACE_LIST=virtual@af_packet,${IFC1}
+    - OPT_NO_HUGEPAGES=Yes
+  aur:
+    image: ixiacom/ixia-c-app-usage-reporter:${AUR_VERSION:-latest}
+    network_mode: "host"
+    restart: always
