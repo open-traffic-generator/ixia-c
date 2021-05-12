@@ -2,10 +2,11 @@
 
 1. [Architecture](architecture.md)
 2. [Prerequisites](prerequisites.md)
-3. [Deployments](deployments.md)
+3. [Deployment Guide](deployments.md)
     * [Overview](deployments.md#overview)
     * [Bootstrap](deployments.md#bootstrap)
     * [Deployment Parameters](deployments.md#deployment-parameters)
+    * [Diagnostics](deployments.md#diagnostics)
     * [Test Suite](deployments.md#test-suite)
     * [One-arm Scenario](deployments.md#one-arm-scenario)
     * [Two-arm Scenario](deployments.md#two-arm-scenario)
