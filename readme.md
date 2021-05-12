@@ -145,7 +145,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   * Patterns to modify common packet header fields to generate millions of unique packets
   * Ability to track flows based on common packet header fields
   * Configurable frame size
-  * Rate specification in pps or % line*rate
+  * Rate specification in pps (packets per second) or % line-rate
   * Ability to send bursts
 * Statistics
   * Per port or per flow
