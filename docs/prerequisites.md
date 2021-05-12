@@ -1,4 +1,4 @@
-# Ixia-C Prerequisites
+# Ixia-c Prerequisites
 
 * [Table of Contents](readme.md)
 
@@ -46,7 +46,7 @@
 
 ## Network Interface Prerequisites
 
-In order for Ixia-C Traffic Engine to function, several settings need to be tuned on the host system as described below.
+In order for Ixia-c Traffic Engine to function, several settings need to be tuned on the host system as described below.
 
 1. Ensure existing network interfaces are `Up` and have `Promiscuous` mode enabled.
 
