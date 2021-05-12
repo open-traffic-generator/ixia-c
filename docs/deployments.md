@@ -5,6 +5,7 @@
     * [Overview](#overview)
     * [Bootstrap](#bootstrap)
     * [Deployment Parameters](#deployment-parameters)
+    * [Diagnostics](#diagnostics)
     * [Test Suite](#test-suite)
     * [One-arm Scenario](#one-arm-scenario)
     * [Two-arm Scenario](#two-arm-scenario)
@@ -14,11 +15,13 @@
 
 Ixia-C is distributed / deployed as a multi-container application consisting of following services:
 
-* `controller` - Serves API request from clients and manages workflow across one or more traffic engines.
-* `traffic-engine` - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
-* `app-usage-reporter` - (Optional) Collects usage report from controller and uploads it to Keysight Cloud, minimizing impact on host resources.
+* **controller** - Serves API request from clients and manages workflow across one or more traffic engines.
+* **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
+* **app-usage-reporter** - (Optional) Collects usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
 
-All these services are available as docker image on [docker-hub](https://hub.docker.com/). To pull in specific versions of these images, please check [Ixia-C Releases](releases.md).  
+All these services are available as docker image on [ixiacom repository](https://hub.docker.com/u/ixiacom). Please check [Ixia-C Releases](releases.md) to use specific versions of these images.
+
+Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/9f8151c), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-C.
 
 ### Bootstrap
 
@@ -26,18 +29,18 @@ Ixia-C services can either all be deployed on same host or each on separate host
 
 Following outlines how connectivity is established between the services:
 
-* `controller` <-> `traffic-engine` - when client pushes a traffic configuration to controller containing address of traffic engine as **port location**.
-* `controller` <-> `app-usage-reporter` - controller periodically attempts connection with app-usage-reporter until successful; the location of app-usage-reporter can be overridden by passing an argument to controller upon boot-up.
+* **controller & traffic-engine** - When client pushes a traffic configuration to controller containing `location` of traffic engine.
+* **controller & app-usage-reporter** - Controller periodically tries to establish connectivity with app-usage-reporter on a `location` which can be overridden using controller's deployment parameters.
 
-> The location of traffic-engine or app-usage-reporter must be reachable from controller, although they don't need to be reachable from client scripts.
+The **location** (aka network address) of traffic-engine and app-usage-reporter must be reachable from controller, even if they're not reachable from client scripts.
 
-Deploying these services manually (along with required parameters) may not be desired in some scenarios and hence, for convenience [deployments](../deployments) directory consists of `docker-compose` files pertaining to some commonly used scenarios, requiring only a single command for spawning all required services.
+Deploying these services manually (along with required parameters) may not be desired in some scenarios and hence, for convenience [deployments](../deployments) directory consists of `docker-compose` files pertaining to some commonly used scenarios, requiring only a single command for setup all required services.
 
-All the scenarios mentioned in upcoming sections describes both manual and automated (requiring docker-compose) steps.
+>All the scenarios mentioned in upcoming sections describe both manual and automated (requiring docker-compose) steps.
 
 ### Deployment Parameters
 
-* Deploying Controller
+#### Controller
 
   | Controller Parameters       | Optional  | Default                 | Description                                                     |
   |-----------------------------|-----------|-------------------------|-----------------------------------------------------------------|
@@ -46,20 +49,11 @@ All the scenarios mentioned in upcoming sections describes both manual and autom
   | --http-port                 |   Yes     | 443                     | TCP port for HTTP server.                                       |
   | --log-out                   |   Yes     | false                   | Enables streaming log output to stdout.                         |
   | --aur-host                  |   Yes     | https://localhost:5600  | Overrides location of app-usage-reporter.                       |
-  | --accept-eula               |   No      | false                   | Indicates that user has accepted EULA, controller won't boot up otherwise |
+  | --accept-eula               |   No      | NA                      | Indicates that user has accepted EULA, otherwise controller won't boot up |
 
-
-  | Docker Parameters           | Optional  | Default                 | Description                                                     |
-  |-----------------------------|-----------|-------------------------|-----------------------------------------------------------------|
-  | --net=host                  |   Yes     | bridge                  | Use host's network stack, allowing traffic-engine containers to be addressed using *localhost* instead of *Container IP*, when deployed on same host.                                                    |
-  | -d                          |   Yes     | NA                      | Start container in background.                                  |
-
-
-  To check logs,
-  
-  ```sh
-  docker exec <container-id> cat logs/controller.log
-  ```
+  Docker Parameters:
+  * `--net=host` - This is recommended to allowing using host's network stack in order to address traffic-engine containers using `localhost` instead of `container-ip`, when deployed on same host.
+  * `-d` - This starts container in background.
 
   Example:
 
@@ -67,15 +61,20 @@ All the scenarios mentioned in upcoming sections describes both manual and autom
   docker run --net=host -d ixiacom/ixia-c-controller --accept-eula --debug --http-port 5050
   ```
 
-* Deploying Traffic Engine
+#### Traffic Engine
 
-> TBD: Fix descriptions and add Diagnostics
+  | Environment Variables       | Optional  | Default                 | Description                                                     |
+  |-----------------------------|-----------|-------------------------|-----------------------------------------------------------------|
+  | ARG_IFACE_LIST              |   No      | NA                      | Name of the network interface to bind to. It must be visible to traffic-engine's network namespace. e.g. `virtual@af_packet,eth1` where `eth1` is interface name while `virtual@af_packet` indicates that the interface is managed by host kernel's network stack.|
+  | OPT_LISTEN_PORT             |   Yes     | "5555"                  | TCP port on which controller can establish connection with traffic-engine.|
+  | OPT_NO_HUGEPAGES            |   Yes     | "No"                    | Setting this to `Yes` disables hugepages in OS. The hugepages needs to be disabled when using network interfaces managed by host kernel's stack.|
 
-  | Environment Variable | Mandatory | Default | Example | Comments |
-  |----------------------|-----------|---------|----------|--------|
-  | ARG_IFACE_LIST       | Yes | None | "virtual@af_packet@veth1" | FIXME |
-  | OPT_LISTEN_PORT      | No | 5555 | 5556 | Port on which the `traffic-engine` will listen to for communication with the `controller` |
-  | OPT_NO_HUGEPAGES     | No | "Yes" | FIXME | FIXME |
+  Docker Parameters:
+  * `--net=host` - This is needed if traffic-engine needs to bind to a network interface that is visible in host network stack but not inside docker's network.
+  * `--privileged` - This is needed because traffic-engine needs to exercise capabilities that require elevated privileges.
+  * `--cpuset-cpus` - The traffic-engine usually requires 1 shared CPU core for management activities and 2 exclusive CPU cores, each for transmit engine and receive engine. The shared CPU core can be shared across multiple traffic-engines. e.g. `--cpuset-cpus="0,1,2"` indicates that cpu0 is shared, cpu1 is used for transmit and cpu2 is used for receive. If CPU cores are not specified, arbitrary CPU cores will be chosen.
+    > If enough CPU cores are not provided, available CPU cores may be shared among management, transmit and receive engines, occasionally resulting in lower performance.
+  * `-d` - This starts container in background.
 
   Example:
 
@@ -88,7 +87,31 @@ All the scenarios mentioned in upcoming sections describes both manual and autom
     ixiacom/ixia-c-traffic-engine
   ```
 
-  > `--net=host` is required here when binding to network interfaces that are visible to host OS and not the traffic engine container
+### Diagnostics
+
+Check and download controller logs:
+
+```sh
+docker exec <container-id> cat logs/controller.log
+# follow logs
+docker exec <container-id> tail -f logs/controller.log
+# check stdout output
+docker logs <container-id>
+# download logs
+docker cp <container-id>:$(docker exec <container-id> readlink -f logs/controller.log) ./
+```
+
+Check and download traffic-engine logs:
+
+```sh
+docker exec <container-id> cat /var/log/usstream/usstream.log
+# follow logs
+docker exec <container-id> tail -f /var/log/usstream/usstream.log
+# check stdout output
+docker logs <container-id>
+# download logs
+docker cp <container-id>:/var/log/usstream/usstream.log ./
+```
 
 ### Test Suite
 

@@ -6,6 +6,7 @@
     * [Overview](deployments.md#overview)
     * [Bootstrap](deployments.md#bootstrap)
     * [Deployment Parameters](deployments.md#deployment-parameters)
+    * [Diagnostics](deployments.md#diagnostics)
     * [Test Suite](deployments.md#test-suite)
     * [One-arm Scenario](deployments.md#one-arm-scenario)
     * [Two-arm Scenario](deployments.md#two-arm-scenario)
