@@ -30,3 +30,4 @@
     * [Flows](snappi-constructs.md#flows)
     * [Capture](snappi-constructs.md#capture)
     * [Metrics](snappi-constructs.md#metrics)
+6. [End User License Agreement](eula.md)
