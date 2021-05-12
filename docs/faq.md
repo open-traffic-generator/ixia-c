@@ -254,5 +254,6 @@ This message indicates that the `app-usage-reporter` container is not reachable 
 Where do I get support for the free version of Ixia-C?
 </summary>
 <br>
+
 Reach out to us on [Slack](support.md) for support.
 </details>
