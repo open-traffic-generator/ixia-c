@@ -46,6 +46,7 @@ All the scenarios mentioned in upcoming sections describes both manual and autom
   | --http-port                 |   Yes     | 443                     | TCP port for HTTP server.                                       |
   | --log-out                   |   Yes     | false                   | Enables streaming log output to stdout.                         |
   | --aur-host                  |   Yes     | https://localhost:5600  | Overrides location of app-usage-reporter.                       |
+  | --accept-eula               |   No      | false                   | Indicates that user has accepted EULA, controller won't boot up otherwise |
 
 
   | Docker Parameters           | Optional  | Default                 | Description                                                     |
@@ -63,7 +64,7 @@ All the scenarios mentioned in upcoming sections describes both manual and autom
   Example:
 
   ```bash
-  docker run --net=host -d ixiacom/ixia-c-controller --debug --http-port 5050
+  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula --debug --http-port 5050
   ```
 
 * Deploying Traffic Engine
@@ -107,7 +108,7 @@ All the scenarios mentioned in upcoming sections describes both manual and autom
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ixiacom/ixia-c-controller
+  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula
   docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -135,7 +136,7 @@ All the scenarios mentioned in upcoming sections describes both manual and autom
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ixiacom/ixia-c-controller
+  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula
   docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -173,7 +174,7 @@ This scenario binds traffic engine to management network interface belonging to 
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ixiacom/ixia-c-controller
+  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula
   docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth0, TCP port 5555 and cpu cores 0, 1, 2
