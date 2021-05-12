@@ -18,7 +18,7 @@
   <a href="docs/roadmap.md">Roadmap</a> &nbsp;•&nbsp;
   <a href="docs/usecases.md">Use Cases</a>
   <br>
-  <a href="docs/support.md">Support</a> &nbsp;•&nbsp;
+  <a href="docs/support.md">Support | Slack</a> &nbsp;•&nbsp;
   <a href="docs/contribute.md">Contribute</a> &nbsp;•&nbsp;
   <a href="docs/faq.md">FAQ</a>
 </p><br/>
