@@ -1,7 +1,5 @@
 <h1 align="center">
   <br>
-  <img src="https://img.icons8.com/color/question" alt="Ixia-C">
-  <br>
   Ixia-C
   <br>
 </h1>
