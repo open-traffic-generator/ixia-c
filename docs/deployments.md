@@ -13,19 +13,19 @@
 
 ### Overview
 
-Ixia-C is distributed / deployed as a multi-container application consisting of following services:
+Ixia-c is distributed / deployed as a multi-container application consisting of following services:
 
 * **controller** - Serves API request from clients and manages workflow across one or more traffic engines.
 * **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
 * **app-usage-reporter** - (Optional) Collects usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
 
-All these services are available as docker image on [ixiacom repository](https://hub.docker.com/u/ixiacom). Please check [Ixia-C Releases](releases.md) to use specific versions of these images.
+All these services are available as docker image on [ixiacom repository](https://hub.docker.com/u/ixiacom). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
 
-Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/9f8151c), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-C.
+Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/9f8151c), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
 
 ### Bootstrap
 
-Ixia-C services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizantal scalibility** without interrupting existing services.
+Ixia-c services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizantal scalibility** without interrupting existing services.
 
 Following outlines how connectivity is established between the services:
 

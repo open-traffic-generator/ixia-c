@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  Ixia-C
+  Ixia-c
   <br>
 </h1>
 
@@ -23,23 +23,23 @@
   <a href="docs/faq.md">FAQ</a>
 </p><br/>
 
-### What is Ixia-C ?
+### What is Ixia-c ?
 
-Ixia-C is a modern, powerful and API-driven traffic generator designed to cater to the needs of hyperscalers, network hardware vendors and hobbyists alike.  
+Ixia-c is a modern, powerful and API-driven traffic generator designed to cater to the needs of hyperscalers, network hardware vendors and hobbyists alike.
 
 It is available for **free** and distributed / deployed as a multi-container application consisting of a **controller**, a **traffic-engine** and an **app-usage-reporter**.
 
-As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-C supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).  
+As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
 
 <p align="center">
-<img src="docs/res/ixia-c.drawio.svg" alt="Ixia-C Deployment for Bidirectional Traffic">
+<img src="docs/res/ixia-c.drawio.svg" alt="Ixia-c Deployment for Bidirectional Traffic">
 </p>
 
 > [Keysight](https://www.keysight.com) also offers a well supported version with no restrictions on **performance and scalability** (e.g. Keysight's Hardware Traffic Generators). Scripts written for the free version are **compatible** with this version.
 
 ### News
 
-Ixia-C version 0.0.1 (build TODO) released.  This confirms to v0.3.8 of the Open Traffic Generator Models specification.
+Ixia-c version 0.0.1 (build TODO) released.  This confirms to v0.3.8 of the Open Traffic Generator Models specification.
 
 ### Quick Demo
 
@@ -49,7 +49,7 @@ Ixia-C version 0.0.1 (build TODO) released.  This confirms to v0.3.8 of the Open
 
 Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) are met.
 
-* Deploy Ixia-C
+* Deploy Ixia-c
 
   ```bash
   # start ixia-c controller
