@@ -1,2 +1,4 @@
 scratch
 env
+*.pcap
+*.log
