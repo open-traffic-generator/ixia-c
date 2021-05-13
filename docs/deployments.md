@@ -25,18 +25,18 @@ All these services are available as docker image on [ixiacom repository](https:/
   <img src="res/ixia-c-aur.drawio.svg"></img>
 </div>
 
-Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/205376e), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
+> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/205376e), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
 
 ### Bootstrap
 
-Ixia-c services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizantal scalibility** without interrupting existing services.
+Ixia-c services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizontal scalability** without interrupting existing services.
 
 Following outlines how connectivity is established between the services:
 
 * **controller & traffic-engine** - When client pushes a traffic configuration to controller containing `location` of traffic engine.
 * **controller & app-usage-reporter** - Controller periodically tries to establish connectivity with app-usage-reporter on a `location` which can be overridden using controller's deployment parameters.
 
-> The **location** (aka network address) of traffic-engine and app-usage-reporter must be reachable from controller, even if they're not reachable from client scripts.
+The **location** (aka network address) of traffic-engine and app-usage-reporter must be reachable from controller, even if they're not reachable from client scripts.
 
 #### Using docker-compose
 
