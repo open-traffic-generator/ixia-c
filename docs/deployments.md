@@ -21,6 +21,10 @@ Ixia-c is distributed / deployed as a multi-container application consisting of 
 
 All these services are available as docker image on [ixiacom repository](https://hub.docker.com/u/ixiacom). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
 
+<div align="center">
+  <img src="res/ixia-c-aur.drawio.svg"></img>
+</div>
+
 Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/205376e), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
 
 ### Bootstrap
