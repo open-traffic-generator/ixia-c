@@ -17,15 +17,19 @@ Ixia-c is distributed / deployed as a multi-container application consisting of 
 
 * **controller** - Serves API request from clients and manages workflow across one or more traffic engines.
 * **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
-* **app-usage-reporter** - (Optional) Collects usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
+* **app-usage-reporter** - (Optional) Collects anonymous usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
 
 All these services are available as docker image on [ixiacom repository](https://hub.docker.com/u/ixiacom). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
 
-Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/9f8151c), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
+<div align="center">
+  <img src="res/ixia-c-aur.drawio.svg"></img>
+</div>
+
+> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/205376e), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
 
 ### Bootstrap
 
-Ixia-c services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizantal scalibility** without interrupting existing services.
+Ixia-c services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizontal scalability** without interrupting existing services.
 
 Following outlines how connectivity is established between the services:
 
@@ -34,7 +38,25 @@ Following outlines how connectivity is established between the services:
 
 The **location** (aka network address) of traffic-engine and app-usage-reporter must be reachable from controller, even if they're not reachable from client scripts.
 
-Deploying these services manually (along with required parameters) may not be desired in some scenarios and hence, for convenience [deployments](../deployments) directory consists of `docker-compose` files pertaining to some commonly used scenarios, requiring only a single command for setup all required services.
+#### Using docker-compose
+
+Deploying multiple services manually (along with required parameters) may not be desired in some scenarios and hence, for convenience [deployments](../deployments) directory consists of `docker-compose` files, where:
+* `*.yml` files describe services for a given scenario and deployment parameters required to start them.
+* `.env` file holds default parameters to be used across all `*.yml` files, like name of interface, version of docker images, etc.
+
+If a concerned `.yml` file does not include certain variables from `.env`, those can then safely be ignored.  
+Here's how the usual workflow looks like when using `docker-compose`.
+
+```sh
+# change default parameters if needed; e.g. interface name, image version, etc.
+vi deployments/.env
+# deploy and start services
+docker-compose -f deployments/<scenario>.yml up -d
+# stop and remove services deployed
+docker-compose -f deployments/<scenario>.yml down
+```
+
+On most systems, `docker-compose` needs to be installed separately even when docker is already installed. Please check [docker prerequisites](prerequisites.md#docker) for more details.
 
 >All the scenarios mentioned in upcoming sections describe both manual and automated (requiring docker-compose) steps.
 

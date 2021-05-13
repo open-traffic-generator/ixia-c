@@ -17,6 +17,8 @@
 
 ## Software Prerequisites
 
+### Docker
+
 ### Python
 
   - **Please make sure you have `python` and `pip` installed on your system.**

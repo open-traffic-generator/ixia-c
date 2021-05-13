@@ -27,7 +27,7 @@ In this tutorial, we will walk through some key elements required to write a **s
 * Send 1000 UDP packets back and forth between interfaces eth1 & eth2 at a rate of 1000 packets per second.
 * Ensure that indeed correct number of valid UDP packets are received on both ends using port capture and port metrics.
 
-The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/9f8151c/scripts/hello_snappi.py) covers this extensively.
+The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/205376e/scripts/hello_snappi.py) covers this extensively.
 <div align="center">
   <img src="res/ixia-c.drawio.svg"></img>
 </div>
@@ -59,6 +59,8 @@ If the controller is deployed with a non-default TCP port using [deployment para
 ```python
 import snappi
 api = snappi.api(host='https://localhost')
+# or with non-default TCP port
+api = snappi.api(host='https://localhost:8080')
 ```
 
 <details>
@@ -384,7 +386,7 @@ for p in cfg.ports:
   # fetch captured pcap bytes and feed it to pcap parser dpkt
   pcap = dpkt.pcap.Reader(api.get_capture(req))
   for _, buf in pcap:
-      # check if the destination UDP port is among what was configured
+      # check if current packet is a valid UDP packet
       eth = dpkt.ethernet.Ethernet(buf)
       assert isinstance(eth.data.data, dpkt.udp.UDP)
 ```
@@ -393,12 +395,12 @@ Optionally following snippet can be used in order to do `tcpdump -r cap.pcap` (i
 
 ```python
 pcap_bytes = api.get_capture(req)
-with open('cap.pcap', 'w') as p:
+with open('cap.pcap', 'wb') as p:
   p.write(pcap_bytes.read())
 ```
 
 ### Putting It All Together
 
-`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/9f8151c/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
+`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/205376e/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
 
-There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/9f8151c) for more such examples, pytest-based test scripts and utilities.
+There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/205376e) for more such examples, pytest-based test scripts and utilities.
