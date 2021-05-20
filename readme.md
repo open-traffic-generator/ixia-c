@@ -25,7 +25,7 @@
   <a href="docs/usecases.md">Use Cases</a> &nbsp;•&nbsp;
   <a href="docs/faq.md">FAQ</a>
   <br>
-</p><br/>
+</p>
 
 ### What is Ixia-c ?
 
@@ -43,7 +43,9 @@ As a reference implementation of [Open Traffic Generator API](https://github.com
 
 ### Quick Demo
 
-> TODO: gif showcasing contents of Quick Start.  Do we really want this?
+<p align="center">
+<img src="docs/res/quick-demo.gif" alt="Quick Demo">
+</p>
 
 ### Quick Start
 
