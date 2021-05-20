@@ -9,18 +9,22 @@
 </h4>
 
 <p align="center">
-  <a href="#news">News</a> &nbsp;•&nbsp;
+  <a href="https://hub.docker.com/r/ixiacom/ixia-c-controller/tags"><img alt="Release v0.0.1-1293" src="https://img.shields.io/badge/release-v0.0.1--1293-brightgreen"></a>
+  <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.3.8/openapi.yaml"><img alt="Open Traffic Generator v0.3.8" src="https://img.shields.io/badge/open--traffic--generator-v0.3.8-brightgreen"></a>
+  <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
+  <a href="docs/roadmap.md"><img alt="news" src="https://img.shields.io/badge/-roadmap-blue?logo=github"></a>
+  <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
+  <a href="https://ixia-c.slack.com/"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
+</p>
+
+<p align="center">
   <a href="#quick-demo">Quick Demo</a> &nbsp;•&nbsp;
-  <a href="#quick-start">Quick Start</a>
-  <br>
+  <a href="#quick-start">Quick Start</a> &nbsp;•&nbsp;
   <a href="#key-features">Key Features</a> &nbsp;•&nbsp;
   <a href="docs/readme.md">Documentation</a> &nbsp;•&nbsp;
-  <a href="docs/roadmap.md">Roadmap</a> &nbsp;•&nbsp;
-  <a href="docs/usecases.md">Use Cases</a>
-  <br>
-  <a href="docs/support.md">Support | Slack</a> &nbsp;•&nbsp;
-  <a href="docs/contribute.md">Contribute</a> &nbsp;•&nbsp;
+  <a href="docs/usecases.md">Use Cases</a> &nbsp;•&nbsp;
   <a href="docs/faq.md">FAQ</a>
+  <br>
 </p><br/>
 
 ### What is Ixia-c ?
@@ -36,10 +40,6 @@ As a reference implementation of [Open Traffic Generator API](https://github.com
 </p>
 
 > [Keysight](https://www.keysight.com) also offers a well supported version with no restrictions on **performance and scalability** (e.g. Keysight's Hardware Traffic Generators). Scripts written for the free version are **compatible** with this version.
-
-### News
-
-Ixia-c version 0.0.1 (build 1293) released.  This conforms to **[v0.3.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.3.8/openapi.yaml)** of the Open Traffic Generator Models specification.
 
 ### Quick Demo
 
@@ -62,7 +62,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
     ixiacom/ixia-c-traffic-engine
   ```
 
-  > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation.
+  > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation. Check out [deployment guide](docs/deployments.md) for more details.
 
 * Generate Traffic using [snappi](https://pypi.org/project/snappi/)
 
@@ -79,7 +79,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   > Upon successful run, you should see port metrics printed on console.
  
   <details>
-  <summary><b>Expand</b> this section for overview of the script we just ran. For more details, checkout <a href="docs/hello-snappi.md">hello-snappi</a>.</summary>
+  <summary><b>Expand</b> this section for overview of the script we just ran. For more details on snappi, checkout <a href="docs/hello-snappi.md">hello-snappi</a>.</summary>
 
   ```python
   import snappi
