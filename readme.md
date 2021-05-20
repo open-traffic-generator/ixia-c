@@ -56,9 +56,9 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   docker run -d --network=host ixiacom/ixia-c-controller --accept-eula
 
   # start ixia-c traffic engine on eth1 interface
-  docker run -d --network=host --privileged \
-    -e ARG_IFACE_LIST="eth1"                \
-    -e OPT_NO_HUGEPAGES="Yes"               \
+  docker run -d --network=host --privileged     \
+    -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
+    -e OPT_NO_HUGEPAGES="Yes"                   \
     ixiacom/ixia-c-traffic-engine
   ```
 
