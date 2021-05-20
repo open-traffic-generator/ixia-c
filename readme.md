@@ -14,7 +14,7 @@
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
   <a href="docs/roadmap.md"><img alt="news" src="https://img.shields.io/badge/-roadmap-blue?logo=github"></a>
   <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
-  <a href="https://ixia-c.slack.com/"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
+  <a href="docs/support.md"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
 </p>
 
 <p align="center">
