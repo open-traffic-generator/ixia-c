@@ -11,8 +11,8 @@
 <p align="center">
   <a href="https://hub.docker.com/r/ixiacom/ixia-c-controller/tags"><img alt="Release v0.0.1-1293" src="https://img.shields.io/badge/release-v0.0.1--1293-brightgreen"></a>
   <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.3.8/openapi.yaml"><img alt="Open Traffic Generator v0.3.8" src="https://img.shields.io/badge/open--traffic--generator-v0.3.8-brightgreen"></a>
+  <a href="https://pypi.org/project/snappi/0.3.19"><img alt="snappi v0.3.19" src="https://img.shields.io/badge/snappi-v0.3.19-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
-  <a href="docs/roadmap.md"><img alt="news" src="https://img.shields.io/badge/-roadmap-blue?logo=github"></a>
   <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
   <a href="docs/support.md"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
 </p>
@@ -23,6 +23,7 @@
   <a href="#key-features">Key Features</a> &nbsp;•&nbsp;
   <a href="docs/readme.md">Documentation</a> &nbsp;•&nbsp;
   <a href="docs/usecases.md">Use Cases</a> &nbsp;•&nbsp;
+  <a href="docs/roadmap.md">Roadmap</a> &nbsp;•&nbsp;
   <a href="docs/faq.md">FAQ</a>
   <br>
 </p>
@@ -31,9 +32,7 @@
 
 Ixia-c is a modern, powerful and API-driven traffic generator designed to cater to the needs of hyperscalers, network hardware vendors and hobbyists alike.
 
-It is available for **free** and distributed / deployed as a multi-container application consisting of a **controller**, a **traffic-engine** and an **app-usage-reporter**.
-
-As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
+It is available for **free** and distributed / deployed as a multi-container application consisting of a **controller**, a **traffic-engine** and an **app-usage-reporter**. As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
 
 <p align="center">
 <img src="docs/res/ixia-c.drawio.svg" alt="Ixia-c Deployment for Bidirectional Traffic">
