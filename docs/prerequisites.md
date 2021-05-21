@@ -43,7 +43,7 @@
         env\Scripts\activate on Windows
     ```
 
-> If you do not wish to activate virtual env, you use `env/bin/python` (or `env\scripts\python` on Windows) instead of `python`.
+> If you do not wish to activate virtual env, you can use `env/bin/python` (or `env\scripts\python` on Windows) instead of `python`.
 
 
 ## Network Interface Prerequisites
