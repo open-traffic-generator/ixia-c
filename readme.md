@@ -73,9 +73,9 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c && cd ixia-c
 
   # install snappi
-  python -m pip install --upgrade snappi
+  python -m pip install --upgrade snappi==0.3.19
   # run a standalone script to generate TCP traffic and fetch metrics
-  python snappi-tests/scripts/quickstart_snappi.py
+  python -W ignore snappi-tests/scripts/quickstart_snappi.py
   ```
 
   > Upon successful run, you should see port metrics printed on console.
@@ -92,10 +92,13 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   config = api.config()
   # add a port with location pointing to traffic engine
   prt = config.ports.port(name='prt', location='localhost:5555')[-1]
-  # add a flow with packet size 128 bytes and assign endpoints
+  # add a flow and assign endpoints
   flw = config.flows.flow(name='flw')[-1]
   flw.tx_rx.port.tx_name = prt.name
+
+  # configure 100 packets to be sent, each having a size of 128 bytes
   flw.size.fixed = 128
+  flw.duration.fixed_packets.packets = 100
 
   # add Ethernet, IP and TCP protocol headers with defaults
   flw.packet.ethernet().ipv4().tcp()
