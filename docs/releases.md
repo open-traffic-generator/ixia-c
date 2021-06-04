@@ -1,30 +1,33 @@
-#### Release Notes and Version Compatibility
+# Release Notes and Version Compatibility
 
-## [31/05/2021] Latest Release: ##
+## [31 May 2021] Latest Release
 
-* About the release:
-    - This build consists of a feature addition and couple of bug fixes.
- 
+### About
 
-* Build Details:
-    - ixia-c-controller: 0.0.1-1388
-    - ixia-c-traffic-engine: 1.2.0.12
-    - ixia-c-app-usage-reporter: 0.0.1-36
-    - open-traffic-generator: 0.3.10
-    - snappi: 0.3.20
- 
+This build contains support for flow delay and some bug fixes.
 
-* New Feature(s):
-    - Introduced delay support for all kind of flow duration (i.e. continuous, fixed_packets, fixed_seconds, burst)
- 
+### Build Details
 
-* Bug Fixes:
-    - For burst as flow duration type Inter-Burst-Gap value can be set beyond 4.2 seconds.
-    - Introduced a way to allow invalid phb values for dscp priority in case of IPv4 packets. This is just for testing purpose.
-    - Added validation to throw an error for over subscribed rate during set_config
-    - Fixed an error in calculation for packet count when flow duration is set in terms of fixed_seconds.
- 
+| Component | Version |
+|--------|--------|
+| Open Traffic Generator API | [0.3.10](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.3.10/openapi.yaml) |
+| snappi | 0.3.20 |
+| ixia-c-controller | 0.0.1-1388 |
+| ixia-c-traffic-engine | 1.2.0.12 |
+| ixia-c-app-usage-reporter | 0.0.1-36 |
 
-* Known Issues:
-    - Rx Fps & Rx Bytes rate is always remains 0 in port statistics
-    - Min Latency is always remains 0 in flow statistics
+### New Feature(s)
+
+* Ixia-c now supports `delay` parameter in flow configuration.  Refer to [v0.3.10](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.3.10/openapi.yaml) of the Open Traffic Generator API specification for more details.
+
+### Bug Fixes
+
+* The flow configuration parameter `inter_burst_gap` when specified in nanoseconds can now be set to a value larger than 4.2 seconds.
+* Invalid values can now be set for the `phb` (per hob behavior) field in the DSCP bits in the IPv4 header.
+* The `set_config` method will return an error when flows are over subscribed.
+* Fixed an error in calculation for packet counts when `duration` is set in terms of fixed_seconds.
+
+### Known Issues
+
+* The metrics `frames_rx_rate` and `bytes_rx_rate` in port statistics are not calculated correctly and are always zero.
+* The metric `min_latency_ns` in flow statistics is not calculated correctly and is always zero.
