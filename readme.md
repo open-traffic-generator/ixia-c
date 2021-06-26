@@ -145,7 +145,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   * Easily integrate with test frameworks like [pytest](https://www.pytest.org)
   * Easily integrate into CI/CD pipelines with Jenkins, GitHub, GitLab
 * Up to 256 flows per port.  Each Flow supports:
-  * Packet Templates for Ethernet, VLAN, GTPv1, GTPv2, IPv4, IPv6, ICMP, ICMPv6, UDP, & TCP.  More protocols are on the way.
+  * Packet Templates for Ethernet, VLAN, GTPv1, GTPv2, IPv4, IPv6, ICMP, ICMPv6, GRE, UDP, & TCP.  More protocols are on the way.
   * Ability to use tools like Scapy to add headers for unsupported protocols.
   * Manipulation of any field in the packet headers
   * Patterns to modify common packet header fields to generate millions of unique packets
