@@ -5,7 +5,7 @@
 
 #### About
 
-This build contains support for protocols GRE and VXLAN, enabling/disabling flow metrics and some bug fixes.
+This build contains support for protocols GRE and VXLAN (RFC 2784), enabling/disabling flow metrics and some bug fixes.
 
 #### Build Details
 
@@ -19,7 +19,7 @@ This build contains support for protocols GRE and VXLAN, enabling/disabling flow
 
 #### New Feature(s)
 
-* Flow header configuration for protocols `GRE` and `VXLAN` are now supported.
+* Flow header configuration for protocols `GRE` and `VXLAN (RFC 2784)` are now supported.
 * Flow metrics is now disabled by default to allow transmitting packets with `unaltered payload `(i.e. without any timestamps and instrumentation bytes embedded in it).
 * Flow metrics (including metrics that are its sub-properties, e.g. `latency` and `timestamp`) can now be explicitly enabled on per-flow basis.
 
