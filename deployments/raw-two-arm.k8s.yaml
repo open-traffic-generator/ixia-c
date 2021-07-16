@@ -1,0 +1,152 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ixia-c-two-arm-svc
+spec:
+  type: NodePort
+  selector:
+    app: ixia-c-two-arm
+  ports:
+  - name: controller
+    protocol: TCP
+    port: 443
+    targetPort: 443
+    nodePort: 30003
+  - name: traffic-engine-1
+    protocol: TCP
+    port: 5555
+    targetPort: 5555
+    nodePort: 30005
+  - name: traffic-engine-2
+    protocol: TCP
+    port: 5556
+    targetPort: 5555
+    nodePort: 30006
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ixia-c-controller
+  labels:
+    app: ixia-c-two-arm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ixia-c-two-arm
+  template:
+    metadata:
+      labels:
+        app: ixia-c-two-arm
+    spec:
+      containers:
+      - name: ixia-c-controller
+        image: ixiacom/ixia-c-controller:latest
+        args:
+          - --accept-eula
+          - --log-out
+        resources:
+          requests:
+            memory: 128Mi
+            cpu: 250m
+          limits:
+            memory: 4Gi
+            cpu: 1000m
+        ports:
+        - containerPort: 443
+          protocol: TCP
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ixia-c-traffic-engine-1
+  labels:
+    app: ixia-c-two-arm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ixia-c-two-arm
+  template:
+    metadata:
+      labels:
+        app: ixia-c-two-arm
+    spec:
+      containers:
+      - name: ixia-c-traffic-engine-1
+        image: ixiacom/ixia-c-traffic-engine:latest
+        env:
+          - name: OPT_LISTEN_PORT
+            value: "5555"
+          - name: ARG_IFACE_LIST
+            value: virtual@af_packet,eth0
+          - name: OPT_NO_HUGEPAGES
+            value: "Yes"
+        resources:
+          requests:
+            memory: 1Gi
+            cpu: 250m
+          limits:
+            memory: 4Gi
+            cpu: 3000m
+        ports:
+        - containerPort: 5555
+          protocol: TCP
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - SYS_ADMIN
+              - NET_ADMIN
+              - IPC_LOCK
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ixia-c-traffic-engine-2
+  labels:
+    app: ixia-c-two-arm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ixia-c-two-arm
+  template:
+    metadata:
+      labels:
+        app: ixia-c-two-arm
+    spec:
+      containers:
+      - name: ixia-c-traffic-engine-2
+        image: ixiacom/ixia-c-traffic-engine:latest
+        env:
+          - name: OPT_LISTEN_PORT
+            value: "5555"
+          - name: ARG_IFACE_LIST
+            value: virtual@af_packet,eth0
+          - name: OPT_NO_HUGEPAGES
+            value: "Yes"
+        resources:
+          requests:
+            memory: 1Gi
+            cpu: 250m
+          limits:
+            memory: 4Gi
+            cpu: 3000m
+        ports:
+        - containerPort: 5555
+          protocol: TCP
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities:
+            add:
+              - SYS_ADMIN
+              - NET_ADMIN
+              - IPC_LOCK
