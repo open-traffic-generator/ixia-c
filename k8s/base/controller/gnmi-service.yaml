@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gnmi-service
+spec:
+  type: NodePort
+  selector:
+    app: ixia-c
+  ports:
+  - name: gnmi
+    port: 50051
+    targetPort: 50051
+    nodePort: 30042

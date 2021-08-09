@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../base
+
+images:
+- name: manager
+  newName: ixia-c-operator
+  newTag: 0.0.35
+- name: ixia-c
+  newName: ixia-c-controller
+  newTag: 0.0.1-1836
+- name: gnmi
+  newName: otg-gnmi-server
+  newTag: 0.4.3
+- name: grpc
+  newName: otg-grpc-server
+  newTag: 0.0.5

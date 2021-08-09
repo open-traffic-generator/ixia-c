@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grpc-service
+spec:
+  type: NodePort
+  selector:
+    app: ixia-c
+  ports:
+  - name: grpc
+    port: 40051
+    targetPort: 40051
+    nodePort: 30043

@@ -1,0 +1,25 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: ixia-c
+  labels:
+    app: ixia-c
+spec:
+  containers:
+  - name: ixia-c
+    image: ixia-c-controller:0.0.1-1836
+    args: ["--accept-eula", "--debug"]
+  - name: gnmi
+    image: otgservices/otg-gnmi-server:0.4.3
+    imagePullPolicy: Always
+    command: ["python3", "-m", "otg_gnmi", "--server-port", "50051", "--app-mode", "athena", "--target-host", "ixia-c-service", "--target-port", "443", "--insecure"]
+    ports:
+    - containerPort: 50051
+      name: gnmi
+  - name: grpc
+    image: otgservices/otg-grpc-server:0.0.5
+    imagePullPolicy: Always
+    command: ["python3", "-m", "grpc_server", "--app-mode", "athena", "--target-host", "ixia-c-service", "--target-port", "443", "--log-stdout", "--log-debug"]
+    ports:
+    - containerPort: 40051
+      name: grpc
