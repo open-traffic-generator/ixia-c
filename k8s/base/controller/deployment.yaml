@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ixia-c
+  labels:
+    app: ixia-c
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ixia-c
+  template:
+    metadata:
+      labels:
+        app: ixia-c
+    spec:
+      containers:
+      - name: ixia-c-controller
+        image: ixiacom/ixia-c-controller:latest
+        args:
+        - --accept-eula
+        - --debug
+      - name: ixia-c-gnmi-server
+        image: otgservices/otg-gnmi-server:latest
+        command:
+        - python3
+        - -m
+        - otg_gnmi
+        - --server-port
+        - "50051"
+        - --app-mode
+        - athena
+        - --target-host
+        - http-service
+        - --target-port
+        - "443"
+        - --insecure
+        ports:
+        - containerPort: 50051
+      - name: ixia-c-grpc-server
+        image: otgservices/otg-grpc-server:latest
+        command:
+        - python3
+        - -m
+        - grpc_server
+        - --app-mode
+        - athena
+        - --target-host
+        - http-service
+        - --target-port
+        - "443"
+        - --log-stdout
+        - --log-debug
+        ports:
+        - containerPort: 40051

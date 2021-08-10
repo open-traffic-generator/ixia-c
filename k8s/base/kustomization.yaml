@@ -2,9 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - controller/controller-service.yaml
+  - controller/http-service.yaml
   - controller/grpc-service.yaml
   - controller/gnmi-service.yaml
-  - controller/pod.yaml
+  - controller/deployment.yaml
   - operator/ixiatg.yaml
   - operator/namespace.yaml

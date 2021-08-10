@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ixia-c-service
+  name: http-service
 spec:
   type: NodePort
   selector:

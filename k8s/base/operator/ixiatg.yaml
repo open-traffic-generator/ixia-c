@@ -293,7 +293,7 @@ spec:
         - --leader-elect
         command:
         - /manager
-        image: us-central1-docker.pkg.dev/kt-nts-athena-dev/keysight/athena/operator:0.0.35
+        image: us-central1-docker.pkg.dev/kt-nts-athena-dev/keysight/athena/operator:latest
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:

@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ixiatg-op-controller-manager
+  namespace: ixiatg-op-system
+spec:
+  template:
+    spec:
+      containers:
+      - name: manager
+        image: us-central1-docker.pkg.dev/kt-nts-athena-dev/keysight/athena/operator:0.0.35

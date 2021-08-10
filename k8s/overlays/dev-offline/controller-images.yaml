@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ixia-c
+spec:
+  template:
+    spec:
+      containers:
+      - name: ixia-c-controller
+        image: ixia-c-controller:0.0.1-1836
+      - name: ixia-c-gnmi-server
+        image: otgservices/otg-gnmi-server:0.4.3
+      - name: ixia-c-grpc-server
+        image: otgservices/otg-grpc-server:0.0.5
