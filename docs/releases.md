@@ -1,5 +1,39 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release v0.0.1-2070 (Latest)
+> 26th August, 2021
+
+#### About
+
+This build contains support for capture filter, setting GRE checksum flag, receiving controller log in stdout and some bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.4.11](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.11/openapi.yaml) |
+| snappi                        | 0.4.24        |
+| ixia-c-controller             | 0.0.1-2070    |
+| ixia-c-traffic-engine         | 1.4.0.6       |
+| ixia-c-app-usage-reporter     | 0.0.1-37      |
+
+#### New Feature(s)
+
+* Capture filter is now supported. One or muiltiple patterns can be added when setting the config.
+* Controller log is now redirected to stdout which is accessible through docker logs.
+* Checksum field in `GRE` header now can be set.
+
+#### Bug Fixes
+
+* Some fixes are added for ipv6 counter udf.
+* Some fixes are added for default values for `decrement` properties in flow header fields.
+
+#### Known Issues
+
+* Correct latency related stat is not supported.
+* The metric `loss` in flow metrics is currently not supported.
+
+
 ## Release v0.0.1-1622 (Latest)
 > 25th June, 2021
 
