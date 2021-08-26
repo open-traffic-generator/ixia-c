@@ -47,7 +47,7 @@ And installing python packages:
 * [dpkt](https://pypi.org/project/dpkt/) - for processing `.pcap` files.
 
 ```sh
-python -m pip install --upgrade snappi==0.4.0 dpkt
+python -m pip install --upgrade snappi==0.4.24 dpkt
 ```
 
 ### Create API Handle
@@ -100,13 +100,13 @@ We now need to construct traffic configuration to be sent to controller. We'll n
   > By default, API requests in snappi are made over HTTPS with payloads as a JSON string. Since each object in snappi inherits `SnappiObject` or `SnappiIter`, they all share a common method called `.serialize()` and `deserialize()`, used internally during API requests, for valid conversion to / from a JSON string. We'll discuss about more such conveniences offered by snappi along the way.
 
 <details>
-<summary><b>Expand</b> this section for details on how to effectively navigate through <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.0/openapi.yaml">snappi API documentation</a>.</summary><br/>
+<summary><b>Expand</b> this section for details on how to effectively navigate through <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.24/openapi.yaml">snappi API documentation</a>.</summary><br/>
 
 The objects and methods (for API calls) in snappi are auto-generated from an [Open API Generator YAML file](https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml). This file adheres to [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification), which can (by design) also be rendered as an interactive API documentation.
 
 [ReDoc](https://redocly.github.io/redoc/) is an open-source tool that does this. It accepts a link to valid OpenAPI YAML file and generates a document where all the methods (for API calls) are mentioned in the left navigation bar and for each selected method, there's a request / response body description in the center of the page. These descriptions lay out the entire object tree documenting each node in details.
 
-The snappi API documentation linked above will always point to API version **v0.4.0**. To use a different API version instead:
+The snappi API documentation linked above will always point to API version **v0.4.24**. To use a different API version instead:
 
 * Identify API version for snappi currently installed on client
 
@@ -114,7 +114,7 @@ The snappi API documentation linked above will always point to API version **v0.
   python -c 'from snappi import snappigenerator as sg; print(sg.MODELS_RELEASE)'
   ```
 
-* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.0/openapi.yaml">this link</a> in a browser after replacing **v0.4.0** in URL with intended API version.
+* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.24/openapi.yaml">this link</a> in a browser after replacing **v0.4.24** in URL with intended API version.
 
 </details>
 
