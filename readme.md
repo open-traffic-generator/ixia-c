@@ -9,9 +9,9 @@
 </h4>
 
 <p align="center">
-  <a href="https://hub.docker.com/r/ixiacom/ixia-c-controller/tags"><img alt="Release v0.0.1-2070" src="https://img.shields.io/badge/release-v0.0.1--2070-brightgreen"></a>
-  <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.11/openapi.yaml"><img alt="Open Traffic Generator v0.4.11" src="https://img.shields.io/badge/open--traffic--generator-v0.4.11-brightgreen"></a>
-  <a href="https://pypi.org/project/snappi/0.4.24"><img alt="snappi v0.4.24" src="https://img.shields.io/badge/snappi-v0.4.24-brightgreen"></a>
+  <a href="https://hub.docker.com/r/ixiacom/ixia-c-controller/tags"><img alt="Release v0.0.1-2120" src="https://img.shields.io/badge/release-v0.0.1--2120-brightgreen"></a>
+  <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml"><img alt="Open Traffic Generator v0.4.12" src="https://img.shields.io/badge/open--traffic--generator-v0.4.12-brightgreen"></a>
+  <a href="https://pypi.org/project/snappi/0.4.25"><img alt="snappi v0.4.25" src="https://img.shields.io/badge/snappi-v0.4.25-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
   <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
   <a href="docs/support.md"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
