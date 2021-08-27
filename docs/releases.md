@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release v0.0.1-2070 (Latest)
-> 26th August, 2021
+## Release v0.0.1-2120 (Latest)
+> 27th August, 2021
 
 #### About
 
@@ -11,10 +11,10 @@ This build contains support for capture filter, setting GRE checksum flag, recei
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [0.4.11](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.11/openapi.yaml) |
-| snappi                        | 0.4.24        |
-| ixia-c-controller             | 0.0.1-2070    |
-| ixia-c-traffic-engine         | 1.4.0.6       |
+| Open Traffic Generator API    | [0.4.12](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml)         |
+| snappi                        | 0.4.25        |
+| ixia-c-controller             | 0.0.1-2120    |
+| ixia-c-traffic-engine         | 1.4.0.9       |
 | ixia-c-app-usage-reporter     | 0.0.1-37      |
 
 #### New Feature(s)
@@ -25,16 +25,15 @@ This build contains support for capture filter, setting GRE checksum flag, recei
 
 #### Bug Fixes
 
-* Some fixes are added for ipv6 counter udf.
-* Some fixes are added for default values for `decrement` properties in flow header fields.
+* All patterns of ipv6 value now can be set for `increment` and `decrement` properties in flow header fields
+* Default value of step for `decrement` properties in flow header fields is now set correctly.
 
 #### Known Issues
 
-* Correct latency related stat is not supported.
 * The metric `loss` in flow metrics is currently not supported.
 
 
-## Release v0.0.1-1622 (Latest)
+## Release v0.0.1-1622
 > 25th June, 2021
 
 #### About
