@@ -74,7 +74,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c && cd ixia-c
 
   # install snappi
-  python -m pip install --upgrade snappi==0.4.24
+  python -m pip install --upgrade snappi==0.4.25
   # run a standalone script to generate TCP traffic and fetch metrics
   python -W ignore snappi-tests/scripts/quickstart_snappi.py
   ```
@@ -123,7 +123,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 * Optionally, Generate Traffic Using [curl](https://curl.se/)
 
   >We can also pass equivalent **JSON configuration** directly to ixia-c controller, without installing snappi, using **curl**.  
-  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.11/openapi.yaml).
+  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml).
 
   ```bash
   # push the contents of config file snappi-tests/configs/quickstart_snappi.json
