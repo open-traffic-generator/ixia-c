@@ -2,7 +2,7 @@
 
 * **27th August, 2021**: Ixia-c version 0.0.1 (build 2120) released.  This conforms to **[v0.4.12](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml)** of the Open Traffic Generator Models specification.
 
-  * This release provides support for capture filter, setting GRE checksum flag, receiving controller log in stdout and some bug fixes. [Read more](releases.md)
+  * This release provides support for capture filter, setting GRE checksum flag, redirecting Ixia-c controller log to stdout and some bug fixes. [Read more](releases.md)
 
 * **2nd July, 2021**: Ixia-c End User License Agreement (EULA) updated.  New EULA can be found [here](https://www.keysight.com/us/en/assets/ndx/9921-02222/exhibits/EULA-Jul-1-21.pdf).
 

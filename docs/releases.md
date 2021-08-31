@@ -5,7 +5,7 @@
 
 #### About
 
-This build contains support for capture filter, setting GRE checksum flag, receiving controller log in stdout and some bug fixes.
+This build contains support for capture filter, setting GRE checksum flag, redirecting Ixia-c controller log to stdout and some bug fixes.
 
 #### Build Details
 
@@ -19,13 +19,13 @@ This build contains support for capture filter, setting GRE checksum flag, recei
 
 #### New Feature(s)
 
-* Capture filter is now supported. One or muiltiple patterns can be added when setting the config.
-* Controller log is now redirected to stdout which is accessible through docker logs.
+* Capture filters are now supported. Multiple patterns can be specified in the configuration.
+* Controller log is now redirected to stdout. `Docker logs` can now be used to access Ixia-c controller logs.
 * Checksum field in `GRE` header now can be set.
 
 #### Bug Fixes
 
-* All patterns of ipv6 value now can be set for `increment` and `decrement` properties in flow header fields
+* All patterns of IPv6 value now can be set for `increment` and `decrement` properties in flow header fields.
 * Default value of step for `decrement` properties in flow header fields is now set correctly.
 
 #### Known Issues
