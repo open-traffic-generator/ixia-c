@@ -20,7 +20,7 @@ This build contains support for capture filter, setting GRE checksum flag, redir
 #### New Feature(s)
 
 * Capture filters are now supported. Multiple patterns can be specified in the configuration.
-* Controller log is now redirected to stdout. `Docker logs` can now be used to access Ixia-c controller logs.
+* Controller log is now redirected to stdout. `docker logs` can now be used to access Ixia-c controller logs.
 * Checksum field in `GRE` header now can be set.
 
 #### Bug Fixes
