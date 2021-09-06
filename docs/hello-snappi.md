@@ -58,9 +58,9 @@ If the controller is deployed with a non-default TCP port using [deployment para
 
 ```python
 import snappi
-api = snappi.api(host='https://localhost')
+api = snappi.api(location='https://localhost')
 # or with non-default TCP port
-api = snappi.api(host='https://localhost:8080')
+api = snappi.api(location="https://localhost:8080")
 ```
 
 <details>
@@ -70,8 +70,8 @@ If a traffic generator doesn't natively support [Open Traffic Generator API](htt
 
 ```python
 import snappi
-# host here refers to HTTPS address of IxNetwork API Server
-api = snappi.api(host='https://localhost', ext='ixnetwork')
+# location here refers to HTTPS address of IxNetwork API Server
+api = snappi.api(location="https://localhost", ext='ixnetwork')
 ```
 
 </details>
@@ -129,10 +129,8 @@ Note, unlike config, creating a new port using `p = api.port()` is not required 
 ```python
 # config has an attribute called `ports` which holds an iterator of type
 # `snappi.PortIter`, where each item is of type `snappi.Port` (p1 and p2)
-p1, p2 = (
-    cfg.ports
-    .port(name='p1', location='localhost:5555')
-    .port(name='p2', location='localhost:5556')
+p1, p2 = cfg.ports.port(name="p1", location="localhost:5555").port(
+    name="p2", location="localhost:5556"
 )
 ```
 
@@ -165,7 +163,7 @@ The `ports` we configured previously may require setting `layer1` (physical laye
 ```python
 # config has an attribute called `layer1` which holds an iterator of type
 # `snappi.Layer1Iter`, where each item is of type `snappi.Layer1` (ly)
-ly = cfg.layer1.layer1(name='ly')[-1]
+ly = cfg.layer1.layer1(name="ly")[-1]
 ly.speed = ly.SPEED_1_GBPS
 # set same properties on both ports
 ly.port_names = [p1.name, p2.name]
@@ -180,7 +178,7 @@ Since we also intend to start capturing packets on both ports, we enable `captur
 ```python
 # config has an attribute called `captures` which holds an iterator of type
 # `snappi.CaptureIter`, where each item is of type `snappi.Capture` (cp)
-cp = cfg.captures.capture(name='cp')[-1]
+cp = cfg.captures.capture(name="cp")[-1]
 cp.port_names = [p1.name, p2.name]
 ```
 
@@ -193,7 +191,7 @@ Here we configure two flows, one originating from port `p1` and the other from p
 ```python
 # config has an attribute called `flows` which holds an iterator of type
 # `snappi.FlowIter`, where each item is of type `snappi.Flow` (f1, f2)
-f1, f2 = cfg.flows.flow(name='flow p1->p2').flow(name='flow p2->p1')
+f1, f2 = cfg.flows.flow(name="flow p1->p2").flow(name="flow p2->p1")
 
 # and assign source and destination ports for each
 f1.tx_rx.port.tx_name, f1.tx_rx.port.rx_name = p1.name, p2.name
@@ -272,8 +270,8 @@ For Ethernet header, we simply assign static source and destination MAC address 
 
 ```python
 # set source and destination MAC addresses
-eth1.src.value, eth1.dst.value = '00:AA:00:00:04:00', '00:AA:00:00:00:AA'
-eth2.src.value, eth2.dst.value = '00:AA:00:00:00:AA', '00:AA:00:00:04:00'
+eth1.src.value, eth1.dst.value = "00:AA:00:00:04:00", "00:AA:00:00:00:AA"
+eth2.src.value, eth2.dst.value = "00:AA:00:00:00:AA", "00:AA:00:00:04:00"
 ```
 
 #### Setup IPv4
@@ -282,8 +280,8 @@ For IPv4 header as well, we assign static source and destination IPv4 address va
 
 ```python
 # set source and destination IPv4 addresses
-ip1.src.value, ip1.dst.value = '10.0.0.1', '10.0.0.2'
-ip2.src.value, ip2.dst.value = '10.0.0.2', '10.0.0.1'
+ip1.src.value, ip1.dst.value = "10.0.0.1", "10.0.0.2"
+ip2.src.value, ip2.dst.value = "10.0.0.2", "10.0.0.1"
 ```
 
 #### Setup UDP
