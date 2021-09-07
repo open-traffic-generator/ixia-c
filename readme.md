@@ -57,6 +57,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   ```bash
   # start ixia-c controller
   docker run -d --network=host ixiacom/ixia-c-controller --accept-eula
+  docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
 
   # start ixia-c traffic engine on eth1 interface
   docker run -d --network=host --privileged     \
