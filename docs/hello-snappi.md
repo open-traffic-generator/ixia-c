@@ -108,7 +108,7 @@ The objects and methods (for API calls) in snappi are auto-generated from an [Op
 
 The snappi API documentation linked above will always point to API version **v0.4.12**. To use a different API version instead:
 
-* Open this link("https://github.com/open-traffic-generator/snappi/releases/download/v0.4.25/models-release") after replacing the snappi version currently installed on client to identify API version.
+* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.4.25/models-release">this link</a> in a browser and replacing **v0.4.25** in URL with intended snappi version.
 
 * Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml">this link</a> in a browser after replacing **v0.4.12** in URL with intended API version.
 
