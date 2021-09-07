@@ -235,7 +235,7 @@ How do I view Ixia-c controller logs?
 </summary>
 <br>
 
-Start Ixia-c controller with the `--log-out` option and then use `docker logs` to view the controller log.
+Use `docker logs` to view the controller log.
 </details>
 
 <details>

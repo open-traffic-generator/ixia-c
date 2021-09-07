@@ -69,7 +69,6 @@ On most systems, `docker-compose` needs to be installed separately even when doc
   | --debug                     |   Yes     | false                   | Enables high volume logs with debug info for better diagnostics.|
   | --disable-app-usage-reporter|   Yes     | false                   | Disables sending usage data to app-usage-reporter.              |
   | --http-port                 |   Yes     | 443                     | TCP port for HTTP server.                                       |
-  | --log-out                   |   Yes     | false                   | Enables streaming log output to stdout.                         |
   | --aur-host                  |   Yes     | https://localhost:5600  | Overrides location of app-usage-reporter.                       |
   | --accept-eula               |   No      | NA                      | Indicates that user has accepted EULA, otherwise controller won't boot up |
 
