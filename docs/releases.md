@@ -1,6 +1,43 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release v0.0.1-1622 (Latest)
+## Release v0.0.1-2120 (Latest)
+> 27th August, 2021
+
+#### About
+
+This build contains support for capture filter, setting GRE checksum flag, redirecting Ixia-c controller log to stdout and some bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.4.12](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml)         |
+| snappi                        | [0.4.25](https://pypi.org/project/snappi/0.4.25)        |
+| ixia-c-controller             | [0.0.1-2120](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.0.9](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.50     | 
+| otg-gnmi-server               | [0.4.4](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
+| otg-grpc-server               | [0.0.9](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
+
+
+#### New Feature(s)
+
+* Capture filters are now supported. Multiple patterns can be specified in the configuration.
+* Controller log is now redirected to stdout. `docker logs` can now be used to access Ixia-c controller logs.
+* Checksum field in `GRE` header now can be set.
+
+#### Bug Fixes
+
+* All patterns of IPv6 value now can be set for `increment` and `decrement` properties in flow header fields.
+* Default value of step for `decrement` properties in flow header fields is now set correctly.
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+
+## Release v0.0.1-1622
 > 25th June, 2021
 
 #### About

@@ -27,7 +27,7 @@ In this tutorial, we will walk through some key elements required to write a **s
 * Send 1000 UDP packets back and forth between interfaces eth1 & eth2 at a rate of 1000 packets per second.
 * Ensure that indeed correct number of valid UDP packets are received on both ends using port capture and port metrics.
 
-The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/817c1dd/scripts/hello_snappi.py) covers this extensively.
+The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/3f82dbc/scripts/hello_snappi.py) covers this extensively.
 <div align="center">
   <img src="res/ixia-c.drawio.svg"></img>
 </div>
@@ -47,7 +47,7 @@ And installing python packages:
 * [dpkt](https://pypi.org/project/dpkt/) - for processing `.pcap` files.
 
 ```sh
-python -m pip install --upgrade snappi==0.4.0 dpkt
+python -m pip install --upgrade snappi==0.4.25 dpkt
 ```
 
 ### Create API Handle
@@ -58,9 +58,9 @@ If the controller is deployed with a non-default TCP port using [deployment para
 
 ```python
 import snappi
-api = snappi.api(host='https://localhost')
+api = snappi.api(location='https://localhost')
 # or with non-default TCP port
-api = snappi.api(host='https://localhost:8080')
+api = snappi.api(location="https://localhost:8080")
 ```
 
 <details>
@@ -70,8 +70,8 @@ If a traffic generator doesn't natively support [Open Traffic Generator API](htt
 
 ```python
 import snappi
-# host here refers to HTTPS address of IxNetwork API Server
-api = snappi.api(host='https://localhost', ext='ixnetwork')
+# location here refers to HTTPS address of IxNetwork API Server
+api = snappi.api(location="https://localhost", ext='ixnetwork')
 ```
 
 </details>
@@ -100,21 +100,17 @@ We now need to construct traffic configuration to be sent to controller. We'll n
   > By default, API requests in snappi are made over HTTPS with payloads as a JSON string. Since each object in snappi inherits `SnappiObject` or `SnappiIter`, they all share a common method called `.serialize()` and `deserialize()`, used internally during API requests, for valid conversion to / from a JSON string. We'll discuss about more such conveniences offered by snappi along the way.
 
 <details>
-<summary><b>Expand</b> this section for details on how to effectively navigate through <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.0/openapi.yaml">snappi API documentation</a>.</summary><br/>
+<summary><b>Expand</b> this section for details on how to effectively navigate through <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml">snappi API documentation</a>.</summary><br/>
 
-The objects and methods (for API calls) in snappi are auto-generated from an [Open API Generator YAML file](https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml). This file adheres to [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification), which can (by design) also be rendered as an interactive API documentation.
+The objects and methods (for API calls) in snappi are auto-generated from an [Open API Generator YAML file](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml). This file adheres to [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification), which can (by design) also be rendered as an interactive API documentation.
 
 [ReDoc](https://redocly.github.io/redoc/) is an open-source tool that does this. It accepts a link to valid OpenAPI YAML file and generates a document where all the methods (for API calls) are mentioned in the left navigation bar and for each selected method, there's a request / response body description in the center of the page. These descriptions lay out the entire object tree documenting each node in details.
 
-The snappi API documentation linked above will always point to API version **v0.4.0**. To use a different API version instead:
+The snappi API documentation linked above will always point to API version **v0.4.12**. To use a different API version instead:
 
-* Identify API version for snappi currently installed on client
+* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.4.25/models-release">this link</a> in a browser and replacing **v0.4.25** in URL with intended snappi version.
 
-  ```sh
-  python -c 'from snappi import snappigenerator as sg; print(sg.MODELS_RELEASE)'
-  ```
-
-* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.0/openapi.yaml">this link</a> in a browser after replacing **v0.4.0** in URL with intended API version.
+* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml">this link</a> in a browser after replacing **v0.4.12** in URL with intended API version.
 
 </details>
 
@@ -129,10 +125,8 @@ Note, unlike config, creating a new port using `p = api.port()` is not required 
 ```python
 # config has an attribute called `ports` which holds an iterator of type
 # `snappi.PortIter`, where each item is of type `snappi.Port` (p1 and p2)
-p1, p2 = (
-    cfg.ports
-    .port(name='p1', location='localhost:5555')
-    .port(name='p2', location='localhost:5556')
+p1, p2 = cfg.ports.port(name="p1", location="localhost:5555").port(
+    name="p2", location="localhost:5556"
 )
 ```
 
@@ -165,7 +159,7 @@ The `ports` we configured previously may require setting `layer1` (physical laye
 ```python
 # config has an attribute called `layer1` which holds an iterator of type
 # `snappi.Layer1Iter`, where each item is of type `snappi.Layer1` (ly)
-ly = cfg.layer1.layer1(name='ly')[-1]
+ly = cfg.layer1.layer1(name="ly")[-1]
 ly.speed = ly.SPEED_1_GBPS
 # set same properties on both ports
 ly.port_names = [p1.name, p2.name]
@@ -180,7 +174,7 @@ Since we also intend to start capturing packets on both ports, we enable `captur
 ```python
 # config has an attribute called `captures` which holds an iterator of type
 # `snappi.CaptureIter`, where each item is of type `snappi.Capture` (cp)
-cp = cfg.captures.capture(name='cp')[-1]
+cp = cfg.captures.capture(name="cp")[-1]
 cp.port_names = [p1.name, p2.name]
 ```
 
@@ -193,7 +187,7 @@ Here we configure two flows, one originating from port `p1` and the other from p
 ```python
 # config has an attribute called `flows` which holds an iterator of type
 # `snappi.FlowIter`, where each item is of type `snappi.Flow` (f1, f2)
-f1, f2 = cfg.flows.flow(name='flow p1->p2').flow(name='flow p2->p1')
+f1, f2 = cfg.flows.flow(name="flow p1->p2").flow(name="flow p2->p1")
 
 # and assign source and destination ports for each
 f1.tx_rx.port.tx_name, f1.tx_rx.port.rx_name = p1.name, p2.name
@@ -272,8 +266,8 @@ For Ethernet header, we simply assign static source and destination MAC address 
 
 ```python
 # set source and destination MAC addresses
-eth1.src.value, eth1.dst.value = '00:AA:00:00:04:00', '00:AA:00:00:00:AA'
-eth2.src.value, eth2.dst.value = '00:AA:00:00:00:AA', '00:AA:00:00:04:00'
+eth1.src.value, eth1.dst.value = "00:AA:00:00:04:00", "00:AA:00:00:00:AA"
+eth2.src.value, eth2.dst.value = "00:AA:00:00:00:AA", "00:AA:00:00:04:00"
 ```
 
 #### Setup IPv4
@@ -282,8 +276,8 @@ For IPv4 header as well, we assign static source and destination IPv4 address va
 
 ```python
 # set source and destination IPv4 addresses
-ip1.src.value, ip1.dst.value = '10.0.0.1', '10.0.0.2'
-ip2.src.value, ip2.dst.value = '10.0.0.2', '10.0.0.1'
+ip1.src.value, ip1.dst.value = "10.0.0.1", "10.0.0.2"
+ip2.src.value, ip2.dst.value = "10.0.0.2", "10.0.0.1"
 ```
 
 #### Setup UDP
@@ -401,6 +395,6 @@ with open('cap.pcap', 'wb') as p:
 
 ### Putting It All Together
 
-`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/817c1dd/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
+`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/3f82dbc/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
 
-There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/817c1dd) for more such examples, pytest-based test scripts and utilities.
+There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3f82dbc) for more such examples, pytest-based test scripts and utilities.
