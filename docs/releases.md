@@ -12,13 +12,13 @@ This build contains support for capture filter, setting GRE checksum flag, redir
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.4.12](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml)         |
-| snappi                        | 0.4.25        |
-| ixia-c-controller             | 0.0.1-2120    |
-| ixia-c-traffic-engine         | 1.4.0.9       |
-| ixia-c-app-usage-reporter     | 0.0.1-37      |
+| snappi                        | [0.4.25](https://pypi.org/project/snappi/0.4.25)        |
+| ixia-c-controller             | [0.0.1-2120](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.0.9](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.50     | 
-| gnmi-server                   | 0.4.4         |
-| grpc-server                   | 0.0.9         |
+| otg-gnmi-server               | [0.4.4](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
+| otg-grpc-server               | [0.0.9](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
 
 
 #### New Feature(s)
