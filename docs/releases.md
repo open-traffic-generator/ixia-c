@@ -16,6 +16,10 @@ This build contains support for capture filter, setting GRE checksum flag, redir
 | ixia-c-controller             | 0.0.1-2120    |
 | ixia-c-traffic-engine         | 1.4.0.9       |
 | ixia-c-app-usage-reporter     | 0.0.1-37      |
+| ixia-c-protocol-engine        | 1.00.0.50     | 
+| gnmi-server                   | 0.4.4         |
+| grpc-server                   | 0.0.9         |
+
 
 #### New Feature(s)
 
