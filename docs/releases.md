@@ -5,7 +5,7 @@
 
 #### About
 
-TODO
+This build contains support for updating flow rate without disruption of transmit state.
 
 #### Build Details
 
@@ -24,11 +24,7 @@ TODO
 
 #### New Feature(s)
 
-TODO
-
-#### Bug Fixes
-
-TODO
+* Updating flow rate without disruption of transmit state is not supported. Rate of multiple flows can be updated simultaneously through `update_flows` api without stopping the traffic. 
 
 #### Known Issues
 
