@@ -27,7 +27,7 @@ In this tutorial, we will walk through some key elements required to write a **s
 * Send 1000 UDP packets back and forth between interfaces eth1 & eth2 at a rate of 1000 packets per second.
 * Ensure that indeed correct number of valid UDP packets are received on both ends using port capture and port metrics.
 
-The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/3f82dbc/scripts/hello_snappi.py) covers this extensively.
+The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/44b803a/scripts/hello_snappi.py) covers this extensively.
 <div align="center">
   <img src="res/ixia-c.drawio.svg"></img>
 </div>
@@ -47,20 +47,20 @@ And installing python packages:
 * [dpkt](https://pypi.org/project/dpkt/) - for processing `.pcap` files.
 
 ```sh
-python -m pip install --upgrade snappi==0.4.25 dpkt
+python -m pip install --upgrade snappi==0.5.3 dpkt
 ```
 
 ### Create API Handle
 
-The first step in any snappi script is to import the `snappi` package and instantiate an `api` object, where `host` parameter takes the HTTPS address of the controller.
+The first step in any snappi script is to import the `snappi` package and instantiate an `api` object, where `location` parameter takes the HTTPS address of the controller and `verify` is used to turn off insecure certificate warning. 
 
 If the controller is deployed with a non-default TCP port using [deployment parameters](deployments.md#deployment-parameters), it must be specified explicitly in the address (default is 443).
 
 ```python
 import snappi
-api = snappi.api(location='https://localhost')
+api = snappi.api(location='https://localhost', verify=False)
 # or with non-default TCP port
-api = snappi.api(location="https://localhost:8080")
+api = snappi.api(location='https://localhost:8080', verify=False)
 ```
 
 <details>
@@ -71,7 +71,7 @@ If a traffic generator doesn't natively support [Open Traffic Generator API](htt
 ```python
 import snappi
 # location here refers to HTTPS address of IxNetwork API Server
-api = snappi.api(location="https://localhost", ext='ixnetwork')
+api = snappi.api(location="https://localhost", ext='ixnetwork', verify=False)
 ```
 
 </details>
@@ -100,17 +100,17 @@ We now need to construct traffic configuration to be sent to controller. We'll n
   > By default, API requests in snappi are made over HTTPS with payloads as a JSON string. Since each object in snappi inherits `SnappiObject` or `SnappiIter`, they all share a common method called `.serialize()` and `deserialize()`, used internally during API requests, for valid conversion to / from a JSON string. We'll discuss about more such conveniences offered by snappi along the way.
 
 <details>
-<summary><b>Expand</b> this section for details on how to effectively navigate through <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml">snappi API documentation</a>.</summary><br/>
+<summary><b>Expand</b> this section for details on how to effectively navigate through <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.5.4/openapi.yaml">snappi API documentation</a>.</summary><br/>
 
-The objects and methods (for API calls) in snappi are auto-generated from an [Open API Generator YAML file](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml). This file adheres to [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification), which can (by design) also be rendered as an interactive API documentation.
+The objects and methods (for API calls) in snappi are auto-generated from an [Open API Generator YAML file](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.5.4/openapi.yaml). This file adheres to [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification), which can (by design) also be rendered as an interactive API documentation.
 
 [ReDoc](https://redocly.github.io/redoc/) is an open-source tool that does this. It accepts a link to valid OpenAPI YAML file and generates a document where all the methods (for API calls) are mentioned in the left navigation bar and for each selected method, there's a request / response body description in the center of the page. These descriptions lay out the entire object tree documenting each node in details.
 
-The snappi API documentation linked above will always point to API version **v0.4.12**. To use a different API version instead:
+The snappi API documentation linked above will always point to API version **v0.5.4**. To use a different API version instead:
 
-* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.4.25/models-release">this link</a> in a browser and replacing **v0.4.25** in URL with intended snappi version.
+* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.5.3/models-release">this link</a> in a browser and replacing **v0.5.3** in URL with intended snappi version.
 
-* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml">this link</a> in a browser after replacing **v0.4.12** in URL with intended API version.
+* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.5.4/openapi.yaml">this link</a> in a browser after replacing **v0.5.4** in URL with intended API version.
 
 </details>
 
@@ -142,12 +142,23 @@ assert p[0].name == 'p1'
 p = cfg.ports.port(name='p3')
 assert p[2].name == 'p3'
 
+# This will remove 3rd index port
+cfg.ports.remove(2)
 p4 = cfg.ports.port(name='p4')[-1]
 assert p4.name == 'p4'
 
+# This will clear all the ports
 cfg.ports.clear()
 p5 = cfg.ports.port(name='p5')[0]
 assert p5.name == 'p5'
+
+p6 = cfg.ports.add(name='p6')
+assert p6.name == 'p6'
+
+p7 = p6.clone()
+p7.name = 'p7'
+cfg.ports.append(p7)
+assert p7.name == 'p7'
 ```
 
 </details>
@@ -395,6 +406,6 @@ with open('cap.pcap', 'wb') as p:
 
 ### Putting It All Together
 
-`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/3f82dbc/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
+`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/44b803a/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
 
-There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3f82dbc) for more such examples, pytest-based test scripts and utilities.
+There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/44b803a) for more such examples, pytest-based test scripts and utilities.
