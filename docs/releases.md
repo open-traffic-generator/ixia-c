@@ -19,7 +19,6 @@ This build contains support for updating flow rate without disrupting transmit s
 | ixia-c-protocol-engine        | 1.00.0.56     | 
 | otg-gnmi-server               | [0.5.2](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
 | otg-grpc-server               | [0.5.3](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
-| Resolve operator              | 0.0.35        |
 
 
 #### New Feature(s)
