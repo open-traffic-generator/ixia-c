@@ -2,7 +2,7 @@
 
 * **8th September, 2021**: Ixia-c version 0.0.1 (build 2185) released.  This conforms to **[v0.5.4](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.5.4/openapi.yaml)** of the Open Traffic Generator Models specification.
 
-  * This build contains support for updating flow rate without disruption of transmit state. [Read more](releases.md)
+  * This build contains support for updating flow rate without disrupting transmit state. [Read more](releases.md)
 
 * **27th August, 2021**: Ixia-c version 0.0.1 (build 2120) released.  This conforms to **[v0.4.12](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml)** of the Open Traffic Generator Models specification.
 

@@ -5,7 +5,7 @@
 
 #### About
 
-This build contains support for updating flow rate without disruption of transmit state.
+This build contains support for updating flow rate without disrupting transmit state.
 
 #### Build Details
 
@@ -19,12 +19,12 @@ This build contains support for updating flow rate without disruption of transmi
 | ixia-c-protocol-engine        | 1.00.0.56     | 
 | otg-gnmi-server               | [0.5.2](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
 | otg-grpc-server               | [0.5.3](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
-| operator                      | 0.0.35        |
+| Resolve operator              | 0.0.35        |
 
 
 #### New Feature(s)
 
-* Updating flow rate without disruption of transmit state is now supported. Rate of multiple flows can be updated simultaneously through `update_flows` api without stopping the traffic. 
+* Updating flow rate without disrupting transmit state is now supported. Rate of multiple flows can be updated simultaneously through `update_flows` api without stopping the traffic. 
 
 #### Known Issues
 
