@@ -52,15 +52,15 @@ python -m pip install --upgrade snappi==0.5.3 dpkt
 
 ### Create API Handle
 
-The first step in any snappi script is to import the `snappi` package and instantiate an `api` object, where `host` parameter takes the HTTPS address of the controller.
+The first step in any snappi script is to import the `snappi` package and instantiate an `api` object, where `location` parameter takes the HTTPS address of the controller and `verify` is used to turn off insecure certificate warning. This will allow us to run tests without passing -W switch. e.g. `python -W ignore script.py`.
 
 If the controller is deployed with a non-default TCP port using [deployment parameters](deployments.md#deployment-parameters), it must be specified explicitly in the address (default is 443).
 
 ```python
 import snappi
-api = snappi.api(location='https://localhost')
+api = snappi.api(location='https://localhost', verify=False)
 # or with non-default TCP port
-api = snappi.api(location="https://localhost:8080")
+api = snappi.api(location='https://localhost:8080', verify=False)
 ```
 
 <details>
@@ -71,7 +71,7 @@ If a traffic generator doesn't natively support [Open Traffic Generator API](htt
 ```python
 import snappi
 # location here refers to HTTPS address of IxNetwork API Server
-api = snappi.api(location="https://localhost", ext='ixnetwork')
+api = snappi.api(location="https://localhost", ext='ixnetwork', verify=False)
 ```
 
 </details>
