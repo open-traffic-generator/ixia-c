@@ -52,7 +52,7 @@ python -m pip install --upgrade snappi==0.5.3 dpkt
 
 ### Create API Handle
 
-The first step in any snappi script is to import the `snappi` package and instantiate an `api` object, where `location` parameter takes the HTTPS address of the controller and `verify` is used to turn off insecure certificate warning. This will allow us to run tests without passing -W switch. e.g. `python -W ignore script.py`.
+The first step in any snappi script is to import the `snappi` package and instantiate an `api` object, where `location` parameter takes the HTTPS address of the controller and `verify` is used to turn off insecure certificate warning. 
 
 If the controller is deployed with a non-default TCP port using [deployment parameters](deployments.md#deployment-parameters), it must be specified explicitly in the address (default is 443).
 

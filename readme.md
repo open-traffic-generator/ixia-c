@@ -77,7 +77,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   # install snappi
   python -m pip install --upgrade snappi==0.5.3
   # run a standalone script to generate TCP traffic and fetch metrics
-  python -W ignore snappi-tests/scripts/quickstart_snappi.py
+  python snappi-tests/scripts/quickstart_snappi.py
   ```
 
   > Upon successful run, you should see port metrics printed on console.
