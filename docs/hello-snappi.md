@@ -155,7 +155,8 @@ assert p5.name == 'p5'
 p6 = cfg.ports.add(name='p6')
 assert p6.name == 'p6'
 
-p7 = Port(name='p7')
+p7 = p6.clone()
+p7.name = 'p7'
 cfg.ports.append(p7)
 assert p7.name == 'p7'
 ```
