@@ -142,12 +142,22 @@ assert p[0].name == 'p1'
 p = cfg.ports.port(name='p3')
 assert p[2].name == 'p3'
 
+# This will remove 3rd index port
+cfg.ports.remove(2)
 p4 = cfg.ports.port(name='p4')[-1]
 assert p4.name == 'p4'
 
+# This will clear all the ports
 cfg.ports.clear()
 p5 = cfg.ports.port(name='p5')[0]
 assert p5.name == 'p5'
+
+p6 = cfg.ports.add(name='p6')
+assert p6.name == 'p6'
+
+p7 = Port(name='p7')
+cfg.ports.append(p7)
+assert p7.name == 'p7'
 ```
 
 </details>
