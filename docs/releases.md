@@ -5,7 +5,7 @@
 
 #### About
 
-Todo
+This build contains support for performance optimisation through concurrent port operations.
 
 #### Build Details
 
@@ -23,7 +23,7 @@ Todo
 
 #### New Feature(s)
 
-* TODO
+* Performance has optimised through concurrent port operations.
 
 #### Known Issues
 
