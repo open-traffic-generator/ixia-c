@@ -12,7 +12,7 @@ This build contains support for performance optimisation through concurrent port
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.6.1](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.1/openapi.yaml)         |
-| snappi                        | [0.5.6](https://pypi.org/project/snappi/0.5.6)        |
+| snappi                        | [0.6.1](https://pypi.org/project/snappi/0.6.1)        |
 | ixia-c-controller             | [0.0.1-2289](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.13](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |

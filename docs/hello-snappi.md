@@ -47,7 +47,7 @@ And installing python packages:
 * [dpkt](https://pypi.org/project/dpkt/) - for processing `.pcap` files.
 
 ```sh
-python -m pip install --upgrade snappi==0.5.6 dpkt
+python -m pip install --upgrade snappi==0.6.1 dpkt
 ```
 
 ### Create API Handle
@@ -108,7 +108,7 @@ The objects and methods (for API calls) in snappi are auto-generated from an [Op
 
 The snappi API documentation linked above will always point to API version **v0.6.1**. To use a different API version instead:
 
-* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.5.6/models-release">this link</a> in a browser and replacing **v0.5.6** in URL with intended snappi version.
+* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.6.1/models-release">this link</a> in a browser and replacing **v0.6.1** in URL with intended snappi version.
 
 * Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.1/openapi.yaml">this link</a> in a browser after replacing **v0.6.1** in URL with intended API version.
 
