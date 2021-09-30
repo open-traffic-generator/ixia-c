@@ -23,7 +23,7 @@ This build contains support for performance optimisation through concurrent port
 
 #### New Feature(s)
 
-* Performance has optimised through concurrent port operations.
+* Performance is optimised through concurrent port operations.
 
 #### Known Issues
 
