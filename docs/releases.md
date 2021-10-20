@@ -1,8 +1,8 @@
 # Ixia-c Release Notes and Version Compatibility
 
 
-## Release v0.0.1-2330 (Latest)
-> 29th September, 2021
+## Release v0.0.1-2337 (Latest)
+> 21st September, 2021
 
 #### About
 
@@ -14,7 +14,7 @@ This build contains performance improvement in SetConfig and more correct fps va
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.6.5](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.5/openapi.yaml)         |
 | snappi                        | [0.6.5](https://pypi.org/project/snappi/0.6.5)        |
-| ixia-c-controller             | [0.0.1-2330](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2337](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.13](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.83      | 
