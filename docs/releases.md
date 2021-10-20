@@ -1,6 +1,37 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release v0.0.1-2289 (Latest)
+
+## Release v0.0.1-2330 (Latest)
+> 29th September, 2021
+
+#### About
+
+This build contains performance improvement in SetConfig and more correct fps vaules in scenarios involving multiple start or stop traffic.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.6.5](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.5/openapi.yaml)         |
+| snappi                        | [0.6.5](https://pypi.org/project/snappi/0.6.5)        |
+| ixia-c-controller             | [0.0.1-2330](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.0.13](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.83      | 
+| otg-gnmi-server               | [0.6.6](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
+| otg-grpc-server               | [0.6.6](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
+
+
+#### New Feature(s)
+
+* SetConfig Performance is improved through concurrent operations.
+* FPS shows more correct values in scenarios involving multiple start or stop traffic in same test.
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release v0.0.1-2289
 > 29th September, 2021
 
 #### About
