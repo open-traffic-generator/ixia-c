@@ -6,7 +6,7 @@
 
 #### About
 
-This build contains performance improvement in SetConfig and more correct fps vaules in scenarios involving multiple start or stop traffic.
+This build contains bugfixes for SetConfig and FPS values in GetMetrics.
 
 #### Build Details
 
@@ -14,18 +14,20 @@ This build contains performance improvement in SetConfig and more correct fps va
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.6.5](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.5/openapi.yaml)         |
 | snappi                        | [0.6.5](https://pypi.org/project/snappi/0.6.5)        |
+| gosnappi                      | [0.6.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.5)        |
 | ixia-c-controller             | [0.0.1-2337](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.13](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.83      | 
+| ixia-c-operator               | 0.0.1-65       | 
 | otg-gnmi-server               | [0.6.6](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
 | otg-grpc-server               | [0.6.6](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
 
 
 #### New Feature(s)
 
-* SetConfig Performance is improved through concurrent operations.
-* FPS shows more correct values in scenarios involving multiple start or stop traffic in same test.
+* The race condition during connection initialization in `SetConfig` is fixed for scenarios involving large port count.
+* FPS value in `GetMetrics` for ports and flows is fixed for scenarios involving multiple consecutive SetTransmitState calls.
 
 #### Known Issues
 
