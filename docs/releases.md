@@ -16,7 +16,7 @@ This build contains bugfixes for SetConfig and FPS values in GetMetrics.
 | snappi                        | [0.6.5](https://pypi.org/project/snappi/0.6.5)        |
 | gosnappi                      | [0.6.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.5)        |
 | ixia-c-controller             | [0.0.1-2337](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
-| ixia-c-traffic-engine         | [1.4.0.13](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-traffic-engine         | [1.4.0.14](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.83      | 
 | ixia-c-operator               | 0.0.1-65       | 
