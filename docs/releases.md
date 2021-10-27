@@ -5,7 +5,7 @@
 
 #### About
 
-This build contains stability fixes.
+This build contains validation bug fixes.
 
 #### Build Details
 
@@ -23,9 +23,9 @@ This build contains stability fixes.
 | ixia-c-grpc-server            | [0.6.6](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
 
 
-#### New Feature(s)
+#### Bug Fix(s)
 
-* Stability issues are fixed.
+* Validation has been fixed for traffic configuration consisting of IPv4 and IPv6 interface names
 
 #### Known Issues
 
