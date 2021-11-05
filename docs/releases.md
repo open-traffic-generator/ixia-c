@@ -1,6 +1,37 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release v0.0.1-2342 (Latest)
+## Release v0.0.1-2367 (Latest)
+> 5th November, 2021
+
+#### About
+
+This build introduces uniform logging across some Ixia-c components.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.6.7](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.7/openapi.yaml)         |
+| snappi                        | [0.6.12](https://pypi.org/project/snappi/0.6.12)        |
+| gosnappi                      | [0.6.12](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.12)        |
+| ixia-c-controller             | [0.0.1-2367](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.0.15](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.96      | 
+| ixia-c-operator               | 0.0.1-65       | 
+| ixia-c-gnmi-server            | [0.6.11](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
+| ixia-c-grpc-server            | [0.6.11](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
+
+
+#### Bug Fix(s)
+
+* Introduced structured logging for `ixia-c-gnmi-server` and `ixia-c-grpc-server` to aid uniform logging across Ixia-c components.
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release v0.0.1-2342
 > 27th October, 2021
 
 #### About
