@@ -5,7 +5,7 @@
 
 #### About
 
-This build contains proper diganostics over various components.
+This build introduces uniform logging across some Ixia-c components.
 
 #### Build Details
 
@@ -25,7 +25,7 @@ This build contains proper diganostics over various components.
 
 #### Bug Fix(s)
 
-* Proper diagonistics with uniform logging has been introduced for various Ixia-C components.
+* Introduced structured logging for `ixia-c-gnmi-server` and `ixia-c-grpc-server` to aid uniform logging across Ixia-c components.
 
 #### Known Issues
 
