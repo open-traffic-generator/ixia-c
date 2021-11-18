@@ -1,6 +1,37 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release v0.0.1-2367 (Latest)
+## Release v0.0.1-2399 (Latest)
+> 18th November, 2021
+
+#### About
+
+This build introduces ability to auto plug in default values for missing fields with primitive types upon receiving JSON payload.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.6.10](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.10/openapi.yaml)         |
+| snappi                        | [0.6.16](https://pypi.org/project/snappi/0.6.16)        |
+| gosnappi                      | [0.6.16](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.16)        |
+| ixia-c-controller             | [0.0.1-2399](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.0.15](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.111     | 
+| ixia-c-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-gnmi-server            | [0.6.14](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
+| ixia-c-grpc-server            | [0.6.15](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
+
+
+#### New Feature(s)
+
+* Upon receiving JSON payload, ixia-c-controller will now automatically plug in default values for missing fields with primitive types.
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release v0.0.1-2367
 > 5th November, 2021
 
 #### About
