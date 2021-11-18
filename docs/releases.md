@@ -5,7 +5,7 @@
 
 #### About
 
-TBD
+This build introduces ability to auto plug in default values for missing fields with primitive types upon receiving JSON payload.
 
 #### Build Details
 
@@ -25,7 +25,7 @@ TBD
 
 #### New Feature(s)
 
-* TBD
+* Upon receiving JSON payload, ixia-c-controller will now automatically plug in default values for missing fields with primitive types.
 
 #### Known Issues
 
