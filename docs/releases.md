@@ -5,7 +5,7 @@
 
 #### About
 
-This build introduces ability to auto plug in default values for missing fields with primitive types upon receiving JSON payload.
+This build introduces ability to return large `FramesTx/RX` values by `metric` APIs.
 
 #### Build Details
 
@@ -25,7 +25,7 @@ This build introduces ability to auto plug in default values for missing fields 
 
 #### New Feature(s)
 
-* TBD
+* Maximum `FramesTx` and `FramesRx` value that can be correctly returned by `flow_metrics` and `port_metrics` has been increased from 2147483648 to 9.223372e+18
 
 #### Known Issues
 

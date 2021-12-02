@@ -2,7 +2,7 @@
 
 * **2nd December, 2021**: Ixia-c version 0.0.1 (build 2446) released.  This conforms to **[v0.6.13](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.13/openapi.yaml)** of the Open Traffic Generator Models specification.
 
-  * TBD [Read more](releases.md)
+  * This build introduces ability to return large `FramesTx/RX` values by `metric` APIs. [Read more](releases.md)
 
 * **18th November, 2021**: Ixia-c version 0.0.1 (build 2399) released.  This conforms to **[v0.6.10](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.10/openapi.yaml)** of the Open Traffic Generator Models specification.
 
