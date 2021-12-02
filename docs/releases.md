@@ -1,6 +1,37 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release v0.0.1-2399 (Latest)
+## Release v0.0.1-2446 (Latest)
+> 2nd December, 2021
+
+#### About
+
+This build introduces ability to return large `FramesTx/RX` values by `metric` APIs.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.6.13](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.13/openapi.yaml)         |
+| snappi                        | [0.6.21](https://pypi.org/project/snappi/0.6.21)        |
+| gosnappi                      | [0.6.21](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.21)        |
+| ixia-c-controller             | [0.0.1-2446](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.0.15](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.115     | 
+| ixia-c-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-gnmi-server            | [0.6.18](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
+| ixia-c-grpc-server            | [0.6.17](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
+
+
+#### New Feature(s)
+
+* Maximum `FramesTx` and `FramesRx` value that can be correctly returned by `flow_metrics` and `port_metrics` has been increased from 2147483648 to 9.223372e+18
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release v0.0.1-2399
 > 18th November, 2021
 
 #### About
