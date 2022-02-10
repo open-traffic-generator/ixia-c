@@ -9,9 +9,9 @@
 </h4>
 
 <p align="center">
-  <a href="https://hub.docker.com/r/ixiacom/ixia-c-controller/tags"><img alt="Release v0.0.1-2597" src="https://img.shields.io/badge/release-v0.0.1--2597-brightgreen"></a>
-  <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.2/openapi.yaml"><img alt="Open Traffic Generator v0.7.2" src="https://img.shields.io/badge/open--traffic--generator-v0.7.2-brightgreen"></a>
-  <a href="https://pypi.org/project/snappi/0.7.6"><img alt="snappi v0.7.6" src="https://img.shields.io/badge/snappi-v0.7.6-brightgreen"></a>
+  <a href="https://hub.docker.com/r/ixiacom/ixia-c-controller/tags"><img alt="Release v0.0.1-2610" src="https://img.shields.io/badge/release-v0.0.1--2610-brightgreen"></a>
+  <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.3/openapi.yaml"><img alt="Open Traffic Generator v0.7.3" src="https://img.shields.io/badge/open--traffic--generator-v0.7.3-brightgreen"></a>
+  <a href="https://pypi.org/project/snappi/0.7.13"><img alt="snappi v0.7.13" src="https://img.shields.io/badge/snappi-v0.7.13-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
   <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
   <a href="docs/support.md"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
@@ -75,7 +75,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c && cd ixia-c
 
   # install snappi
-  python -m pip install --upgrade snappi==0.7.6
+  python -m pip install --upgrade snappi==0.7.13
   # run a standalone script to generate TCP traffic and fetch metrics
   python snappi-tests/scripts/quickstart_snappi.py
   ```
@@ -124,7 +124,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 * Optionally, Generate Traffic Using [curl](https://curl.se/)
 
   >We can also pass equivalent **JSON configuration** directly to ixia-c controller, without installing snappi, using **curl**.  
-  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.2/openapi.yaml).
+  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.3/openapi.yaml).
 
   ```bash
   # push the contents of config file snappi-tests/configs/quickstart_snappi.json
