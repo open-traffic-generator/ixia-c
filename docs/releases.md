@@ -5,7 +5,7 @@
 
 #### About
 
-This build implements correct transmit(tx) statistics & transmit state of flow metrics.
+This build implements transmit(tx) statistics & transmit state of flow metrics.
 
 #### Build Details
 
