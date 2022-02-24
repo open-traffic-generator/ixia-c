@@ -27,7 +27,6 @@ This build implements transmit(tx) statistics & transmit state of flow metrics.
 * Transmit(tx) statistics & Transmit state support is incorporated as part of flow metrics.
     * `transmit`
     * `frames_tx`
-    * `bytes_tx`
     * `frames_tx_rate`
 
 #### Known Issues
