@@ -5,7 +5,7 @@
 
 #### About
 
-This build implements correct transmit(tx) statistics of flow metrics.
+This build implements correct transmit(tx) statistics & transmit state of flow metrics.
 
 #### Build Details
 
@@ -24,7 +24,7 @@ This build implements correct transmit(tx) statistics of flow metrics.
 
 #### New Feature(s)
 
-* Transmit(tx) statistics support is incorporated as part of flow metrics.
+* Transmit(tx) statistics & Transmit state support is incorporated as part of flow metrics.
     * `transmit`
     * `frames_tx`
     * `bytes_tx`
