@@ -1,6 +1,39 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release v0.0.1-2610 (Latest)
+## Release  v0.0.1-2662 (Latest)
+> 24th February, 2022
+
+#### About
+
+This build implements transmit(tx) statistics & transmit state of flow metrics.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.7.3](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.3/openapi.yaml)         |
+| snappi                        | [0.7.13](https://pypi.org/project/snappi/0.7.13)        |
+| gosnappi                      | [0.7.13](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.13)        |
+| ixia-c-controller             | [0.0.1-2662](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.144     | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-gnmi-server            | [0.7.5](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
+| ixia-c-grpc-server            | [0.7.6](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
+
+#### New Feature(s)
+
+* Transmit(tx) statistics & Transmit state support is incorporated as part of flow metrics.
+    * `transmit`
+    * `frames_tx`
+    * `frames_tx_rate`
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release v0.0.1-2610
 > 10th February, 2022
 
 #### About
