@@ -1,5 +1,9 @@
 # News
 
+* **24th March, 2022**: Ixia-c version 0.0.1 (build 2727) released.  This conforms to **[v0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)** of the Open Traffic Generator Models specification.
+
+  * This build implements received(rx) rate statistics of port metrics. It also has auto destination mac learning support using choice as `auto` in ethernet destination mac of packet header. [Read more](releases.md)
+
 * **11th March, 2022**: Ixia-c version 0.0.1 (build 2678) released.  This conforms to **[v0.7.3](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.3/openapi.yaml)** of the Open Traffic Generator Models specification.
 
   * This build contains stability and debuggability enhancements. [Read more](releases.md)
