@@ -47,7 +47,7 @@ This build includes following new functionalities
         },
     ````
 
-* User now able to set `ether_type` in ethernet header which may not be based on the next header type.
+* User would now be able to set `ether_type` in ethernet header which may not be based on the next header type.
 
 #### Known Issues
 
