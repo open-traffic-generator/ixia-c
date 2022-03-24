@@ -8,7 +8,6 @@
 This build includes following new functionalities
 - correct received(rx) rate statistics in port metrics
 - auto destination mac learning support in destination mac field of ethernet packet
-- fix in handling of ether_type field of ethernet packet
 
 #### Build Details
 
@@ -46,8 +45,6 @@ This build includes following new functionalities
             }
         },
     ````
-
-* User would now be able to set `ether_type` in ethernet header which may not be based on the next header type.
 
 #### Known Issues
 
