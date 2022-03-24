@@ -124,7 +124,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 * Optionally, Generate Traffic Using [curl](https://curl.se/)
 
   >We can also pass equivalent **JSON configuration** directly to ixia-c controller, without installing snappi, using **curl**.  
-  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8openapi.yaml).
+  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml).
 
   ```bash
   # push the contents of config file snappi-tests/configs/quickstart_snappi.json
