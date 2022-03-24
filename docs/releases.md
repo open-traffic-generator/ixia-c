@@ -1,6 +1,56 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-2678 (Latest)
+## Release  v0.0.1-2727 (Latest)
+> 24th March, 2022
+
+#### About
+
+This build includes following new functionalities
+- correct received(rx) rate statistics in port metrics
+- auto destination mac learning support in destination mac field of ethernet packet
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
+| snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
+| gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
+| ixia-c-controller             | [0.0.1-2727](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.151     | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-gnmi-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
+| ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
+
+#### New Feature(s)
+
+* Correct received(rx) rate statistics support is incorporated as part of port metrics.
+    * `frames_rx_rate`
+    * `bytes_rx_rate`
+
+* [Breaking Change] Auto learning of destination MAC is currently supported for both IPv4 and IPv6 Flows without any VLAN(originated from device endpoints) by setting ethernet destination with `choice` as `auto` in the packet. Earlier this was working by setting ethernet destination mac with "00:00:00:00:00:00" in the packet header.
+    ```
+        {
+            "choice": "ethernet",
+            "ethernet": {
+                "dst": {
+                    "choice": "auto"
+                },
+                "src": {
+                    "choice": "value",
+                    "value": "00:00:01:01:01:01"
+                }
+            }
+        },
+    ````
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release  v0.0.1-2678
 > 11th March, 2022
 
 #### About
@@ -21,7 +71,7 @@ This build contains stability and debuggability enhancements.
 | ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.5](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.7](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
-  
+
 #### Known Issues
 
 * The metric `loss` in flow metrics is currently not supported.
