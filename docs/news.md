@@ -1,5 +1,10 @@
 # News
 
+* **25th March, 2022**: Ixia-c version 0.0.1 (build 2738) released.  This conforms to **[v0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)** of the Open Traffic Generator Models specification.
+
+  * This build includes following new functionalities [Read more](releases.md)
+    - fix in handling of `ether_type` field of ethernet packet
+
 * **24th March, 2022**: Ixia-c version 0.0.1 (build 2727) released.  This conforms to **[v0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)** of the Open Traffic Generator Models specification.
 
   * This build includes following new functionalities [Read more](releases.md)
