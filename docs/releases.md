@@ -1,6 +1,37 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-2738 (Latest)
+## Release  v0.0.1-2755 (Latest)
+> 7th April, 2022
+
+#### About
+
+This build includes following bug fix
+- Clearing of `port` and `flow` statistics as part of `set_config`.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
+| snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
+| gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
+| ixia-c-controller             | [0.0.1-2755](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.152     | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-gnmi-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
+| ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
+
+#### Bug Fix(s)
+
+* Clearing of `port` and `flow` statistics is now part of `set_config`. 
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release  v0.0.1-2738
 > 25th March, 2022
 
 #### About
