@@ -6,7 +6,7 @@
 #### About
 
 This build includes following bug fix
-- Clearing of `port` and `flow` statistics after `set_config`
+- Clearing of `port` and `flow` statistics as part of `set_config`.
 
 #### Build Details
 
@@ -25,7 +25,7 @@ This build includes following bug fix
 
 #### Bug Fix(s)
 
-* Clearing of `port` and `flow` statistics after `set_config` is fixed. 
+* Clearing of `port` and `flow` statistics is now part of `set_config`. 
 
 #### Known Issues
 
