@@ -6,8 +6,7 @@
 
 #### About
 
-This build includes following bug fix
-- TBD
+This build includes stability fixes.
 
 #### Build Details
 
@@ -23,10 +22,6 @@ This build includes following bug fix
 | ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.19](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
-
-#### Bug Fix(s)
-
-* TBD
 
 #### Known Issues
 
