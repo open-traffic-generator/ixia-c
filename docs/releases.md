@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
 
-## Release  v0.0.1-2765 (Latest)
+## Release  v0.0.1-2769 (Latest)
 > 21st April, 2022
 
 #### About
@@ -15,12 +15,12 @@ This build includes stability fixes.
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| ixia-c-controller             | [0.0.1-2765](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
-| ixia-c-traffic-engine         | [1.0.0.275](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-controller             | [0.0.1-2769](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.0.0.277](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.154     | 
-| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
-| ixia-c-gnmi-server            | [1.7.19](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
+| ixia-c-operator               | [0.0.79](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-gnmi-server            | [1.7.13](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
 #### Known Issues
