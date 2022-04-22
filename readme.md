@@ -40,7 +40,7 @@ As a reference implementation of [Open Traffic Generator API](https://github.com
 <img src="docs/res/ixia-c.drawio.svg" alt="Ixia-c Deployment for Bidirectional Traffic">
 </p>
 
-> [Keysight](https://www.keysight.com) also offers a well supported version, [Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html), with no restrictions on **performance and scalability** (e.g. Keysight's Hardware Traffic Generators). Scripts written for the free version are **compatible** with this version.
+> [Keysight](https://www.keysight.com) also offers a well supported commercial version, [Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html), with no restrictions on **performance and scalability**. Scripts written for the free version are **compatible** with this version.
 
 ### Quick Demo
 
