@@ -40,7 +40,7 @@ As a reference implementation of [Open Traffic Generator API](https://github.com
 <img src="docs/res/ixia-c.drawio.svg" alt="Ixia-c Deployment for Bidirectional Traffic">
 </p>
 
-> [Keysight](https://www.keysight.com) also offers a well supported version with no restrictions on **performance and scalability** (e.g. Keysight's Hardware Traffic Generators). Scripts written for the free version are **compatible** with this version.
+> [Keysight](https://www.keysight.com) also offers a well supported version, [Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html), with no restrictions on **performance and scalability** (e.g. Keysight's Hardware Traffic Generators). Scripts written for the free version are **compatible** with this version.
 
 ### Quick Demo
 
@@ -138,9 +138,9 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 ### Key Features
 
 * High Performance
-  * Run on servers or Keysight hardware
+  * Run on servers or Keysight hardware (commercial version only)
   * Generate kbps to Tbps of traffic using same script
-  * 10Gbps @ 64 byte frame size using one Xeon class core
+  * 10Gbps @ 64 byte frame size using one Xeon class core (commercial version only)
   * Built using [DPDK](https://www.dpdk.org)
 * Fast REST API for automation
   * Easily integrate with test frameworks like [pytest](https://www.pytest.org)
@@ -155,7 +155,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   * Rate specification in pps (packets per second) or % line-rate
   * Ability to send bursts
 * Statistics
-  * Per port or per flow
+  * Per port and per flow
   * One way latency measurements (min, max, average) on a per flow basis
 * Capture
   * Packets with filters
