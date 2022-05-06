@@ -357,10 +357,10 @@ Ixia-c-one is deployed as single-container application using [containerlab](http
 </div>
 
 ### Install containerlab
-    ```sh
-    # download and install the latest release (may require sudo)
-    bash -c "$(curl -sL https://get.containerlab.dev)"
-    ```
+  ```sh
+  # download and install the latest release (may require sudo)
+  bash -c "$(curl -sL https://get.containerlab.dev)"
+  ```
 
 ### Deploy the topology 
 
