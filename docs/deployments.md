@@ -356,7 +356,7 @@ Ixia-c-one is deployed as single-container application using [containerlab](http
   <img src="res/ixia-c-one-aur.drawio.svg"></img>
 </div>
 
-- Install containerlab
+### Install containerlab
   ```sh
   # download and install the latest release (may require sudo)
   bash -c "$(curl -sL https://get.containerlab.dev)"
@@ -367,6 +367,6 @@ Ixia-c-one is deployed as single-container application using [containerlab](http
 * The topology definition file is given under deployments which consists of Nokia SR Linux and Ixia-c-one nodes connected one to another.
 * This consists of a Keysight ixia-c-one node with 2 ports connected to 2 ports on an srl linux node via two point-to-point ethernet links. Both nodes are also connected with their management interfaces to the containerlab docker network.
 
-```sh 
-containerlab deploy --topo deployments/ixiac01.clab.yml
-```
+  ```sh 
+  containerlab deploy --topo deployments/ixiac01.clab.yml
+  ```
