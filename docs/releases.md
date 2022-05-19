@@ -21,7 +21,7 @@
 
 #### New Feature(s)
 
-* `ixia-c-one` is now supported on platforms with `cgroupv2` enabled
+* `ixia-c-one` is now supported on platforms with `cgroupv2` enabled. https://github.com/open-traffic-generator/ixia-c/issues/77
 
 #### Known Issues
 
