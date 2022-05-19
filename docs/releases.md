@@ -1,6 +1,33 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-2801 (Latest)
+## Release  v0.0.1-2897 (Latest)
+> 19th May, 2022
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
+| snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
+| gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
+| ixia-c-controller             | [0.0.1-2897](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-traffic-engine         | [1.4.1.26](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
+| ixia-c-protocol-engine        | 1.00.0.165     | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-gnmi-server            | [1.7.23](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
+| ixia-c-grpc-server            | [0.7.12](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
+| ixia-c-one                    | [0.0.1-2897](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+#### New Feature(s)
+
+* `ixia-c-one` is now supported on platforms with `cgroupv2` enabled
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+
+## Release  v0.0.1-2801
 > 9th May, 2022
 
 #### About
