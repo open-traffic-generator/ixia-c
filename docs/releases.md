@@ -3,10 +3,6 @@
 ## Release  v0.0.1-2897 (Latest)
 > 19th May, 2022
 
-#### About
-
-This build includes stability fixes.
-
 #### Build Details
 
 | Component                     | Version       |
@@ -21,6 +17,11 @@ This build includes stability fixes.
 | ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.23](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.12](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
+| ixia-c-one                    | [0.0.1-2897](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+#### New Feature(s)
+
+* `ixia-c-one` is now supported on platforms with `cgroupv2` enabled
 
 #### Known Issues
 
