@@ -369,12 +369,15 @@ Meet [keysight_ixia-c-one](https://containerlab.dev/manual/kinds/keysight_ixia-c
 * This consists of a Keysight ixia-c-one node with 2 ports connected to 2 ports on an srl linux node via two point-to-point ethernet links. Both nodes are also connected with their management interfaces to the containerlab docker network.
 
   ```sh 
-  # After downloading the sample topology file
+  # After downloading the sample topology file 
   containerlab deploy --topo ixiac01.clab.yml
   ```
   
 - After deploying the topology now you are ready to run a test using this topology. 
 
+### Run a test 
+
+* Follow this [link](https://containerlab.dev/lab-examples/ixiacone-srl/#execution) to run a test.
 
 ### Destroy/Remove the topology 
 
