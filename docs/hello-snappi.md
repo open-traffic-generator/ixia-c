@@ -27,7 +27,7 @@ In this tutorial, we will walk through some key elements required to write a **s
 * Send 1000 UDP packets back and forth between interfaces eth1 & eth2 at a rate of 1000 packets per second.
 * Ensure that indeed correct number of valid UDP packets are received on both ends using port capture and port metrics.
 
-The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/1f96a5e/scripts/hello_snappi.py) covers this extensively.
+The script [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/3f012df/scripts/hello_snappi.py) covers this extensively.
 <div align="center">
   <img src="res/ixia-c.drawio.svg"></img>
 </div>
@@ -47,7 +47,7 @@ And installing python packages:
 * [dpkt](https://pypi.org/project/dpkt/) - for processing `.pcap` files.
 
 ```sh
-python -m pip install --upgrade snappi==0.7.41 dpkt
+python -m pip install --upgrade snappi==0.8.2 dpkt
 ```
 
 ### Create API Handle
@@ -106,11 +106,11 @@ The objects and methods (for API calls) in snappi are auto-generated from an [Op
 
 [ReDoc](https://redocly.github.io/redoc/) is an open-source tool that does this. It accepts a link to valid OpenAPI YAML file and generates a document where all the methods (for API calls) are mentioned in the left navigation bar and for each selected method, there's a request / response body description in the center of the page. These descriptions lay out the entire object tree documenting each node in details.
 
-The snappi API documentation linked above will always point to API version **v0.7.15**. To use a different API version instead:
+The snappi API documentation linked above will always point to API version **v0.8.1**. To use a different API version instead:
 
-* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.7.41/models-release">this link</a> in a browser and replacing **v0.7.41** in URL with intended snappi version.
+* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.8.2/models-release">this link</a> in a browser and replacing **v0.8.2** in URL with intended snappi version.
 
-* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.15/openapi.yaml">this link</a> in a browser after replacing **v0.7.15** in URL with intended API version.
+* Open <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.8.1/openapi.yaml">this link</a> in a browser after replacing **v0.8.1** in URL with intended API version.
 
 </details>
 
@@ -406,6 +406,6 @@ with open('cap.pcap', 'wb') as p:
 
 ### Putting It All Together
 
-`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/1f96a5e/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
+`snappi` provides a fair level of abstraction and ease-of-use while constructing traffic configuration compared to doing the [equivalent in JSON](https://github.com/open-traffic-generator/snappi-tests/tree/3f012df/configs/hello_snappi.json). More such comparisons can be found in [common snappi constructs](snappi-constructs.md).
 
-There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/1f96a5e) for more such examples, pytest-based test scripts and utilities.
+There's more to snappi than what we've presented here, e.g. per-flow metrics, latency measurements, custom payloads, etc. It will be worthwhile browsing through [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3f012df) for more such examples, pytest-based test scripts and utilities.

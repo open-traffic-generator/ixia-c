@@ -69,7 +69,7 @@ What version of the Open Traffic Generator spec does Ixia-c implement?
 </summary>
 <br>
 
-Ixia-c implements version **[v0.7.15](https://github.com/open-traffic-generator/models/releases/tag/v0.7.15)** of the Open Traffic Generator Data Model. You can view the model [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.15/openapi.yaml).
+Ixia-c implements version **[v0.8.1](https://github.com/open-traffic-generator/models/releases/tag/v0.8.1)** of the Open Traffic Generator Data Model. You can view the model [here](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.8.1/openapi.yaml).
 
 </details>
 
