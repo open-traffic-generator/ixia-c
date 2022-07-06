@@ -11,7 +11,7 @@ This build contains stability fixes.
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [0.8.1](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.8.1/openapi.yaml)         |
+| Open Traffic Generator API    | [0.8.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.2](https://pypi.org/project/snappi/0.8.2)        |
 | gosnappi                      | [0.8.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.2)        |
 | ixia-c-controller             | [0.0.1-2994](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
@@ -38,7 +38,7 @@ This build contains stability fixes.
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [0.8.1](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.8.1/openapi.yaml)         |
+| Open Traffic Generator API    | [0.8.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.2](https://pypi.org/project/snappi/0.8.2)        |
 | gosnappi                      | [0.8.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.2)        |
 | ixia-c-controller             | [0.0.1-2992](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
