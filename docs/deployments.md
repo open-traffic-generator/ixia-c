@@ -25,7 +25,7 @@ All these services are available as docker image on [ixiacom repository](https:/
   <img src="res/ixia-c-aur.drawio.svg"></img>
 </div>
 
-> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3f012df), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
+> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/6a35c10), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
 
 ### Bootstrap
 
