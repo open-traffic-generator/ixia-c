@@ -27,7 +27,8 @@ Support added for static `MPLS` packet header in flows.
 
 * Support added for static `MPLS` packet header in flows.
     - Fixed value is supported for all fields.
-    - Dynamic `MPLS` is not supported yet, for `label` field if choice is selected as `auto` it will set to default choice as `value`.
+    - Dynamic `MPLS` is not supported yet.
+        - `label` field's  default choice is `value` if it is selected as `auto`.
 
 #### Known Issues
 
