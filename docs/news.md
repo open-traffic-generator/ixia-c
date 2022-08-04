@@ -1,5 +1,10 @@
 # News
 
+* **4th August, 2022**: Ixia-c version 0.0.1 (build 3027) released.  This conforms to **[v0.8.6](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.6/artifacts/openapi.yaml)** of the Open Traffic Generator Models specification.
+
+  * Support added for static `MPLS` packet header in flows. [Read more](releases.md)
+
+
 * **27th July, 2022**: Ixia-c version 0.0.1 (build 3002) released.  This conforms to **[v0.8.5](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.5/artifacts/openapi.yaml)** of the Open Traffic Generator Models specification.
 
   * This build includes stability fixes. [Read more](releases.md)
