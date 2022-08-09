@@ -42,7 +42,7 @@ As a reference implementation of [Open Traffic Generator API](https://github.com
 
 ### Quick Start
 
-Before proceeding, please ensure [system prerequisites](/docs/prerequisites.md) are met and DPDK interfaces have been configured as mentioned in [network interface requirements](#network-interface-requirement).
+Before proceeding, please ensure [system prerequisites](/docs/prerequisites.md) are met and DPDK interfaces have been configured as mentioned in [network interface prerequisites](/docs/prerequisites.md).
 
 * Deploy Ixia-c with DPDK PCI Passthrough mode
 
@@ -66,36 +66,7 @@ Before proceeding, please ensure [system prerequisites](/docs/prerequisites.md) 
 
   > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation. Check out [deployment guide](docs/deployments.md) for more details.
 
-### Network Interface Requirements
 
-``` bash
-  # configure huge pages: each instance of traffic-engine requires 2GB of memory in huge pages;
-  # this creates 3GB of memory in huge pages suitable for a single instance of traffic-engine.
-  # to use multiple instances, please increase the number of huge pages accordingly.
-  mkdir -p /mnt/huge
-  mount -t hugetlbfs nodev /mnt/huge
-  echo 1536 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
-  # ensure it has been correctly set
-  cat /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
 
-  # get dpdk dev-bind script
-  curl -sL https://raw.githubusercontent.com/DPDK/dpdk/main/usertools/dpdk-devbind.py --output dpdk-devbind.py
-
-  # get NIC type and the PCI address using
-  lshw -c network -businfo
-
-  # load vfio_pci kernel module, if not already loaded
-  modprobe vfio_pci
-
-  # enable NOIOMMU mode
-  echo Y > /sys/module/vfio/parameters/enable_unsafe_noiommu_mode
-
-  # bind required test interfaces to vfio-pci (from output of 'lshw -c network -businfo')
-  python dpdk-devbind.py --bind vfio-pci 0000:0b:00.0
-  python dpdk-devbind.py --bind vfio-pci 0000:13:00.0
-
-  # check status of aforementioned binding
-  python dpdk-devbind.py --status
-```
 
 
