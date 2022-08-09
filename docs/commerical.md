@@ -42,7 +42,7 @@ As a reference implementation of [Open Traffic Generator API](https://github.com
 
 ### Quick Start
 
-Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) are met and DPDK interfaces have been configured as mentioned in [network interface requirements](#network-interface-requirement).
+Before proceeding, please ensure [system prerequisites](/docs/prerequisites.md) are met and DPDK interfaces have been configured as mentioned in [network interface requirements](#network-interface-requirement).
 
 * Deploy Ixia-c with DPDK PCI Passthrough mode
 
