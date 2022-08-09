@@ -70,33 +70,33 @@ In order for Ixia-c Traffic Engine to function, several settings need to be tune
    ```
 3. (Optional) To deploy traffic-engine against dpdk interface pairs, you need to configure them as follows:
 
-  ``` sh
-  # configure huge pages: each instance of traffic-engine requires 2GB of memory in huge pages;
-  # this creates 3GB of memory in huge pages suitable for a single instance of traffic-engine.
-  # to use multiple instances, please increase the number of huge pages accordingly.
-  mkdir -p /mnt/huge
-  mount -t hugetlbfs nodev /mnt/huge
-  echo 1536 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
-  # ensure it has been correctly set
-  cat /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
+   ``` sh
+    # configure huge pages: each instance of traffic-engine requires 2GB of memory in huge pages;
+    # this creates 3GB of memory in huge pages suitable for a single instance of traffic-engine.
+    # to use multiple instances, please increase the number of huge pages accordingly.
+    mkdir -p /mnt/huge
+    mount -t hugetlbfs nodev /mnt/huge
+    echo 1536 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
+    # ensure it has been correctly set
+    cat /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
 
-  # get dpdk dev-bind script
-  curl -sL https://raw.githubusercontent.com/DPDK/dpdk/main/usertools/dpdk-devbind.py --output dpdk-devbind.py
+    # get dpdk dev-bind script
+    curl -sL https://raw.githubusercontent.com/DPDK/dpdk/main/usertools/dpdk-devbind.py --output dpdk-devbind.py
 
-  # get NIC type and the PCI address using
-  lshw -c network -businfo
+    # get NIC type and the PCI address using
+    lshw -c network -businfo
 
-  # load vfio_pci kernel module, if not already loaded
-  modprobe vfio_pci
+    # load vfio_pci kernel module, if not already loaded
+    modprobe vfio_pci
 
-  # enable NOIOMMU mode
-  echo Y > /sys/module/vfio/parameters/enable_unsafe_noiommu_mode
+    # enable NOIOMMU mode
+    echo Y > /sys/module/vfio/parameters/enable_unsafe_noiommu_mode
 
-  # bind required test interfaces to vfio-pci (from output of 'lshw -c network -businfo')
-  python dpdk-devbind.py --bind vfio-pci 0000:0b:00.0
-  python dpdk-devbind.py --bind vfio-pci 0000:13:00.0
+    # bind required test interfaces to vfio-pci (from output of 'lshw -c network -businfo')
+    python dpdk-devbind.py --bind vfio-pci 0000:0b:00.0
+    python dpdk-devbind.py --bind vfio-pci 0000:13:00.0
 
-  # check status of aforementioned binding
-  python dpdk-devbind.py --status
-```
+    # check status of aforementioned binding
+    python dpdk-devbind.py --status
+   ```
 
