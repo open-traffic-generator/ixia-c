@@ -19,7 +19,7 @@ Ixia-c is distributed / deployed as a multi-container application consisting of 
 * **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
 * **app-usage-reporter** - (Optional) Collects anonymous usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
 
-All these services are available as docker image on [ixiacom repository](https://hub.docker.com/u/ixiacom). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
+All these services are available as docker image on [GitHub Open-Traffic-Generator repository](https://github.com/orgs/open-traffic-generator/packages). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
 
 <div align="center">
   <img src="res/ixia-c-aur.drawio.svg"></img>
@@ -79,7 +79,7 @@ On most systems, `docker-compose` needs to be installed separately even when doc
   Example:
 
   ```bash
-  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula --debug --http-port 5050
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --debug --http-port 5050
   ```
 
 #### Traffic Engine
@@ -105,7 +105,7 @@ On most systems, `docker-compose` needs to be installed separately even when doc
     -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
     --cpuset-cpus="0,1,2"                       \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
 ### Diagnostics
@@ -152,8 +152,8 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula
-  docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
   docker run --net=host --privileged -d         \
@@ -161,7 +161,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
     --cpuset-cpus="0,1,2"                       \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
 ### Two-arm Scenario
@@ -180,8 +180,8 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula
-  docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
   docker run --net=host --privileged -d         \
@@ -189,7 +189,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
     --cpuset-cpus="0,1,2"                       \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
 
   # start traffic engine on network interface eth2, TCP port 5556 and cpu cores 0, 3, 4
   docker run --net=host --privileged -d         \
@@ -197,7 +197,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     -e ARG_IFACE_LIST="virtual@af_packet,eth2"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
     --cpuset-cpus="0,3,4"                       \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
 ### Three-arm Mesh Scenario
@@ -218,8 +218,8 @@ This scenario binds traffic engine to management network interface belonging to 
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ixiacom/ixia-c-controller --accept-eula
-  docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth0, TCP port 5555 and cpu cores 0, 1, 2
   docker run --privileged -d                    \
@@ -228,7 +228,7 @@ This scenario binds traffic engine to management network interface belonging to 
     -e OPT_NO_HUGEPAGES="Yes"                   \
     -p 5555:5555                                \
     --cpuset-cpus="0,1,2"                       \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
 
   # start traffic engine on network interface eth0, TCP port 5556 and cpu cores 0, 3, 4
   docker run --privileged -d                    \
@@ -237,7 +237,7 @@ This scenario binds traffic engine to management network interface belonging to 
     -e OPT_NO_HUGEPAGES="Yes"                   \
     -p 5556:5555                                \
     --cpuset-cpus="0,3,4"                       \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
 
   # start traffic engine on network interface eth0, TCP port 5557 and cpu cores 0, 5, 6
   docker run --privileged -d                    \
@@ -246,7 +246,7 @@ This scenario binds traffic engine to management network interface belonging to 
     -e OPT_NO_HUGEPAGES="Yes"                   \
     -p 5557:5555                                \
     --cpuset-cpus="0,5,6"                       \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
 ### TODO: Multi-port per TE container
