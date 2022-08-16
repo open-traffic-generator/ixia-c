@@ -19,7 +19,7 @@ Ixia-c is distributed / deployed as a multi-container application consisting of 
 * **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
 * **app-usage-reporter** - (Optional) Collects anonymous usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
 
-All these services are available as docker image on [GitHub Open-Traffic-Generator repository](https://github.com/orgs/open-traffic-generator/packages). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
+All these services are available as docker images on [GitHub Open-Traffic-Generator repository](https://github.com/orgs/open-traffic-generator/packages). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
 
 <div align="center">
   <img src="res/ixia-c-aur.drawio.svg"></img>
