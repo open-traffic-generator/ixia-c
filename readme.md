@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller"><img alt="Release v0.0.1-3027" src="https://img.shields.io/badge/release-v0.0.1--3027-brightgreen"></a>
+  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller"><img alt="Release v0.0.1-3113" src="https://img.shields.io/badge/release-v0.0.1--3113-brightgreen"></a>
   <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.6/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.8.6" src="https://img.shields.io/badge/open--traffic--generator-v0.8.6-brightgreen"></a>
   <a href="https://pypi.org/project/snappi/0.8.8"><img alt="snappi v0.8.8" src="https://img.shields.io/badge/snappi-v0.8.8-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>

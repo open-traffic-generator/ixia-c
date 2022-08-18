@@ -1,6 +1,45 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3027 (Latest)
+## Release  v0.0.1-3113 (Latest)
+> 18th August, 2022
+
+#### Announcement
+
+From now onwards `ixia-c` container images will be hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages). However we will continue publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom) as well for the next 3 months. (until 18th November, 2022)
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.8.6](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.6/artifacts/openapi.yaml)         |
+| snappi                        | [0.8.8](https://pypi.org/project/snappi/0.8.8)        |
+| gosnappi                      | [0.8.8](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.8)        |
+| ixia-c-controller             | [0.0.1-3113](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.214](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-operator               | [0.1.95](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.8.13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-grpc-server            | [0.8.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-grpc-server)         |
+| ixia-c-one                    | [0.0.1-3113](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+#### Release Features(s)
+
+* Support added for setting transmit state on subset of configured flows.
+  https://github.com/open-traffic-generator/ixia-c/issues/56
+
+#### Bug Fix(s)
+
+* When flow duration is configured using `fixed_seconds`, then in some cases packet transmission does not stop after specified duration has elapsed.
+  https://github.com/open-traffic-generator/ixia-c/issues/95
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+* When traffic is started for empty flows , all configured flows will be started including the already running flows.
+
+
+## Release  v0.0.1-3027
 > 4th August, 2022
 
 #### About
@@ -13,7 +52,7 @@ Support added for static `MPLS` packet header in flows.
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.8.6](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.6/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.8](https://pypi.org/project/snappi/0.8.8)        |
-| gosnappi                      | [0.8.8](8https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.8)        |
+| gosnappi                      | [0.8.8](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.8)        |
 | ixia-c-controller             | [0.0.1-3027](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.29](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
