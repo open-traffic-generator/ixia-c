@@ -31,7 +31,7 @@ From now onwards `ixia-c` container images will be hosted on [GitHub Container R
 #### Bug Fix(s)
 
 * When flow duration is configured using `fixed_seconds`, then in some cases packet transmission does not stop after specified duration has elapsed.
-  TBD
+  https://github.com/open-traffic-generator/ixia-c/issues/95
 
 #### Known Issues
 
