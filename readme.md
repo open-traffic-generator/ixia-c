@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  <a href="https://hub.docker.com/r/ixiacom/ixia-c-controller/tags"><img alt="Release v0.0.1-3027" src="https://img.shields.io/badge/release-v0.0.1--3027-brightgreen"></a>
+  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller"><img alt="Release v0.0.1-3027" src="https://img.shields.io/badge/release-v0.0.1--3027-brightgreen"></a>
   <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.6/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.8.6" src="https://img.shields.io/badge/open--traffic--generator-v0.8.6-brightgreen"></a>
   <a href="https://pypi.org/project/snappi/0.8.8"><img alt="snappi v0.8.8" src="https://img.shields.io/badge/snappi-v0.8.8-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
@@ -32,7 +32,7 @@
 
 Ixia-c is a modern, powerful and API-driven traffic generator designed to cater to the needs of hyperscalers, network hardware vendors and hobbyists alike.
 
-It is **available for free** and distributed / deployed as a multi-container application consisting of a [controller](https://hub.docker.com/r/ixiacom/ixia-c-controller), a [traffic-engine](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine) and an [app-usage-reporter](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter).
+It is **available for free** and distributed / deployed as a multi-container application consisting of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine) and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter).
 
 As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
 
@@ -56,14 +56,14 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 
   ```bash
   # start ixia-c controller
-  docker run -d --network=host ixiacom/ixia-c-controller --accept-eula
-  docker run --net=host -d ixiacom/ixia-c-app-usage-reporter
+  docker run -d --network=host ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start ixia-c traffic engine on eth1 interface
   docker run -d --network=host --privileged     \
     -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
-    ixiacom/ixia-c-traffic-engine
+    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
   > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation. Check out [deployment guide](docs/deployments.md) for more details.
