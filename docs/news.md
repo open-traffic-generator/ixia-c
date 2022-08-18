@@ -4,7 +4,7 @@
 
   **Announcement**
 
-  From now onwards `ixia-c` images will be posted on [GHCR](https://github.com/orgs/open-traffic-generator/packages). We will continue to post on [DockerHub](https://hub.docker.com/r/ixiacom) for the next 3 months and then stop posting there completely.
+  From now onwards `ixia-c` container images will be hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages). However we will continue publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom) as well for the next 3 months. (until 18th November, 2022)
 
   * This build includes new feature along with bug fix. [Read more](releases.md)
 
