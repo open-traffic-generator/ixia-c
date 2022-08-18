@@ -36,7 +36,7 @@ From now onwards `ixia-c` container images will be hosted on [GitHub Container R
 #### Known Issues
 
 * The metric `loss` in flow metrics is currently not supported.
-* TBD
+* When traffic is started for empty flows , all configured flows will be started including the already running flows.
 
 
 ## Release  v0.0.1-3027
