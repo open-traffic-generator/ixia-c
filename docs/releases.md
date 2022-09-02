@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
 ## Release  v0.0.1-3182 (Latest)
-> 18th August, 2022
+> 1st September, 2022
 
 #### Announcement
 
@@ -24,7 +24,8 @@
 
 #### Release Features(s)
 
-* TBD
+* `ixia-c-controller` container now supports gRPC requests on default TCP port 50071 (alongside TCP port 443 for HTTP) and hence `ixia-c-grpc-server` container is no longer needed.
+* There has been a breaking change in OTG API to provide stronger compatibility guarantees across different `semver patch versions` of snappi and ixia-c-controller.
 
 #### Known Issues
 
