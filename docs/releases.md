@@ -1,6 +1,6 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3176 (Latest)
+## Release  v0.0.1-3182 (Latest)
 > 18th August, 2022
 
 #### Announcement
@@ -12,15 +12,15 @@
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
-| snappi                        | [0.9.1](https://pypi.org/project/snappi/0.9.1)        |
-| gosnappi                      | [0.9.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.1)        |
-| ixia-c-controller             | [0.0.1-3176](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| snappi                        | [0.9.3](https://pypi.org/project/snappi/0.9.3)        |
+| gosnappi                      | [0.9.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.3)        |
+| ixia-c-controller             | [0.0.1-3182](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.217](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
 | ixia-c-operator               | [0.2.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
-| ixia-c-one                    | [0.0.1-3176](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [0.0.1-3182](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 #### Release Features(s)
 
