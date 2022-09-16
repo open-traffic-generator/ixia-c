@@ -1,5 +1,43 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release  v0.0.1-3383
+> 16th September, 2022
+
+#### Announcement
+
+`ixia-c` container images is hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages). However we will continue publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom) until 18th November, 2022.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
+| snappi                        | [0.9.4](https://pypi.org/project/snappi/0.9.4)        |
+| gosnappi                      | [0.9.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.4)        |
+| ixia-c-controller             | [0.0.1-3383](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.17](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.225](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-operator               | [0.2.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.9.3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3380](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+#### Release Features(s)
+
+* Support added for `increment` and `decrement` `values` in all `MPLS` packet header fields. 
+* Support added for raw traffic where `tx` and `rx` endpoints could be same.
+* Support added in `traffic-engine-service` deployment to disable IPv6 networking.
+    - `OPT_ENABLE_IPv6` environment flag is introduced. If it is `Yes` ipv6 networking will be enabled and if it is `No` ipv6 networking status will be unchanged.
+
+#### Bug Fix(s)
+
+* `get_config` is failing, if config contains TCP header. it is fixed now. [#184](https://github.com/open-traffic-generator/snappi/issues/184)
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets
+
 ## Release  v0.0.1-3182 (Latest)
 > 1st September, 2022
 
