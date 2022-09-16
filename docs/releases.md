@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3380
-> 15th September, 2022
+## Release  v0.0.1-3383
+> 16th September, 2022
 
 #### Announcement
 
@@ -14,12 +14,12 @@
 | Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.9.4](https://pypi.org/project/snappi/0.9.4)        |
 | gosnappi                      | [0.9.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.4)        |
-| ixia-c-controller             | [0.0.1-3380](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-controller             | [0.0.1-3383](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.17](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.220](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-protocol-engine        | [1.00.0.225](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
 | ixia-c-operator               | [0.2.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
-| ixia-c-gnmi-server            | [1.9.2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-gnmi-server            | [1.9.3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3380](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 #### Release Features(s)
@@ -31,7 +31,7 @@
 
 #### Bug Fix(s)
 
-* snappi is crashing while doing get config, if config contains TCP header is fixed [#184](https://github.com/open-traffic-generator/snappi/issues/184)
+* `get_config` is failing, if config contains TCP header. it is fixed now. [#184](https://github.com/open-traffic-generator/snappi/issues/184)
 
 #### Known Issues
 
