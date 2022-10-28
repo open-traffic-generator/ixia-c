@@ -29,7 +29,7 @@ This build contains bug fixes.
 
 #### Bug Fix(s)
 
-* Packet fields of type `values` were not incrementing correctly with several protocol headers, is fixed. [#101](https://github.com/open-traffic-generator/ixia-c/issues/101)
+* [#101](https://github.com/open-traffic-generator/ixia-c/issues/101) fixed.
 
 
 #### Known Issues
