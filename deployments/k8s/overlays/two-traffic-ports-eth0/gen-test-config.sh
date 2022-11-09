@@ -1,6 +1,10 @@
 #!/bin/sh
 
-TEST_CONFIG_PATH=$(dirname $(dirname $(dirname $(dirname $(dirname $0)))))/conformance/test-config.yaml
+TEST_CONFIG_PATH=test-config.yaml
+if [ ! -z ${1} ]
+then
+    TEST_CONFIG_PATH=${1}
+fi
 
 gen_test_const() {
     # get pod IPs to be used as source and destination IP in packets
@@ -18,9 +22,8 @@ gen_test_const() {
             gatewayMac: ${gatewayMac}
             txIp: ${txIp}
             rxIp: ${rxIp}
-            rxUdpPort: ${rxUdpPort}
         "
-    echo -n "$yml" | sed "s/^            //g" | tee -a ${TEST_CONFIG_PATH} > /dev/null
+    echo -n "$yml" | sed "s/^          //g" | tee -a ${TEST_CONFIG_PATH} > /dev/null
 }
 
 gen_config_common() {

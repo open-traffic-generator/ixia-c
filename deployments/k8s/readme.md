@@ -17,6 +17,9 @@
 
     ```bash
     git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c.git
+    cd deployments/k8s
+    # TODO: this step is not needed after merging to main
+    git checkout deployment && git pull --recurse-submodules
     ```
 
 2. Setup a Kubernetes cluster using [kind](https://kind.sigs.k8s.io/)
@@ -33,17 +36,47 @@
     kubectl wait --for=condition=Ready pods --all --all-namespaces
     ```
 
-3. Deploy one of provided ixia-c topologies
+3. (Optional) Load container images to cluster if offline images is preferred
+
+    Images to be used are specified in `components/images/kustomization.yaml`.
 
     ```bash
-    # deploy ixia-c with two ports that only support data plane traffic over eth0
-    kubectl apply -k overlays/two-dp-ports-eth0
+    yml=components/images/kustomization.yaml
+    for i in $(seq $(grep -c newName ${yml}))
+    do
+        cap=$(grep -A1 -m${i} newName ${yml} | tail -n 2)
+        img=$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newName | cut -d\  -f4)
+        img=${img}:$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newTag | cut -d\" -f2)
+        docker pull "${img}" && kind load docker-image "${img}"
+    done
+    ```
+
+4. Deploy one of provided ixia-c topologies
+
+    For this example, topology manifests are kept inside `overlays/two-traffic-ports-eth0` which configures `port1` and `port2`.
+
+    ```bash
+    # deploy ixia-c with two ports that only support stateless traffic over eth0
+    kubectl apply -k overlays/two-traffic-ports-eth0
     # ensure all ixia-c pods are ready
     kubectl wait --for=condition=Ready pods --all -n ixia-c
     ```
 
-4. Setup Tests
+5. Setup Tests
+
+    The tests require `conformance/test-config.yaml` to run against specified port/test configurations. It needs to be generated for different topologies.
 
     ```bash
+    overlays/two-traffic-ports-eth0/gen-test-config.sh ../../conformance/test-config.yaml
+    # check contents
+    cat ../../conformance/test-config.yaml
+    ```
 
+6. Run Tests
+
+    The test being run for this specific topology is `conformance/features/flows/headers/udp/udp_header_eth0_test.go`
+
+    ```bash
+    cd ../../conformance
+    CGO_ENABLED=0 go test -v -count=1 -p=1 -timeout 3600s -tags="all" -run="^TestUdpHeaderEth0$" ./...
     ```
