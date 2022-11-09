@@ -38,7 +38,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
     kubectl wait --for=condition=Ready pods --all --all-namespaces
     ```
 
-3. (Optional) Load container images to cluster if offline images is preferred
+3. (Optional) Load container images to cluster if offline images are preferred
 
     Images to be used are specified in `components/images/kustomization.yaml`.
 
