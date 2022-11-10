@@ -23,9 +23,9 @@
 | ixia-c-one                    | [0.0.1-3619](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 ### Features(s)
-* `ixia-c-controller` and `ixia-c-gnmi` can accept the environment variables `HTTP_PORT` and `HTTP_SERVER` for argument `http-port` and `http-server`.
+* `ixia-c-controller` and `ixia-c-gnmi-server` can accept the environment variables `HTTP_PORT` and `HTTP_SERVER` for argument `http-port` and `http-server`.
 
-* `ixia-c-controller` and `ixia-c-gnmi` can now run using arbitrary user-id., to support deployment in open shift environment.
+* `ixia-c-controller` and `ixia-c-gnmi-server` can now run using arbitrary user-id., to support deployment in open shift environment.
 
 #### Bug Fix(s)
 * [#15](https://github.com/open-traffic-generator/ixia-c-operator/issues/15) fixed.
