@@ -13,7 +13,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
 > Please make sure that current working directory is `deployments/k8s`.
 
-### Steps
+### Initial Steps
 
 1. Clone repository
 
@@ -51,9 +51,13 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
     done
     ```
 
-4. Deploy one of provided ixia-c topologies
+### Deploy Topology and Run Tests (Stateless traffic on eth0)
 
-    For this example, topology manifests are kept inside `overlays/two-traffic-ports-eth0` which configures `port1` and `port2`.
+1. Deploy topology consisting of two ixia-c port pods and one ixia-c controller pod
+
+    Topology manifests are kept inside `overlays/two-traffic-ports-eth0` which specifies `port1` and `port2`.
+    * iptables rule is configured on both ports to drop UDP/TCP packets destined for ports 7000-8000
+    * number of ports can be increased by adding new port dirs similar to `port1` and using it in rest of the files
 
     ```bash
     # deploy ixia-c with two ports that only support stateless traffic over eth0
@@ -62,9 +66,12 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
     kubectl wait --for=condition=Ready pods --all -n ixia-c
     ```
 
-5. Setup Tests
+2. Generate test pre-requisites
 
-    The tests require `conformance/test-config.yaml` to run against specified port/test configurations. It needs to be generated for different topologies.
+    The sample test requires `conformance/test-config.yaml` which is auto-generated:
+    * ixia-c controller / port endpoints
+    * common port / flow properties
+    * values like port pod IPs, gateway MAC on tx port, etc.
 
     ```bash
     overlays/two-traffic-ports-eth0/gen-test-config.sh ../../conformance/test-config.yaml
@@ -72,7 +79,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
     cat ../../conformance/test-config.yaml
     ```
 
-6. Run Tests
+3. Run sample test
 
     The test being run for this specific topology is `conformance/features/flows/headers/udp/udp_header_eth0_test.go`
 
