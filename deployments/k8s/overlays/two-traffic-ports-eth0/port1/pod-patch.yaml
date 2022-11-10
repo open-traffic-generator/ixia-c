@@ -1,0 +1,6 @@
+- op: replace
+  path: /metadata/labels/role
+  value: otg-port1
+- op: replace
+  path: /metadata/name
+  value: otg-port1
