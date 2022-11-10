@@ -19,7 +19,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
     ```bash
     git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c.git
-    cd deployments/k8s
+    cd ixia-c/deployments/k8s
     ```
 
 2. Setup a Kubernetes cluster using [kind](https://kind.sigs.k8s.io/)
