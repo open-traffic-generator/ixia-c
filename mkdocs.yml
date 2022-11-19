@@ -4,6 +4,10 @@ repo_name: ixia-c
 edit_uri: ""
 theme:
   name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  font:
+    text: Arial
   palette: 
 
     # Palette toggle for light mode
