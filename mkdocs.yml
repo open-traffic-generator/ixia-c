@@ -4,12 +4,29 @@ repo_name: ixia-c
 edit_uri: ""
 theme:
   name: material
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: ks-light
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: ks-dark
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.instant
     - navigation.tracking
     - navigation.top
+extra_css:
+  - stylesheets/extra.css
 markdown_extensions:
   - tables
   - pymdownx.highlight:
