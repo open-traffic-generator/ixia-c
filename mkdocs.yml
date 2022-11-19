@@ -1,0 +1,45 @@
+site_name: Ixia-c
+repo_url: https://github.com/open-traffic-generator/ixia-c
+repo_name: ixia-c
+edit_uri: ""
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/open-traffic-generator
+    - icon: fontawesome/brands/slack
+      link: https://ixia-c.slack.com
+# Page tree
+nav:
+  - Home: index.md
+  - User Guide: 
+    - Prerequisites: prerequisites.md
+    - Deployment: deployments.md
+    - Limitations: limitations.md
+    - Contributing: contribute.md
+    - EULA: eula.md
+  - Developer Guide:
+    - Hello, snappi: hello-snappi.md
+    - Common constructs: snappi-constructs.md
+  - FAQ: faq.md
+  - Releases:
+    - News: news.md
+    - Versions: releases.md
+  - Support: support.md
+
+
+
