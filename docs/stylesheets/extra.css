@@ -1,28 +1,116 @@
 [data-md-color-scheme="ks-light"] {
-    --md-primary-fg-color:        #000000;
-    --md-primary-fg-color--light: #EBEBEB;
-    --md-primary-fg-color--dark:  #373A36;
-    --md-primary-bg-color:        #FFFFFF;
-    --md-default-bg-color:        #FFFFFF;
-    --md-default-fg-color--light: #373A36;
-    --md-default-fg-color:        #000000;
-    --md-default-fg-color--dark:  #000000;
-    --md-typeset-color:           #373A36;
-    --md-typeset-a-color:         #E90029;
-    --md-code-bg-color:           #EBEBEB;
-    --md-code-fg-color:           #373A36;
+    --ks-color-black:                   #000000;
+    --ks-color-dark-red:                #871518;
+    --ks-color-red:                     #E90029;
+    --ks-color-dark-gray:               #373A36;
+    --ks-color-medium-gray:             #97999B;
+    --ks-color-gray:                    #D9D9D6;
+    --ks-color-light-gray:              #EBEBEB;
+    --ks-color-white:                   #FFFFFF;
+
+    --ks-color-dark-blue:               #071D49;
+    --ks-color-blue:                    #426DA9;
+    --ks-color-teal:                    #63B1BC;
+
+    --gh-color-code-bg-color:           rgb(246,248,250);
+    --gh-color-code-fg-color:           rgb(36,41,47);
+    --gh-color-code-comment-color:      rgb(110,119,129);
+    --gh-color-code-string-color:       rgb(10,48,105);
+    --gh-color-code-keyword-color:      rgb(207,34,46);
+    --gh-color-code-pretty-color:       rgb(130,80,223);
+
+    --md-primary-fg-color:        var(--ks-color-black);
+    --md-primary-fg-color--light: var(--ks-color-light-gray);
+    --md-primary-fg-color--dark:  var(--ks-color-dark-gray);
+    --md-primary-bg-color:        var(--ks-color-white);
+
+    --md-default-bg-color:        var(--ks-color-white);
+    --md-default-fg-color--light: var(--ks-color-dark-gray);
+    --md-default-fg-color:        var(--ks-color-black);
+    --md-default-fg-color--dark:  var(--ks-color-black);
+
+    --md-typeset-color:           var(--ks-color-dark-gray);
+    --md-typeset-a-color:         var(--ks-color-red);
+
+    --md-code-bg-color:                 var(--gh-color-code-bg-color);
+    --md-code-fg-color:                 var(--gh-color-code-fg-color);
+    --md-code-hl-comment-color:         var(--gh-color-code-comment-color);
+    --md-code-hl-variable-color:        var(--gh-color-code-pretty-color);
+    --md-code-hl-name-color:            var(--gh-color-code-pretty-color);
+    --md-code-hl-number-color:          var(--gh-color-code-string-color);
+    --md-code-hl-string-color:          var(--gh-color-code-string-color);
+    --md-code-hl-special-color:         var(--gh-color-code-fg-color);
+    --md-code-hl-operator-color:        var(--gh-color-code-string-color);
+    --md-code-hl-punctuation-color:     var(--gh-color-code-fg-color);
+    --md-code-hl-keyword-color:         var(--gh-color-code-keyword-color);
+    --md-code-hl-function-color:        var(--gh-color-code-pretty-color);
+    --md-code-hl-constant-color:        var(--gh-color-code-pretty-color);
+
+    --md-admonition-bg-color:     var(--gh-color-code-bg-color);
+    --md-admonition-fg-color:     var(--md-default-fg-color--light);
 }
 [data-md-color-scheme="ks-dark"] {
-    --md-primary-fg-color:        #000000;
-    --md-primary-fg-color--light: #EBEBEB;
-    --md-primary-fg-color--dark:  #373A36;
-    --md-primary-bg-color:        #FFFFFF;
-    --md-default-fg-color--light: #EBEBEB;
-    --md-default-fg-color:        #FFFFFF;
-    --md-default-fg-color--dark:  #97999B;
-    --md-default-bg-color:        #373A36;
-    --md-typeset-color:           #EBEBEB;
-    --md-typeset-a-color:         #E90029;
-    --md-code-bg-color:           #000000;
-    --md-code-fg-color:           #97999B;
+    --ks-color-black:                   #000000;
+    --ks-color-dark-red:                #871518;
+    --ks-color-red:                     #E90029;
+    --ks-color-dark-gray:               #373A36;
+    --ks-color-medium-gray:             #97999B;
+    --ks-color-gray:                    #D9D9D6;
+    --ks-color-light-gray:              #EBEBEB;
+    --ks-color-white:                   #FFFFFF;
+
+    --ks-color-dark-blue:               #071D49;
+    --ks-color-blue:                    #426DA9;
+    --ks-color-teal:                    #63B1BC;
+
+    --gh-color-code-bg-color:           rgb(22,27,24);
+    --gh-color-code-fg-color:           rgb(201,209,207);
+    --gh-color-code-comment-color:      rgb(139,148,158);
+    --gh-color-code-string-color:       rgb(165,214,255);
+    --gh-color-code-keyword-color:      rgb(255,123,114);
+    --gh-color-code-pretty-color:       rgb(210,168,255);
+
+    --md-primary-fg-color:              var(--ks-color-black);
+    --md-primary-fg-color--dark:        var(--ks-color-dark-gray);
+    --md-primary-fg-color--light:       var(--ks-color-medium-gray);
+    --md-primary-bg-color:              var(--ks-color-white);
+    --md-primary-bg-color--light:       var(--ks-color-light-gray);
+
+    --md-default-bg-color--light:       var(--ks-color-white);
+    --md-default-bg-color--lighter:     var(--ks-color-white);
+    --md-default-bg-color--lightest:    var(--ks-color-white);
+    --md-default-fg-color:              var(--ks-color-white);
+    --md-default-fg-color--lightest:    var(--ks-color-blue);
+    --md-default-fg-color--light:       var(--ks-color-light-gray);
+    --md-default-fg-color--lighter:     var(--ks-color-light-gray);
+    --md-default-fg-color--dark:        var(--ks-color-medium-gray);
+    --md-default-bg-color:              var(--ks-color-black);
+
+    --md-typeset-color:                 var(--ks-color-gray);
+    --md-typeset-a-color:               var(--ks-color-red);
+
+    --md-code-bg-color:                 var(--gh-color-code-bg-color);
+    --md-code-fg-color:                 var(--gh-color-code-fg-color);
+    --md-code-hl-comment-color:         var(--gh-color-code-comment-color);
+    --md-code-hl-variable-color:        var(--gh-color-code-pretty-color);
+    --md-code-hl-name-color:            var(--gh-color-code-pretty-color);
+    --md-code-hl-number-color:          var(--gh-color-code-string-color);
+    --md-code-hl-string-color:          var(--gh-color-code-string-color);
+    --md-code-hl-special-color:         var(--gh-color-code-fg-color);
+    --md-code-hl-operator-color:        var(--gh-color-code-string-color);
+    --md-code-hl-punctuation-color:     var(--gh-color-code-fg-color);
+    --md-code-hl-keyword-color:         var(--gh-color-code-keyword-color);
+    --md-code-hl-function-color:        var(--gh-color-code-pretty-color);
+    --md-code-hl-constant-color:        var(--gh-color-code-pretty-color);
+
+    --md-admonition-bg-color:           var(--md-default-bg-color);
+    --md-admonition-fg-color:           var(--md-default-fg-color--light);
+
+    --md-accent-fg-color:               var(--ks-color-light-gray);
+    --md-accent-fg-color--transparent:  var(--ks-color-dark-gray);
 }
+
+.md-grid {
+    max-width: 1440px; 
+}
+  

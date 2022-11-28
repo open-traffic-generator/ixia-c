@@ -1,4 +1,4 @@
-site_name: Ixia-c
+site_name: ixia-c
 repo_url: https://github.com/open-traffic-generator/ixia-c
 repo_name: ixia-c
 edit_uri: ""
@@ -33,6 +33,8 @@ extra_css:
   - stylesheets/extra.css
 markdown_extensions:
   - tables
+  - admonition
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
