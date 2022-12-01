@@ -15,7 +15,7 @@ spec:
       imagePullPolicy: IfNotPresent
       name: ixia-c-controller
       ports:
-        - containerPort: 443
+        - containerPort: 8443
           name: https-port
           protocol: TCP
         - containerPort: 40051
@@ -36,7 +36,7 @@ spec:
           readOnly: true
     - args:
         - -http-server
-        - https://localhost:443
+        - https://localhost:8443
         - --debug
       image: ixia-c-gnmi-server:latest
       imagePullPolicy: IfNotPresent
