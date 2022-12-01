@@ -1,6 +1,45 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3619 (Latest)
+## Release  v0.0.1-3662 (Latest)
+> 1st December, 2022
+
+#### Announcement
+
+`ixia-c` container images is hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages). However we will continue publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom) until 18th November, 2022.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.9.10](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.10/artifacts/openapi.yaml)         |
+| snappi                        | [0.9.8](https://pypi.org/project/snappi/0.9.8)        |
+| gosnappi                      | [0.9.8](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.8)        |
+| ixia-c-controller             | [0.0.1-3662](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.243](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-operator               | [0.3.0](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.9.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3662](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+### Features(s)
+* `ixia-c-controller` now runs with a non-root user inside the container (instead of root user previously)
+* `ixia-c-controller` now listens on non-privileged HTTPs port 8443 (instead of 443 previously)
+
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+
+#### Known Limitations
+
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+
+
+## Release  v0.0.1-3619
 > 10th November, 2022
 
 #### Announcement
@@ -185,7 +224,7 @@ This build contains stability fixes.
 
 #### Release Features(s)
 
-* `ixia-c-controller` container now supports gRPC requests on default TCP port 40051 (alongside TCP port 443 for HTTP) and hence `ixia-c-grpc-server` container is no longer needed.
+* `ixia-c-controller` container now supports gRPC requests on default TCP port 40051 (alongside TCP port 8443 for HTTP) and hence `ixia-c-grpc-server` container is no longer needed.
 * There has been a breaking change in OTG API to provide stronger compatibility guarantees across different `semver patch versions` of snappi and ixia-c-controller.
 
 #### Known Issues
