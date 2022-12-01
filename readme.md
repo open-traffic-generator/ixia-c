@@ -88,7 +88,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   ```python
   import snappi
   # create a new API instance over HTTPS transport where location points to controller
-  api = snappi.api(location="https://localhost", verify=False)
+  api = snappi.api(location="https://localhost:8443", verify=False)
   # OR
   # create a new API instance over gRPC transport where location points to controller
   api = snappi.api(location="localhost:40051", transport=snappi.Transport.GRPC)
@@ -131,11 +131,11 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 
   ```bash
   # push the contents of config file snappi-tests/configs/quickstart_snappi.json
-  curl -k https://localhost/config -H "Content-Type: application/json" -d @snappi-tests/configs/quickstart_snappi.json
+  curl -k https://localhost:8443/config -H "Content-Type: application/json" -d @snappi-tests/configs/quickstart_snappi.json
   # start transmitting configured flows
-  curl -k https://localhost/control/transmit -H  "Content-Type: application/json" -d '{"state": "start"}'
+  curl -k https://localhost:8443/control/transmit -H  "Content-Type: application/json" -d '{"state": "start"}'
   # fetch all port metrics
-  curl -k https://localhost/results/metrics -H  "Content-Type: application/json" -d '{"choice": "port"}}'
+  curl -k https://localhost:8443/results/metrics -H  "Content-Type: application/json" -d '{"choice": "port"}}'
   ```
 
 ### Key Features

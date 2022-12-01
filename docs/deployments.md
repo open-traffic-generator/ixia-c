@@ -334,7 +334,7 @@ tests/env/bin/python -m pytest tests/py -m "sanity"
 
   ```json
   {
-   "controller": "https://localhost",
+   "controller": "https://localhost:8443",
     "ports": [
         "localhost:5555",
         "localhost:5556"

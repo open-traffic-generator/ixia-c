@@ -31,7 +31,7 @@ spec:
         periodSeconds: 5
         failureThreshold: 12
       volumeMounts:
-        - mountPath: /home/keysight/ixia-c/controller/config
+        - mountPath: /home/ixia-c/controller/config
           name: config
           readOnly: true
     - args:
