@@ -1,6 +1,44 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3662 (Latest)
+## Release  v0.0.1-3698 (Latest)
+> 15th December, 2022
+
+#### Announcement
+
+`ixia-c` container images is hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages), We stopped publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom).
+
+#### About
+
+This build contains stability fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.10.5](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.5/artifacts/openapi.yaml)         |
+| snappi                        | [0.10.3](https://pypi.org/project/snappi/0.10.3)        |
+| gosnappi                      | [0.10.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.3)        |
+| ixia-c-controller             | [0.0.1-3698](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.252](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.10.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3698](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+
+#### Known Issues
+
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+
+#### Known Limitations
+
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+
+## Release  v0.0.1-3662
 > 1st December, 2022
 
 #### Announcement
