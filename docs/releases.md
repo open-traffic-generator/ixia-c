@@ -5,7 +5,7 @@
 
 #### Announcement
 
-`ixia-c` container images is hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages) we stopped publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom).
+`ixia-c` container images is hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages), We stopped publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom).
 
 #### About
 
