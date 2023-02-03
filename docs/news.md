@@ -1,5 +1,13 @@
 # News
 
+* **2nd February, 2023**: Ixia-c version 0.0.1 (build 3768) released.  This conforms to **[v0.10.7](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.7/artifacts/openapi.yaml)** of the Open Traffic Generator Models specification.
+
+  **Announcement**
+
+  `ixia-c` container images are hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages), We stopped publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom).
+
+  * This build includes bugs fixes. [Read more](releases.md)
+
 * **20th January, 2023**: Ixia-c version 0.0.1 (build 3724) released.  This conforms to **[v0.10.6](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.6/artifacts/openapi.yaml)** of the Open Traffic Generator Models specification.
 
   **Announcement**
