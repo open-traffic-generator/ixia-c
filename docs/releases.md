@@ -28,18 +28,13 @@ This build contains bug fixes.
 | ixia-c-one                    | [0.0.1-3768](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 ### Bug Fix(s)
-* Issue where TCP header length was not set correctly is fixed.
+* Issue where TCP header length was not set correctly is fixed. [#117](https://github.com/open-traffic-generator/ixia-c/issues/117)
 
 #### Known Issues
-
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
-
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
 
 ## Release  v0.0.1-3724
 > 20th January, 2023
@@ -71,12 +66,8 @@ This build contains bug fixes.
 ### Bug Fix(s)
 * Payload size field in all inner headers for tunneling protocols do not take into account inner FCS is fixed. [#112](https://github.com/open-traffic-generator/ixia-c/issues/112)
 
+
 #### Known Issues
-
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
 
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
@@ -111,11 +102,6 @@ This build contains stability fixes.
 
 #### Known Issues
 
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
-
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
@@ -148,11 +134,6 @@ This build contains stability fixes.
 
 
 #### Known Issues
-
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
 
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
@@ -192,11 +173,6 @@ This build contains stability fixes.
 
 #### Known Issues
 
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
-
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
@@ -235,11 +211,6 @@ This build contains bug fixes.
 
 #### Known Issues
 
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
-
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
@@ -270,11 +241,6 @@ This build contains stability fixes.
 | ixia-c-operator               | [0.2.2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3423](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-
-#### Known Issues
-
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 #### Known Limitations
 
