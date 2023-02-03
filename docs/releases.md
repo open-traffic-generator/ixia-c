@@ -1,6 +1,42 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3724 (Latest)
+## Release  v0.0.1-3767 (Latest)
+> 2nd February, 2023
+
+#### Announcement
+
+`ixia-c` container images are hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages), We stopped publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom).
+
+#### About
+
+This build contains bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.10.7](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.7/artifacts/openapi.yaml)         |
+| snappi                        | [0.10.5](https://pypi.org/project/snappi/0.10.5)        |
+| gosnappi                      | [0.10.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.5)        |
+| ixia-c-controller             | [0.0.1-3768](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.29](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.271](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.10.7-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.10.8](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3768](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+### Bug Fix(s)
+* Issue where TCP header length was not set correctly is fixed. [#117](https://github.com/open-traffic-generator/ixia-c/issues/117)
+
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-3724
 > 20th January, 2023
 
 #### Announcement
@@ -30,12 +66,8 @@ This build contains bug fixes.
 ### Bug Fix(s)
 * Payload size field in all inner headers for tunneling protocols do not take into account inner FCS is fixed. [#112](https://github.com/open-traffic-generator/ixia-c/issues/112)
 
+
 #### Known Issues
-
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
 
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
@@ -70,11 +102,6 @@ This build contains stability fixes.
 
 #### Known Issues
 
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
-
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
@@ -107,11 +134,6 @@ This build contains stability fixes.
 
 
 #### Known Issues
-
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
 
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
@@ -151,11 +173,6 @@ This build contains stability fixes.
 
 #### Known Issues
 
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
-
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
@@ -194,11 +211,6 @@ This build contains bug fixes.
 
 #### Known Issues
 
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-
-#### Known Limitations
-
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
@@ -229,11 +241,6 @@ This build contains stability fixes.
 | ixia-c-operator               | [0.2.2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3423](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-
-#### Known Issues
-
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 #### Known Limitations
 
