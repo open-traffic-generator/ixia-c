@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3798 (Latest)
-> 16th February, 2023
+## Release  v0.0.1-3807 (Latest)
+> 17th February, 2023
 
 #### Announcement
 
@@ -15,17 +15,17 @@ This build contains bug fixes.
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [0.10.7](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.7/artifacts/openapi.yaml)         |
-| snappi                        | [0.10.5](https://pypi.org/project/snappi/0.10.5)        |
-| gosnappi                      | [0.10.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.5)        |
-| ixia-c-controller             | [0.0.1-3798](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| Open Traffic Generator API    | [0.10.9](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.9/artifacts/openapi.yaml)         |
+| snappi                        | [0.10.7](https://pypi.org/project/snappi/0.10.7)        |
+| gosnappi                      | [0.10.7](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.7)        |
+| ixia-c-controller             | [0.0.1-3807](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.30](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.271](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| ixia-c-ixhw-server        | [0.10.7-5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-ixhw-server        | [0.10.7-8](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
 | ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
-| ixia-c-gnmi-server            | [1.10.13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
-| ixia-c-one                    | [0.0.1-3798](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-gnmi-server            | [1.10.14](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3807](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 ### Bug Fix(s)
 * Concurrent API calls (where at least one call was `set_config`) to `ixia-c-controller` was resulting in crash.
