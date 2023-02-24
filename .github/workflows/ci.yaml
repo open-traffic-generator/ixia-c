@@ -17,6 +17,7 @@ jobs:
       - name: Print Logs
         if: always()
         run: |
+          cd deployments
           cat .ixops.log
       - name: Archive logs
         if: always()
@@ -24,4 +25,4 @@ jobs:
         with:
           name: ci
           path: |
-            .ixops.log
+            deployments/.ixops.log
