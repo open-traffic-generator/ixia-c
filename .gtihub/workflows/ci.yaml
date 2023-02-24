@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Lint Go Code
+        run: |
+          cd deployments
+          ./ixops.sh apt_install_pkgs
+      - name: Print Logs
+        if: always()
+        run: |
+          cat .ixops.log
+      - name: Archive logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ci
+          path: |
+            .ixops.log

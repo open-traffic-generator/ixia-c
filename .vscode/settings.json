@@ -1,0 +1,10 @@
+{
+    "editor.rulers": [
+        88,
+        90
+    ],
+    "editor.formatOnSave": true,
+    "files.insertFinalNewline": true,
+    "files.eol": "\n",
+    "diffEditor.ignoreTrimWhitespace": false,
+}

@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "streetsidesoftware.code-spell-checker",
+        "redhat.vscode-yaml",
+        "eamodio.gitlens",
+        "mads-hartmann.bash-ide-vscode"
+    ]
+}
