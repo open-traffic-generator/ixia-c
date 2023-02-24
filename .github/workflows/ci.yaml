@@ -12,17 +12,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Install packages
         run: |
-          cd deployments
-          ./ixops.sh apt_install_pkgs
+          ./deployments/ixops.sh common_install
       - name: Print Logs
         if: always()
         run: |
-          cd deployments
-          cat .ixops.log
+          cat ~/.ixops/ixops.log
       - name: Archive logs
         if: always()
         uses: actions/upload-artifact@v3
         with:
           name: ci
           path: |
-            deployments/.ixops.log
+            ~/.ixops/ixops.log
