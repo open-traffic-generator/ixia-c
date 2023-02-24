@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
-      - name: Lint Go Code
+      - name: Install packages
         run: |
           cd deployments
           ./ixops.sh apt_install_pkgs
