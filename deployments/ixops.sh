@@ -20,7 +20,7 @@ init() {
 init
 
 
-APT_GET_UPDATE=true
+APT_UPDATE=true
 GO_VERSION="1.20"
 
 
@@ -66,17 +66,18 @@ on_ubuntu() {
 
 apt_update() {
     log "Checking if apt-get update is needed"
-    if [ "${APT_GET_UPDATE}" = "true" ]
+    # force update if 'true' is provided as first argument
+    if [ "${APT_UPDATE}" = "true" ] || [ "${1}" = "true" ]
     then
-        check_exec sudo apt-get update
-        APT_GET_UPDATE=false
+        check_exec sudo DEBIAN_FRONTEND=noninteractive apt-get update -yq --no-install-recommends || return 1
+        APT_UPDATE=false
     fi
 }
 
 apt_install() {
-    log "Installing ${1} ..."
+    log "Installing ${@} ..."
     apt_update \
-    && check_exec sudo apt-get install -y --no-install-recommends
+    && check_exec sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends ${@}
 }
 
 apt_install_curl() {
@@ -109,10 +110,18 @@ apt_install_ca_certs() {
     apt_install ca-certificates
 }
 
+apt_install_sudo() {
+    check_exec sudo -V && return
+    check_exec DEBIAN_FRONTEND=noninteractive apt-get update -yq --no-install-recommends \
+    && APT_UPDATE=false \
+    && check_exec sudo DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends sudo
+}
+
 apt_install_pkgs() {
     on_ubuntu || err "apt-get installation is only supported on Ubuntu" 1
-    inf "Installing apt packages"
-    apt_install_curl \
+    inf "Installing apt packages that are not installed ..."
+    apt_install_sudo \
+    && apt_install_curl \
     && apt_install_vim \
     && apt_install_git \
     && apt_install_lsb_release \
@@ -155,9 +164,34 @@ get_go() {
     && check_exec go version || err "Failed installing Go" 1
 }
 
+sudo_docker() {
+    check_exec docker ps -a && return
+    log "Enabling docker to run without sudo ..."
+    groups | grep docker > /dev/null 2>&1 && return
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+
+    inf "Please logout, login again and re-execute previous command"
+    exit 0
+}
+
 get_docker() {
     check_exec docker -v && return
     inf "Installing Docker ..."
+
+    sudo apt-get remove docker docker-engine docker.io containerd runc 2> /dev/null
+
+    curl -kfsSL https://download.docker.com/linux/ubuntu/gpg \
+        | sudo gpg --batch --yes --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+        | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    apt_update true \
+    && apt_install docker-ce docker-ce-cli containerd.io \
+    && check_exec docker -v || err "Failed installing docker" 1
+
+    sudo_docker
 }
 
 common_install() {
@@ -175,6 +209,6 @@ case $1 in
         file=${0}
         cmd=${1}
         shift 1
-        ${cmd} ${@} 2>&1 | tee -a ${IXOPS_LOG} || err "failed executing '${file} ${cmd} ${@}'"
+        ${cmd} ${@} 2>&1 | tee -a ${IXOPS_LOG}
     ;;
 esac
