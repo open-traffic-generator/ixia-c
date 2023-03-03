@@ -1,6 +1,54 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3807 (Latest)
+## Release  v0.0.1-3841 (Latest)
+> 3rd March, 2023
+
+#### Announcement
+
+`ixia-c` container images are hosted on [GitHub Container Registry](https://github.com/orgs/open-traffic-generator/packages), We stopped publishing `ixia-c` container images to [DockerHub](https://hub.docker.com/r/ixiacom).
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.10.12](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.12/artifacts/openapi.yaml)         |
+| snappi                        | [0.10.9](https://pypi.org/project/snappi/0.10.9)        |
+| gosnappi                      | [0.10.9](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.9)        |
+| ixia-c-controller             | [0.0.1-3841](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.279](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.10.12-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.10.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3841](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+### Features(s)
+* API version compatibility check is now automatically performed between ixia-c containers upon API calls to `ixia-c-controller` . It can be disabled by booting `ixia-c-controller` container with `--disable-version-check` flag.
+* API version compatibility check can now be automatically performed between `snappi`/`gosnappi` and ixia-c-controller upon API calls by enabling version check flag in API handle like so:
+    - gosnappi
+    ```
+        api := gosnappi.NewApi()
+        api.SetVersionCompatibilityCheck(true)
+    ````
+    - snappi
+    ```
+        api = snappi.api(version_check=True)
+    ```
+    In upcoming releases, this will be enabled by default.
+
+
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-3807
 > 17th February, 2023
 
 #### Announcement
