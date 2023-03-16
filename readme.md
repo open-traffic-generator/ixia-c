@@ -135,7 +135,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   # start transmitting configured flows
   curl -k https://localhost:8443/control/transmit -H  "Content-Type: application/json" -d '{"state": "start"}'
   # fetch all port metrics
-  curl -k https://localhost:8443/results/metrics -H  "Content-Type: application/json" -d '{"choice": "port"}}'
+  curl -k https://localhost:8443/monitor/metrics -H  "Content-Type: application/json" -d '{"choice": "port"}}'
   ```
 
 ### Key Features
