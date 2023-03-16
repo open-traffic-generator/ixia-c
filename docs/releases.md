@@ -1,6 +1,41 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3841 (Latest)
+## Release  v0.0.1-3865 (Latest)
+> 16th March, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.11.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.1/artifacts/openapi.yaml)         |
+| snappi                        | [0.11.1](https://pypi.org/project/snappi/0.11.1)        |
+| gosnappi                      | [0.11.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.1)        |
+| ixia-c-controller             | [0.0.1-3865](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.283](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.11.1-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.11.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3865](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+### Features(s)
+* Warning messages shall now be automatically printed on STDOUT if a property or an API with status deprecated or under-review is exercised in `snappi` / `gosnappi`. This may also lead to linters raising deprecation error.
+* New API endpoints `/control/state` and `/control/action` have been exposed consolidating pre-existing API endpoints inside `/control/` (now deprecated) in order to reduce API surface and introducing clean organization. Please see [snappi-tests utils](https://github.com/open-traffic-generator/snappi-tests/blob/main/tests/utils/common.py) for usage.
+* API endpoints `/results/*` have now been renamed to `/monitor/*` .
+
+
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-3841
 > 3rd March, 2023
 
 #### Announcement
