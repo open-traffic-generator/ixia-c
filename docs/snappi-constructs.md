@@ -524,23 +524,30 @@ tcp.seq_num.values = [1, 2]
 <td>
 
 ```python
-ts = api.transmit_state()
-ts.state = ts.START
-ts.flow_names = ['f1', 'f2']
 
-api.set_transmit_state(ts)
+ts = api.control_state()
+ts.traffic.flow_transmit.state = ts.traffic.flow_transmit.START  # noqa
+ts.traffic.flow_transmit.flow_names = ['f1', 'f2']
+res = api.set_control_state(ts)
+
 ```
 
 </td>
 <td>
 
 ```json
-{
-  "flow_names": [
-    "f1",
-    "f2"
-  ],
-  "state": "start"
+{  
+  "choice": "traffic", 
+  "traffic": {    
+      "choice": "flow_transmit",    
+      "flow_transmit": {      
+          "flow_names": [
+              "f1",
+              "f2"     
+          ],      
+          "state": "start"    
+      }  
+  }
 }
 ```
 
@@ -567,11 +574,11 @@ Capture configuration and control
 <td>
 
 ```python
-cs = api.capture_state()
-cs.state = ts.START
-cs.port_names = ['p1', 'p2']
+cs = api.control_state()
+cs.port.capture.state = cs.port.capture.START
+cs.port.capture.port_names = ['p1', 'p2']
+res = api.set_control_state(cs)
 
-api.set_capture_state(cs)
 ```
 
 </td>
@@ -579,11 +586,17 @@ api.set_capture_state(cs)
 
 ```json
 {
-  "port_names": [
-    "p1",
-    "p2"
-  ],
-  "state": "start"
+  "choice": "port",
+  "port": {
+      "capture": {
+          "port_names": [
+              "p1",
+              "p2"
+          ],
+          "state": "start"
+      },
+      "choice": "capture"
+  }
 }
 ```
 
