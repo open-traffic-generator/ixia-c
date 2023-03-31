@@ -1,6 +1,71 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3865 (Latest)
+## Release  v0.0.1-3889 (Latest)
+> 31st March, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.11.4](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.4/artifacts/openapi.yaml)         |
+| snappi                        | [0.11.6](https://pypi.org/project/snappi/0.11.6)        |
+| gosnappi                      | [0.11.6](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.6)        |
+| ixia-c-controller             | [0.0.1-3889](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.290](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.11.4-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.11.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3889](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+### Features(s)
+* All API response errors over gRPC and HTTP transport can now be inspected like so:
+    ``` snappi
+        # snippet of error handling in snappi
+        try:
+        # call set config
+        api.set_config(payload)
+        except Exception as e:
+            err = api.from_exception(e)  # helper function to parse exception
+            if err is not None: # exception was of otg error format
+                print(err.code)
+                print(err.errors)
+            else: # some other exception
+                print(e)
+    ```
+
+    ``` gosnappi
+        // gosnappi snippet for error handling
+        resp, err := api.SetConfig(config)
+        if err != nil {
+            // helper function to parse error
+            // retuns a bool with err, indicating wheather the error was of otg error format 
+            errSt, ok := api.FromError(err)
+            if ok {
+                fmt.Println(errSt.Code())
+                if errSt.errSt.HasKind() {
+                fmt.Println(errSt.Kind())
+                }
+                fmt.Println(errSt.Errors())
+            } else {
+                fmt.Println(err.Error())
+            }
+        }
+    ```
+
+
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-3865
 > 16th March, 2023
 
 #### About
