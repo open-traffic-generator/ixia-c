@@ -1,6 +1,3 @@
-[submodule "snappi-tests"]
-	path = snappi-tests
-	url = https://github.com/open-traffic-generator/snappi-tests.git
 [submodule "conformance"]
 	path = conformance
 	url = https://github.com/open-traffic-generator/conformance.git
