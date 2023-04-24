@@ -113,9 +113,9 @@ The objects and methods (for API calls) in snappi are auto-generated from an [Op
 
 [ReDoc](https://redocly.github.io/redoc/) is an open-source tool that does this. It accepts a link to valid OpenAPI YAML file and generates a document where all the methods (for API calls) are mentioned in the left navigation bar and for each selected method, there's a request / response body description in the center of the page. These descriptions lay out the entire object tree documenting each node in details.
 
-The snappi API documentation linked above will always point to API version **v0.11.14**. To use a different API version instead:
+The snappi API documentation linked above will always point to API version **v0.11.8**. To use a different API version instead:
 
-* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.11.14/models-release">this link</a> in a browser and replacing **v0.11.14** in URL with intended snappi version.
+* Identify API version by opening <a href="https://github.com/open-traffic-generator/snappi/releases/download/v0.11.8/models-release">this link</a> in a browser and replacing **v0.11.8** in URL with intended snappi version.
 
 * Open <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.8/artifacts/openapi.yaml">this link</a> in a browser after replacing **v0.11.8** in URL with intended API version.
 
