@@ -39,7 +39,7 @@ This build includes new features.
    -  As of this release, enabling metric_tags is only supported on ethernet.src/dst, ipv4.src/dst, ipv4.tos. Support for more fields shall be added in upcoming releases.
 
   - Limitations:
-    - The total number of tracking bits available on a ixia-c Rx port is 12 bits. Out of these some of the bits are needed for tracking flows, example 2 flows need 1 bit, 4 flows need 2 bits, 8 flows need 3 bits etc. The sum of `metric_tag.length` for each field inside each header configured in `egress_packet` cannot exceed the remaining bits available on the Rx port.
+    - The total number of tracking bits available on an ixia-c Rx port is 12 bits. Out of these some of the bits are needed for tracking flows, example 2 flows need 1 bit, 4 flows need 2 bits, 8 flows need 3 bits etc. The sum of `metric_tag.length` for each field inside each header configured in `egress_packet` cannot exceed the remaining bits available on the Rx port.
     - Support is added max two fields which are non-adjacent.
 
 * A new property is introduced in `get_metrics.flow` to fetch tagged metrics.
