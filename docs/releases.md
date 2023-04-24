@@ -40,10 +40,10 @@ This build includes new features.
 
   - Limitations:
     - The total number of tracking bits available on an ixia-c Rx port is 12 bits. Out of these some of the bits are needed for tracking flows, example 2 flows need 1 bit, 4 flows need 2 bits, 8 flows need 3 bits etc. The sum of `metric_tag.length` for each field inside each header configured in `egress_packet` cannot exceed the remaining bits available on the Rx port.
-    - Support is added max two fields which are non-adjacent.
+    - The total number of tracking fields that can be configured across a set of flows which have the same Rx port, is two.
 
 * A new property is introduced in `get_metrics.flow` to fetch tagged metrics.
- - User can enable `tagged_metrics` to be included in the `flow_metrics` response by setting `get_metrics.flow.tagged_metrics.include=true`. 
+ - User can set `get_metrics.flow.tagged_metrics.include=false` not to include `tagged_metrics` in the `flow_metrics` response. 
  - Specific `tagged_metrics` can be fetched by setting `get_metrics.flow.tagged_metrics.filters[i].name`.
  
 #### Known Issues
