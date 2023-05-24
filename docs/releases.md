@@ -1,6 +1,144 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-3889 (Latest)
+## Release  v0.0.1-4064 (Latest)
+> 18th May, 2023
+
+#### About
+
+This build includes bug fix.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.11.8](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.8/artifacts/openapi.yaml)         |
+| snappi                        | [0.11.14](https://pypi.org/project/snappi/0.11.14)        |
+| gosnappi                      | [0.11.14](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
+| ixia-c-controller             | [0.0.1-4064](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.02.21.17](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.11.8-12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.11.13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-4064](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+# Bug Fix(s)
+* [Stop exposing TLS 1.0/1.1 ](https://github.com/open-traffic-generator/ixia-c/issues/125) in `ixia-c-controller`.
+ 
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-4013
+> 5th May, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.11.8](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.8/artifacts/openapi.yaml)         |
+| snappi                        | [0.11.14](https://pypi.org/project/snappi/0.11.14)        |
+| gosnappi                      | [0.11.14](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
+| ixia-c-controller             | [0.0.1-4013](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.299](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.11.8-8](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.11.13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-4013](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+# Release Features(s)
+* Egress tracking now also supports tracking for `vlan`, `mpls` packet headers.
+* Support added in `ixia-c-gnmi-server` for fetching Latency measurements.
+  - User can enable latency measurement by setting `f1.Metrics().SetEnable(true).Latency().SetEnable(true)`.
+    - Only `cut_through` latency mode  is supported.
+  - User can fetch latency measurements using given models-yang path.
+    ```
+      module: open-traffic-generator-flow
+      +--rw flows
+        +--ro flow* [name]
+            +--ro name              -> ../state/name
+            +--ro state
+            |  ....
+            |  ....
+            |  +--ro minimum-latency?   otg-types:timeticks64
+            |  +--ro maximum-latency?   otg-types:timeticks64
+            |  +--ro average-latency?   otg-types:timeticks64
+            |  ....
+            |  ....
+
+    ```
+
+# Bug Fix(s)
+* Intermittent crash in ixia-c-controller while fetching `flow_metrics` is fixed.
+ 
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-3927
+> 24th April, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.11.8](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.8/artifacts/openapi.yaml)         |
+| snappi                        | [0.11.14](https://pypi.org/project/snappi/0.11.14)        |
+| gosnappi                      | [0.11.14](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
+| ixia-c-controller             | [0.0.1-3927](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.298](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.11.8-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.11.10](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-3927](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+# Release Features(s)
+* A new property `egress_packet` inside flow has been introduced to configure expected packet shape as it is received on the test port.
+      ```go
+        eth := flow.EgressPacket().Add().Ethernet()
+        ipv4 := flow.EgressPacket().Add().Ipv4()
+      ```
+* A new property `metric_tags` has been introduced for fields inside headers configured in `egress_packet` to enable tracking metrics for each applicable value corresponding to a portion of or all bits inside the field.
+    ```go
+      ipv4Tag := ipv4.Dst().MetricTags().Add()
+      ipv4Tag.SetName("flow_ipv4_dst")
+      ipv4Tag.SetOffset(24)
+      ipv4Tag.SetLength(8)
+    ```
+   -  As of this release, enabling metric_tags is only supported on ethernet.src/dst, ipv4.src/dst, ipv4.tos. Support for more fields shall be added in upcoming releases.
+
+  - Limitations:
+    - The total number of tracking bits available on an ixia-c Rx port is 12 bits. Out of these some of the bits are needed for tracking flows, example 2 flows need 1 bit, 4 flows need 2 bits, 8 flows need 3 bits etc. The sum of `metric_tag.length` for each field inside each header configured in `egress_packet` cannot exceed the remaining bits available on the Rx port.
+    - The total number of tracking fields that can be configured across a set of flows which have the same Rx port, is two.
+
+* A new property is introduced in `get_metrics.flow` to fetch tagged metrics.
+ - User can set `get_metrics.flow.tagged_metrics.include=false` not to include `tagged_metrics` in the `flow_metrics` response. 
+ - Specific `tagged_metrics` can be fetched by setting `get_metrics.flow.tagged_metrics.filters[i].name`.
+ 
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-3889
 > 31st March, 2023
 
 #### About

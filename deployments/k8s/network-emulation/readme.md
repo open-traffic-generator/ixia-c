@@ -82,6 +82,8 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
 
     # download meshnet image
     docker pull networkop/meshnet:latest
+    # download init image
+    docker pull networkop/init-wait:latest
 
     # push images to nodes
     kind load docker-image ghcr.io/open-traffic-generator/licensed/ixia-c-controller:0.0.1-3889
