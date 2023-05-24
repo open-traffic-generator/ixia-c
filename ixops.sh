@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set +x
+
 # This file contains paths pointing to some binaries whose paths
 # may not already be known to current shell, hence source it before execution
 DOT_PROFILE="${HOME}/.profile"
