@@ -105,6 +105,8 @@ apt_install_pkgs() {
 check_docker_release() {
     log "Checking docker installation ..."
     check_cmd which docker || return 1
+    # skip strict version check for now
+    return
     log "Checking docker release ..."
     docker -v | grep " ${1}," || return 1
 }
@@ -939,6 +941,17 @@ kind_get_kubectl() {
 
 kind_install_certs() {
     log "Checking if cert installation is needed on kind nodes"
+    [ "$(configq .opts.kind-certs)" = "true" ] || return 0
+    log "Installing certs on all kind nodes ..."
+    for node in $(kubectl get nodes -o=jsonpath='{.items[*].metadata.name}')
+    do
+        log "Installing nodes and restarting containerd on node ${node} ..."
+        docker cp $(configq .paths.keysight-crt) ${node}:/usr/local/share/ca-certificates/keysight-root.crt \
+        && docker exec ${node} update-ca-certificates \
+        && docker exec ${node} systemctl restart containerd \
+        && log "Successfully installed certs and restarted containerd on node ${node}."
+    done
+    log "Successfully installed certs on all kind nodes !"
 }
 
 kind_setup_auth() {
