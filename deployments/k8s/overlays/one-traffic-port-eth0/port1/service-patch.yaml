@@ -1,6 +1,0 @@
-- op: replace
-  path: /metadata/name
-  value: otg-port1
-- op: replace
-  path: /spec/selector/role
-  value: otg-port1

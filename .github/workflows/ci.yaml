@@ -1,0 +1,37 @@
+name: CI
+
+env:
+  PYTHON_VERSION: "3.8"
+  GO_VERSION: "1.20"
+
+on:
+  push:
+
+jobs:  
+  kne-pdp-ixia-c-arista-ceos:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup docker
+        uses: docker-practice/actions-setup-docker@master
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - name: Setup KNE cluster
+        run: |
+          GITHUB_USER=${{ secrets.ENV_GITHUB_USER }} GITHUB_PAT=${{ secrets.ENV_GITHUB_PAT }} ./ixops.sh new_kne_cluster
+      - name: Deploy KNE topology
+        run: |
+          ./ixops.sh new_kne_topo deployments/kne/pdp/ixia-c-arista-ceos.yaml
+      - name: Archive logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: kne-pdp-ixia-c-arista-ceos
+          path: |
+            ixops.log
+      - name: Teardown KNE topology
+        run: |
+          ./ixops.sh rm_kne_topo deployments/kne/pdp/ixia-c-arista-ceos.yaml

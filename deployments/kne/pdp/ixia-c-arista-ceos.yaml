@@ -1,0 +1,48 @@
+name: ixia-c
+nodes:
+  - name: otg
+    vendor: KEYSIGHT
+    version: $(configq .releases.ixia-c)
+    services:
+      8443:
+        name: https
+        inside: 8443
+      40051:
+        name: grpc
+        inside: 40051
+      50051:
+        name: gnmi
+        inside: 50051
+  - name: dut
+    vendor: ARISTA
+    model: ceos
+    os: eos
+    config:
+      file: arista-ceos.config
+      config_path: /mnt/flash
+      config_file: startup-config
+      image: $(configq .images.arista-ceos.path):$(configq .images.arista-ceos.tag)
+      cert:
+        self_signed:
+          cert_name: gnmiCert.pem
+          key_name: gnmiCertKey.pem
+          key_size: 4096
+    services:
+      22:
+        name: ssh
+        inside: 22
+      6030:
+        name: gnmi
+        inside: 6030
+      9340:
+        name: gribi
+        inside: 9340
+links:
+  - a_node: otg
+    a_int: eth1
+    z_node: dut
+    z_int: eth1
+  - a_node: otg
+    a_int: eth2
+    z_node: dut
+    z_int: eth2

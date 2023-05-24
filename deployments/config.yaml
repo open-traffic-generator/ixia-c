@@ -1,0 +1,141 @@
+opts:
+  # when enabled, ghcr.io login shall be initiated
+  # before cluster creation and the resulting docker
+  # config containing credentials shall be mapped to
+  # kubelet config inside kind cluster nodes to allow
+  # pulling images restricted by ACL during pod creation
+  kind-auth: true
+  # list certificates present locally which shall be installed
+  # inside all nodes of kind cluster post cluster creation
+  kind-certs: []
+  # when enabled, k9s shall be installed, allowing access to
+  # interactive terminal UI for managing kubernetes resources
+  get-k9s: true
+  # this list is used to install vendor-specific operators for DUTs
+  # during K8S cluster creation for KNE
+  duts:
+    - arista-ceos
+
+releases:
+  docker: 23.0.5
+  kind: v0.18.0
+  k9s: v0.27.3
+  metallb: v0.13.9
+  meshnet: 56abbfc
+  kne: v0.1.11
+  # this is used as a release version for ixia-c
+  # in config map for ixia-c-operator and KNE topology file;
+  # if the 'v' prefix is replaced with an actual release, then
+  # the config map for ixia-c-operator shall be ignored and it
+  # will be downloaded from ixia-c release page
+  ixia-c: v0.0.1-3927
+  gosnappi: v0.11.14
+  ondatra: v0.1.12
+  featureprofiles: 2fb1368
+
+# information needed to pull or load most of the container images
+# used throughout script execution;
+# each image shall have at least three attributes:
+# - path: path to be used for container image
+# - tag: tag to be used for container image
+# - preload: a boolean indicating whether images shall be automatically
+#           pulled inside all cluster nodes during pod creation (when false)
+#           or images shall be pulled on the host (outside cluster) and
+#           loaded to all cluster nodes thereafter before pod creation (when true)
+images:
+  ixia-c-operator:
+    path: ghcr.io/open-traffic-generator/ixia-c-operator
+    tag: 0.3.1
+    preload: false
+  ixia-c-controller:
+    # production path
+    path: ghcr.io/open-traffic-generator/licensed/ixia-c-controller
+    # alternate paths:
+    # community distribution of controller
+    # path: ghcr.io/open-traffic-generator/ixia-c-controller
+    # unrestricted controller from internal artifactory
+    # path: docker-remote-athena-cos.artifactorylbj.it.keysight.com/controller
+    tag: 0.0.1-3927
+    preload: false
+  ixia-c-traffic-engine:
+    # production path
+    path: ghcr.io/open-traffic-generator/ixia-c-traffic-engine
+    # alternate paths:
+    # traffic-engine from internal artifactory
+    # path: docker-local-ixvm-lbj.artifactorylbj.it.keysight.com/athena-traffic-engine
+    tag: 1.6.0.35
+    preload: false
+  ixia-c-protocol-engine:
+    # production path
+    path: ghcr.io/open-traffic-generator/licensed/ixia-c-protocol-engine
+    # alternate paths:
+    # protocol-engine from internal artifactory
+    # path: docker-local-nas.artifactorylbj.it.keysight.com/packages_rustic/l23_protocols
+    tag: 1.00.0.298
+    preload: false
+  ixia-c-gnmi-server:
+    # production path
+    path: ghcr.io/open-traffic-generator/ixia-c-gnmi-server
+    tag: 1.11.12
+    preload: false
+  ixia-c-ixhw-server:
+    # production path
+    path: ghcr.io/open-traffic-generator/ixia-c-ixhw-server
+    tag: 0.11.8-1
+    preload: false
+  ixia-c-app-usage-reporter:
+    path: ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
+    tag: 0.0.1-47
+    preload: false
+  arista-ceos:
+    path: ghcr.io/open-traffic-generator/ceos
+    tag: 4.29.1F-29233963
+    preload: false
+  arista-ceos-operator:
+    path: ghcr.io/aristanetworks/arista-ceoslab-operator
+    tag: v2.0.1
+    preload: false
+  meshnet:
+    path: networkop/meshnet
+    tag: v0.3.0
+    preload: false
+
+sources:
+  kne: github.com/openconfig/kne
+  kind: sigs.k8s.io/kind
+  k9s: github.com/derailed/k9s
+  metallb: https://raw.githubusercontent.com/metallb/metallb/$(configq .releases.metallb)/config/manifests/metallb-native.yaml
+  meshnet: https://github.com/networkop/meshnet-cni
+  ixia-c-operator: https://github.com/open-traffic-generator/ixia-c-operator/releases/download/v$(configq .images.ixia-c-operator.tag)/ixiatg-operator.yaml
+  arista-ceos-operator: https://github.com/aristanetworks/arista-ceoslab-operator/config/default?ref=$(configq .images.arista-ceos-operator.tag)
+  ondatra: https://github.com/openconfig/ondatra
+  featureprofiles: https://github.com/openconfig/featureprofiles
+  snappi: https://github.com/open-traffic-generator/snappi
+  gosnappi: https://github.com/open-traffic-generator/snappi/gosnappi
+
+timeouts:
+  kind: 300
+  pod-ready: 300
+  namespace-cleanup: 300
+  sock-ready: 60
+
+paths:
+  kind-config: deployments/k8s/kind.yaml
+  docker-config: deployments/k8s/docker-config.json
+  metallb-config: deployments/k8s/metallb.yaml
+  ixia-c-config: deployments/k8s/ixia-c-config.yaml
+  meshnet: deployments/k8s/meshnet-cni
+
+# diagnostics:
+#   default:
+#     pod_yaml: true
+#     service_yaml: true
+#     include_files:
+#       - 
+#   ixia-c-controller:
+#     pod_yaml: true
+#     service_yaml: true
+#     include_files:
+#       - 
+#     execs:
+#       - 

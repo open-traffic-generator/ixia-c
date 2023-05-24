@@ -2,3 +2,9 @@ scratch
 env
 *.pcap
 *.log
+ixops.log
+deployments/k8s/kubectl
+deployments/k8s/docker-config.json
+deployments/k8s/metallb.yaml
+deployments/k8s/meshnet-cni/
+.*.yaml
