@@ -270,7 +270,7 @@ login_ghcr() {
         docker login ghcr.io || err_exit "Could not login to ghcr.io" 1
     else
         log "Logging into ghcr.io using credentials provided in config.yaml"
-        echo "${GITHUB_PAT}" | docker login -u"${GITHUB_USER}" --password-stdin ghcr.io
+        echo "${GITHUB_PAT}" | docker login -u"${GITHUB_USER}" --password-stdin ghcr.io || return 1
     fi
     log "Successfully logged into ghcr.io !"
 }
