@@ -14,7 +14,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Setup docker
-        uses: docker-practice/actions-setup-docker@master
+        uses: docker-practice/actions-setup-docker@v1
       - name: Setup Go
         uses: actions/setup-go@v3
         with:
