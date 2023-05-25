@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set +x
-
 # This file contains paths pointing to some binaries whose paths
 # may not already be known to current shell, hence source it before execution
 DOT_PROFILE="${HOME}/.profile"
@@ -1531,8 +1529,16 @@ exec_func() {
     ${cmd} ${@} 2>&1 || err_exit "Failed executing: ${cmd} ${@}" 1
 }
 
+# undo mkfifo upon exit
+trap "rm -rf pipe" EXIT
+
 case $1 in
     *   )
-        exec_func ${@} | tee -a "${IXOPS_LOG}"
+        # just piping the command to tee results in 0 exit code
+        # even when the command exits with non-zero exit code
+        # https://stackoverflow.com/questions/1221833/pipe-output-and-capture-exit-status-in-bash
+        mkfifo pipe
+        tee -a "${IXOPS_LOG}" < pipe &
+        exec_func ${@} > pipe
     ;;
 esac
