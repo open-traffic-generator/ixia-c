@@ -12,7 +12,7 @@ CONFIG_YAML=$(pwd)/deployments/config.yaml
 IXOPS_LOG=$(pwd)/ixops.log
 
 DOT_KUBE="${HOME}/.kube"
-DOCKER_CONFIG="${HOME}/.docker/config.json"
+HOST_DOCKER_CONFIG="${HOME}/.docker/config.json"
 
 GO_RELEASE="1.20.4"
 GO_SOURCE="https://dl.google.com/go/go${GO_RELEASE}.linux-amd64.tar.gz"
@@ -258,9 +258,9 @@ ixia_c_controller_img() {
 
 login_ghcr() {
     log "Checking if ghcr.io login is needed ..."
-    if [ -f "${DOCKER_CONFIG}" ]
+    if [ -f "${HOST_DOCKER_CONFIG}" ]
     then
-        check_cmd grep ghcr.io "${DOCKER_CONFIG}" && log "Already logged into ghcr.io" && return
+        check_cmd grep ghcr.io "${HOST_DOCKER_CONFIG}" && log "Already logged into ghcr.io" && return
     fi
 
     log "Not logged into ghcr.io, attempting login ..."
@@ -958,7 +958,7 @@ kind_setup_auth() {
     [ "$(configq .opts.kind-auth)" != "true" ] && log "Skipping ghcr.io authentication for kind cluster" && return
     log "Setting up ghcr.io authentication for kind cluster ..."
     login_ghcr \
-    && cp ${DOCKER_CONFIG} $(configq .paths.docker-config) \
+    && cp ${HOST_DOCKER_CONFIG} $(configq .paths.docker-config) \
     && log "Successfully setup ghcr.io authentication for kind cluster !"
 }
 
