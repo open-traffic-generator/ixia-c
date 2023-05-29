@@ -21,7 +21,7 @@ releases:
   kind: v0.18.0
   k9s: v0.27.3
   metallb: v0.13.9
-  meshnet: 56abbfc
+  meshnet: d7c306c
   kne: v0.1.11
   # this is used as a release version for ixia-c
   # in config map for ixia-c-operator and KNE topology file;
