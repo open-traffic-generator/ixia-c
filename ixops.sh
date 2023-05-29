@@ -1303,7 +1303,7 @@ new_kne_topo() {
     cat ${topo}
     ns=$(yq .name ${topo})
 
-    kne create ${topo} \
+    kne -v 3 create --timeout "15m" ${topo} \
     && wait_for_pods ${ns} \
     && wait_for_services ${ns} \
     && log "Successfully created topology !"
@@ -1317,7 +1317,7 @@ rm_kne_topo() {
     cat ${topo}
     ns=$(yq .name ${topo})
 
-    kne delete ${topo} \
+    kne -v 3 delete ${topo} \
     && wait_for_no_namespace ${ns} \
     && log "Successfully deleted topology !"
 }

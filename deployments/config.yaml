@@ -10,7 +10,7 @@ opts:
   kind-certs: []
   # when enabled, k9s shall be installed, allowing access to
   # interactive terminal UI for managing kubernetes resources
-  get-k9s: true
+  get-k9s: false
   # this list is used to install vendor-specific operators for DUTs
   # during K8S cluster creation for KNE
   duts:

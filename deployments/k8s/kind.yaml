@@ -17,4 +17,10 @@ nodes:
     - containerPath: /var/lib/kubelet/config.json
       hostPath: deployments/k8s/docker-config.json
   # replicate following for multi-node cluster with intended number of worker nodes
-  # - role: worker
+  # - role: workers
+containerdConfigPatches:
+- |-
+  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."ghcr.io"]
+    endpoint = ["https://ghcr.io"]
+  [plugins."io.containerd.grpc.v1.cri".registry.configs."ghcr.io".tls]
+    insecure_skip_verify = true
