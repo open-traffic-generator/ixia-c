@@ -5,7 +5,7 @@
 
 #### About
 
-This build includes bug fix.
+This build includes new features.
 
 #### Build Details
 
@@ -22,6 +22,21 @@ This build includes bug fix.
 | ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.14](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4124](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+# Release Features(s)
+* Support added for weighted pairs for packet size distribution in traffic flows.
+  - `predefined` packet size distributions supported are `imix`, `ipsec_imix`, `ipv6_imix`, `standard_imix`, `tcp_imix`. It can be configured as follows:
+    ```go 
+      myFlow.Size().WeightPairs().SetPredefined(gosnappi.FlowSizeWeightPairsPredefined.IMIX)
+    ```
+  - Custom packet size distribution is also supported. It can configured as follows,
+    ```go
+      customWeightPairs := myFlow.Size().WeightPairs().Custom()
+      customWeightPairs.Add().SetSize(64).SetWeight(7)
+      customWeightPairs.Add().SetSize(570).SetWeight(4)
+      customWeightPairs.Add().SetSize(1518).SetWeight(1)
+    ```
+* Support is added for egress tracking based on IPv4 total length.
 
  
 #### Known Issues
