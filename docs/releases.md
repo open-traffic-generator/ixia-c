@@ -24,7 +24,58 @@ This build includes new features.
 | ixia-c-one                    | [0.0.1-4139](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 # Release Features(s)
-* TBD
+* Support added for multiple Rx endpoints both port traffic.
+  ```go
+  // Port Traffic
+  flow.SetName("flow:p1->p2,p3").
+    TxRx().Port().
+    SetTxName("p1").
+    SetRxNames([]string{"p2", "p3"})
+  ```
+* Support added for Rx port disaggregation of flow metrics.
+  ```go
+  flow := config.Flows().Add().SetName("flow")
+  flow.Metrics(). PredefinedMetricTags().SetRxName(true)
+  ```
+
+  ```json
+  // gNMI state fetch on flows will show the drilldown as given below
+  "updates": [
+    {
+    "Path": "flows/flow[name=f1]",
+    "values": {
+      "flows/flow": {
+      "open-traffic-generator-flow:name": "f1",
+      "open-traffic-generator-flow:state": {                     // Contains the aggregated per-flow stats
+        ....
+      },
+      "open-traffic-generator-flow:tag-metrics": {              // Contains the disaggregated per-flow stats
+        "tag-metric": [
+        {
+          "name-value": "rx_name=p2",
+          "state": {
+            ....
+            "name-value": "rx_name=p2",
+            "tags": [
+              {
+              "tag-name": "rx_name",
+              "tag-value": 
+                {
+                  "value-as-string": "p2",
+                  "value-type": "STRING"
+                }
+          ....
+        },
+        {
+          "name-value": "rx_name=p3",
+          "state": {
+            ....
+          }
+        }
+      ....
+    }
+  ]
+  ```
 
  
 #### Known Issues
