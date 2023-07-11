@@ -91,6 +91,7 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
     kind load docker-image ghcr.io/open-traffic-generator/licensed/ixia-c-protocol-engine:1.00.0.290
     kind load docker-image ubuntu:22.04
     kind load docker-image networkop/meshnet:latest
+    kind load docker-image networkop/init-wait:latest
 
     # make sure all intended images have been pushed correctly
     docker exec kind-control-plane crictl images
