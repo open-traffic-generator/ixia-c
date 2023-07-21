@@ -19,7 +19,7 @@ This build includes new features.
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.316](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
 | ixia-c-ixhw-server        | [0.11.10-13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
-| ixia-c-operator               | [0.3.3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.16](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4167](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
