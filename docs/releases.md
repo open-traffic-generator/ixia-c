@@ -1,6 +1,62 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-4139 (Latest)
+## Release  v0.0.1-4167 (Latest)
+> 21st July, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.11.10](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.10/artifacts/openapi.yaml)         |
+| snappi                        | [0.11.16](https://pypi.org/project/snappi/0.11.16)        |
+| gosnappi                      | [0.11.16](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.16)        |
+| ixia-c-controller             | [0.0.1-4167](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.316](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.11.10-13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.11.16](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-4167](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+
+# Release Feature(s)
+* Enabling `metric_tags` for egress tracking is now also supported on ipv6.src/dst, ipv6.traffic_class, ipv6.flow_label and ipv6.payload_length. <b><i>[Ixia-C]</i></b>
+  ```go
+    eth := flow.EgressPacket().Add().Ethernet()
+    ipv6 := flow.EgressPacket().Add().Ipv6()
+    ipv6Tag := ipv6.Dst().MetricTags().Add()
+    ipv6Tag.SetName("flow_ipv6_dst")
+    ipv6Tag.SetOffset(120)
+    ipv6Tag.SetLength(8)
+  ```
+* Support is available in gNMI to fetch the drill-down statistics for egress tracking as follows <b><i>[Ixia-C]</i></b> [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-flow.txt):
+    ```
+      1. Flow level metrics + Tagged Metrics:
+          example path: "flows/flow[name=f1]“
+      2. Only Flow level metrics:
+          example path: "flows/flow[name=f1]/state“
+      3. Only Tagged metrics 
+          example path: "flows/flow[name=f1]/tagged-metrics“
+      4. Filtered Tagged metrics: 
+          example path: "flows/flow[name=f1]/tagged-metrics/tagged-metric[name-value-pairs=flow_ipv6_dst=0x2]”
+    ```
+# Bug Fix(s)
+* For `flow.duration.continuous` type of traffic in Ixia-C, intermittent issue where last few packets in a traffic flow were not accounted for in `flow_metrics.frames_rx` statistics after stopping a flow is fixed.
+* Proper error mesage is propagated to user if user has used community edition of Ixia-C (instead of licensed edition) and invoked any API/Configuration not supported by it.
+  example: `Device configuration is not supported in free version of controller.`
+
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-4139
 > 29th June, 2023
 
 #### About
