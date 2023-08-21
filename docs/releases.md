@@ -25,7 +25,7 @@ This build includes new features.
 `
 
 # Release Feature(s)
-* Deprecated control, action and update API have been removed with `set_control_state`, `set_control_action` and `update_config` API. Please use refer to [go utils](https://github.com/open-traffic-generator/conformance/blob/main/helpers/otg/api.go) and [python utils](https://github.com/open-traffic-generator/conformance/blob/main/helpers/otg/otg.py) for usage.
+* Deprecated control, action and update API have been removed with `set_control_state`, `set_control_action` and `update_config` API. Please use refer to [go utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-2f28df5cf5ed455b[…]c48b9ac5ef7ac25e5a018a) and [python utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-205d55e3f01484e637c6b5b597a6dfb44e74638964605a23b20d5fa72e773a38) for usage.
 * Most properties in OTG with integer data type have been assigned correct integer format (from `uint32`, `uint64`, `int32` and `int64`). Please [click here](https://github.com/open-traffic-generator/models/pull/301) to examine all changes.
 
 
