@@ -25,8 +25,9 @@ This build includes new features.
 `
 
 # Release Feature(s)
-* Deprecated control, action and update API have been removed with `set_control_state`, `set_control_action` and `update_config` API. Please use refer to [go utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-2f28df5cf5ed455b[…]c48b9ac5ef7ac25e5a018a) and [python utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-205d55e3f01484e637c6b5b597a6dfb44e74638964605a23b20d5fa72e773a38) for usage.
+* Support for deprecated control, action and update APIs (`set_transmit_state`, `set_link_state`, `set_capture_state`, `update_flows`, `set_route_state`, `send_ping`, `set_protocol_state`, `set_device_state`) have been removed. Please use following `set_control_state`, `set_control_action` and `update_config` APIs instead of the previous ones. Please refer to [go utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-2f28df5cf5ed455b[…]c48b9ac5ef7ac25e5a018a) and [python utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-205d55e3f01484e637c6b5b597a6dfb44e74638964605a23b20d5fa72e773a38) for further details usage.
 * Most properties in OTG with integer data type have been assigned correct integer format (from `uint32`, `uint64`, `int32` and `int64`). Please [click here](https://github.com/open-traffic-generator/models/pull/301) to examine all changes.
+* Once you upgrade the new ixia-c release, in addition to removing the deprecated APIs from the test programs, data types of some variables in the test programs might need to be changed to avoid compilation errors.
 
 
 #### Known Issues
