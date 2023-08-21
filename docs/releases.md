@@ -25,9 +25,8 @@ This build includes new features.
 `
 
 # Release Feature(s)
-* Transmit state for UHD400 test ports can now be retrieved using `get_metrics` API with port choice.
-Deprecated control, action and update API have been removed with `set_control_state`, `set_control_action` and `update_config` API. Please use refer to [go utils](https://github.com/open-traffic-generator/conformance/blob/main/helpers/otg/api.go) and [python utils](https://github.com/open-traffic-generator/conformance/blob/main/helpers/otg/otg.py) for usage.
-Most properties in OTG with integer data type have been assigned correct integer format (from `uint32`, `uint64`, `int32` and `int64`). Please [click here](https://github.com/open-traffic-generator/models/pull/301) to examine all changes.
+* Deprecated control, action and update API have been removed with `set_control_state`, `set_control_action` and `update_config` API. Please use refer to [go utils](https://github.com/open-traffic-generator/conformance/blob/main/helpers/otg/api.go) and [python utils](https://github.com/open-traffic-generator/conformance/blob/main/helpers/otg/otg.py) for usage.
+* Most properties in OTG with integer data type have been assigned correct integer format (from `uint32`, `uint64`, `int32` and `int64`). Please [click here](https://github.com/open-traffic-generator/models/pull/301) to examine all changes.
 
 
 #### Known Issues
