@@ -1,6 +1,41 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-4306 (Latest)
+## Release  v0.0.1-4399 (Latest)
+> 21st August, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.12.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.12.1/artifacts/openapi.yaml)         |
+| snappi                        | [0.12.1](https://pypi.org/project/snappi/0.12.1)        |
+| gosnappi                      | [0.12.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.12.1)        |
+| ixia-c-controller             | [0.0.1-4399](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.320](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| ixia-c-ixhw-server        | [0.12.1-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
+| ixia-c-gnmi-server            | [1.12.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-4399](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+`
+
+# Release Feature(s)
+* Deprecated control, action and update API have been removed with `set_control_state`, `set_control_action` and `update_config` API. Please use refer to [go utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-2f28df5cf5ed455b[…]c48b9ac5ef7ac25e5a018a) and [python utils](https://github.com/open-traffic-generator/conformance/commit/ecffd7edf93a4e60105a263cc7a074e2abe26ae4#diff-205d55e3f01484e637c6b5b597a6dfb44e74638964605a23b20d5fa72e773a38) for usage.
+* Most properties in OTG with integer data type have been assigned correct integer format (from `uint32`, `uint64`, `int32` and `int64`). Please [click here](https://github.com/open-traffic-generator/models/pull/301) to examine all changes.
+
+
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.0.1-4306
 > 4th August, 2023
 
 #### About
