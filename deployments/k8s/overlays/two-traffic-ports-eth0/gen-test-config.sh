@@ -36,7 +36,7 @@ gen_config_common() {
 }
 
 gen_test_config() {
-    yml="otg_host: https://localhost:443
+    yml="otg_host: https://localhost:8443
         otg_ports:
           - port1
           - port2

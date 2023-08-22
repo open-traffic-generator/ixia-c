@@ -1,0 +1,51 @@
+apiVersion: networkop.co.uk/v1beta1
+kind: Topology
+metadata:
+  name: ixia-c-port1
+  namespace: ixia-c
+spec:
+  links:
+  - uid: 1
+    peer_pod: dut
+    local_intf: eth1
+    local_ip: 1.1.1.1/24
+    peer_intf: eth1
+    peer_ip: 1.1.1.2/24
+
+---
+
+apiVersion: networkop.co.uk/v1beta1
+kind: Topology
+metadata:
+  name: ixia-c-port2
+  namespace: ixia-c
+spec:
+  links:
+  - uid: 1
+    peer_pod: dut
+    local_intf: eth2
+    local_ip: 2.2.2.1/24
+    peer_intf: eth2
+    peer_ip: 2.2.2.2/24
+
+---
+
+apiVersion: networkop.co.uk/v1beta1
+kind: Topology
+metadata:
+  name: dut
+  namespace: ixia-c
+spec:
+  links:
+  - uid: 1
+    peer_pod: ixia-c-port1
+    local_intf: eth1
+    local_ip: 1.1.1.2/24
+    peer_intf: eth1
+    peer_ip: 1.1.1.1/24
+  - uid: 2
+    peer_pod: ixia-c-port2
+    local_intf: eth2
+    local_ip: 2.2.2.2/24
+    peer_intf: eth2
+    peer_ip: 2.2.2.1/24

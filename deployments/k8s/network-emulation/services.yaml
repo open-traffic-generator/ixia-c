@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-ixia-c-controller
+  namespace: ixia-c
+spec:
+  ports:
+    - name: https
+      port: 8443
+      protocol: TCP
+      targetPort: 8443
+      nodePort: 30443
+    - name: grpc
+      port: 40051
+      protocol: TCP
+      targetPort: 40051
+      nodePort: 30451
+  selector:
+    role: controller
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-ixia-c-port1
+  namespace: ixia-c
+spec:
+  ports:
+    - name: port-5555
+      port: 5555
+      protocol: TCP
+      targetPort: 5555
+    - name: port-50071
+      port: 50071
+      protocol: TCP
+      targetPort: 50071
+  selector:
+    role: port1
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-ixia-c-port2
+  namespace: ixia-c
+spec:
+  ports:
+    - name: port-5555
+      port: 5555
+      protocol: TCP
+      targetPort: 5555
+    - name: port-50071
+      port: 50071
+      protocol: TCP
+      targetPort: 50071
+  selector:
+    role: port2

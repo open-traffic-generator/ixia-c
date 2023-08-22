@@ -9,9 +9,9 @@
 </h4>
 
 <p align="center">
-  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller"><img alt="Release v0.0.1-3619" src="https://img.shields.io/badge/release-v0.0.1--3619-brightgreen"></a>
-  <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.9.1" src="https://img.shields.io/badge/open--traffic--generator-v0.9.1-brightgreen"></a>
-  <a href="https://pypi.org/project/snappi/0.9.4"><img alt="snappi v0.9.4" src="https://img.shields.io/badge/snappi-v0.9.4-brightgreen"></a>
+  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller"><img alt="Release v0.0.1-4399" src="https://img.shields.io/badge/release-v0.0.1--4399-brightgreen"></a>
+  <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.11.11" src="https://img.shields.io/badge/open--traffic--generator-v0.11.11-brightgreen"></a>
+  <a href="https://pypi.org/project/snappi/0.12.1"><img alt="snappi v0.12.1" src="https://img.shields.io/badge/snappi-v0.12.1-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
   <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
   <a href="docs/support.md"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
@@ -75,7 +75,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c && cd ixia-c
 
   # install snappi
-  python -m pip install --upgrade snappi==0.9.4
+  python -m pip install --upgrade snappi==0.12.1
   # run a standalone script to generate TCP traffic and fetch metrics
   python snappi-tests/scripts/quickstart_snappi.py
   ```
@@ -88,7 +88,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   ```python
   import snappi
   # create a new API instance over HTTPS transport where location points to controller
-  api = snappi.api(location="https://localhost", verify=False)
+  api = snappi.api(location="https://localhost:8443", verify=False)
   # OR
   # create a new API instance over gRPC transport where location points to controller
   api = snappi.api(location="localhost:40051", transport=snappi.Transport.GRPC)
@@ -127,15 +127,15 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 * Optionally, Generate Traffic Using [curl](https://curl.se/)
 
   >We can also pass equivalent **JSON configuration** directly to ixia-c controller, without installing snappi, using **curl**.  
-  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml).
+  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml).
 
   ```bash
   # push the contents of config file snappi-tests/configs/quickstart_snappi.json
-  curl -k https://localhost/config -H "Content-Type: application/json" -d @snappi-tests/configs/quickstart_snappi.json
+  curl -k https://localhost:8443/config -H "Content-Type: application/json" -d @snappi-tests/configs/quickstart_snappi.json
   # start transmitting configured flows
-  curl -k https://localhost/control/transmit -H  "Content-Type: application/json" -d '{"state": "start"}'
+  curl -k https://localhost:8443/control/transmit -H  "Content-Type: application/json" -d '{"state": "start"}'
   # fetch all port metrics
-  curl -k https://localhost/results/metrics -H  "Content-Type: application/json" -d '{"choice": "port"}}'
+  curl -k https://localhost:8443/monitor/metrics -H  "Content-Type: application/json" -d '{"choice": "port"}}'
   ```
 
 ### Key Features

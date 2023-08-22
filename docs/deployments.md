@@ -25,7 +25,7 @@ All these services are available as docker images on [GitHub Open-Traffic-Genera
   <img src="res/ixia-c-aur.drawio.svg"></img>
 </div>
 
-> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/227a2af), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
+> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
 
 ### Bootstrap
 
@@ -68,7 +68,7 @@ On most systems, `docker-compose` needs to be installed separately even when doc
   |-----------------------------|-----------|-------------------------|-----------------------------------------------------------------|
   | --debug                     |   Yes     | false                   | Enables high volume logs with debug info for better diagnostics.|
   | --disable-app-usage-reporter|   Yes     | false                   | Disables sending usage data to app-usage-reporter.              |
-  | --http-port                 |   Yes     | 443                     | TCP port for HTTP server.                                       |
+  | --http-port                 |   Yes     | 8443                     | TCP port for HTTP server.                                       |
   | --aur-host                  |   Yes     | https://localhost:5600  | Overrides location of app-usage-reporter.                       |
   | --accept-eula               |   No      | NA                      | Indicates that user has accepted EULA, otherwise controller won't boot up |
 
@@ -334,7 +334,7 @@ tests/env/bin/python -m pytest tests/py -m "sanity"
 
   ```json
   {
-   "controller": "https://localhost",
+   "controller": "https://localhost:8443",
     "ports": [
         "localhost:5555",
         "localhost:5556"
