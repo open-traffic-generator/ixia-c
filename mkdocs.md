@@ -23,8 +23,9 @@ This repo contains the content for the [Ixia-c.dev](https://ixia-c.dev/) web-sit
 1. Clone this repository and create Python virtual environment
 
     ```Shell
-    https://github.com/open-traffic-generator/ixia-c.git --recursive
+    git clone https://github.com/open-traffic-generator/ixia-c.git --recursive
     cd ixia-c
+    git checkout mkdocs
     python3 -m venv venv
     source venv/bin/activate
     ```
@@ -39,20 +40,19 @@ Update contents in the `docs` directory and verify locally prior to pushing to m
 
 ## How to verify contents locally
 
-1. Make sure that you have Material [installed](https://squidfunk.github.io/mkdocs-material/getting-started/)
-
-    ```sh
-    python3 -m pip install mkdocs-material
-    ```
-
-
-2. Run the following command:
+1. Run the following command to render the content in real-time via a local web server:
 
     ```sh
     mkdocs serve
     ```
 
-You can point your browser to `index.html` in the `site` directory to view it.
+2. Alternatively, you can render all static html content in the `site` directory:
+
+    ```sh
+    mkdocs build
+    ```
+
+    You can point your browser to `index.html` in the `site` directory to view it.
 
 ## Submodules
 
