@@ -158,7 +158,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   * Rate specification in pps (packets per second) or % line-rate
   * Ability to send bursts
 * Statistics
-  * Per port and per flow
+  * Per-port and per-flow
   * One way latency measurements (min, max, average) on a per flow basis
 * Capture
   * Packets with filters
