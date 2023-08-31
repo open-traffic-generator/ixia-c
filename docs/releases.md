@@ -50,7 +50,7 @@ This build includes new features.
 | ixia-c-protocol-engine        | [1.00.0.320](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
 | ixia-c-ixhw-server        | [0.12.1-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
 | ixia-c-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
-| ixia-c-gnmi-server            | [1.12.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-gnmi-server            | [1.12.2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4399](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 `
 
