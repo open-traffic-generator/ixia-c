@@ -1,11 +1,11 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.0.1-4431
-> 31st August, 2023
+## Release  v0.0.1-4435 (Latest)
+> 1st September, 2023
 
 #### About
 
-This build includes stability fixes.
+This build includes bug fixes.
 
 #### Build Details
 
@@ -14,16 +14,17 @@ This build includes stability fixes.
 | Open Traffic Generator API    | [0.12.2](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.12.2/artifacts/openapi.yaml)         |
 | snappi                        | [0.12.2](https://pypi.org/project/snappi/0.12.2)        |
 | gosnappi                      | [0.12.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.12.2)        |
-| ixia-c-controller             | [0.0.1-4431](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-controller             | [0.0.1-4435](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.325](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
 | ixia-c-ixhw-server        | [0.12.2-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
 | ixia-c-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.12.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
-| ixia-c-one                    | [0.0.1-4431](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [0.0.1-4435](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 `
-
+#### Bug Fix(s)
+* `set_config` fails with `unsuccessful Response: RX runtime not configured for port: ` if large port testbed is used on subsequent test runs is fixed.
 #### Known Issues
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
