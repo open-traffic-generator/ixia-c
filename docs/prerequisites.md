@@ -6,18 +6,22 @@
 
 ### CPU and RAM
 
-- `controller` - each instance requires at least 1 CPU core and 2GB RAM.
-- `traffic-engine` - each instance requires 2 dedicated CPU cores and 3GB dedicated RAM (FIXME).
+- `ixia-c-controller`      : each instance requires 1 dedicated CPU core and 2GB dedicated RAM.
+- `ixia-c-traffic-engine`  : each instance requires 2 dedicated CPU cores and 3GB dedicated RAM.
+- `ixia-c-protocol-engine` : each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per test port.
 
 ### OS and Software
 
 - x86_64 Linux Distribution (Centos 7+ or Ubuntu 18+ have been tested)
-- Python 2.7+ or Python 3.6+
 - Docker 19+ (as distributed by https://docs.docker.com/)
+- For test-environment,
+  - Python 3.6+ (with `pip`) or
+  - Go 1.17+
 
 ## Software Prerequisites
 
 ### Docker
+- Docker Engine (Community Edition)
 
 ### Python
 
@@ -48,7 +52,7 @@
 
 ## Network Interface Prerequisites
 
-In order for Ixia-c Traffic Engine to function, several settings need to be tuned on the host system as described below.
+In order for `ixia-c-traffic-engine` to function, several settings need to be tuned on the host system as described below.
 
 1. Ensure existing network interfaces are `Up` and have `Promiscuous` mode enabled.
 
@@ -60,7 +64,7 @@ In order for Ixia-c Traffic Engine to function, several settings need to be tune
    ip link set eth1 promisc on
    ```
 
-2. (Optional) To deploy `traffic-engine` against veth interface pairs, you need to create them as follows:
+2. (Optional) To deploy `ixia-c-traffic-engine` against veth interface pairs, you need to create them as follows:
 
    ```sh
    # create veth pair veth1 and veth2
