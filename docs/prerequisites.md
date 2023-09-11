@@ -6,7 +6,13 @@
 
 ### CPU and RAM
 
-Details covered under Minimum Resource Requirement.
+Recommended resources for basic use-case are as mentioned below,
+
+- `ixia-c-controller`      - each instance requires at least 1 CPU core and 2GB RAM.
+- `ixia-c-traffic-engine`  - each instance requires 2 dedicated CPU cores and 3GB dedicated RAM.
+- `ixia-c-protocol-engine` - each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per port.
+
+For more granularity on resource requirements for advanced deployments, please refer to [Resource requirement for advanced deployments](#resource-requirement-for-advanced-deployments).
 
 ### OS and Software
 
@@ -53,6 +59,7 @@ Details covered under Minimum Resource Requirement.
 In order for `ixia-c-traffic-engine` to function, several settings need to be tuned on the host system as described below.
 
 1. Ensure existing network interfaces are `Up` and have `Promiscuous` mode enabled.
+- following example illustrates above for a sample configured interface `eth1`
 
    ```sh
    # check interface details
@@ -71,7 +78,7 @@ In order for `ixia-c-traffic-engine` to function, several settings need to be tu
    ip link set veth2 up
    ```
 
-## Minimum resource requirement
+## Resource requirement for advanced deployments
 
 The minimum memory and cpu requirements for each ixia-c components are captured in the following table. Kubernetes metrics server has been used to collect resource usage data. The memory represents the minimum working set memory required, and for protocol and traffic engines, varies depending on the number of co-located ports e.g. when multiple ports are added to a 'group' for LAG use-cases when a single test container has more than one test NIC connected to the DUT. The figures are in Mi or MB per container and does not include shared or cached memory across multiple containers/pods in a system.
 
