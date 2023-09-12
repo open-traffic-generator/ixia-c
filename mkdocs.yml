@@ -52,6 +52,7 @@ nav:
   - User Guide:
     - Intro: ug_intro.md
     - Prerequisites: prerequisites.md
+    - Resource requirement for advanced deployments: reference_advanced_deployments.md
     - Deployment: deployments.md
     - Use cases: usecases.md
     - Integrated environments: int_env.md
