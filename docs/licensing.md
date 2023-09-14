@@ -5,7 +5,7 @@ Description of licensing server (VM) and 3 levels of licenses we provide (take f
 Keysight Elastic Network Generator (KENG) provides three level of subscriptions.
 
 
-  | Capability                          | Developer (939-9001) | Team  (939-9002)               | System (939-9003)                   |
+  | Capability                          | Developer            | Team                           | System                              |
   |-------------------------------------|----------------------|--------------------------------|-------------------------------------|
   | Software Traffic Port Capacity*     |  50GE                |  400GE                         | 800GE                               |
   | Test Concurrency**                  |  1 Seat              |  8 Seats                       | 16 Seats                            |
@@ -18,6 +18,8 @@ Keysight Elastic Network Generator (KENG) provides three level of subscriptions.
  \*\* **Test seat concurrency** applies to quanitity of running controller instances with a configuration that exceeds capabilities of the Keysight Elastic Network Generator Community Edition
 
  ### KENG License Server
+
+ 
 
  
 
