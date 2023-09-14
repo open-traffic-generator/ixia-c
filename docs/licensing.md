@@ -65,8 +65,8 @@ KVM Resource requirements:
     | shutdown (Seconds)  | Gracefully shuts down the VM in (Seconds) seconds, which is an integer that is at least 10  |
     | tILU [--offline]  | Starts the interactive Text Based License Utility (ILU) on this server.  Use the optional argument "--offline" to go straight into the Offline Operations screen. |
     
-### Install/Uninstall license in license server VM
-1. Get avtivation code from Keysight support.
+### Install/uninstall licenses in license server VM
+1. Get activation code from Keysight support.
 2. SSH to license cli using SSH Key:
     ```sh
     ssh -i id_rsa license_cli@<license_server_ip_address>
