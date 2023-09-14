@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
 ## Release  v0.0.1-4478 (Latest)
-> 1st September, 2023
+> 14th September, 2023
 
 #### About
 
