@@ -1,11 +1,12 @@
-# Ixia Chassis/Appliances tests
+# Ixia Chassis/Appliances
  This section describes how to use KENG with Keysight's Ixia hardware chassis.
 
 **Prerequisites**
 
-To run KENG tests with Ixia hardware, the following prerequisites must be satisfied:
+To run KENG tests with Ixia hardware, the following pre-requisites must be satisfied:
 
-- You must have access to Keysight Elastic Network Generator (KENG) images and a valid KENG license. For information on how to deploy and activate a KENG license, see the Licensing section of the User Guide).
+- You must have access to Keysight Elastic Network Generator (KENG) images and a valid KENG license.
+- For information on how to deploy and activate a KENG license, see the Licensing section of the User Guide.
 - The test hardware must be Keysight Ixia Novus or AresOne [Network Test Hardware](https://www.keysight.com/us/en/products/network-test/network-test-hardware.html) with [IxOS](https://support.ixiacom.com/ixos-software-downloads-documentation) 9.20 Patch 4 or higher.  
 **NOTE:**  Currently, only Linux-based IxOS platforms are supported with KENG.
 - There must be physical link connectivity between the test ports on the Keysight Ixia Chassis and the devices under test (DUTs).
@@ -46,21 +47,23 @@ To run KENG tests with Ixia hardware, the following prerequisites must be satisf
 
 **Deployment Layout**
 
-The image below shows a complete topology of a KENG test environement.
+The image below shows a complete topology of a KENG test environment.
 
-To run tests with KENG, the tests must be written using the  OpenTrafficGenerator (OTG) API and gNMI APIs.
+To run tests with KENG, the tests must be written using the  OpenTrafficGenerator (OTG) API.
 
-If KENG is deployed successfully, the services shown in the block labeled Keysight Elastic Network Generator will be running.
+Telemetry is also supported using gNMI APIs.
 
-The KENG services interact with the Keysight Ixia hardware chassis to configure protocols and data traffic.
+If KENG is deployed successfully, the services shown in the block labeled 'Keysight Elastic Network Generator' will be running.
+
+KENG services interact with the Keysight Ixia hardware chassis to configure protocols and data traffic.
 
 ![ ](res/hw-server.drawio.svg)
 
 **Deploying KENG**
 
-The Docker Compose tool provides is a convenient way to deploy and bootstrap KENG.
+The Docker Compose tool provides a convenient way to deploy KENG services.
 
-Tests cannot be run until the KENG services are deployed and running.
+Tests cannot be run until KENG services are deployed and running.
 
 The following procedure shows an example of how to deploy using Docker Compose.
 
@@ -137,11 +140,15 @@ logging:
 The list of containers should include:
 - `ixia-c-controller`
 - `ixia-c-ixhw-server`
-- `ixia-c-gnmi-server`
+- `ixia-c-gnmi-server`  (optional if gNMI access is needed)
 
-When the controller and ixhw-server services are running, the deployment is bootstrapped ready to run a test.
+When the controller and ixhw-server services are running, the deployment is ready to run a test.
 
+**Test port references**
 
+KENG uses '/config.ports.locations' parameter to determine the test ports involved in the test.
 
+The ‘/config.ports.locations’ parameter needs to be set to reference a test port. 
 
+This parameter is to be specified in a ‘chassis ip;card;port’ format.
 
