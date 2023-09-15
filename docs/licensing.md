@@ -1,8 +1,11 @@
 # Licensing 
 
-Description of licensing server (VM) and 3 levels of licenses we provide (take from datasheet)
-## KENG License Server
-## Deploying the Keysight license server on KVM
+Description of licensing server (VM) and 3 levels of licenses. 
+## Keysight Elastic Network Generator(KENG) License Server
+
+Keysight utilizes a license server for use of floating or network shared licenses with its software products. The license server enables licenses to float and not be tied to one specific computer, so that they can be accessed by ip or hostname of the license server controller(s) from multiple ixia-c topologies. Reachability of license server from ixia-c controller(s) is MUST condition. 
+
+## Deploying the Keysight License Server on KVM
 KVM Resource requirements:
   
   * 2 CPU Cores
@@ -10,7 +13,7 @@ KVM Resource requirements:
   * Minimum 10GB of storage
   * 1 available physical bridged adapter on KVM for management connectivity
 
-### To deploy Keysight license server from qcow2 image:
+### To deploy Keysight License Server from QCOW2 image:
 1. Download deployment script `ixia_c_license_server_kvm_release.sh` to install license server VM.
     ```sh
     # Download script
@@ -49,9 +52,9 @@ KVM Resource requirements:
 
     | Commands                                                | Description  | 
     |---------------------------------------------------------|-----------|
-    | show ip                                                 |   Shows the current IP address and netmask information for the management interface     | 
+    | show ip                                                 | Shows the current IP address and netmask information for the management interface     | 
     | show licenses                                           | Shows the currently installed licenses  |
-    | show dns-servers                                        | Show the DNS servers configured |
+    | show dns-servers                                        | Shows the DNS servers configured |
     | show license-server-status                              | Shows the current status of the License Server (active or not active, etc)  |
     | show license-server-auto-start                          | Shows the status of the "license-server-auto-start" flag  |
     | show dropbox                                            | Shows the files that are located in the "dropbox".  These are files that can be imported manually |
