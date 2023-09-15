@@ -1,20 +1,43 @@
 # Licensing 
 
-Description of licensing server (VM) and 3 levels of licenses. 
-## Keysight Elastic Network Generator(KENG) License Server
+## KENG licenses
+The following licenses are available for KENG:
 
-Keysight utilizes a license server for use of floating or network shared licenses with its software products. The license server enables licenses to float and not be tied to one specific computer, so that they can be accessed by ip or hostname of the license server controller(s) from multiple ixia-c topologies. Reachability of license server from ixia-c controller(s) is MUST condition. 
 
-## Deploying the Keysight License Server on KVM
+  | Capability                          | Developer            | Team                           | System                              |
+  |-------------------------------------|----------------------|--------------------------------|-------------------------------------|
+  | Software Traffic Port Capacity*     |  50GE                |  400GE                         | 800GE                               |
+  | Test Concurrency**                  |  1 Seat              |  8 Seats                       | 16 Seats                            |
+  | Software and UHD400T Protocol Scale |  Limited             |  Limited                       | UnLimited                           |
+  | Works with UHD400T Hardware         |  N                   |  Y                             | Y                                   |
+  | Works with IXOS Hardware            |  N                   |  N                             | Y                                   |
+
+ \* **Maximum Data Plane performance** of a software port may be less than the included software traffic port capacity, depending on configuration.
+
+ \*\* **Test seat concurrency** applies to quantity of running controller instances with a configuration that exceeds the capabilities of the KENG Community Edition.
+
+## Keysight license server
+
+Keysight uses a license server to manage floating or network shared licenses for its software products. The license server enables licenses to float and not be tied to a specific host, so that they can be accessed by IP or hostname of the license server controllers from multiple ixia-c topologies. The ixia-c controllers MUST be able to reach the license server. 
+
+## Deploying the Keysight license server on KVM
 KVM Resource requirements:
   
-  * 2 CPU Cores
+  * 2 CPU cores
   * 4 GB of RAM
   * Minimum 10GB of storage
   * 1 available physical bridged adapter on KVM for management connectivity
 
-### To deploy Keysight License Server from QCOW2 image:
-1. Download deployment script `ixia_c_license_server_kvm_release.sh` to install license server VM.
+### To deploy the Keysight License Server from a QCOW2 image:
+
+
+
+1. Download the following license server VM deployment script:
+
+ 	 `ixia_c_license_server_kvm_release.sh`
+
+	and use the following commands to run the script and deploy the VM: 
+
     ```sh
     # Download script
     curl -o ixia_c_license_server_kvm_release.sh https://<location>/ixia_c_license_server_kvm_release.sh
@@ -31,15 +54,15 @@ KVM Resource requirements:
 
     | Parameters          |Description  | 
     |---------------------|--------------|
-    | VM Name             | Name of this VM will be assigned     | 
-    | IP Address          | IP Address assigned to this VM. Must be a valid IP address \(Ex: 1.2.3.4\) or "DHCP"     | 
-    | Netmask             | Netmask used by the VM, in "IP Address" format \(Ex: 1.2.3.4\) or "DHCP"     | 
-    | Gateway             | Gateway IP Address for this VM, or "DHCP"     | 
+    | VM Name             | Name assigned to the VM   | 
+    | IP Address          | IP address assigned to the VM. Can be either a static IP address \(such as: 1.2.3.4\) or "DHCP"     | 
+    | Netmask             | Netmask used by the VM, in dotted-decimal format \(such as: 1.2.3.4\) or "DHCP"     | 
+    | Gateway             | Gateway IP address for this VM. Can be either a static IP address \(such as: 1.2.3.4\) or "DHCP"     | 
     | DNS Server          | The DNS Server used for this VM, can be "DHCP"      | 
-    | SSH Public Key File | The path to an SSH Key file that the "license_cli" user will use to access this VM. Use the string "AUTO" and we will call 'ssh-keygen -b 1024 -t rsa -f id_rsa -P' and use the resulting file "id_rsa.pub" as the input to the generated VM. |
-    | Bridge              | "AUTO" or any named bridge.  If "AUTO", use the default bridge of "virbr0", which is the standard default bridge name. If anything else, the name provided will be used \(Ex: br0\).  This is the bridge that the VM network interface will use.  |
+    | SSH Public Key File | The path to an SSH Key file that the "license_cli" user will use to access this VM. If you enter the string "AUTO", the installtion script will call 'ssh-keygen -b 1024 -t rsa -f id_rsa -P' and use the resulting file "id_rsa.pub" as the input to the generated VM. |
+    | Bridge              | Bridge that the VM network interface will use. Can be "AUTO" or any named bridge.  If set to"AUTO", the default bridge "virbr0" will be used. If set to anything else, the named bridge will be used \(such as: br0\).   |
 
-2. Start license server service in the VM
+2. Start the license server service in the VM:
     ```sh
     # ssh to license cli using SSH key
     ssh -i id_rsa license_cli@<license_server_ip_address>
@@ -48,7 +71,7 @@ KVM Resource requirements:
     # Start license server service
     start license-server
     ```
-    Available Keysight License Server shell commands:
+    The following commands are available in the Keysight License Server shell:
 
     | Commands                                                | Description  | 
     |---------------------------------------------------------|-----------|
@@ -71,36 +94,22 @@ KVM Resource requirements:
     | shutdown (Seconds)                                      | Gracefully shuts down the VM in (Seconds) seconds, which is an integer that is at least 10  |
     | tILU [--offline]                                        | Starts the interactive Text Based License Utility (ILU) on this server.  Use the optional argument "--offline" to go straight into the Offline Operations screen. |
     
-### Install/uninstall licenses in license server VM
-1. Get activation code from Keysight support.
-2. SSH to license cli using SSH Key:
+### Install or uninstall licenses in the license server
+1. Obtain an activation code from Keysight Support.
+2. On the license server VM, SSH to license cli using the SSH key:
     ```sh
     ssh -i id_rsa license_cli@<license_server_ip_address>
     ```
-3. Activate license using activation code:
+3. Activate the license using activation code:
     ```sh
     activate-license XXXX-XXXX-XXXX-XXXX 1
     ```
-4. Deactivate license:
+4. To uninstall (deactivate) a license:
     ```sh
     deactivate-license XXXX-XXXX-XXXX-XXXX 1
     ```
 
-## KENG Subscription levels
-Keysight Elastic Network Generator (KENG) provides three levels of subscriptions.
 
-
-  | Capability                          | Developer            | Team                           | System                              |
-  |-------------------------------------|----------------------|--------------------------------|-------------------------------------|
-  | Software Traffic Port Capacity*     |  50GE                |  400GE                         | 800GE                               |
-  | Test Concurrency**                  |  1 Seat              |  8 Seats                       | 16 Seats                            |
-  | Software and UHD400T Protocol Scale |  Limited             |  Limited                       | UnLimited                           |
-  | Works with UHD400T Hardware         |  N                   |  Y                             | Y                                   |
-  | Works with IXOS Hardware            |  N                   |  N                             | Y                                   |
-
- \* **Maximum Data Plane performance** of software port may be less than the included software traffic port capacity, depending on configuration
-
- \*\* **Test seat concurrency** applies to quanitity of running controller instances with a configuration that exceeds capabilities of the Keysight Elastic Network Generator Community Edition
 
  
 
