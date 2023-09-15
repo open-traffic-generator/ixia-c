@@ -6,15 +6,15 @@
     * [Bootstrap](#bootstrap)
     * Deployment types
     	* [Docker deployments](#using-docker-compose)
-    	* [Containerlab deployments](#deployments_containerlab)
-    	* [KNE deployments](#deployments_kne)
+    	* [Containerlab deployments](deployments_containerlab.md)
+    	* [KNE deployments](deployments_kne.md)
     * [Diagnostics](#diagnostics)
     * [Test Suite](#test-suite)
     * [One-arm Scenario](#one-arm-scenario)
     * [Two-arm Scenario](#two-arm-scenario)
     * [Three-arm Mesh Scenario](#three-arm-mesh-scenario)
 
-### Overview
+## Overview
 
 Ixia-c is distributed / deployed as a multi-container application consisting of following services:
 
@@ -30,7 +30,7 @@ All these services are available as docker images on [GitHub Open-Traffic-Genera
 
 > Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
 
-### Bootstrap
+## Bootstrap
 
 Ixia-c services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizontal scalability** without interrupting existing services.
 
@@ -41,7 +41,9 @@ Following outlines how connectivity is established between the services:
 
 The **location** (aka network address) of traffic-engine and app-usage-reporter must be reachable from controller, even if they're not reachable from client scripts.
 
-#### Using docker-compose
+## Deployment types
+
+### Using docker-compose
 
 Deploying multiple services manually (along with required parameters) may not be desired in some scenarios and hence, for convenience [deployments](../deployments) directory consists of `docker-compose` files, where:
 * `*.yml` files describe services for a given scenario and deployment parameters required to start them.
@@ -111,7 +113,7 @@ On most systems, `docker-compose` needs to be installed separately even when doc
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
-### Diagnostics
+## Diagnostics
 
 Check and download controller logs:
 
@@ -137,9 +139,9 @@ docker logs <container-id>
 docker cp <container-id>:/var/log/usstream/usstream.log ./
 ```
 
-### Test Suite
+## Test Suite
 
-### One-arm Scenario
+## One-arm Scenario
 
 > TODO: diagram
 
@@ -167,7 +169,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
-### Two-arm Scenario
+## Two-arm Scenario
 
 > TODO: diagram
 
@@ -203,7 +205,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
-### Three-arm Mesh Scenario
+## Three-arm Mesh Scenario
 
 This scenario binds traffic engine to management network interface belonging to the container which in turn is part of docker0 network.
 
