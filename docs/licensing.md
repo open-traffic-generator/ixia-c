@@ -58,7 +58,7 @@ KVM Resource requirements:
     | IP Address          | IP address assigned to the VM. Can be either a static IP address \(such as: 1.2.3.4\) or "DHCP"     | 
     | Netmask             | Netmask used by the VM, in dotted-decimal format \(such as: 1.2.3.4\) or "DHCP"     | 
     | Gateway             | Gateway IP address for this VM. Can be either a static IP address \(such as: 1.2.3.4\) or "DHCP"     | 
-    | DNS Server          | The DNS Server used for this VM, can be "DHCP"      | 
+    | DNS Server          | The DNS Server used for this VM, can be "DHCP" or a static IP address \(such as: 8.8.8.8\)      | 
     | SSH Public Key File | The path to an SSH Key file that the "license_cli" user will use to access this VM. If you enter the string "AUTO", the installtion script will call 'ssh-keygen -b 1024 -t rsa -f id_rsa -P' and use the resulting file "id_rsa.pub" as the input to the generated VM. |
     | Bridge              | Bridge that the VM network interface will use. Can be "AUTO" or any named bridge.  If set to"AUTO", the default bridge "virbr0" will be used. If set to anything else, the named bridge will be used \(such as: br0\).   |
 
