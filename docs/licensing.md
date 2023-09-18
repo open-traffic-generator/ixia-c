@@ -17,11 +17,11 @@ The following License Editions are available for Keysight Elastic Network Genera
 
  \* **Ixia-c Traffic Port Capacity** is determined as a sum of configured Ixia-c test port speeds with possible values: 100GE, 50GE, 40GE, 25GE, 10GE, 1GE. Maximum data plane performance of an Ixia-c port may be less than the configured port speed, depending on capabilities of the underlying hardware and software drivers.
 
- \*\* **Test seat concurrency** applies to quantity of controller instances running with a configuration that exceeds the capabilities of the Community Edition.
+ \*\* **Test seat concurrency** applies to a number of controller instances running with a configuration that exceeds the capabilities of the Community Edition.
 
- \*\*\* **Restricted** protocol scale is supports maximum 4 BGP sessions per test. Capabilities of the **Limited** protocol scale depend on the protocol. Please contact [Keysight Support](https://support.ixiacom.com/contact/support) for details.
+ \*\*\* **Restricted** protocol scale supports maximum 4 BGP sessions per test. Capabilities of the **Limited** protocol scale depend on the protocol. Please contact [Keysight Support](https://support.ixiacom.com/contact/support) for details.
 
- Keysight Elastic Network Generator can simultaneously consume multiple licenses to increase the capabilities of a test. For example, if the Ixia-c Traffic Port Capacity configuted in one test is 100GE, two Developer licenses will be consumed if available.
+ Keysight Elastic Network Generator can simultaneously consume multiple licenses to increase the capabilities of a test. For example, if the Ixia-c Traffic Port Capacity configured in one test is 100GE, two Developer licenses will be consumed if available.
 
  If you require capabilities beyond those provided by the Community Edition, use [Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html) product page to request an evaluation or a quote.
 
@@ -33,8 +33,8 @@ Keysight uses a license server to manage floating or network shared licenses for
 
 ### Network connectivity
 
-1. Internet access from the Keysight License server VM over HTTPS to Keysight Software Manager (KSM) service [https://ksm.software.keysight.com/](https://ksm.software.keysight.com/) is desirable for online license activation, but not strictly required. Alternative offline activation method is available and only requires a license administrator to have access to KSM.
-2. Access from a license administrator computer over SSH (TCP/22) for license operations (activation, deactivation, reservation, sync).
+1. Internet access from the Keysight License server VM over HTTPS to the Keysight Software Manager (KSM) service [https://ksm.software.keysight.com/](https://ksm.software.keysight.com/) is desirable for online license activation, but not required. Alternative offline activation method is available and only requires a license administrator to have access to KSM.
+2. Access from a license administrator's computer over SSH (TCP/22) for license operations (activation, deactivation, reservation, sync).
 3. Access from any Keysight Elastic Network Generator `ixia-c-controller` container that needs a license during a test run over gRPC (TCP/7443) for license checkout and check-in.
 
 The diagram below illustrates how different components communicate with the License server:
@@ -106,29 +106,6 @@ The License server VM resource requirements when running on KVM hypervisor:
     start license-server
     ```
 
-    The following commands are available in the Keysight License server shell:
-
-    | Commands                                                | Description  |
-    |---------------------------------------------------------|-----------|
-    | `show ip`                                                 | Shows the current IP address and netmask information for the management interface     |
-    | `show licenses`                                           | Shows the currently installed licenses  |
-    | `show dns-servers`                                        | Shows the DNS servers configured |
-    | `show license-server-status`                              | Shows the current status of the License Server (active or not active, etc)  |
-    | `show license-server-auto-start`                          | Shows the status of the "license-server-auto-start" flag  |
-    | `show dropbox `                                           | Shows the files that are located in the "dropbox".  These are files that can be imported manually |
-    | `delete (filename)`                                       | Delete the file at "filename" from the "dropbox"  |
-    | `set ip [interface] [IP/"dhcp"] [netmask] [gateway]`      | Sets the current IP address, netmask and gateway address  |
-    | `set license-server-auto-start (on/off)`                  | Change the status of the License Server, will it auto start at boot or not  |
-    | `add dns-server (serverIP) (index)`                       | Add a new DNS server. At this time, the "index" option  must be "1" only, and the provided server will be set as the only DNS server.|
-    | `start license-server`                                    | Starts the License Server on this system  |
-    | `stop license-server`                                     | Stops the License Server on this system |
-    | `activate-license (Activation Code) (Quantity)`           | Adds the selected "Activation Code" of quantity "Quantity" to this License Server |
-    | `deactivate-license (Activation Code) (Quantity)`         | Removes the selected "Activation Code" of quantity "Quantity" from this License Server  |
-    | `offline-import (filename)`                               | Import an offline file from the "dropbox".  See "show dropbox"  |
-    | `reboot (Seconds)`                                        | Reboots the VM in (Seconds) seconds, which is an integer that is at least 10  |
-    | `shutdown (Seconds)`                                      | Gracefully shuts down the VM in (Seconds) seconds, which is an integer that is at least 10  |
-    | `tILU [--offline]`                                        | Starts the interactive Text Based License Utility (ILU) on this server.  Use the optional argument "--offline" to go straight into the Offline Operations screen. |
-
 ## License administration
 
 1. Obtain an activation code from your Keysight Sales Representative or [Keysight Support](https://support.ixiacom.com/contact/support).
@@ -144,3 +121,26 @@ The License server VM resource requirements when running on KVM hypervisor:
     ```sh
     deactivate-license XXXX-XXXX-XXXX-XXXX 1
     ```
+
+The following commands are available in the Keysight License server shell:
+
+| Commands                                                | Description  |
+|---------------------------------------------------------|-----------|
+| `show ip`                                                 | Shows the current IP address and netmask information for the management interface     |
+| `show licenses`                                           | Shows the currently installed licenses  |
+| `show dns-servers`                                        | Shows the DNS servers configured |
+| `show license-server-status`                              | Shows the current status of the License Server (active or not active, etc)  |
+| `show license-server-auto-start`                          | Shows the status of the "license-server-auto-start" flag  |
+| `show dropbox `                                           | Shows the files that are located in the "dropbox".  These are files that can be imported manually |
+| `delete (filename)`                                       | Delete the file at "filename" from the "dropbox"  |
+| `set ip [interface] [IP/"dhcp"] [netmask] [gateway]`      | Sets the current IP address, netmask and gateway address  |
+| `set license-server-auto-start (on/off)`                  | Change the status of the License Server, will it auto start at boot or not  |
+| `add dns-server (serverIP) (index)`                       | Add a new DNS server. At this time, the "index" option  must be "1" only, and the provided server will be set as the only DNS server.|
+| `start license-server`                                    | Starts the License Server on this system  |
+| `stop license-server`                                     | Stops the License Server on this system |
+| `activate-license (Activation Code) (Quantity)`           | Adds the selected "Activation Code" of quantity "Quantity" to this License Server |
+| `deactivate-license (Activation Code) (Quantity)`         | Removes the selected "Activation Code" of quantity "Quantity" from this License Server  |
+| `offline-import (filename)`                               | Import an offline file from the "dropbox".  See "show dropbox"  |
+| `reboot (Seconds)`                                        | Reboots the VM in (Seconds) seconds, which is an integer that is at least 10  |
+| `shutdown (Seconds)`                                      | Gracefully shuts down the VM in (Seconds) seconds, which is an integer that is at least 10  |
+| `tILU [--offline]`                                        | Starts the interactive Text Based License Utility (ILU) on this server.  Use the optional argument "--offline" to go straight into the Offline Operations screen. |
