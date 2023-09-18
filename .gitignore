@@ -5,3 +5,4 @@ env
 venv
 site
 .DS_Store
+*.bkp
