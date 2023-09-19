@@ -2,55 +2,56 @@
 
 - [Table of Contents](readme.md)
   - Deployment Guide
-    * [Overview](#overview)
-    * [Bootstrap](#bootstrap)
-    * Deployment types
-    	* [Docker deployments](#using-docker-compose)
-    	* [Containerlab deployments](deployments_containerlab.md)
-    	* [KNE deployments](deployments_kne.md)
-    * [Diagnostics](#diagnostics)
-    * [Test Suite](#test-suite)
-    * [One-arm Scenario](#one-arm-scenario)
-    * [Two-arm Scenario](#two-arm-scenario)
-    * [Three-arm Mesh Scenario](#three-arm-mesh-scenario)
+    - [Overview](#overview)
+    - [Bootstrap](#bootstrap)
+    - Deployment types
+      - [Docker deployments](#using-docker-compose)
+      - [Containerlab deployments](deployments_containerlab.md)
+      - [KNE deployments](deployments_kne.md)
+    - [Diagnostics](#diagnostics)
+    - [Test Suite](#test-suite)
+    - [One-arm Scenario](#one-arm-scenario)
+    - [Two-arm Scenario](#two-arm-scenario)
+    - [Three-arm Mesh Scenario](#three-arm-mesh-scenario)
 
 ## Overview
 
-Ixia-c is distributed / deployed as a multi-container application consisting of following services:
+Ixia-c is distributed / deployed as a multi-container application consisting of the following services:
 
-* **controller** - Serves API request from clients and manages workflow across one or more traffic engines.
-* **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
-* **app-usage-reporter** - (Optional) Collects anonymous usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
+* **controller**: Serves API request from the clients and manages workflow across one or more traffic engines.
+* **traffic-engine**: Generates, captures, and processes traffic from one or more network interfaces (on linux-based OS).
+* **app-usage-reporter**: (Optional) Collects anonymous usage report from the controller and uploads it to the Keysight Cloud, with minimal impact on the host resources.
 
-All these services are available as docker images on [GitHub Open-Traffic-Generator repository](https://github.com/orgs/open-traffic-generator/packages). Please check [Ixia-c Releases](releases.md) to use specific versions of these images.
+All these services are available as docker images on [GitHub Open-Traffic-Generator repository](https://github.com/orgs/open-traffic-generator/packages). To use specific versions of these images, see [Ixia-c Releases](releases.md) .
 
 <div align="center">
   <img src="res/ixia-c-aur.drawio.svg"></img>
 </div>
 
-> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f), a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations, can be setup to run against Ixia-c.
+> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f) (a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations) can be setup to run against Ixia-c.
 
 ## Bootstrap
 
-Ixia-c services can either all be deployed on same host or each on separate hosts (as long as they're mutually reachable over network). There's no boot-time dependency between them, which allows for **horizontal scalability** without interrupting existing services.
+The Ixia-c services can either all be deployed on the same host or each on separate hosts (as long as they are mutually reachable over the network). There is no boot-time dependency between them, which allows **horizontal scalability** without interrupting the existing services.
 
-Following outlines how connectivity is established between the services:
+You can establish a connectivity between the services in two ways. The options are as follows:
 
-* **controller & traffic-engine** - When client pushes a traffic configuration to controller containing `location` of traffic engine.
-* **controller & app-usage-reporter** - Controller periodically tries to establish connectivity with app-usage-reporter on a `location` which can be overridden using controller's deployment parameters.
+- **controller & traffic-engine**: The client pushes a traffic configuration to the controller, containing the `location` of the traffic engine.
+- **controller & app-usage-reporter**: The Controller periodically tries to establish connectivity with the `app-usage-reporter` on a `location`, which can be overridden by using the controller's deployment parameters.
 
-The **location** (aka network address) of traffic-engine and app-usage-reporter must be reachable from controller, even if they're not reachable from client scripts.
+>The **location** (network address) of the traffic-engine and the app-usage-reporter must be reachable from the controller, even if they are not reachable from the client scripts.
 
 ## Deployment types
 
 ### Using docker-compose
 
-Deploying multiple services manually (along with required parameters) may not be desired in some scenarios and hence, for convenience [deployments](../deployments) directory consists of `docker-compose` files, where:
-* `*.yml` files describe services for a given scenario and deployment parameters required to start them.
-* `.env` file holds default parameters to be used across all `*.yml` files, like name of interface, version of docker images, etc.
+Deploying multiple services manually (along with the required parameters) is not always applicable in some scenarios. For convenience, the [deployments](../deployments) directory consists of the following `docker-compose` files:
+
+- `*.yml`: Describes the services for a given scenario and the deployment parameters that are required to start them.
+- `.env`: Holds the default parameters, that are used across all `*.yml` files. For example, the name of the interface, the version of docker images, and etc.
 
 If a concerned `.yml` file does not include certain variables from `.env`, those can then safely be ignored.  
-Here's how the usual workflow looks like when using `docker-compose`.
+Follwoing is the example of a usual workflow, by using  `docker-compose`.
 
 ```sh
 # change default parameters if needed; e.g. interface name, image version, etc.
@@ -61,9 +62,9 @@ docker-compose -f deployments/<scenario>.yml up -d
 docker-compose -f deployments/<scenario>.yml down
 ```
 
-On most systems, `docker-compose` needs to be installed separately even when docker is already installed. Please check [docker prerequisites](prerequisites.md#docker) for more details.
+On most of the systems, `docker-compose` needs to be installed separately even if the docker is already installed. For more information, see [docker prerequisites](prerequisites.md#docker) .
 
->All the scenarios mentioned in upcoming sections describe both manual and automated (requiring docker-compose) steps.
+>All the scenarios that are mentioned in the following sections, describe both manual and automated (requiring docker-compose) steps.
 
 ### Deployment Parameters
 
@@ -72,14 +73,15 @@ On most systems, `docker-compose` needs to be installed separately even when doc
   | Controller Parameters       | Optional  | Default                 | Description                                                     |
   |-----------------------------|-----------|-------------------------|-----------------------------------------------------------------|
   | --debug                     |   Yes     | false                   | Enables high volume logs with debug info for better diagnostics.|
-  | --disable-app-usage-reporter|   Yes     | false                   | Disables sending usage data to app-usage-reporter.              |
+  | --disable-app-usage-reporter|   Yes     | false                   | Disables sending of usage data to the app-usage-reporter.              |
   | --http-port                 |   Yes     | 8443                     | TCP port for HTTP server.                                       |
-  | --aur-host                  |   Yes     | https://localhost:5600  | Overrides location of app-usage-reporter.                       |
-  | --accept-eula               |   No      | NA                      | Indicates that user has accepted EULA, otherwise controller won't boot up |
+  | --aur-host                  |   Yes     | https://localhost:5600  | Overrides the location of the app-usage-reporter.                       |
+  | --accept-eula               |   No      | NA                      | Indicates that the user has accepted EULA, otherwise the controller will not boot up. |
 
   Docker Parameters:
-  * `--net=host` - This is recommended to allowing using host's network stack in order to address traffic-engine containers using `localhost` instead of `container-ip`, when deployed on same host.
-  * `-d` - This starts container in background.
+
+- `--net=host`: It is recommended to allow the use of the host network stack, in order to address the traffic-engine containers using `localhost` instead of `container-ip`, when deployed on the same host.
+- `-d`: This starts the container in background.
 
   Example:
 
@@ -91,16 +93,17 @@ On most systems, `docker-compose` needs to be installed separately even when doc
 
   | Environment Variables       | Optional  | Default                 | Description                                                     |
   |-----------------------------|-----------|-------------------------|-----------------------------------------------------------------|
-  | ARG_IFACE_LIST              |   No      | NA                      | Name of the network interface to bind to. It must be visible to traffic-engine's network namespace. e.g. `virtual@af_packet,eth1` where `eth1` is interface name while `virtual@af_packet` indicates that the interface is managed by host kernel's network stack.|
-  | OPT_LISTEN_PORT             |   Yes     | "5555"                  | TCP port on which controller can establish connection with traffic-engine.|
-  | OPT_NO_HUGEPAGES            |   Yes     | "No"                    | Setting this to `Yes` disables hugepages in OS. The hugepages needs to be disabled when using network interfaces managed by host kernel's stack.|
+  | ARG_IFACE_LIST              |   No      | NA                      | Name of the network interface to bind to. It must be visible to the traffic-engine's network namespace. For example, `virtual@af_packet,eth1` where `eth1` is the interface name and `virtual@af_packet` indicates that the interface is managed by the host kernel's network stack.|
+  | OPT_LISTEN_PORT             |   Yes     | "5555"                  | TCP port on which the controller can establish connection with the traffic-engine.|
+  | OPT_NO_HUGEPAGES            |   Yes     | "No"                    | If set to `Yes`, it disables hugepages in the OS. The hugepages needs to be disabled when the network interfaces are managed by the host kernel's stack.|
 
   Docker Parameters:
-  * `--net=host` - This is needed if traffic-engine needs to bind to a network interface that is visible in host network stack but not inside docker's network.
-  * `--privileged` - This is needed because traffic-engine needs to exercise capabilities that require elevated privileges.
-  * `--cpuset-cpus` - The traffic-engine usually requires 1 shared CPU core for management activities and 2 exclusive CPU cores, each for transmit engine and receive engine. The shared CPU core can be shared across multiple traffic-engines. e.g. `--cpuset-cpus="0,1,2"` indicates that cpu0 is shared, cpu1 is used for transmit and cpu2 is used for receive. If CPU cores are not specified, arbitrary CPU cores will be chosen.
-    > If enough CPU cores are not provided, available CPU cores may be shared among management, transmit and receive engines, occasionally resulting in lower performance.
-  * `-d` - This starts container in background.
+
+- `--net=host`: This is required if the traffic-engine needs to bind to a network interface that is visible in the host network stack but not inside the docker's network.
+- `--privileged`: This is required because the traffic-engine needs to exercise capabilities that require elevated privileges.
+- `--cpuset-cpus`: The traffic-engine usually requires 1 shared CPU core for management activities and 2 exclusive CPU cores, each for the transmit engine and receive engine. The shared CPU core can be shared across multiple traffic-engines. For example, `--cpuset-cpus="0,1,2"` which indicates that cpu0 is shared, cpu1 is used for transmit and cpu2 is used for receive. If CPU cores are not specified, any arbitrary CPU cores will be chosen.
+    > If enough CPU cores are not provided, the available CPU cores may be shared among management, transmit, and the receive engines, that can occasionally result in lower performance.
+- `-d`: This starts the container in background.
 
   Example:
 
@@ -207,7 +210,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 
 ## Three-arm Mesh Scenario
 
-This scenario binds traffic engine to management network interface belonging to the container which in turn is part of docker0 network.
+This scenario binds traffic engine to the management network interface, that belongs to the container which in turn is a part of the docker0 network.
 
 > TODO: diagram
 
@@ -269,7 +272,7 @@ This scenario binds traffic engine to management network interface belonging to 
 
 ### Setup Tests
 
-  Please make sure that the client setup meets [Python Prerequisites](#test-prerequisites).
+  Ensure that the client setup meets the [Python Prerequisites](prerequisites.md#software-prerequisites).
 
 * **Install `snappi`.**
 
@@ -283,7 +286,7 @@ This scenario binds traffic engine to management network interface belonging to 
       python -m pip install --upgrade -r requirements.txt
     ```
 
-* **Ensure a `sample test` script executes successfully. Please see [test details](#test-details) for more info.**
+* **Ensure that a `sample test` script executes successfully. For more information, see [test details](#test-details).**
 
     ```sh
       # provide intended API Server and port addresses
@@ -294,26 +297,26 @@ This scenario binds traffic engine to management network interface belonging to 
 
 ## Test Details
 
-The test scripts are based on `snappi client SDK` (auto-generated from [Open Traffic Generator Data Model](https://github.com/open-traffic-generator/models)) and have been written using `pytest`.  
+The test scripts are based on `snappi client SDK` (auto-generated from the [Open Traffic Generator Data Model](https://github.com/open-traffic-generator/models)) and have been written by using `pytest`.  
 
-Open Traffic Generator Data Model can be accessed from any browser by hitting this url (https://<controller-host-ip>/docs/) and start scripting.
+You can access the Open Traffic Generator Data Model from any browser by using [https://<controller-host-ip>/docs/](https://<controller-host-ip>/docs/) and start scripting.
 
 The test directory structure is as follows:
 
-* `snappi-tests/tests/settings.json` - global test configuration, includes `controller` host, `traffic-engine` host and `speed` settings.
-* `snappi-tests/configs/` - contains pre-defined traffic configurations in JSON, which can be loaded by test scripts.
-* `snappi-tests/tests` - contains end-to-end test scripts covering most common use-cases.
-* `snappi-tests/tests/utils/` - contains most commonly needed helpers, used throughout test scripts.
-* `snappi-tests/tests/env/bin/python` - python executable (inside virtual environment) to be used for test execution.
+* `snappi-tests/tests/settings.json`: Global test configuration, that includes `controller` host, `traffic-engine` host, and `speed` settings.
+* `snappi-tests/configs/`: Contains pre-defined traffic configurations in JSON, which can be loaded by test scripts.
+* `snappi-tests/tests`: Contains end-to-end test scripts covering the most of the common use-cases.
+* `snappi-tests/tests/utils/`: Contains the most commonly required helpers, that are used throughout the test scripts.
+* `snappi-tests/tests/env/bin/python`: Python executable (inside virtual environment) to be used for test execution.
 
-Most test scripts follow the format of following sample scripts:
+The most of the test scripts use the following format:
 
-* `snappi-tests/tests/raw/test_tcp_unidir_flows.py` - for unidirectional flow use case.
-* `snappi-tests/tests/raw/test_tcp_bidir_flows.py` - for using pre-defined JSON traffic config & bidirectional flow use case.
-* `snappi-tests/tests/raw/test_basic_flow_stats.py` - for basic flow statistics validation use case.
-* `<test to validate capture>` - for validating capture. TODO
-* `<test to cover multiple protocol fields for different variation like fixed, list, counter>` - some example from gtpv2 [ethernet - ipv4 - udp - gtpv2 - ipv6] TODO
-* `<test script for one arm testing>` - for one arm scenario TODO
+* `snappi-tests/tests/raw/test_tcp_unidir_flows.py`: For unidirectional flow use case.
+* `snappi-tests/tests/raw/test_tcp_bidir_flows.py`: For using pre-defined JSON traffic config & bidirectional flow use case.
+* `snappi-tests/tests/raw/test_basic_flow_stats.py`: For basic flow statistics validation use case.
+* `<test to validate capture>`: For validating capture. TODO
+* `<test to cover multiple protocol fields for different variation like fixed, list, counter>`: Some examples from gtpv2 [ethernet - ipv4 - udp - gtpv2 - ipv6] TODO
+* `<test script for one arm testing>`: For one arm scenario TODO
 
 To execute batch tests marked as `sanity`:
 
@@ -335,7 +338,7 @@ tests/env/bin/python -m pytest tests/py -m "sanity"
   }
   ```
 
-* When `controller` and `traffic-engine`s are located on same system (local - raw sockets)
+* When `controller` and `traffic-engine`s are located on the same system (local - raw sockets)
 
   ```json
   {

@@ -1,27 +1,26 @@
-## Deploy Ixia-c using kne
+# Deploy Ixia-c using kne
 
-### overview
+## overview
 
-Ixia-c can be deployed in k8s environment using [kne](https://github.com/openconfig/kne) consisting of following services:
+Ixia-c can be deployed in the k8s environment by using [kne](https://github.com/openconfig/kne) that consists of the following services:
 
-* **operator** - Serves API request from clients and manages workflow across one or more traffic engines.
-* **controller** - Serves API request from clients and manages workflow across one or more traffic engines.
-* **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
-* **protocol-engine** - Emulates layer3 networks and protocols such as BGP ,ISIS etc(on linux-based OS).
-* **gnmi-server** - captures statistics from one or more network interfaces (on linux-based OS).
+* **operator**: Serves API request from the clients and manages workflow across one or more traffic engines.
+* **controller**: Serves API request from the clients and manages workflow across one or more traffic engines.
+* **traffic-engine**: Generates, captures, and processes the traffic from one or more network interfaces (on linux-based OS).
+* **protocol-engine**: Emulates layer3 networks and protocols such as BGP, ISIS, and etc (on linux-based OS).
+* **gnmi-server**: Captures statistics from one or more network interfaces (on linux-based OS).
 
 ## System Prerequisites
 
 ### CPU and RAM
 
-Recommended resources for basic use-case are as mentioned below,
+Following are the recommended resources for a basic use-case. 
 
-- `ixia-c-operator`      - each instance requires at least 1 CPU core and 2GB RAM.
-- `ixia-c-controller`      - each instance requires at least 1 CPU core and 2GB RAM.
-- `ixia-c-gnmi-server`     - each instance requires at least 1 CPU core and 2GB RAM.
-- `ixia-c-traffic-engine`  - each instance requires 2 dedicated CPU cores and 3GB dedicated RAM.
-- `ixia-c-protocol-engine` - each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per port.
-
+-  `ixia-c-operator`: Each instance requires at least 1 CPU core and 2GB RAM.
+- `ixia-c-controller`: Each instance requires at least 1 CPU core and 2GB RAM.
+- `ixia-c-gnmi-server`: Each instance requires at least 1 CPU core and 2GB RAM.
+- `ixia-c-traffic-engine`: Each instance requires 2 dedicated CPU cores and 3GB dedicated RAM.
+- `ixia-c-protocol-engine`: Each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per port.
 
 ### OS and Software Prerequisites
 
@@ -30,25 +29,28 @@ Recommended resources for basic use-case are as mentioned below,
 - Go 1.17+
 - kind 0.18+
 
+## Install KNE
 
-### Install KNE
 * The main use case we are interested in is the ability to bring up arbitrary topologies to represent a production topology. This would require multiple vendors as well as traffic generation and end hosts.
 
   ```sh
     go install github.com/openconfig/kne/kne@latest
   ```
 
-### Deploy ixia-c-operator
+## Deploy ixia-c-operator
+
 * Ixia Operator defines CRD for Ixia network device (IxiaTG) and can be used to build up different network topologies with network devices from other vendors. Network interconnects between the topology nodes can be setup with various container network interface (CNI) plugins for Kubernetes for attaching multiple network interfaces to the nodes.
 
   ```sh
     kubectl apply -f https://github.com/open-traffic-generator/ixia-c-operator/releases/download/v0.3.5/ixiatg-operator.yaml
   ```
 
-### Apply configmap
+## Apply configmap
+
 * The various Ixia component versions to be deployed is derived from the Ixia release version as specified in the IxiaTG config. These component mappings are captured in ixia-configmap.yaml for each Ixia release. The configmap, as shown in the snippet below, comprise of the Ixia release version ("release"), and the list of qualified component versions, for that release. Ixia Operator first tries to access these details from Keysight published releases; if unable to so, it tries to locate them in Kubernetes configmap. This allows users to have the operator load images from private repositories, by updating the configmap entries. Thus, for deployment with custom images, the user is expected to download release specific ixia-configmap.yaml from published releases. Then, in the configmap, update the specific container image "path" / "tag" fields and also update the "release" to some custom name. Start the operator first as specified in the deployment section below, before applying the configmap locally. After this the operator can be used to deploy the containers and services.
 
-  - For community users
+  * For community users
+
     ```json
       apiVersion: v1
       kind: ConfigMap
@@ -88,7 +90,9 @@ Recommended resources for basic use-case are as mentioned below,
                   ]
               }
     ```
-  - For commercial users, `LICENSE_SERVERS` needs to be specified for `ixia-c-controller` deployment.
+
+  * For commercial users, `LICENSE_SERVERS` needs to be specified for `ixia-c-controller` deployment.
+
     ```json
       apiVersion: v1
       kind: ConfigMap
@@ -137,11 +141,11 @@ Recommended resources for basic use-case are as mentioned below,
     kubectl apply -f ixiatg-configmap.yaml
   ```
 
+## Deploy the topology
 
-### Deploy the topology 
-* Snippet of simple kne b2b topology is given.
+* The following snippet shows a simple kne b2b topology.
 
-  ```yaml 
+  ```yaml
   name: ixia-c
   nodes:
     - name: otg
@@ -169,11 +173,11 @@ Recommended resources for basic use-case are as mentioned below,
   kne create topology.yaml
   ```
   
-- After deploying the topology now you are ready to run a test using this topology. 
+* After deploying, you are now ready to run a test using this topology.
 
-### Destroy/Remove the topology 
+## Destroy/Remove the topology
 
-  ```sh 
+  ```sh
   # delete a particular topology 
   kne delete topology.yaml
   ```
