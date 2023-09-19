@@ -16,6 +16,7 @@ Ixia-c can be deployed in k8s environment using [kne](https://github.com/opencon
 
 Recommended resources for basic use-case are as mentioned below,
 
+- `ixia-c-operator`      - each instance requires at least 1 CPU core and 2GB RAM.
 - `ixia-c-controller`      - each instance requires at least 1 CPU core and 2GB RAM.
 - `ixia-c-gnmi-server`     - each instance requires at least 1 CPU core and 2GB RAM.
 - `ixia-c-traffic-engine`  - each instance requires 2 dedicated CPU cores and 3GB dedicated RAM.
@@ -47,48 +48,93 @@ Recommended resources for basic use-case are as mentioned below,
 ### Apply configmap
 * The various Ixia component versions to be deployed is derived from the Ixia release version as specified in the IxiaTG config. These component mappings are captured in ixia-configmap.yaml for each Ixia release. The configmap, as shown in the snippet below, comprise of the Ixia release version ("release"), and the list of qualified component versions, for that release. Ixia Operator first tries to access these details from Keysight published releases; if unable to so, it tries to locate them in Kubernetes configmap. This allows users to have the operator load images from private repositories, by updating the configmap entries. Thus, for deployment with custom images, the user is expected to download release specific ixia-configmap.yaml from published releases. Then, in the configmap, update the specific container image "path" / "tag" fields and also update the "release" to some custom name. Start the operator first as specified in the deployment section below, before applying the configmap locally. After this the operator can be used to deploy the containers and services.
 
-  ```json
-    apiVersion: v1
-    kind: ConfigMap
-    metadata:
-        name: ixiatg-release-config
-        namespace: ixiatg-op-system
-    data:
-        versions: |
-            {
-              "release": "0.0.1-4435",
-              "images": [
-                    {
-                        "name": "controller",
-                        "path": "ghcr.io/open-traffic-generator/licensed/ixia-c-controller",
-                        "tag": "0.0.1-4435"
-                    },
-                    {
-                        "name": "gnmi-server",
-                        "path": "ghcr.io/open-traffic-generator/ixia-c-gnmi-server",
-                        "tag": "1.12.4"
-                    },
-                    {
-                        "name": "traffic-engine",
-                        "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
-                        "tag": "1.6.0.35"
-                    },
-                    {
-                        "name": "protocol-engine",
-                        "path": "ghcr.io/open-traffic-generator/licensed/ixia-c-protocol-engine",
-                        "tag": "1.00.0.325"
-                    },
-                    {
-                        "name": "ixhw-server",
-                        "path": "ghcr.io/open-traffic-generator/ixia-c-ixhw-server",
-                        "tag": "0.12.2-2"
-                    }
-                ]
-            }
-  ```
+  - For community users
+    ```json
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+          name: ixiatg-release-config
+          namespace: ixiatg-op-system
+      data:
+          versions: |
+              {
+                "release": "0.0.1-4435",
+                "images": [
+                      {
+                          "name": "controller",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-controller",
+                          "tag": "0.0.1-4435"
+                      },
+                      {
+                          "name": "gnmi-server",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-gnmi-server",
+                          "tag": "1.12.4"
+                      },
+                      {
+                          "name": "traffic-engine",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
+                          "tag": "1.6.0.35"
+                      },
+                      {
+                          "name": "protocol-engine",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
+                          "tag": "1.00.0.325"
+                      },
+                      {
+                          "name": "ixhw-server",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-ixhw-server",
+                          "tag": "0.12.2-2"
+                      }
+                  ]
+              }
+    ```
+  - For commercial users, `LICENSE_SERVERS` needs to be specified for `ixia-c-controller` deployment.
+    ```json
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+          name: ixiatg-release-config
+          namespace: ixiatg-op-system
+      data:
+          versions: |
+              {
+                "release": "0.0.1-4435",
+                "images": [
+                      {
+                          "name": "controller",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-controller",
+                          "tag": "0.0.1-4435",
+                          "env": { 
+                                "LICENSE_SERVERS": "ip/hostname of license server"
+                            } 
+                      },
+                      {
+                          "name": "gnmi-server",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-gnmi-server",
+                          "tag": "1.12.4"
+                      },
+                      {
+                          "name": "traffic-engine",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
+                          "tag": "1.6.0.35"
+                      },
+                      {
+                          "name": "protocol-engine",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
+                          "tag": "1.00.0.325"
+                      },
+                      {
+                          "name": "ixhw-server",
+                          "path": "ghcr.io/open-traffic-generator/ixia-c-ixhw-server",
+                          "tag": "0.12.2-2"
+                      }
+                  ]
+              }
+    ```  
 
   ```sh
-    kubectl apply -f https://github.com/open-traffic-generator/ixia-c/releases/download/v0.0.1-4435/ixiatg-configmap.yaml
+    # After saving the configmap snippet in a yaml file
+    kubectl apply -f ixiatg-configmap.yaml
   ```
 
 
