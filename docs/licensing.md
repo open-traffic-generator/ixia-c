@@ -4,7 +4,6 @@
 
 The following License Editions are available for Keysight Elastic Network Generator:
 
-
   | Capability                          | Community            | Developer            | Team                           | System                              |
   |-------------------------------------|----------------------|----------------------|--------------------------------|-------------------------------------|
   | Ixia-c Traffic Port Capacity*       |  4 x 1/10GE          |  50GE                |  400GE                         | 800GE                               |
@@ -15,11 +14,13 @@ The following License Editions are available for Keysight Elastic Network Genera
   | Works with UHD400T Hardware         |  N                   |  N                   |  Y                             | Y                                   |
   | Works with IxOS Hardware            |  N                   |  N                   |  N                             | Y                                   |
 
- \* **Ixia-c Traffic Port Capacity** is determined as a sum of configured Ixia-c test port speeds with possible values: 100GE, 50GE, 40GE, 25GE, 10GE, 1GE. Maximum data plane performance of an Ixia-c port may be less than the configured port speed, depending on capabilities of the underlying hardware and software drivers.
+ The **Ixia-c Traffic Port Capacity** is determined as a sum of the configured Ixia-c test port speeds with the possible values of: 100GE, 50GE, 40GE, 25GE, 10GE, and 1GE. The Maximum data plane performance of an Ixia-c port may be less than the configured port speed, depending on the capabilities of the underlying hardware and software drivers.
 
- \*\* **Test seat concurrency** applies to a number of controller instances running with a configuration that exceeds the capabilities of the Community Edition.
+ The **Test seat concurrency** applies to a number of controller instances that are running with a configuration that exceeds the capabilities of the Community Edition.
 
- \*\*\* **Restricted** protocol scale supports maximum 4 BGP sessions per test. Capabilities of the **Limited** protocol scale depend on the protocol. Please contact [Keysight Support](https://support.ixiacom.com/contact/support) for details.
+ The **Restricted** protocol scale supports the maximum of 4 BGP sessions per test.
+
+ The Capabilities of the **Limited** protocol scale depend on the protocol. For details, contact [Keysight Support](https://support.ixiacom.com/contact/support).
 
  Keysight Elastic Network Generator can simultaneously consume multiple licenses to increase the capabilities of a test. For example, if the Ixia-c Traffic Port Capacity configured in one test is 100GE, two Developer licenses will be consumed if available.
 
@@ -27,32 +28,34 @@ The following License Editions are available for Keysight Elastic Network Genera
 
 ## License Server
 
-Keysight uses a license server to manage floating or network shared licenses for its software products. The license server enables licenses to float and not be tied to a specific Elastic Network Generator instance. The Elastic Network Generator controllers MUST be able to reach the License server.
+Keysight uses a license server to manage floating or network shared licenses for its software products. The license server enables licenses to float and not be tied to a specific Elastic Network Generator instance.
+The Elastic Network Generator controllers **must** be able to reach the License server.
 
 ## Requirements
 
 ### Network connectivity
 
-1. Internet access from the Keysight License server VM over HTTPS to the Keysight Software Manager (KSM) service [https://ksm.software.keysight.com/](https://ksm.software.keysight.com/) is desirable for online license activation, but not required. Alternative offline activation method is available and only requires a license administrator to have access to KSM.
-2. Access from a license administrator's computer over SSH (TCP/22) for license operations (activation, deactivation, reservation, sync).
-3. Access from any Keysight Elastic Network Generator `ixia-c-controller` container that needs a license during a test run over gRPC (TCP/7443) for license checkout and check-in.
+1. Internet access from the Keysight License server VM over HTTPS to the Keysight Software Manager (KSM) service [https://ksm.software.keysight.com/](https://ksm.software.keysight.com/) is desirable for the online license activation, but it is not required.
+The Alternative offline activation method is available, and it only requires a license administrator to have the access to KSM.
+2. Access from a license administrator's computer over SSH (TCP/22) for license operations (activation, deactivation, reservation, and sync).
+3. Access from any Keysight Elastic Network Generator `ixia-c-controller` container that needs a license during a test run over the gRPC (TCP/7443) for license checkout and check-in.
 
-The diagram below illustrates how different components communicate with the License server:
+The diagram below illustrates how the different components communicate with the License server:
 
 ![License Server Connectivity](./res/license-server.drawio.svg)
 
 ### System requirements – KVM
 
-The License server VM resource requirements when running on KVM hypervisor:
+The License server VM resource requirements when running on the KVM hypervisor are as follows:
 
 * 2 CPU cores
 * 4 GB of RAM
 * Minimum 10GB of storage
 * 1 available physical bridged adapter on KVM for management connectivity
 
-Before deployment, make sure the KVM hypervisor is properly installed and configured in Ubuntu 20.04.
+Before deployment, make sure that the KVM hypervisor is properly installed and configured in Ubuntu 20.04.
 
-The following settings on Ubuntu are required:
+The following settings are required on Ubuntu:
 
 * Update repositories:
     ```sh
@@ -64,8 +67,6 @@ The following settings on Ubuntu are required:
     sudo apt -y install qemu-kvm libvirt-daemon-system libvirt-clients libvirt-daemon bridge-utils qemu-guest-agent virt-manager vim cifs-utils
 
     ```
-
-
 
 ## Deployment
 
