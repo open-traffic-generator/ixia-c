@@ -50,6 +50,23 @@ The License server VM resource requirements when running on KVM hypervisor:
 * Minimum 10GB of storage
 * 1 available physical bridged adapter on KVM for management connectivity
 
+Before deployment, make sure the KVM hypervisor is properly installed and configured in Ubuntu 20.04.
+
+The following settings on Ubuntu are required:
+
+* Update repositories:
+    ```sh
+    sudo apt update
+    ```
+
+* Install required KVM packages:
+    ```sh
+    sudo apt -y install qemu-kvm libvirt-daemon-system libvirt-clients libvirt-daemon bridge-utils qemu-guest-agent virt-manager vim cifs-utils
+
+    ```
+
+
+
 ## Deployment
 
 ### KVM
