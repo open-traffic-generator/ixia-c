@@ -21,9 +21,9 @@ When the packets arrive at a traffic port, they are encapsulated in a VLAN corre
 The packets that are encapsulated in a VLAN, are routed to the front panel port corresponding to the VLAN.
 The trunk packets that are not VLAN-encapsulated or have a VLAN that is not listed in the following mapping table, will be dropped.
 
-![UHD400T](res/system_with_UHD400T.svg "Example System with UHD400T")
+![UHD400T](res/system_with_UHD400T.drawio.svg "Example System with UHD400T")
 
-**Mapping Table**
+### Mapping Table
 
 | UHD Port | VLAN ID    | UHD Port   | VLAN ID    |
 |:---      |:---        |:---        |:---        |
