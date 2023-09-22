@@ -37,7 +37,7 @@ The trunk packets that are not VLAN-encapsulated or have a VLAN that is not list
 | 8        |    192     |   16       |   264      |
 
 >Note:
-The VLAN tagged interfaces can be created using the following linux command:
+The VLAN tagged interfaces can be created by using the following linux command:
 
 ```bash
 ip link add link <interface-name> name <interface-name>.<vid> type vlan id <vid>

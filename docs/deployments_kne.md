@@ -1,6 +1,6 @@
 # Deploy Ixia-c using kne
 
-## overview
+## Overview
 
 Ixia-c can be deployed in the k8s environment by using [kne](https://github.com/openconfig/kne) that consists of the following services:
 
@@ -49,7 +49,7 @@ Following are the recommended resources for a basic use-case.
 
 * The various Ixia component versions to be deployed is derived from the Ixia release version as specified in the IxiaTG config. These component mappings are captured in ixia-configmap.yaml for each Ixia release. The configmap, as shown in the snippet below, comprise of the Ixia release version ("release"), and the list of qualified component versions, for that release. Ixia Operator first tries to access these details from Keysight published releases; if unable to so, it tries to locate them in Kubernetes configmap. This allows users to have the operator load images from private repositories, by updating the configmap entries. Thus, for deployment with custom images, the user is expected to download release specific ixia-configmap.yaml from published releases. Then, in the configmap, update the specific container image "path" / "tag" fields and also update the "release" to some custom name. Start the operator first as specified in the deployment section below, before applying the configmap locally. After this the operator can be used to deploy the containers and services.
 
-  * For community users
+  * For community users,
 
     ```json
       apiVersion: v1
@@ -173,7 +173,7 @@ Following are the recommended resources for a basic use-case.
   kne create topology.yaml
   ```
   
-* After deploying, you are now ready to run a test using this topology.
+* After deployment, you are now ready to run a test using this topology.
 
 ## Destroy/Remove the topology
 

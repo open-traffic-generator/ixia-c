@@ -6,9 +6,9 @@ The following License Editions are available for Keysight Elastic Network Genera
 
   | Capability                          | Community            | Developer            | Team                           | System                              |
   |-------------------------------------|----------------------|----------------------|--------------------------------|-------------------------------------|
-  | Ixia-c Traffic Port Capacity*       |  4 x 1/10GE          |  50GE                |  400GE                         | 800GE                               |
-  | Test Concurrency**                  |  1 Seat              |  1 Seat              |  8 Seats                       | 16 Seats                            |
-  | Protocol Scale***                   |  Restricted          |  Limited             |  Limited                       | Unlimited                           |
+  | Ixia-c Traffic Port Capacity       |  4 x 1/10GE          |  50GE                |  400GE                         | 800GE                               |
+  | Test Concurrency                  |  1 Seat              |  1 Seat              |  8 Seats                       | 16 Seats                            |
+  | Protocol Scale                  |  Restricted          |  Limited             |  Limited                       | Unlimited                           |
   | Requires a valid license            |  N                   |  Y                   |  Y                             | Y                                   |
   | Includes Ixia-c Software Test Ports |  Y                   |  Y                   |  Y                             | Y                                   |
   | Works with UHD400T Hardware         |  N                   |  N                   |  Y                             | Y                                   |
@@ -127,11 +127,11 @@ The following settings are required on Ubuntu:
 ## License administration
 
 1. Obtain an activation code from your Keysight Sales Representative or [Keysight Support](https://support.ixiacom.com/contact/support).
-2. On the license server VM, SSH to license cli using the SSH key:
+2. On the license server VM, SSH to license cli by using the SSH key:
     ```sh
     ssh -i id_rsa license_cli@<license_server_ip_address>
     ```
-3. Activate the license using activation code:
+3. Activate the license by using the activation code:
     ```sh
     activate-license XXXX-XXXX-XXXX-XXXX 1
     ```
@@ -144,21 +144,21 @@ The following commands are available in the Keysight License server shell:
 
 | Commands                                                | Description  |
 |---------------------------------------------------------|-----------|
-| `show ip`                                                 | Shows the current IP address and netmask information for the management interface     |
-| `show licenses`                                           | Shows the currently installed licenses  |
-| `show dns-servers`                                        | Shows the DNS servers configured |
-| `show license-server-status`                              | Shows the current status of the License Server (active or not active, etc)  |
-| `show license-server-auto-start`                          | Shows the status of the "license-server-auto-start" flag  |
-| `show dropbox `                                           | Shows the files that are located in the "dropbox".  These are files that can be imported manually |
-| `delete (filename)`                                       | Delete the file at "filename" from the "dropbox"  |
-| `set ip [interface] [IP/"dhcp"] [netmask] [gateway]`      | Sets the current IP address, netmask and gateway address  |
-| `set license-server-auto-start (on/off)`                  | Change the status of the License Server, will it auto start at boot or not  |
-| `add dns-server (serverIP) (index)`                       | Add a new DNS server. At this time, the "index" option  must be "1" only, and the provided server will be set as the only DNS server.|
-| `start license-server`                                    | Starts the License Server on this system  |
-| `stop license-server`                                     | Stops the License Server on this system |
-| `activate-license (Activation Code) (Quantity)`           | Adds the selected "Activation Code" of quantity "Quantity" to this License Server |
-| `deactivate-license (Activation Code) (Quantity)`         | Removes the selected "Activation Code" of quantity "Quantity" from this License Server  |
-| `offline-import (filename)`                               | Import an offline file from the "dropbox".  See "show dropbox"  |
-| `reboot (Seconds)`                                        | Reboots the VM in (Seconds) seconds, which is an integer that is at least 10  |
-| `shutdown (Seconds)`                                      | Gracefully shuts down the VM in (Seconds) seconds, which is an integer that is at least 10  |
-| `tILU [--offline]`                                        | Starts the interactive Text Based License Utility (ILU) on this server.  Use the optional argument "--offline" to go straight into the Offline Operations screen. |
+| `show ip`                                                 | Shows the current IP address and netmask information for the management interface.     |
+| `show licenses`                                           | Shows the currently installed licenses.  |
+| `show dns-servers`                                        | Shows the DNS servers configured. |
+| `show license-server-status`                              | Shows the current status of the License Server (active, not active, and etc).  |
+| `show license-server-auto-start`                          | Shows the status of the "license-server-auto-start" flag.  |
+| `show dropbox `                                           | Shows the files that are located in the "dropbox".  These files can be imported manually. |
+| `delete (filename)`                                       | Deletes the file at "filename" from the "dropbox".  |
+| `set ip [interface] [IP/"dhcp"] [netmask] [gateway]`      | Sets the current IP address, netmask, and gateway address.  |
+| `set license-server-auto-start (on/off)`                  | Determines whether the License Server will auto start at boot or not.  |
+| `add dns-server (serverIP) (index)`                       | Adds a new DNS server. At this time, the "index" option  must be "1" only, and the provided server will be set as the only DNS server.|
+| `start license-server`                                    | Starts the License Server on this system.  |
+| `stop license-server`                                     | Stops the License Server on this system. |
+| `activate-license (Activation Code) (Quantity)`           | Adds the selected "Activation Code" of quantity "Quantity" to this License Server. |
+| `deactivate-license (Activation Code) (Quantity)`         | Removes the selected "Activation Code" of quantity "Quantity" from this License Server.  |
+| `offline-import (filename)`                               | Import an offline file from the "dropbox".  See "show dropbox".  |
+| `reboot (Seconds)`                                        | Reboots the VM in (Seconds) seconds, which is an integer with a minimum value of 10.  |
+| `shutdown (Seconds)`                                      | Gracefully shuts down the VM in (Seconds) seconds, which is an integer with a minimum value of 10.  |
+| `tILU [--offline]`                                        | Starts the interactive Text Based License Utility (ILU) on this server.  Use the optional argument "--offline" to go directly into the Offline Operations screen. |

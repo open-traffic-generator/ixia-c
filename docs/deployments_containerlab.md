@@ -1,7 +1,7 @@
 
 # Deploy Ixia-c-one using containerlab
 
-## overview
+## Overview
 
 Ixia-c-one is deployed as single-container application by using [containerlab](https://containerlab.dev/quickstart/) that consists of the following services:
 
@@ -32,7 +32,7 @@ Ixia-c-one is deployed as single-container application by using [containerlab](h
   containerlab deploy --topo ixiac01.clab.yml
   ```
   
-- After deploying, you are now ready to run a test using the topology.
+- After deployment, you are now ready to run a test using the topology.
 
 ## Run a test
 
