@@ -54,7 +54,7 @@ Follwoing is the example of a usual workflow, by using  `docker-compose`.
 ```sh
 # change default parameters if needed; e.g. interface name, image version, etc.
 vi deployments/.env
-# deploy and start services
+# deploy and start services for community users
 docker-compose -f deployments/<scenario>.yml up -d
 # stop and remove services deployed
 docker-compose -f deployments/<scenario>.yml down
@@ -75,6 +75,7 @@ On most of the systems, `docker-compose` needs to be installed separately even i
   | --http-port                 |   Yes     | 8443                     | TCP port for HTTP server.                                       |
   | --aur-host                  |   Yes     | https://localhost:5600  | Overrides the location of the app-usage-reporter.                       |
   | --accept-eula               |   No      | NA                      | Indicates that the user has accepted EULA, otherwise the controller will not boot up. |
+  | --license-servers           |   No      | NA                      | Indicates the ip address of license servers for commercial users. |
 
   Docker Parameters:
 
@@ -84,7 +85,11 @@ On most of the systems, `docker-compose` needs to be installed separately even i
   Example:
 
   ```bash
+  # For community users
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --debug --http-port 5050
+
+  # For commercial users
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --debug --http-port 5050 --license-servers="ip/hostname of license server"
   ```
 
 #### Traffic Engine
@@ -149,16 +154,20 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 * Automated
 
   ```bash
-  docker-compose -f deployments/raw-one-arm.yml up -d
+  docker-compose -f deployments/raw-one-arm.yml up -d # community users
   # optionally stop and remove services deployed
-  docker-compose -f deployments/raw-one-arm.yml down
+  docker-compose -f deployments/raw-one-arm.yml down # community users
   ```
 
 * Manual
 
   ```bash
   # start controller and app usage reporter
+
+  # community users
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  # commercial users
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --license-servers="ip/hostname of license server"
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -177,16 +186,19 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 * Automated
 
   ```bash
-  docker-compose -f deployments/raw-two-arm.yml up -d
+  docker-compose -f deployments/raw-two-arm.yml up -d # community users
   # optionally stop and remove services deployed
-  docker-compose -f deployments/raw-two-arm.yml down
+  docker-compose -f deployments/raw-two-arm.yml down # community users
   ```
 
 * Manual
 
   ```bash
   # start controller and app usage reporter
+  # community users
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  # commercial users
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --license-servers="ip/hostname of license server"
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -215,16 +227,19 @@ This scenario binds traffic engine to the management network interface, that bel
 * Automated
 
   ```bash
-  docker-compose -f deployments/raw-three-arm-mesh.yml up -d
+  docker-compose -f deployments/raw-three-arm-mesh.yml up -d # community users
   # optionally stop and remove services deployed
-  docker-compose -f deployments/raw-three-arm-mesh.yml down
+  docker-compose -f deployments/raw-three-arm-mesh.yml down # community users
   ```
 
 * Manual
 
   ```bash
   # start controller and app usage reporter
+  # community users
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  # commercial users
+  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --license-servers="ip/hostname of license server"
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth0, TCP port 5555 and cpu cores 0, 1, 2
