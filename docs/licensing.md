@@ -53,19 +53,68 @@ The License server VM resource requirements when running on the KVM hypervisor a
 * Minimum 10GB of storage
 * 1 available physical bridged adapter on KVM for management connectivity
 
-Before deployment, make sure that the KVM hypervisor is properly installed and configured in Ubuntu 20.04.
-
-The following settings are required on Ubuntu:
-
-* Update repositories:
-    ```sh
-    sudo apt update
-    ```
+Before deployment, make sure that the KVM hypervisor is properly installed. The following settings are required on a Debian-based system to enable KVM:
 
 * Install required KVM packages:
-    ```sh
-    sudo apt -y install qemu-kvm libvirt-daemon-system libvirt-clients libvirt-daemon bridge-utils qemu-guest-agent virt-manager vim cifs-utils
 
+    ```Shell
+    sudo apt update
+    sudo apt install --no-install-recommends qemu-system qemu-utils qemu-kvm qemu-guest-agent \
+        libvirt-clients libvirt-daemon-system bridge-utils mkisofs
+    ```
+
+### KVM Bridge Configuration
+
+Use these steps to create a KVM bridge that would connect the License server VM to the network directly. If you already have a KVM bridge, you can skip this step and use the existing bridge name when deploying the License server VM.
+
+1. Create a new bridge for KVM `kvm-br0`. Identify the network interface that will be used by the bridge. For example, `eth1` (change as needed):
+
+    ```Shell
+    # Define names to be used
+    export KVM_BRIDGE=kvm-br0
+    export KVM_BRIDGE_INTERFACE=eth1
+    # Create a new KVM bridge
+    sudo ip link add $KVM_BRIDGE type bridge
+    # Add the network interface to the KVM bridge
+    sudo ip link set $KVM_BRIDGE_INTERFACE master $KVM_BRIDGE
+    # Validate the bridge and interface are up
+    ip link show type bridge
+    ip link show master $KVM_BRIDGE
+    ```
+
+2. Persist configuration (this example is for Debian-based systems):
+
+    ```Shell
+    # Persist the KVM bridge configuration
+    sudo bash -c "cat >> /etc/network/interfaces" << EOF
+    # Specify that the physical interface that should be connected to the bridge
+    # should be configured manually, to avoid conflicts with NetworkManager
+    iface $KVM_BRIDGE_INTERFACE inet manual
+
+    # The $KVM_BRIDGE bridge settings
+    auto $KVM_BRIDGE
+    iface $KVM_BRIDGE inet static
+        bridge_ports $KVM_BRIDGE_INTERFACE
+    EOF
+    ```
+
+3. Create a KVM network using the bridge created in the previous step:
+
+    ```Shell
+    export KVM_NET=kvm-bridge
+    cat > kvm-bridge.xml << EOF
+    <network>
+        <name>$KVM_NET</name>
+        <forward mode="bridge" />
+        <bridge name="$KVM_BRIDGE" />
+    </network>
+    EOF
+
+    sudo virsh net-define kvm-bridge.xml
+    sudo virsh net-start $KVM_NET
+    sudo virsh net-autostart $KVM_NET
+    # Check status
+    sudo virsh net-list
     ```
 
 ## Deployment
