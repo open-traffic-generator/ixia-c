@@ -53,10 +53,10 @@ This build includes stability fixes.
 | ixia-c-one                    | [0.0.1-4478](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 #### Bug Fix(s)
-* `monitor.flow_metrics` will now correctly reports `bytes_tx` and `bytes_rx`.
+* `monitor.flow_metrics` will now correctly reports `bytes_tx`.
 * The VLAN TPID field in flow packet header configuration is now set to correct default of 65535 when it’s not encapsulating known protocol header.
 * The ENUM values will now have same case in both HTTPs and gRPC transport - this affects VLAN TPID field in device configuration.
-* `ixia-c-controller` now won’t crash upon receiving unexpected errors from other components.
+* `ixia-c-controller` now won’t crash upon receiving unexpected errors from other components and return `"error reading from server: EOF"` on `set_config`.
 
 #### Known Issues
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
