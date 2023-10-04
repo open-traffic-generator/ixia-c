@@ -34,6 +34,10 @@ To execute the test, do the following:
 <img src="res/clearOwnership.PNG" alt="Clear port ownership">
 </p>
 
+Please execute you actions in the following order.
+* Clear ownership
+* Reboot ports
+
 ## KNE environment
 
 **<ins>Topology creation failures for Ixia-C pods </ins>**: This occurrs for multiple reasons as stated below, 
