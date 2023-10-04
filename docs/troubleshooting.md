@@ -30,6 +30,10 @@ To execute the test, do the following:
 
 **<ins>Test failed to take port ownership</ins>**: This error is often obvious from the message displayed on the console "Failed to take ownership of the following ports". This situation may occur if previous test did not clear the ownership or somebody else is already owning the port. You can go to the chassis UI and clear the port ownership manually by force.
 
+<p align="center">
+<img src="res/clearOwnership.PNG" alt="Clear port ownership">
+</p>
+
 ## KNE environment
 
 ## UHD environment
