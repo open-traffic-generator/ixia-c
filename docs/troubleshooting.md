@@ -27,6 +27,9 @@ To execute the test, do the following:
 * Reboot the chassis ports.
 * Execute your test.
 
+
+**<ins>Test failed to take port ownership</ins>**: This error is often obvious from the message displayed on the console "Failed to take ownership of the following ports". This situation may occur if previous test did not clear the ownership or somebody else is already owning the port. You can go to the chassis UI and clear the port ownership manually by force.
+
 ## KNE environment
 
 ## UHD environment
