@@ -36,8 +36,6 @@ To execute the test, do the following:
 
 ## KNE environment
 
-## KNE environment
-
 **<ins>Topology creation failures for Ixia-C pods </ins>**: This occurrs for multiple reasons as stated below, 
 * there is mismatch in Ixia-c build versions and older Operator used. Deploy correct versions as per releases "https://github.com/open-traffic-generator/ixia-c/releases"
 * the minimum required resource is not met. 
