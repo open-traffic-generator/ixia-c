@@ -38,6 +38,14 @@ Please execute you actions in the following order.
 * Clear ownership
 * Reboot ports
 
+**<ins>Error while starting protocols</ins>**: Root cause of this ports are in bad state or you ignored some error that already occurred earlier to start protocol engine. The error messages may look quite arbtrary to you like:
+
+* Error occurred while starting protocol on protocol ports:Unable find type: Ixia.Aptixia.Cpf.pcpu.IsisSRGBRangeSubObjectsPCPU
+* Error occurred while starting protocol on protocol ports:GetPortSession() is NULL
+
+In this situation a quick heuristic is to reboot the ports and restart the docker containers, following the steps described above. In summary clear ownership, reboot ports and restart containers may resolve many of your problems regarding ATE port configuration error.
+
+
 ## KNE environment
 
 **<ins>Topology creation failures for Ixia-C pods </ins>**: This occurrs for multiple reasons as stated below, 
