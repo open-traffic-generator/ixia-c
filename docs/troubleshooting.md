@@ -45,6 +45,17 @@ Please execute you actions in the following order.
 
 In this situation a quick heuristic is to reboot the ports and restart the docker containers, following the steps described above. In summary clear ownership, reboot ports and restart containers may resolve many of your problems regarding ATE port configuration error.
 
+**<ins>OTG API call failed like start protocol failed due to "context deadline exceeded" error</ins>**: You can increase the timeout deadline by changing the value of the **timeout** parameter of the ate in the binding file. Default value is 30 (in second) you can increase it as per your setup.
+
+```
+  # This option specific to OTG over Ixia-HW.
+  otg {
+    target: "127.0.0.1:40051" # Change this to the Ixia-c-grpc server endpoint.
+    insecure: true
+    timeout: 120
+  }
+```
+
 
 ## KNE environment
 
