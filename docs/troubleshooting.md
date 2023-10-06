@@ -55,7 +55,7 @@ In this situation a quick heuristic is to reboot the ports and restart the docke
     timeout: 120
   }
 ```
-
+Also, after this change please don’t forget to restart the containers and reboot the hardware ports.
 
 ## KNE environment
 
