@@ -1,5 +1,38 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release  v0.0.1-5316
+> 9th October, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.12.5](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.12.5/artifacts/openapi.yaml)         |
+| snappi                        | [0.12.6](https://pypi.org/project/snappi/0.12.6)        |
+| gosnappi                      | [0.12.6](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.12.6)        |
+| keng-controller             | [0.0.1-5316](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.85](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.332](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [0.12.5-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator               | [0.3.8](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server            | [1.12.8](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-4554](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+#### Release Features(s)
+* Community version of `ixia-c` now supports control-plane configurations with limited scalability.
+  - Maximum of 4 IP/BGP/BGP+ sessions (cumulative on all ports) is supported.  
+
+#### Known Issues
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
 ## Release  v0.0.1-4554
 > 29th September, 2023
 
