@@ -42,3 +42,4 @@ The VLAN tagged interfaces can be created by using the following linux command:
 ```bash
 ip link add link <interface-name> name <interface-name>.<vid> type vlan id <vid>
 ```
+For more information, see [UHD400T Getting Started Guide](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400T/1.0/1.0.20/UHD400T%20Getting%20Started%20Guide.pdf).
