@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller"><img alt="Release v0.0.1-5316" src="https://img.shields.io/badge/release-v0.0.1--5316-brightgreen"></a>
+  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller"><img alt="Release v0.0.1-5318" src="https://img.shields.io/badge/release-v0.0.1--5318-brightgreen"></a>
   <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.12.5/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.12.5" src="https://img.shields.io/badge/open--traffic--generator-v0.12.5-brightgreen"></a>
   <a href="https://pypi.org/project/snappi/0.12.6"><img alt="snappi v0.12.6" src="https://img.shields.io/badge/snappi-v0.12.6-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
