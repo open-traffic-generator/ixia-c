@@ -66,20 +66,20 @@ After this change, do not forget to restart the containers and reboot the hardwa
 
 ## KNE environment
 
-**<ins>Topology creation failures for Ixia-C pods </ins>**: This error can occur for multiple reasons:
+**<ins>Topology creation failures for Ixia-C pods</ins>**: This error can occur for multiple reasons:
 
 * A mismatch in the Ixia-c build versions and the older Operator that is in use. To deploy the correct versions as per the releases, see "<https://github.com/open-traffic-generator/ixia-c/releases>".
 * The minimum resource requirement is not met.
 * An older version of KNE is being used in the client. To update KNE to a newer release, see "<https://github.com/openconfig/kne/releases/>" and deploy the topology.
 
-**<ins>Test fails due to timeout </ins>**: This error occurs when the test has faced a timeout. By default, the timeout is 10m. You can increase this limit to "-timeout 20m" or can ensure that all the services are reachable for the test to connect and run.
+**<ins>Test fails due to timeout</ins>**: This error occurs when the test has faced a timeout. By default, the timeout is 10m. You can increase this limit to "-timeout 20m" or can ensure that all the services are reachable for the test to connect and run.
 
-**<ins>Test fails at set config </ins>**: This error occurs if the configuration is not proper. For example, mistake in the flow configuration, BGP LI flag is not enabled but `GetStates` is called, and etc. You can correct the configuration and run the test again.
+**<ins>Test fails at set config</ins>**: This error occurs if the configuration is not proper. For example, mistake in the flow configuration, BGP LI flag is not enabled but `GetStates` is called, and etc. You can correct the configuration and run the test again.
 
 ## UHD environment
-**<ins>Test may not run </ins>**: This error can occur for multiple reasons:
-* Mismatch in version of rustic containers and controller in use. We must ensure they are compatible.
-* Rustic containers deployed may not be reachable. There are rare cases when we observe that even though the container is running, the port exposed may have gone corrupt. In such cases, the only way out is to redeploy those docker containers.
-* The UHD ports may not be responsive. While we may have the rustic container ready, we have to ensure the UHD ports are up and ready. For this, please refer to port-api-service provided with UHD docs.
 
+**<ins>Test may not run</ins>**: This error can occur for multiple reasons:
 
+* A mismatch in the version of the rustic containers and the controller that is in use. Ensure that they are compatible.
+* The Rustic containers (that are deployed) may not be reachable. There are rare cases when you observe that even if the container is running, the exposed port may have gone corrupt. In such scenarios, the only solution is to redeploy the docker containers.
+* The UHD ports may not be responsive. When the rustic container is ready, ensure that the UHD ports are up. For this, refer to the port-api-service that is provided in the [UHD docs](tests-uhd400.md#vlan-port-mapping).

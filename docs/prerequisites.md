@@ -1,7 +1,5 @@
 # Ixia-c Prerequisites
 
-* [Table of Contents](readme.md)
-
 ## System Prerequisites
 
 ### CPU and RAM

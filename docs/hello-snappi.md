@@ -1,9 +1,9 @@
 <div align="center">
   <h1>Hello, snappi!</h1>
-  <h4>Your first snappi script</h4>
+  <h3>Your first snappi script</h3>
 </div>
 
-# Use Case
+## Use Case
 
 This tutorial explains some key elements that are required to write a **snappi script** for exercising the following topology.
 

@@ -49,29 +49,28 @@ extra:
 # Page tree
 nav:
   - Home: index.md
+  - Quick Start:
+     - Introduction: quick-start-introduction.md
+     - Deployment: quick-start-deployment.md
+     - Sample test: sample-test.md
   - User Guide:
-    - Intro: ug_intro.md
+    - Introduction: user-guide-introduction.md
     - Prerequisites: prerequisites.md
-    - Resource requirement for advanced deployments: reference_advanced_deployments.md
+    - Resource requirement for advanced deployments: reference-advanced-deployments.md
     - Deployment: deployments.md
     - Use cases: usecases.md
-    - Integrated environments: int_env.md
-    - Ixia-c tests: tests_ixia_c.md
-    - Ixia chassis/appliance tests: tests_chassis_app.md
-    - UHD 400 tests: tests_uhd400.md
+    - Integrated environments: integrated-environments.md
+    - Ixia-c tests: tests-ixia-c.md
+    - Ixia chassis/appliance tests: tests-chassis-app.md
+    - UHD 400 tests: tests-uhd400.md
     - Limitations: limitations.md
     - Troubleshooting: troubleshooting.md
     - Releases: releases.md
-    - Licensing: licensing.md
-  - Quick Start:
-     - Intro: qsg_intro.md
-     - Prerequisites: prerequisites.md
-     - Deployment: deployments.md
-     - Sample test: sample_test.md
+    - Licensing: licensing.md  
   - Developer Guide:
-    - Intro: devGd_intro.md
+    - Introduction: developer-guide-introduction.md
     - Common constructs: snappi-constructs.md
-    - Installing snappi: snappi_install.md
+    - Installing snappi: snappi-install.md
     - Using snappi: hello-snappi.md
   - Leftovers:
     - News: news.md
