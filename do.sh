@@ -144,15 +144,8 @@ login_ghcr() {
     then
         grep ghcr.io "$HOME/.docker/config.json" > /dev/null && return 0
     fi
-
-    if [ -z "${GITHUB_USER}" ] || [ -z "${GITHUB_PAT}" ]
-    then
-        echo "Logging into docker repo ghcr.io (Please provide Github Username and PAT)"
-        docker login ghcr.io
-    else
-        echo "Logging into docker repo ghcr.io"
-        echo "${GITHUB_PAT}" | docker login -u"${GITHUB_USER}" --password-stdin ghcr.io
-    fi
+    echo "Logging into docker repo ghcr.io"
+    echo "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" | docker login -u "biplamal" --password-stdin ghcr.io
 }
 
 logout_ghcr() {

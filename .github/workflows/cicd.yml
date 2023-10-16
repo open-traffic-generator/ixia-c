@@ -2,8 +2,6 @@ name: CICD
 
 env:
   GO_VERSION: "1.18"
-  ENV_GITHUB_USER: "biplamal"
-  ENV_GITHUB_PAT: "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"
 
 on:
   push:
@@ -22,10 +20,10 @@ jobs:
           go-version: ${{ env.GO_VERSION }}
       - name: Setup KNE cluster
         run: |
-          GITHUB_USER=${{ env.ENV_GITHUB_USER }} GITHUB_PAT=${{ env.ENV_GITHUB_PAT }} ./do.sh new_k8s_cluster
+          ./do.sh new_k8s_cluster
       - name: Deploy KNE OTG back-to-back topology
         run: |
-          GITHUB_USER=${{ env.ENV_GITHUB_USER }} GITHUB_PAT=${{ env.ENV_GITHUB_PAT }} ./do.sh topo new kneb2b
+          ./do.sh topo new kneb2b
       - name: Teardown KNE OTG back-to-back topology
         run: |
           ./do.sh topo rm kneb2b
