@@ -3,7 +3,7 @@ name: CICD
 env:
   GO_VERSION: "1.18"
   ENV_GITHUB_USER: "biplamal"
-  ENV_GITHUB_PAT: "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"
+  ENV_GITHUB_PAT: "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"
 
 on:
   push:
