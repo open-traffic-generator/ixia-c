@@ -58,7 +58,7 @@
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                 <b>
                                     <font color="#004c99">
-                                        ixia-c-controller
+                                        keng-controller
                                         <br/>
                                         <br/>
                                         :8443
@@ -70,7 +70,7 @@
                     </div>
                 </foreignObject>
                 <text x="265" y="199" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    ixia-c-controller...
+                    keng-controller...
                 </text>
             </switch>
         </g>

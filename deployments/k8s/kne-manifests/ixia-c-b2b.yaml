@@ -1,0 +1,20 @@
+name: ixia-c
+nodes:
+  - name: otg
+    vendor: KEYSIGHT
+    version: local
+    services:
+      8443:
+        name: https
+        inside: 8443
+      40051:
+        name: grpc
+        inside: 40051
+      50051:
+        name: gnmi
+        inside: 50051
+links:
+  - a_node: otg
+    a_int: eth1
+    z_node: otg
+    z_int: eth2

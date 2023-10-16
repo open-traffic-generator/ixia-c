@@ -16,6 +16,7 @@
 Ixia-c is distributed / deployed as a multi-container application consisting of following services:
 
 * **controller** - Serves API request from clients and manages workflow across one or more traffic engines.
+* **protocol-engine** - Generates and processes control plane (layer23) packets from one or more network interfaces (on linux-based OS).
 * **traffic-engine** - Generates, captures and processes traffic from one or more network interfaces (on linux-based OS).
 * **app-usage-reporter** - (Optional) Collects anonymous usage report from controller and uploads it to Keysight Cloud, with minimal impact on host resources.
 
@@ -79,7 +80,7 @@ On most systems, `docker-compose` needs to be installed separately even when doc
   Example:
 
   ```bash
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --debug --http-port 5050
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula --debug --http-port 5050
   ```
 
 #### Traffic Engine
@@ -107,6 +108,27 @@ On most systems, `docker-compose` needs to be installed separately even when doc
     --cpuset-cpus="0,1,2"                       \
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
+#### Layer23 Protocol Engine
+
+| Environment Variables       | Optional  | Default                 | Description                                                     |
+  |-----------------------------|-----------|-------------------------|-----------------------------------------------------------------|
+  | INTF_LIST                   |   No      | NA                      | Name of the network interface(s) to bind to. It must be visible inside the container e.g. by inserting it into the namespace of the protocol-engine container. e.g. "eth1" if that is the interface on which the protocol-engine should send and receive packets. Or could be "eth1,eth2,eth3" for multi-nic scenarios. The management NIC (normally eth0 inside the container) is not supported and may result in unexpected behaviour. |
+
+  Docker Parameters:
+  * `--net=container:<traffic-engine container name>` - This is needed if protocol-engine and traffic-engine needs to share a interface connected to the device under test. This is not needed for control-plane only tests. --net=host mode should not be used with protocol-engine container.
+  * `--privileged` - This is needed because protocol-engine needs to exercise packet Tx and Rx capabilities that require elevated privileges.
+
+  Example:
+
+  ```bash
+  docker run --privileged -d  --name=ixia-c-protocol-engine-abc  -e INTF_LIST="eth1"  ghcr.io/open-traffic-generator/ixia-c-protocol-engine
+  
+  docker run --privileged -d  --net=container:ixia-c-traffic-engine-abc --name=ixia-c-protocol-engine-abc  \
+  -e INTF_LIST="eth1"  ghcr.io/open-traffic-generator/ixia-c-protocol-engine
+
+
+  ```
+To push an interface (e.g. one end of a veth pair ) , please look at [how to insert it into the namespace of a container](https://github.com/open-traffic-generator/conformance/blob/main/do.sh#L147) 
 
 ### Diagnostics
 
@@ -152,7 +174,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -162,6 +184,13 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     -e OPT_NO_HUGEPAGES="Yes"                   \
     --cpuset-cpus="0,1,2"                       \
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
+
+  # start protocol engine on network interface eth1
+  docker run --privileged -d                           \
+    --net=container:ixia-c-traffic-engine-eth1         \
+    --name=ixia-c-protocol-engine-eth1                 \
+    -e INTF_LIST="eth1"                                \
+    ghcr.io/open-traffic-generator/ixia-c-protocol-engine
   ```
 
 ### Two-arm Scenario
@@ -180,7 +209,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -191,6 +220,13 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     --cpuset-cpus="0,1,2"                       \
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
 
+  # start protocol engine on network interface eth1
+  docker run --privileged -d                           \
+    --net=container:ixia-c-traffic-engine-eth1         \
+    --name=ixia-c-protocol-engine-eth1                 \
+    -e INTF_LIST="eth1"                                \
+    ghcr.io/open-traffic-generator/ixia-c-protocol-engine
+
   # start traffic engine on network interface eth2, TCP port 5556 and cpu cores 0, 3, 4
   docker run --net=host --privileged -d         \
     -e OPT_LISTEN_PORT="5556"                   \
@@ -198,6 +234,13 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
     -e OPT_NO_HUGEPAGES="Yes"                   \
     --cpuset-cpus="0,3,4"                       \
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
+
+  # start protocol engine on network interface eth2
+  docker run --privileged -d                           \
+    --net=container:ixia-c-traffic-engine-eth1         \
+    --name=ixia-c-protocol-engine-eth2                 \
+    -e INTF_LIST="eth2"                                \
+    ghcr.io/open-traffic-generator/ixia-c-protocol-engine
   ```
 
 ### Three-arm Mesh Scenario
@@ -218,35 +261,56 @@ This scenario binds traffic engine to management network interface belonging to 
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
-  # start traffic engine on network interface eth0, TCP port 5555 and cpu cores 0, 1, 2
+  # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
   docker run --privileged -d                    \
     -e OPT_LISTEN_PORT="5555"                   \
-    -e ARG_IFACE_LIST="virtual@af_packet,eth0"  \
+    -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
     -p 5555:5555                                \
     --cpuset-cpus="0,1,2"                       \
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
 
-  # start traffic engine on network interface eth0, TCP port 5556 and cpu cores 0, 3, 4
+  # start protocol engine on network interface eth1
+  docker run --privileged -d                           \
+    --net=container:ixia-c-traffic-engine-eth1         \
+    --name=ixia-c-protocol-engine-eth1                 \
+    -e INTF_LIST="eth1"                                \
+    ghcr.io/open-traffic-generator/ixia-c-protocol-engine
+
+  # start traffic engine on network interface eth2, TCP port 5556 and cpu cores 0, 3, 4
   docker run --privileged -d                    \
     -e OPT_LISTEN_PORT="5555"                   \
-    -e ARG_IFACE_LIST="virtual@af_packet,eth0"  \
+    -e ARG_IFACE_LIST="virtual@af_packet,eth2"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
     -p 5556:5555                                \
     --cpuset-cpus="0,3,4"                       \
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
 
-  # start traffic engine on network interface eth0, TCP port 5557 and cpu cores 0, 5, 6
+  # start protocol engine on network interface eth2
+  docker run --privileged -d                           \
+    --net=container:ixia-c-traffic-engine-eth2         \
+    --name=ixia-c-protocol-engine-eth2                \
+    -e INTF_LIST="eth2"                                \
+    ghcr.io/open-traffic-generator/ixia-c-protocol-engine
+
+  # start traffic engine on network interface eth3, TCP port 5557 and cpu cores 0, 5, 6
   docker run --privileged -d                    \
     -e OPT_LISTEN_PORT="5555"                   \
-    -e ARG_IFACE_LIST="virtual@af_packet,eth0"  \
+    -e ARG_IFACE_LIST="virtual@af_packet,eth3"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
     -p 5557:5555                                \
     --cpuset-cpus="0,5,6"                       \
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
+
+  # start protocol engine on network interface eth3
+  docker run --privileged -d                           \
+    --net=container:ixia-c-traffic-engine-eth3         \
+    --name=ixia-c-protocol-engine-eth1                 \
+    -e INTF_LIST="eth3"                                \
+    ghcr.io/open-traffic-generator/ixia-c-protocol-engine
   ```
 
 ### TODO: Multi-port per TE container
@@ -330,6 +394,18 @@ tests/env/bin/python -m pytest tests/py -m "sanity"
   }
   ```
 
+* When `controller`,`traffic-engine`s and `protocol-engine`s are located on separate systems (remote)
+
+  ```json
+  {
+   "controller": "https://<controller-ip>",
+    "ports": [
+        "<traffic-engine-ip>:5555+<traffic-engine-ip>:50071",
+        "<traffic-engine-ip>:5556+<traffic-engine-ip>:50071"
+    ]
+  }
+  ```
+
 * When `controller` and `traffic-engine`s are located on same system (local - raw sockets)
 
   ```json
@@ -338,6 +414,18 @@ tests/env/bin/python -m pytest tests/py -m "sanity"
     "ports": [
         "localhost:5555",
         "localhost:5556"
+    ]
+  }
+  ```
+
+* When `controller`,`traffic-engine`s and `protocol-engine`s are located on same system (local - raw sockets)
+
+  ```json
+  {
+   "controller": "https://localhost:8443",
+    "ports": [
+        "localhost:5555+localhost:50071",
+        "localhost:5556+localhost:50071"
     ]
   }
   ```

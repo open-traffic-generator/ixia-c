@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: ixiatg-release-config
+    namespace: ixiatg-op-system
+data:
+    versions: |
+        {
+        "release": "local",
+        "images": [
+                {
+                    "name": "controller",
+                    "path": "ghcr.io/open-traffic-generator/keng-controller",
+                    "tag": "0.0.1-5318",
+                    "env": {
+                        "TRACE": "true",
+                    }
+                },
+                {
+                    "name": "gnmi-server",
+                    "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
+                    "tag": "1.12.8"
+                },
+                {
+                    "name": "traffic-engine",
+                    "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
+                    "tag": "1.6.0.85"
+                },
+                {
+                    "name": "protocol-engine",
+                    "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
+                    "tag": "1.00.0.332"
+                },
+                {
+                    "name": "controller-community",
+                    "path": "ghcr.io/open-traffic-generator/keng-controller",
+                    "tag": "0.0.1-5318"
+                },
+                {
+                    "name": "ixia-c-one",
+                    "path": "ghcr.io/open-traffic-generator/ixia-c-one",
+                    "tag": "0.0.1-5318"
+                }
+            ]
+        }
