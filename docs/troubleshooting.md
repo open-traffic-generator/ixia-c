@@ -77,3 +77,9 @@ After this change, do not forget to restart the containers and reboot the hardwa
 **<ins>Test fails at set config </ins>**: This error occurs if the configuration is not proper. For example, mistake in the flow configuration, BGP LI flag is not enabled but `GetStates` is called, and etc. You can correct the configuration and run the test again.
 
 ## UHD environment
+**<ins>Test may not run </ins>**: This error can occur for multiple reasons:
+* Mismatch in version of rustic containers and controller in use. We must ensure they are compatible.
+* Rustic containers deployed may not be reachable. There are rare cases when we observe that even though the container is running, the port exposed may have gone corrupt. In such cases, the only way out is to redeploy those docker containers.
+* The UHD ports may not be responsive. While we may have the rustic container ready, we have to ensure the UHD ports are up and ready. For this, please refer to port-api-service provided with UHD docs.
+
+
