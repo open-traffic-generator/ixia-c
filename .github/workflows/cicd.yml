@@ -1,0 +1,32 @@
+name: CICD
+
+env:
+  GO_VERSION: "1.18"
+  ENV_GITHUB_USER: "biplamal"
+  ENV_GITHUB_PAT: "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"
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  kne_b2b:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup docker
+        uses: docker-practice/actions-setup-docker@master
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - name: Setup KNE cluster
+        run: |
+          GITHUB_USER=${{ env.ENV_GITHUB_USER }} GITHUB_PAT=${{ env.ENV_GITHUB_PAT }} ./do.sh new_k8s_cluster
+      - name: Deploy KNE OTG back-to-back topology
+        run: |
+          GITHUB_USER=${{ env.ENV_GITHUB_USER }} GITHUB_PAT=${{ env.ENV_GITHUB_PAT }} ./do.sh topo new kneb2b
+      - name: Teardown KNE OTG back-to-back topology
+        run: |
+          ./do.sh topo rm kneb2b
