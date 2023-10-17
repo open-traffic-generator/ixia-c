@@ -27,11 +27,11 @@ You can establish a connectivity between the services in two ways. The options a
 
 ## Deployment types
 
-### [Using docker-compose](deployments-docker-compose.md)
+* [Using docker-compose](deployments-docker-compose.md)
 
-### [Using containerlab](deployments-containerlab.md)
+* [Using containerlab](deployments-containerlab.md)
 
-### [Using KNE](deployments-kne.md)
+* [Using KNE](deployments-kne.md)
 
 ## Diagnostics
 

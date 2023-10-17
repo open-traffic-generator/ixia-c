@@ -1,24 +1,5 @@
 # Common snappi constructs
 
-- [Table of Contents](readme.md)
-  - Common snappi constructs
-    * [Overview](#overview)
-    * [Flows](#flows)
-      * [Unidirectional Flow](#unidirectional-flow)
-      * [Bidirectional Flows](#bidirectional-flows)
-      * [Meshed Flows](#meshed-flows)
-      * [Protocol Headers With Fixed Fields](#protocol-headers-with-fixed-fields)
-      * [Protocol Headers With Varying Fields](#protocol-headers-with-varying-fields)
-      * [Start Flow Transmit](#start-flow-transmit)
-      * TODO: custom headers
-    * [Capture](#capture)
-      * [Capture Configuration](#capture-configuration)
-      * [Start Capture](#start-capture)
-      * [Get Capture](#get-capture)
-    * [Metrics](#metrics)
-      * [Port Metrics](#port-metrics)
-      * [Flow Metrics](#flow-metrics)
-
 ## Overview
 
 Every object in snappi can be serialized to or deserialized from a JSON string which conforms to [Open Traffic Generator API](https://github.com/open-traffic-generator/models). This facilitates storing traffic configurations as JSON files and reusing them in API calls with or without further modifications.
