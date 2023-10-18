@@ -16,4 +16,3 @@ To manage the deployment of the example labs, use one of the following tools:
 
 * [Containerlab:](deployments-containerlab.md) Simple yet powerful specialized tool for orchestrating and managing container-based networking labs.
 * [OpenConfig KNE:](deployments-kne.md) Kubernetes Network Emulation, which is a Google initiative to develop tooling for quickly setting up topologies of containers running various device OSes.
-

@@ -72,6 +72,8 @@ nav:
     - Common constructs: snappi-constructs.md
     - Installing snappi: snappi-install.md
     - Using snappi: hello-snappi.md
+  - Reference Guide:
+    - Feature gap list: Feature-gap-table.md 
   - Leftovers:
     - News: news.md
     - Contributing: contribute.md

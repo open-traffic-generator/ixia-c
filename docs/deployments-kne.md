@@ -1,6 +1,6 @@
-# Deploy Ixia-c using kne
+# Deploy Ixia-c using KNE
 
-Ixia-c can be deployed in the k8s environment by using [kne](https://github.com/openconfig/kne) that consists of the following services:
+Ixia-c can be deployed in the k8s environment by using the [Kubernetes Network Emulation](https://github.com/openconfig/kne) that consists of the following services:
 
 * **operator**: Serves API request from the clients and manages workflow across one or more traffic engines.
 * **controller**: Serves API request from the clients and manages workflow across one or more traffic engines.
@@ -141,7 +141,7 @@ Following are the recommended resources for a basic use-case.
 
 ## Deploy the topology
 
-* The following snippet shows a simple kne b2b topology.
+* The following snippet shows a simple KNE b2b topology.
 
   ```yaml
   name: ixia-c

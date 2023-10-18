@@ -24,7 +24,9 @@
     * [Common constructs](snappi-constructs.md)
     * [Installing snappi](snappi-install.md)
     * [Using snappi](hello-snappi.md)
-5. Leftovers:
+5. Reference Guide:
+    * [Feature gap list](Feature-gap-table.md)
+6. Leftovers:
     * [News](news.md)
     * [Contributing](contribute.md)
     * [EULA](eula.md)
