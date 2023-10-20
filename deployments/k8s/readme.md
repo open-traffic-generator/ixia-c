@@ -4,12 +4,10 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
 ### Prerequisites
 
-- Recommended OS is Ubuntu LTS release.
-- At least 2 CPU cores
-- At least 6GB RAM
-- At least 10GB Free Hard Disk Space
-- Go 1.17+ or Python 3.6+ (with pip)
-- Docker Engine (Community Edition)
+- At least **2 x86 CPU cores**, **7GB RAM** and **30GB Free Hard Disk Space**
+- Recommended OS is **Ubuntu 22.04 LTS** release.
+- Go **1.20+**
+- **Docker Engine** (Community Edition) - Needed when using kind for setting up K8S cluster
 
 > Please make sure that current working directory is `deployments/k8s`.
 
@@ -26,7 +24,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
     ```bash
     # install kind
-    go install sigs.k8s.io/kind@v0.16.0
+    go install sigs.k8s.io/kind@v0.20.0
     # create cluster with custom configuration
     kind create cluster --config=kind.yaml --wait 30s
     # install compatible kubectl

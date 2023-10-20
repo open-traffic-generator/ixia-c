@@ -35,7 +35,7 @@ jobs:
         with:
           name: examples_curl
           path: |
-            logs
+            conformance/logs
 
   examples_go_py:
     runs-on: ubuntu-22.04
@@ -72,9 +72,48 @@ jobs:
         with:
           name: examples_go_py
           path: |
-            logs
+            conformance/logs
 
-  deployment_network_emulation:
+  deployments_k8s:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with: 
+          submodules: true
+      - name: Setup docker
+        uses: docker-practice/actions-setup-docker@master
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - name: Setup Cluster
+        run: |
+          cd deployments/k8s
+          sed -n '26,34p' readme.md > setup-cluster.sh
+          sh setup-cluster.sh
+      - name: Download images
+        run: |
+          cd deployments/k8s
+          sed -n '42,49p' readme.md > download-images.sh
+          sh download-images.sh
+      - name: Setup Pods and Services
+        run: |
+          cd deployments/k8s
+          sed -n '61,64p' readme.md > setup-pods-services.sh
+          sh setup-pods-services.sh
+      - name: Setup tests
+        run: |
+          cd deployments/k8s
+          sed -n '75,77p' readme.md > setup-tests.sh
+          sh setup-tests.sh
+      - name: Run tests
+        run: |
+          cd deployments/k8s
+          sed -n '85,86p' readme.md > run-tests.sh
+          sh run-tests.sh
+
+  deployments_k8s_network_emulation:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout source
