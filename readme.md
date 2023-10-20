@@ -1,6 +1,12 @@
-<h3 align="center">
+<h1 align="center">
+  <br>
+  Ixia-C
+  <br>
+</h1>
+
+<h4 align="center">
   Ixia-C - A powerful traffic generator based on <a href="https://github.com/open-traffic-generator/models" target="_blank">Open Traffic Generator API</a>
-</h3>
+</h4>
 
 <p align="center">
   <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller"><img alt="Release v0.1.0-3" src="https://img.shields.io/badge/release-v0.1.0--3-brightgreen"></a>
