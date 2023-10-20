@@ -78,7 +78,7 @@ cd conformance
 ./do.sh gotest examples/quickstart_test.go
 ```
 
-> Checkout the contents of [test_quickstart.py](conformance/examples/test_quickstart.py) and equivalent [quickstart_test.go](conformance/examples/quickstart_test.go) for quick explanation on test steps
+> Checkout the contents of [test_quickstart.py](https://github.com/open-traffic-generator/conformance/blob/22563e20fe512ef13baf44c1bc69bc59f87f6c25/examples/test_quickstart.py) and equivalent [quickstart_test.go](https://github.com/open-traffic-generator/conformance/blob/22563e20fe512ef13baf44c1bc69bc59f87f6c25/examples/quickstart_test.go) for quick explanation on test steps
 
 #### 3. Optionally, run test using [curl](https://curl.se/)
 

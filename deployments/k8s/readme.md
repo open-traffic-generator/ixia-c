@@ -79,9 +79,9 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
 3. Run sample test
 
-    The test being run for this specific topology is `conformance/features/flows/headers/udp/udp_header_eth0_test.go`
+    The test being run for this specific topology is `conformance/feature/b2b/packet/udp/udp_port_value_eth0_test.go`
 
     ```bash
     cd ../../conformance
-    CGO_ENABLED=0 go test -v -count=1 -p=1 -timeout 3600s -tags="all" -run="^TestUdpHeaderEth0$" ./...
+    CGO_ENABLED=0 go test -v -count=1 -p=1 -timeout 3600s -tags="all" -run="^TestUdpPortValueEth0$" ./...
     ```
