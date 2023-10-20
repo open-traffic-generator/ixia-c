@@ -1,0 +1,71 @@
+name: CI
+
+env:
+  PYTHON_VERSION: "3.8"
+  GO_VERSION: "1.19"
+
+on:
+  push:
+
+jobs:
+  examples_curl:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup docker
+        uses: docker-practice/actions-setup-docker@master
+      - name: Deploy Ixia-C
+        run: |
+          sed -n '57,61p' readme.md > deploy.sh
+          sh deploy.sh
+      - name: Setup and run tests
+        run: |
+          sed -n '90,95p' readme.md > test.sh
+          sh test.sh
+      - name: Get container logs
+        if: always()
+        run: |
+          ./do.sh topo logs
+      - name: Archive logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: examples_curl
+          path: |
+            logs
+
+  examples_go_py:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Setup docker
+        uses: docker-practice/actions-setup-docker@master
+      - name: Deploy Ixia-C
+        run: |
+          sed -n '57,61p' readme.md > deploy.sh
+          sh deploy.sh
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ env.GO_VERSION }}
+      - name: Setup and run tests
+        run: |
+          sed -n '67,78p' readme.md > test.sh
+          sh test.sh
+      - name: Get container logs
+        if: always()
+        run: |
+          ./do.sh topo logs
+      - name: Archive logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: examples_go_py
+          path: |
+            logs
