@@ -19,11 +19,11 @@ jobs:
         uses: docker-practice/actions-setup-docker@master
       - name: Deploy Ixia-C
         run: |
-          sed -n '57,61p' readme.md > deploy.sh
+          sed -n '58,61p' readme.md > deploy.sh
           sh deploy.sh
       - name: Setup and run tests
         run: |
-          sed -n '90,95p' readme.md > test.sh
+          sed -n '90,97p' readme.md > test.sh
           sh test.sh
       - name: Get container logs
         if: always()
@@ -48,7 +48,7 @@ jobs:
         uses: docker-practice/actions-setup-docker@master
       - name: Deploy Ixia-C
         run: |
-          sed -n '57,61p' readme.md > deploy.sh
+          sed -n '58,61p' readme.md > deploy.sh
           sh deploy.sh
       - name: Setup Python
         uses: actions/setup-python@v4

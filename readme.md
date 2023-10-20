@@ -29,11 +29,11 @@
 
 ### What is Ixia-C ?
 
-Ixia-C is a modern, powerful and API-driven traffic generator designed to cater to the needs of hyper-scalers, network hardware vendors and hobbyists alike.
+- A modern, powerful and **API-driven** traffic generator designed to cater to the needs of hyper-scalers, network hardware vendors and hobbyists alike.
 
-It is **free for basic use-cases** and distributed / deployed as a multi-container application consisting primarily of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine) and a [protocol-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine).
+- **Free for basic use-cases** and distributed / deployed as a multi-container application consisting primarily of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine) and a [protocol-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine).
 
-As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-C supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
+- As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), supports client SDKs in various languages, most prevalent being [snappi](https://github.com/open-traffic-generator/snappi) (Python SDK) and [gosnappi](https://github.com/open-traffic-generator/snappi/tree/main/gosnappi).
 
 <p align="center">
 <img src="docs/res/ixia-c.drawio.svg" alt="Ixia-C deployment for two-arm test with DUT">
@@ -89,8 +89,10 @@ The description of each node in the configuration is detailed in self-updating  
 ```bash
 # push traffic configuration
 curl -skL https://localhost:8443/config -H "Content-Type: application/json" -d @conformance/examples/quickstart_config.json
+
 # start transmitting configured flows
 curl -skL https://localhost:8443/control/state -H "Content-Type: application/json" -d @conformance/examples/quickstart_control.json
+
 # fetch flow metrics
 curl -skL https://localhost:8443/monitor/metrics -H "Content-Type: application/json" -d @conformance/examples/quickstart_metrics.json
 ```
