@@ -44,9 +44,9 @@
 ### Quick Start
 
 Please ensure that following prerequisites are met by the setup:
-  - At least **2 x86_64 CPU cores** and **7GB RAM**, preferably running **Ubuntu 22.04 LTS**
+  - At least **2 x86_64 CPU cores** and **7GB RAM**, preferably running **Ubuntu 22.04 LTS** OS
   - **Python 3.8+** (and **pip**) or **Go 1.19+**
-  - **Docker** Community Edition
+  - **Docker Engine** (Community Edition)
 
 
 #### 1. Deploy Ixia-C
