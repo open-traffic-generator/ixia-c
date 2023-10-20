@@ -23,11 +23,40 @@ This build includes new features, stability and bug fixes.
 | otg-gnmi-server               | [1.13.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [0.1.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
+#### Release Feature(s)
+* Ixia-C now offers following existing licensed features free for community use (without requiring Keysight Licensing Solution):
+  1. `ixia-c-protocol-engine`, which enables control plane emulation in Ixia-C is now publicly downloadable.
+  2. Emulation of one or more IPv4 and IPv6 interfaces with Address Resolution Protocol (ARP) and Neighbor Discovery (ND), respectively, is now supported.
+  3. Automatic destination MAC address resolution for flows with IPv4 / IPv6 endpoints is now supported.
+  4. Configuring one BGP session over IPv4 / IPv6, advertising V4 / V6 routes is now supported.
+* Users exercising full feature set ([Keysight Elastic Network Generator aka KENG](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html)) will now have to subscribe to Keysight Licensing Solution. Please reach out to Keysight for more details.
+* `keng-layer23-hw-server`, which facilitates control and data plane operations on **Ixia Chassis & Appliances(Novus, AresOne)** is now publicly downloadable (but can only be used with Keysight Licensing Solution)
+* Support is added for overload bit and extended ipv4 reachability in `get_states` for isis_lsps in **Ixia Chassis & Appliances(Novus, AresOne)**; gNMI path for `isis_lsps`:
+  ```
+    +--rw isis-routers
+      +--ro isis-router* [name]
+          +--ro name     -> ../state/name
+          +--ro state
+            +--ro name?                  string
+            .
+            .
+            +--ro link-state-database
+                +--ro lsp-states
+  ```
+
+> The container image paths have changed for some Ixia-C artifacts. Please review **Build Details** for correct paths.
+
 #### Bug Fix(s)
-* `monitor.flow_metrics` will now correctly reports `bytes_tx`.
-* The VLAN TPID field in flow packet header configuration is now set to correct default of 65535 when it’s not encapsulating known protocol header.
+* Memory leak in **Ixia Chassis & Appliances(Novus, AresOne)** is fixed for long duration tests.
+* `gosnappi` now correctly validates required primitive types when they're not explicitly set by users.
+* IS-IS metric is no longer sent as 63 when configured as 200 (or more than 63) with wide metrics enabled on **Ixia Chassis & Appliances(Novus, AresOne)**.
+
 
 #### Known Issues
+* If `keng-layer23-hw-server` version is upgraded/downgraded, the ports from Ixia Chassis & Appliances(Novus, AresOne) which will be used from this container must be rebooted once before running the tests.
+* Adding more than 256 devices on a single ixia-c-port causing failure for Ixia Chassis & Appliances(Novus, AresOne).
+* Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* With certain DUTs, ssh service hangs if ISIS L1 MD5 is enabled.
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * The metric `loss` in flow metrics is currently not supported.
 * When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
