@@ -28,7 +28,7 @@ jobs:
       - name: Get container logs
         if: always()
         run: |
-          ./do.sh topo logs
+          cd conformance && ./do.sh topo logs
       - name: Archive logs
         if: always()
         uses: actions/upload-artifact@v3
@@ -65,7 +65,7 @@ jobs:
       - name: Get container logs
         if: always()
         run: |
-          ./do.sh topo logs
+          cd conformance && ./do.sh topo logs
       - name: Archive logs
         if: always()
         uses: actions/upload-artifact@v3
