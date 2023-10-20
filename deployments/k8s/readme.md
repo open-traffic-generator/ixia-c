@@ -43,7 +43,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
     for i in $(seq $(grep -c newName ${yml}))
     do
         cap=$(grep -A1 -m${i} newName ${yml} | tail -n 2)
-        img=$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newName | cut -d\  -f4)
+        img=$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newName | cut -d: -f2 | cut -d\  -f2)
         img=${img}:$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newTag | cut -d\" -f2)
         docker pull "${img}" && kind load docker-image "${img}"
     done

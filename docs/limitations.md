@@ -3,7 +3,7 @@
 * [Table of Contents](readme.md)
 
 * Supported protocol headers are `ethernet`, `ipv4`, `ipv6`, `vlan`, `tcp`, `udp`, `gtpv1`, `gtpv2`, `arp`, `icmp` and `custom`.
-* `fixed_packets`, `fixed_seconds`,`continuous` and 'burst' are supported for flow duration (fixed number of 'burst' is not supported).
+* `fixed_packets`, `fixed_seconds`,`continuous` and `burst` are supported for flow duration (fixed number of `burst` is not supported).
 * Size of the packet must be a value greater than or equal to 64 bytes.
 * Setting random frame size is not supported.
 * Only `value`, `values`,`increment` and `decrement` patterns are supported for Protocol Header fields.
