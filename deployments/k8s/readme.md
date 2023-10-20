@@ -4,12 +4,10 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
 ### Prerequisites
 
-- Recommended OS is Ubuntu LTS release.
-- At least 2 CPU cores
-- At least 6GB RAM
-- At least 10GB Free Hard Disk Space
-- Go 1.17+ or Python 3.6+ (with pip)
-- Docker Engine (Community Edition)
+- At least **2 x86 CPU cores**, **7GB RAM** and **30GB Free Hard Disk Space**
+- Recommended OS is **Ubuntu 22.04 LTS** release.
+- Go **1.20+**
+- **Docker Engine** (Community Edition) - Needed when using kind for setting up K8S cluster
 
 > Please make sure that current working directory is `deployments/k8s`.
 
@@ -26,7 +24,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
     ```bash
     # install kind
-    go install sigs.k8s.io/kind@v0.16.0
+    go install sigs.k8s.io/kind@v0.20.0
     # create cluster with custom configuration
     kind create cluster --config=kind.yaml --wait 30s
     # install compatible kubectl
@@ -45,7 +43,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
     for i in $(seq $(grep -c newName ${yml}))
     do
         cap=$(grep -A1 -m${i} newName ${yml} | tail -n 2)
-        img=$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newName | cut -d\  -f4)
+        img=$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newName | cut -d: -f2 | cut -d\  -f2)
         img=${img}:$(grep -A1 -m${i} newName ${yml} | tail -n 2 | grep newTag | cut -d\" -f2)
         docker pull "${img}" && kind load docker-image "${img}"
     done
@@ -81,9 +79,9 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
 3. Run sample test
 
-    The test being run for this specific topology is `conformance/features/flows/headers/udp/udp_header_eth0_test.go`
+    The test being run for this specific topology is `conformance/feature/b2b/packet/udp/udp_port_value_eth0_test.go`
 
     ```bash
     cd ../../conformance
-    CGO_ENABLED=0 go test -v -count=1 -p=1 -timeout 3600s -tags="all" -run="^TestUdpHeaderEth0$" ./...
+    CGO_ENABLED=0 go test -v -count=1 -p=1 -timeout 3600s -tags="all" -run="^TestUdpPortValueEth0$" ./...
     ```

@@ -79,7 +79,7 @@ On most systems, `docker-compose` needs to be installed separately even when doc
   Example:
 
   ```bash
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --debug --http-port 5050
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula --debug --http-port 5050
   ```
 
 #### Traffic Engine
@@ -152,7 +152,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -180,7 +180,7 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -218,7 +218,7 @@ This scenario binds traffic engine to management network interface belonging to 
 
   ```bash
   # start controller and app usage reporter
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth0, TCP port 5555 and cpu cores 0, 1, 2

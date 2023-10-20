@@ -1,5 +1,68 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release  v0.1.0-3
+> 20th October, 2023
+
+#### About
+
+This build includes new features, stability and bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.13.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.0/artifacts/openapi.yaml)         |
+| snappi                        | [0.13.0](https://pypi.org/project/snappi/0.13.0)        |
+| gosnappi                      | [0.13.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.13.0)        |
+| keng-controller               | [0.1.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.85](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.337](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [0.13.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.13](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [0.1.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+#### Release Feature(s)
+* Ixia-C now offers following existing licensed features free for community use (without requiring Keysight Licensing Solution):
+  1. `ixia-c-protocol-engine`, which enables control plane emulation in Ixia-C is now publicly downloadable.
+  2. Emulation of one or more IPv4 and IPv6 interfaces with Address Resolution Protocol (ARP) and Neighbor Discovery (ND), respectively, is now supported.
+  3. Automatic destination MAC address resolution for flows with IPv4 / IPv6 endpoints is now supported.
+  4. Configuring one BGP session over IPv4 / IPv6, advertising V4 / V6 routes is now supported.
+* Users exercising full feature set ([Keysight Elastic Network Generator aka KENG](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html)) will now have to subscribe to Keysight Licensing Solution. Please reach out to Keysight for more details.
+* `keng-layer23-hw-server`, which facilitates control and data plane operations on **Ixia Chassis & Appliances(Novus, AresOne)** is now publicly downloadable (but can only be used with Keysight Licensing Solution)
+* Support is added for overload bit and extended ipv4 reachability in `get_states` for isis_lsps in **Ixia Chassis & Appliances(Novus, AresOne)**; gNMI path for `isis_lsps`:
+  ```
+    +--rw isis-routers
+      +--ro isis-router* [name]
+          +--ro name     -> ../state/name
+          +--ro state
+            +--ro name?                  string
+            .
+            .
+            +--ro link-state-database
+                +--ro lsp-states
+  ```
+
+> The container image paths have changed for some Ixia-C artifacts. Please review **Build Details** for correct paths.
+
+#### Bug Fix(s)
+* Memory leak in **Ixia Chassis & Appliances(Novus, AresOne)** is fixed for long duration tests.
+* `gosnappi` now correctly validates required primitive types when they're not explicitly set by users.
+* IS-IS metric is no longer sent as 63 when configured as 200 (or more than 63) with wide metrics enabled on **Ixia Chassis & Appliances(Novus, AresOne)**.
+
+
+#### Known Issues
+* If `keng-layer23-hw-server` version is upgraded/downgraded, the ports from Ixia Chassis & Appliances(Novus, AresOne) which will be used from this container must be rebooted once before running the tests.
+* Adding more than 256 devices on a single ixia-c-port causing failure for Ixia Chassis & Appliances(Novus, AresOne).
+* Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* With certain DUTs, ssh service hangs if ISIS L1 MD5 is enabled.
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+
 ## Release  v0.0.1-4554
 > 29th September, 2023
 
