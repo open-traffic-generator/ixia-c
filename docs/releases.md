@@ -1,5 +1,29 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release  v0.0.1-4555
+> 27th October, 2023
+
+#### About
+
+This build extends usage expiry of previously released v0.0.1-4554 to 31st November, 2023.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.12.5](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.12.5/artifacts/openapi.yaml)         |
+| snappi                        | [0.12.6](https://pypi.org/project/snappi/0.12.6)        |
+| gosnappi                      | [0.12.6](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.12.6)        |
+| ixia-c-controller             | [0.0.1-4555](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.85](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.331](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    |
+| ixia-c-ixhw-server        | [0.12.5-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.6](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        |
+| ixia-c-gnmi-server            | [1.12.7](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
+| ixia-c-one                    | [0.0.1-4555](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+
+
 ## Release  v0.0.1-4554
 > 29th September, 2023
 
