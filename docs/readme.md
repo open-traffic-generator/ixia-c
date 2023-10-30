@@ -8,7 +8,6 @@
 3. User Guide:
     * [Introduction](user-guide-introduction.md)
     * [Prerequisites](prerequisites.md)
-    * [Resource requirement for advanced deployments](reference-advanced-deployments.md)
     * [Deployment](deployments.md)
     * [Use cases](usecases.md)
     * [Integrated environments](integrated-environments.md)
@@ -18,18 +17,18 @@
     * [Limitations](limitations.md)
     * [Troubleshooting](troubleshooting.md)
     * [Releases](releases.md)
-    * [Licensing](licensing.md)  
+    * [Licensing](licensing.md)
 4. Developer Guide:
     * [Introduction](developer-guide-introduction.md)
     * [Common constructs](snappi-constructs.md)
     * [Installing snappi](snappi-install.md)
     * [Using snappi](hello-snappi.md)
 5. Reference Guide:
-    * [Feature gap list](Feature-gap-table.md)
+    * [Resource requirements](reference/resource-requirements.md)
+    * [Feature gap list](reference/feature-gap-table.md)
 6. Leftovers:
     * [News](news.md)
     * [Contributing](contribute.md)
     * [EULA](eula.md)
     * [FAQ](faq.md)
     * [Support](support.md)
-  

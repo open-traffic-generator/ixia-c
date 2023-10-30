@@ -1,4 +1,4 @@
-# Resource requirement for advanced deployments
+# Resource requirement
 
 The minimum memory and cpu requirements for each ixia-c components are captured in the following table. Kubernetes metrics server has been used to collect the resource usage data.
 

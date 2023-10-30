@@ -11,7 +11,7 @@ The recommended resources for a basic use-case are as follows:
 
 * `ixia-c-protocol-engine`: Each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per port.
 
-For more granularity on resource requirements for advanced deployments, see [Resource requirement for advanced deployments](reference_advanced_deployments.md).
+For more granularity on resource requirements for advanced deployments, see [Resource requirements](reference/resource-requirements.md).
 
 ### OS and Software
 
