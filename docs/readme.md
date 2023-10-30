@@ -19,10 +19,10 @@
     * [Releases](releases.md)
     * [Licensing](licensing.md)
 4. Developer Guide:
-    * [Introduction](developer-guide-introduction.md)
-    * [Common constructs](snappi-constructs.md)
-    * [Installing snappi](snappi-install.md)
-    * [Using snappi](hello-snappi.md)
+    * [Introduction](developer/introduction.md)
+    * [Common constructs](developer/snappi-constructs.md)
+    * [Installing snappi](developer/snappi-install.md)
+    * [Using snappi](developer/hello-snappi.md)
 5. Reference Guide:
     * [Resource requirements](reference/resource-requirements.md)
     * [Feature gap list](reference/feature-gap-table.md)

@@ -12,11 +12,11 @@ This tutorial explains some key elements that are required to write a **snappi s
 
 The [hello_snappi.py](https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f/scripts/hello_snappi.py) script covers this extensively.
 
-![Ixia-C Deployment for Bidirectional Traffic](res/ixia-c.drawio.svg)
+![Ixia-C Deployment for Bidirectional Traffic](../res/ixia-c.drawio.svg)
 
 ## Setup
 
-You can start by setting up the topology as described above. For more detail, see [deployment steps for two-arm scenario](deployments.md#two-arm-scenario).
+You can start by setting up the topology as described above. For more detail, see [deployment steps for two-arm scenario](../deployments.md#two-arm-scenario).
 
 ```sh
 git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c && cd ixia-c
@@ -36,12 +36,12 @@ python -m pip install --upgrade snappi==0.12.1 dpkt
 
 The first step in any snappi script is to import the `snappi` package and instantiate an `api` object, where the `location` parameter takes the HTTPS/gRPC address of the controller and `verify` is used to turn off the insecure certificate warning.
 
-If the controller is deployed with a non-default TCP port by using the [deployment parameters](deployments.md#deployment-parameters), it must be specified explicitly in the address (default port of HTTPS is 8443 and gRPC is 40051).
+If the controller is deployed with a non-default TCP port by using the [deployment parameters](../deployments.md#deployment-parameters), it must be specified explicitly in the address (default port of HTTPS is 8443 and gRPC is 40051).
 
 ```python
 import snappi
 
-# HTTPS 
+# HTTPS
 api = snappi.api(location='https://localhost', verify=False)
 # or with non-default TCP port
 api = snappi.api(location='https://localhost:8080', verify=False)
@@ -230,11 +230,11 @@ print(f.rate.serialize())
 }
 ```
 
->You can set (or access) the `f1.rate.pps` without instantiating an object of type `snappi.FlowRate`, which is held by the `f1.rate`. **Accessing an uninitialized attribute** automatically initializes it with the type of object it holds.  
+>You can set (or access) the `f1.rate.pps` without instantiating an object of type `snappi.FlowRate`, which is held by the `f1.rate`. **Accessing an uninitialized attribute** automatically initializes it with the type of object it holds.
 
 ## Protocol Headers
 
-Packets sent out in a `flow` needs to be described in terms of the underlying **protocol** and **payload** contents. If no such description is provided, a simple ethernet frame is configured by default.  
+Packets sent out in a `flow` needs to be described in terms of the underlying **protocol** and **payload** contents. If no such description is provided, a simple ethernet frame is configured by default.
 
 The following section describes how you can construct a packet by adding Ethernet, IPv4, and UDP headers (strictly in an order, in which it should appear in the TCP/IP stack).
 
@@ -305,7 +305,7 @@ udp2.dst_port.values = [8000, 8044, 8060, 8074, 8082, 8084]
 
 The above snippet will result in a sequence of packets as shown in the figure below.
 
-![hello-snappi-packets](res/hello-snappi-packets.png)
+![hello-snappi-packets](../res/hello-snappi-packets.png)
 
 > The patterns for headers fields in snappi provide a very flexible way to generate millions of unique packets to test the DUT functionalities, like hashing based on 5-tuple. For more information, see [common snappi constructs](snappi-constructs.md) .
 

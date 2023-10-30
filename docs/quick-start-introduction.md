@@ -35,7 +35,7 @@ Before you proceed, ensure that the [system prerequisites](prerequisites.md) are
 
   > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation. For more information, see [deployment guide](deployments.md).
 
-* Generate Traffic using [snappi](https://pypi.org/project/snappi/). For more details on snappi, see [hello-snappi](hello-snappi.md).
+* Generate Traffic using [snappi](https://pypi.org/project/snappi/). For more details on snappi, see [hello-snappi](developer/hello-snappi.md).
 
   ```bash
   # clone repo for test suites, useful helper scripts, deployment files, etc.
