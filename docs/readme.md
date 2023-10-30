@@ -2,9 +2,9 @@
 
 1. [Home](index.md)
 2. Quick Start:
-     * [Introduction](quick-start-introduction.md)
-     * [Deployment](quick-start-deployment.md)
-     * [Sample test](sample-test.md)
+     * [Introduction](quick-start/introduction.md)
+     * [Deployment](quick-start/deployment.md)
+     * [Sample test](quick-start/sample-test.md)
 3. User Guide:
     * [Introduction](user-guide-introduction.md)
     * [Prerequisites](prerequisites.md)

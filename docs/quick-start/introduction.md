@@ -7,17 +7,17 @@ It is distributed and deployed as a multi-container application that consists of
 
 As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
 
-!["Ixia-c Deployment for Bidirectional Traffic](res/ixia-c.drawio.svg)
+!["Ixia-c Deployment for Bidirectional Traffic](../res/ixia-c.drawio.svg)
 
 > [Keysight](https://www.keysight.com) also offers a well supported commercial version, [Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html), with no restrictions on **performance and scalability**. Scripts written for the free version are **compatible** with this version.
 
 ## Quick Demo
 
-![Quick Demo](res/quick-demo.gif)
+![Quick Demo](../res/quick-demo.gif)
 
 ## Quick Start
 
-Before you proceed, ensure that the [system prerequisites](prerequisites.md) are met.
+Before you proceed, ensure that the [system prerequisites](../prerequisites.md) are met.
 
 * Deploy Ixia-c
 
@@ -33,9 +33,9 @@ Before you proceed, ensure that the [system prerequisites](prerequisites.md) are
     ghcr.io/open-traffic-generator/ixia-c-traffic-engine
   ```
 
-  > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation. For more information, see [deployment guide](deployments.md).
+  > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation. For more information, see [deployment guide](../deployments.md).
 
-* Generate Traffic using [snappi](https://pypi.org/project/snappi/). For more details on snappi, see [hello-snappi](developer/hello-snappi.md).
+* Generate Traffic using [snappi](https://pypi.org/project/snappi/). For more details on snappi, see [hello-snappi](../developer/hello-snappi.md).
 
   ```bash
   # clone repo for test suites, useful helper scripts, deployment files, etc.
