@@ -1,8 +1,14 @@
 # Introduction
-[Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html) is a software test tool that runs in any containerized environment and emulates key data center control plane protocols while also sending data plane traffic. It has a modern architecture based on micro-services and open-source interfaces and is designed for very fast automated test scenario execution. All of these characteristics contribute to validating data center networks that deliver a top quality of experience and fuel continued public cloud growth.
+[Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html) is an agile, lightweight, and composable network test software designed for Continuous Integration. It supports vendor neutral Open Traffic Generator models and APIs, integrates with several network emulation platforms, and drives a range of Keysight’s Network Infrastructure Test software products, hardware load modules and appliances.
+
+The Elastic Network Generator software runs in Docker-based containerized environments and emulates key data center control plane protocols while also sending data plane traffic. It has a modern architecture based on micro-services and open-source interfaces and is designed for very fast automated test scenario execution. All of these characteristics enable robust validation of data center networks to deliver top quality of experience.
 
 ## Components
-![topo](res/otg-keng-labels-on-white.drawio.svg)
+
+Keysight Elastic Network Generator provides an abstraction over various test port implementations –
+Ixia-c software, UHD400T white-box and purpose-built IxOS hardware. A test program written in Open Traffic Generator API can be run using any of the supported test port types without modifications.
+
+![Test Port Abstraction via OTG](res/otg-keng-labels-on-white.drawio.svg)
 
 The main components of KENG are:
 
