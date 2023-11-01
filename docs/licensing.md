@@ -46,7 +46,7 @@ Network connectivity requirements for the License Server VM
 
 1. Internet access from the VM over HTTPS is desirable for online license activation, but not strictly required. Offline activation method is available as well.
 2. Access from a user over SSH (TCP/22) for license operations (activation, deactivation, reservation, sync)
-3. Access from any `ixia-c-controller` that needs a license during a test run over gRPC (TCP/7443) for license checkout and check-in
+3. Access from any `keng-controller` that needs a license during a test run over gRPC (TCP/7443) for license checkout and check-in
 
 Here is an example of how different components communicate with the License Server:
 

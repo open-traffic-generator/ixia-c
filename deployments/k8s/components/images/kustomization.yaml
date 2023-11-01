@@ -3,8 +3,8 @@ kind: Component
 
 # Release: https://github.com/open-traffic-generator/ixia-c/releases/tag/v0.0.1-4399
 images:
-  - name: ixia-c-controller
-    newName: ghcr.io/open-traffic-generator/ixia-c-controller
+  - name: keng-controller
+    newName: ghcr.io/open-traffic-generator/keng-controller
     newTag: "0.0.1-4399"
   - name: ixia-c-gnmi-server
     newName: ghcr.io/open-traffic-generator/ixia-c-gnmi-server

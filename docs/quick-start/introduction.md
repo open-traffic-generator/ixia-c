@@ -3,7 +3,7 @@
 
 Ixia-c is a modern, powerful, and API-driven traffic generator designed to cater to the needs of hyperscalers, network hardware vendors, and hobbyists alike.
 
-It is distributed and deployed as a multi-container application that consists of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine), and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter).
+It is distributed and deployed as a multi-container application that consists of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine), and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter).
 
 As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
 
@@ -23,7 +23,7 @@ Before you proceed, ensure that the [system prerequisites](../prerequisites.md) 
 
   ```bash
   # start ixia-c controller
-  docker run -d --network=host ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run -d --network=host ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start ixia-c traffic engine on eth1 interface

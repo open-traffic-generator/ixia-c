@@ -79,9 +79,9 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
   # start controller and app usage reporter
 
   # community users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   # commercial users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --license-servers="ip/hostname of license server"
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula --license-servers="ip/hostname of license server"
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -110,9 +110,9 @@ docker cp <container-id>:/var/log/usstream/usstream.log ./
   ```bash
   # start controller and app usage reporter
   # community users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   # commercial users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --license-servers="ip/hostname of license server"
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula --license-servers="ip/hostname of license server"
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth1, TCP port 5555 and cpu cores 0, 1, 2
@@ -151,9 +151,9 @@ This scenario binds traffic engine to the management network interface, that bel
   ```bash
   # start controller and app usage reporter
   # community users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula
   # commercial users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --license-servers="ip/hostname of license server"
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula --license-servers="ip/hostname of license server"
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start traffic engine on network interface eth0, TCP port 5555 and cpu cores 0, 1, 2

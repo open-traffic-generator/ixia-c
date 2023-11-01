@@ -74,17 +74,17 @@ The following procedure shows an example of how to deploy using Docker Compose.
 
 ```
 services:
-  ixia-c-controller:
-    image: ghcr.io/open-traffic-generator/licensed/ixia-c-controller:0.0.1-4139
+  keng-controller:
+    image: ghcr.io/open-traffic-generator/licensed/keng-controller:0.0.1-4139
     restart: always
     depends_on:
-      ixia-c-ixhw-server:
+      keng-layer23-hw-server:
         condition: service_started
     command:
       - "--accept-eula"
       - "--debug"
-      - "--ixia-c-ixhw-server"
-      - "ixia-c-ixhw-server:5001"
+      - "--keng-layer23-hw-server"
+      - "keng-layer23-hw-server:5001"
     ports:
       - "40051:40051"
 logging:
@@ -93,8 +93,8 @@ logging:
         max-size: "100m"
         max-file: "10"
         mode: "non-blocking"
-  ixia-c-ixhw-server:
-    image: ghcr.io/open-traffic-generator/ixia-c-ixhw-server:0.11.10-2
+  keng-layer23-hw-server:
+    image: ghcr.io/open-traffic-generator/keng-layer23-hw-server:0.11.10-2
     restart: always
     command:
       - "dotnet"
@@ -112,11 +112,11 @@ logging:
     image: ghcr.io/open-traffic-generator/ixia-c-gnmi-server:1.11.16
     restart: always
     depends_on:
-      ixia-c-controller:
+      keng-controller:
         condition: service_started
     command:
       - "-http-server"
-      - "https://ixia-c-controller:8443"
+      - "https://keng-controller:8443"
       - "--debug"
     ports:
       - "50051:50051"
@@ -138,8 +138,8 @@ logging:
 	`docker ps`
 
 The list of containers should include:
-- `ixia-c-controller`
-- `ixia-c-ixhw-server`
+- `keng-controller`
+- `keng-layer23-hw-server`
 - `ixia-c-gnmi-server`  (optional if gNMI access is needed)
 
 When the controller and ixhw-server services are running, the deployment is ready to run a test.

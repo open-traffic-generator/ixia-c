@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller"><img alt="Release v0.0.1-4399" src="https://img.shields.io/badge/release-v0.0.1--4399-brightgreen"></a>
+  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller"><img alt="Release v0.0.1-4399" src="https://img.shields.io/badge/release-v0.0.1--4399-brightgreen"></a>
   <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.11.11" src="https://img.shields.io/badge/open--traffic--generator-v0.11.11-brightgreen"></a>
   <a href="https://pypi.org/project/snappi/0.12.1"><img alt="snappi v0.12.1" src="https://img.shields.io/badge/snappi-v0.12.1-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
@@ -56,7 +56,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 
   ```bash
   # start ixia-c controller
-  docker run -d --network=host ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
+  docker run -d --network=host ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
   # start ixia-c traffic engine on eth1 interface

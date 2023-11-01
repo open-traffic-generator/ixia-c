@@ -14,8 +14,8 @@ Ixia-c can be deployed in the k8s environment by using the [Kubernetes Network E
 
 Following are the recommended resources for a basic use-case. 
 
--  `ixia-c-operator`: Each instance requires at least 1 CPU core and 2GB RAM.
-- `ixia-c-controller`: Each instance requires at least 1 CPU core and 2GB RAM.
+- `keng-operator`: Each instance requires at least 1 CPU core and 2GB RAM.
+- `keng-controller`: Each instance requires at least 1 CPU core and 2GB RAM.
 - `ixia-c-gnmi-server`: Each instance requires at least 1 CPU core and 2GB RAM.
 - `ixia-c-traffic-engine`: Each instance requires 2 dedicated CPU cores and 3GB dedicated RAM.
 - `ixia-c-protocol-engine`: Each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per port.
@@ -35,12 +35,12 @@ Following are the recommended resources for a basic use-case.
     go install github.com/openconfig/kne/kne@latest
   ```
 
-## Deploy ixia-c-operator
+## Deploy keng-operator
 
 * Ixia Operator defines CRD for Ixia network device (IxiaTG) and can be used to build up different network topologies with network devices from other vendors. Network interconnects between the topology nodes can be setup with various container network interface (CNI) plugins for Kubernetes for attaching multiple network interfaces to the nodes.
 
   ```sh
-    kubectl apply -f https://github.com/open-traffic-generator/ixia-c-operator/releases/download/v0.3.5/ixiatg-operator.yaml
+    kubectl apply -f https://github.com/open-traffic-generator/keng-operator/releases/download/v0.3.5/ixiatg-operator.yaml
   ```
 
 ## Apply configmap
@@ -62,7 +62,7 @@ Following are the recommended resources for a basic use-case.
                 "images": [
                       {
                           "name": "controller",
-                          "path": "ghcr.io/open-traffic-generator/ixia-c-controller",
+                          "path": "ghcr.io/open-traffic-generator/keng-controller",
                           "tag": "0.0.1-4435"
                       },
                       {
@@ -82,14 +82,14 @@ Following are the recommended resources for a basic use-case.
                       },
                       {
                           "name": "ixhw-server",
-                          "path": "ghcr.io/open-traffic-generator/ixia-c-ixhw-server",
+                          "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
                           "tag": "0.12.2-2"
                       }
                   ]
               }
     ```
 
-  * For commercial users, `LICENSE_SERVERS` needs to be specified for `ixia-c-controller` deployment.
+  * For commercial users, `LICENSE_SERVERS` needs to be specified for `keng-controller` deployment.
 
     ```json
       apiVersion: v1
@@ -104,7 +104,7 @@ Following are the recommended resources for a basic use-case.
                 "images": [
                       {
                           "name": "controller",
-                          "path": "ghcr.io/open-traffic-generator/ixia-c-controller",
+                          "path": "ghcr.io/open-traffic-generator/keng-controller",
                           "tag": "0.0.1-4435",
                           "env": { 
                                 "LICENSE_SERVERS": "ip/hostname of license server"
@@ -127,7 +127,7 @@ Following are the recommended resources for a basic use-case.
                       },
                       {
                           "name": "ixhw-server",
-                          "path": "ghcr.io/open-traffic-generator/ixia-c-ixhw-server",
+                          "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
                           "tag": "0.12.2-2"
                       }
                   ]

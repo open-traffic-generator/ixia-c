@@ -6,7 +6,7 @@
 
 The recommended resources for a basic use-case are as follows:
 
-* `ixia-c-controller`: Each instance requires at least 1 CPU core and 2GB RAM.
+* `keng-controller`: Each instance requires at least 1 CPU core and 2GB RAM.
 * `ixia-c-traffic-engine`: Each instance requires 2 dedicated CPU cores per test port, plus one shared CPU core and 3GB dedicated RAM. Generic formula for CPU cores is `1 + 2 * number_of_ports`.
 * `ixia-c-protocol-engine`: Each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per port.
 
