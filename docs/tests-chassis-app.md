@@ -75,7 +75,7 @@ The following procedure shows an example of how to deploy using Docker Compose.
 ```
 services:
   keng-controller:
-    image: ghcr.io/open-traffic-generator/licensed/keng-controller:0.0.1-4139
+    image: ghcr.io/open-traffic-generator/keng-controller:0.0.1-4139
     restart: always
     depends_on:
       keng-layer23-hw-server:
@@ -108,8 +108,8 @@ logging:
         max-size: "100m"
         max-file: "10"
         mode: "non-blocking"
-  ixia-c-gnmi-server:
-    image: ghcr.io/open-traffic-generator/ixia-c-gnmi-server:1.11.16
+  otg-gnmi-server:
+    image: ghcr.io/open-traffic-generator/otg-gnmi-server:1.11.16
     restart: always
     depends_on:
       keng-controller:
@@ -140,7 +140,7 @@ logging:
 The list of containers should include:
 - `keng-controller`
 - `keng-layer23-hw-server`
-- `ixia-c-gnmi-server`  (optional if gNMI access is needed)
+- `otg-gnmi-server`  (optional if gNMI access is needed)
 
 When the controller and ixhw-server services are running, the deployment is ready to run a test.
 

@@ -11,9 +11,9 @@ spec:
     - args:
         - --accept-eula
         - --debug
-      image: ixia-c-controller:latest
+      image: keng-controller:latest
       imagePullPolicy: IfNotPresent
-      name: ixia-c-controller
+      name: keng-controller
       ports:
         - containerPort: 8443
           name: https-port
@@ -38,9 +38,9 @@ spec:
         - -http-server
         - https://localhost:8443
         - --debug
-      image: ixia-c-gnmi-server:latest
+      image: otg-gnmi-server:latest
       imagePullPolicy: IfNotPresent
-      name: ixia-c-gnmi-server
+      name: otg-gnmi-server
       ports:
         - containerPort: 50051
           name: gnmi-port

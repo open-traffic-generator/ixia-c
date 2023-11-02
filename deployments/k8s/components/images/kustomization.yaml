@@ -6,8 +6,8 @@ images:
   - name: keng-controller
     newName: ghcr.io/open-traffic-generator/keng-controller
     newTag: "0.0.1-4399"
-  - name: ixia-c-gnmi-server
-    newName: ghcr.io/open-traffic-generator/ixia-c-gnmi-server
+  - name: otg-gnmi-server
+    newName: ghcr.io/open-traffic-generator/otg-gnmi-server
     newTag: "1.12.2"
   - name: ixia-c-traffic-engine
     newName: ghcr.io/open-traffic-generator/ixia-c-traffic-engine

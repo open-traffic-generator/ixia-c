@@ -4,7 +4,7 @@
   A powerful traffic generator based on the <a href="https://github.com/open-traffic-generator/models" target="_blank">Open Traffic Generator API</a>
 </h3>
 
-It is **available for free** and distributed as a multi-container application that consists of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine), and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter).
+It is **available for free** and distributed as a multi-container application that consists of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine), and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter).
 
 ## Key Features
 

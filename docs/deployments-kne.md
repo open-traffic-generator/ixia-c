@@ -16,7 +16,7 @@ Following are the recommended resources for a basic use-case.
 
 - `keng-operator`: Each instance requires at least 1 CPU core and 2GB RAM.
 - `keng-controller`: Each instance requires at least 1 CPU core and 2GB RAM.
-- `ixia-c-gnmi-server`: Each instance requires at least 1 CPU core and 2GB RAM.
+- `otg-gnmi-server`: Each instance requires at least 1 CPU core and 2GB RAM.
 - `ixia-c-traffic-engine`: Each instance requires 2 dedicated CPU cores and 3GB dedicated RAM.
 - `ixia-c-protocol-engine`: Each instance requires 4 dedicated CPU cores and 1GB dedicated RAM per port.
 
@@ -67,7 +67,7 @@ Following are the recommended resources for a basic use-case.
                       },
                       {
                           "name": "gnmi-server",
-                          "path": "ghcr.io/open-traffic-generator/ixia-c-gnmi-server",
+                          "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
                           "tag": "1.12.4"
                       },
                       {
@@ -112,7 +112,7 @@ Following are the recommended resources for a basic use-case.
                       },
                       {
                           "name": "gnmi-server",
-                          "path": "ghcr.io/open-traffic-generator/ixia-c-gnmi-server",
+                          "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
                           "tag": "1.12.4"
                       },
                       {
