@@ -53,23 +53,23 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
 ### Deploy Topology and Run Tests (Stateless traffic on eth0)
 
-1. Deploy topology consisting of two ixia-c port pods and one ixia-c controller pod
+1. Deploy topology consisting of two Ixia-c port pods and one Ixia-c controller pod
 
     Topology manifests are kept inside `overlays/two-traffic-ports-eth0` which specifies `port1` and `port2`.
     * iptables rule is configured on both ports to drop UDP/TCP packets destined for ports 7000-8000
     * number of ports can be increased by adding new port dirs similar to `port1` and using it in rest of the files
 
     ```bash
-    # deploy ixia-c with two ports that only support stateless traffic over eth0
+    # deploy Ixia-c with two ports that only support stateless traffic over eth0
     kubectl apply -k overlays/two-traffic-ports-eth0
-    # ensure all ixia-c pods are ready
+    # ensure all Ixia-c pods are ready
     kubectl wait --for=condition=Ready pods --all -n ixia-c
     ```
 
 2. Generate test pre-requisites
 
     The sample test requires `conformance/test-config.yaml` which is auto-generated:
-    * ixia-c controller / port endpoints
+    * Ixia-c controller / port endpoints
     * common port / flow properties
     * values like port pod IPs, gateway MAC on tx port, etc.
 

@@ -1,8 +1,8 @@
 # Resource requirement
 
-The minimum memory and cpu requirements for each ixia-c components are captured in the following table. Kubernetes metrics server has been used to collect the resource usage data.
+The minimum memory and cpu requirements for each Ixia-c components are captured in the following table. Kubernetes metrics server has been used to collect the resource usage data.
 
-The memory represents the minimum working set of memory required. For protocol and traffic engines, it varies depending on the number of co-located ports. For example, when multiple ports are added to a 'group' for LAG use-cases when a single test container has more than one test NIC connected to the DUT. The figures are in Mi or MB per container and do not include shared or cached memory across multiple containers/pods in a system.
+The memory represents the minimum working set of memory required. For protocol and traffic engines, it varies depending on the number of co-located ports. For example, multiple ports are added to a 'group' for LAG use-cases, when a single test container has more than one test NIC connected to the DUT. The figures are in Mi or MB per container and do not include shared or cached memory across multiple containers/pods in a system.
 
 | Component        |1 Port (Default)| 2 Port  | 4 Port  | 6 Port  |8 Port|
 |:---              |:---            |:---     |:---     |:---     |:---  |
@@ -21,7 +21,7 @@ The cpu resource figures are in millicores.
 
 ## Minimum and maximum resource usage based on various test configurations
 
-Depending on the nature of the test run, the memory and cpu resource requirements may vary across all ixia-c components. The following table captures the memory usage for LAG scenarios with varying numbers of member ports. The minimum value represents the initial memory on topology deployment and the maximum value indicates the peak memory usage during the test run. The values are in Mi or MB.
+Depending on the nature of the test run, the memory and cpu resource requirements may vary across all Ixia-c components. The following table captures the memory usage for LAG scenarios with varying numbers of member ports. The minimum value represents the initial memory on topology deployment and the maximum value indicates the peak memory usage during the test run. The values are in Mi or MB.
 
 | Component     | Min/Max    | 1 Port   | 2 Port   | 4 Port   | 6 Port   | 8 Port   |
 |:---           |:---        |:---	    |:---      |:---	  |:---	     |:---	    |

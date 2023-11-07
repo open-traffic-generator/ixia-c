@@ -55,11 +55,11 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 * Deploy Ixia-c
 
   ```bash
-  # start ixia-c controller
+  # start Ixia-c controller
   docker run -d --network=host ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
 
-  # start ixia-c traffic engine on eth1 interface
+  # start Ixia-c traffic engine on eth1 interface
   docker run -d --network=host --privileged     \
     -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
@@ -126,7 +126,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 
 * Optionally, Generate Traffic Using [curl](https://curl.se/)
 
-  >We can also pass equivalent **JSON configuration** directly to ixia-c controller, without installing snappi, using **curl**.  
+  >You can also pass equivalent **JSON configuration** directly to the Ixia-c controller, without installing snappi, using **curl**.  
   >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml).
 
   ```bash
