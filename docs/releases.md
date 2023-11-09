@@ -1,6 +1,60 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.1.0-26 (Latest)
+## Release  v0.1.0-53 (Latest)
+> 11th November, 2023
+
+#### About
+
+This build includes new features and bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.13.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.0/artifacts/openapi.yaml)         |
+| snappi                        | [0.13.0](https://pypi.org/project/snappi/0.13.0)        |
+| gosnappi                      | [0.13.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.13.0)        |
+| keng-controller               | [0.1.0-53](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.85](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.337](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [0.13.0-6](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.13](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [0.1.0-26](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                    | [1.0.26](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.26/artifacts.tar)         |
+
+# Release Features(s)
+* Support added for link `up/down` trigger for <b><i>UHD400​</i></b>. 
+  ```go
+    portStateAction := gosnappi.NewControlState().
+                          Port().
+                          Link().
+                          SetPortNames([]string{"port1"}).
+                          SetState(gosnappi.StatePortLinkState.DOWN)
+    gosnappi.NewApi().setControlState(portStateAction)
+  ```
+* Support added for 0x8100(Vlan) and 0x6007 ether types in data plane traffic in <b><i>UHD400</i></b>.
+
+
+# Bug Fix(s)
+* Some tests were failing because packets were not sent on wire due to frame size of flows not being sufficient to include tracking information in <b><i>Ixia Chassis & Appliances(AresOne only)​</i></b> is fixed.
+* `egress` tracking on VLAN id or other fields for more than 3 bits was not working in <b><i>Ixia Chassis & Appliances(Novus, AresOne)​</i></b>, is fixed.
+  - `egress` tracking now supports upto 11 bits.
+* Issue in ARP resolution in certain cases is now fixed in <b><i>UHD400​</i></b>. 
+
+
+#### Known Issues
+* If `keng-layer23-hw-server` version is upgraded/downgraded, the ports from Ixia Chassis & Appliances(Novus, AresOne) which will be used from this container must be rebooted once before running the tests.
+* Adding more than 256 devices on a single ixia-c-port causing failure for Ixia Chassis & Appliances(Novus, AresOne).
+* Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* With certain DUTs, ssh service hangs if ISIS L1 MD5 is enabled.
+* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* The metric `loss` in flow metrics is currently not supported.
+* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+
+## Release  v0.1.0-26
 > 3rd November, 2023
 
 #### About
