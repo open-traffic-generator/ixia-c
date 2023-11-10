@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
 ## Release  v0.1.0-53 (Latest)
-> 11th November, 2023
+> 10th November, 2023
 
 #### About
 
@@ -22,7 +22,7 @@ This build includes new features and bug fixes.
 | keng-operator                 | [0.3.13](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.13.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [0.1.0-26](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                    | [1.0.26](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.26/artifacts.tar)         |
+| UHD400                    | [1.0.27](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.27/artifacts.tar)         |
 
 # Release Features(s)
 * Support added for link `up/down` trigger for <b><i>UHD400​</i></b>. 
@@ -35,6 +35,7 @@ This build includes new features and bug fixes.
     gosnappi.NewApi().setControlState(portStateAction)
   ```
 * Support added for 0x8100(Vlan) and 0x6007 ether types in data plane traffic in <b><i>UHD400</i></b>.
+* Support added for Google Discovery Protocol in data plane traffic in <b><i>UHD400</i></b>.
 
 
 # Bug Fix(s)
