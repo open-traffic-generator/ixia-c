@@ -22,7 +22,7 @@ Before you proceed, ensure that the [system prerequisites](../prerequisites.md) 
 * Deploy Ixia-c
 
   ```bash
-  # start ixia-c controller
+  # start KENG controller
   docker run -d --network=host ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/keng-app-usage-reporter
 
@@ -90,7 +90,7 @@ Before you proceed, ensure that the [system prerequisites](../prerequisites.md) 
 
 * Optionally, you can generate the traffic by using [curl](https://curl.se/).
 
-  >You can also pass an equivalent **JSON configuration** directly to the ixia-c controller by using **curl** and without installing snappi.
+  >You can also pass an equivalent **JSON configuration** directly to the KENG controller by using **curl** and without installing snappi.
   >For the detailed description of each node (and their attributes) in the JSON configuration, see [Open Traffic Generator API](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml).
 
   ```bash

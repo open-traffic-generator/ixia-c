@@ -40,7 +40,7 @@ Where can I find a tutorial on <i>snappi</i>?
 </summary>
 <br>
 
-The [Hello snappi](hello-snappi.md) tutorial is a good starting point to get familiar with `snappi`.  
+The [Hello snappi](hello-snappi.md) tutorial is a good starting point to get familiar with `snappi`.
 </details>
 
 <details>
@@ -79,7 +79,7 @@ How to find version of Open Traffic Generator spec implemented by Ixia-c?
 </summary>
 <br>
 
-Open Traffic Generator Data Model can be accessed from any browser by pointing it to (https://\<controller-host-ip\>/docs/openapi.json).  The `info` section contains the `version` of the Open Traffic Generator Data Model implemented by the Ixia-c controller.
+Open Traffic Generator Data Model can be accessed from any browser by pointing it to (https://\<controller-host-ip\>/docs/openapi.json).  The `info` section contains the `version` of the Open Traffic Generator Data Model implemented by the KENG controller.
 
 </details>
 
@@ -91,7 +91,7 @@ What do packets look like?
 </summary>
 <br>
 
-Ixia packet testers utilize a proprietary flow-tracking technique which involves inserting a special *instrumentation header* into the packet.  It is inserted after the last valid protocol header ie, in the payload.  
+Ixia packet testers utilize a proprietary flow-tracking technique which involves inserting a special *instrumentation header* into the packet.  It is inserted after the last valid protocol header ie, in the payload.
 
 <div align="center">
   <br>
@@ -153,7 +153,7 @@ What is <i>Application Usage Reporter</i>?
 </summary>
 <br>
 
-The `app-usage-reporter` container collects and uploads to the Keysight cloud some basic telemetry information from the Ixia-c controller.  This information helps Keysight improve the controller by focusing on the features that are being used by end users.
+The `app-usage-reporter` container collects and uploads to the Keysight cloud some basic telemetry information from the KENG controller.  This information helps Keysight improve the controller by focusing on the features that are being used by end users.
 </details>
 
 <details>
@@ -199,7 +199,7 @@ What are the limitations of the free version of Ixia-c?
 </summary>
 <br>
 
-The free version of Ixia-c controller supports up to 4 ports in one session and the Ixia-c traffic-engine is limited to running over `raw` sockets.
+The free version of KENG controller supports up to 4 ports in one session and the Ixia-c traffic-engine is limited to running over `raw` sockets.
 </details>
 
 <details>
@@ -231,7 +231,7 @@ Contact your Keysight Sales Rep or reach out to us [here](https://www.keysight.c
 
 <details>
 <summary>
-How do I view Ixia-c controller logs?
+How do I view KENG controller logs?
 </summary>
 <br>
 
@@ -240,11 +240,11 @@ Use `docker logs` to view the controller log.
 
 <details>
 <summary>
-What is the message <i>"App usage reporting service is down"</i> in Ixia-c controller log?
+What is the message <i>"App usage reporting service is down"</i> in KENG controller log?
 </summary>
 <br>
 
-This message indicates that the `app-usage-reporter` container is not reachable from the Ixia-c controller.  This does NOT affect Ixia-c controller's normal operation.  Refer to [Deployment Parameters](deployments.md#deployment-parameters) for more details on how to override the default location for the app-usage-reporter or how to disable it all together.
+This message indicates that the `app-usage-reporter` container is not reachable from the KENG controller.  This does NOT affect KENG controller's normal operation.  Refer to [Deployment Parameters](deployments.md#deployment-parameters) for more details on how to override the default location for the app-usage-reporter or how to disable it all together.
 </details>
 
 ## Support

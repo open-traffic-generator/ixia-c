@@ -139,7 +139,7 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
 
 7. Run IPv4 forwarding test using [snappi](https://github.com/open-traffic-generator/snappi/tree/main/gosnappi) which is an auto-generated SDK based on [Open Traffic Generator API](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml&nocors)
 
-    The test parameters, e.g. location of Ixia-C controller, name of interfaces, etc. can be modified inside `testConst` map in `ipfwd.go`.
+    The test parameters, e.g. location of KENG controller, name of interfaces, etc. can be modified inside `testConst` map in `ipfwd.go`.
 
     Check the file for more details on the test.
 

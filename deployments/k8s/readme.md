@@ -53,7 +53,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 
 ### Deploy Topology and Run Tests (Stateless traffic on eth0)
 
-1. Deploy topology consisting of two Ixia-c port pods and one Ixia-c controller pod
+1. Deploy topology consisting of two Ixia-c port pods and one KENG controller pod
 
     Topology manifests are kept inside `overlays/two-traffic-ports-eth0` which specifies `port1` and `port2`.
     * iptables rule is configured on both ports to drop UDP/TCP packets destined for ports 7000-8000
@@ -69,7 +69,7 @@ This section hosts [kustomize](https://kustomize.io/) manifests for deploying va
 2. Generate test pre-requisites
 
     The sample test requires `conformance/test-config.yaml` which is auto-generated:
-    * Ixia-c controller / port endpoints
+    * KENG controller / port endpoints
     * common port / flow properties
     * values like port pod IPs, gateway MAC on tx port, etc.
 
