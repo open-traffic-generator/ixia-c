@@ -4,7 +4,7 @@
 
 ### CPU and RAM
 
-The recommended resources for a basic use-case are as follows:
+The minimum memory and cpu requirements for a basic use-case are as follows:
 
 * `keng-controller`: Each instance requires at least 10m CPU core and 25Mi RAM.
 * `ixia-c-traffic-engine`: Each instance requires 200m CPU core per test port, plus one shared CPU core and 60Mi RAM. Generic formula for CPU cores is `1 + 2 * number_of_ports`.

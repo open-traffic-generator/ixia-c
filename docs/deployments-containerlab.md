@@ -4,7 +4,7 @@
 Ixia-c-one is deployed as single-container application by using [containerlab](https://containerlab.dev/quickstart/) that consists of the following services:
 
 * **containerlab**: Containerlab provides a CLI for orchestrating and managing container-based networking labs. It starts the containers, builds a virtual wiring between them to create lab topologies depending on a user's choice, and manages the labs lifecycle.
-* **Ixia-c-one**: Keysight ixia-c-one is a single-container distribution of ixia-c, which in turn is Keysight's reference implementation of Open Traffic Generator API.
+* **Ixia-c-one**: Keysight Ixia-c-one is a single-container distribution of Ixia-c, which in turn is Keysight's reference implementation of Open Traffic Generator API.
 
   Meet the [keysight_ixia-c-one](https://containerlab.dev/manual/kinds/keysight_ixia-c-one) kind! It is available from containerlab [release 0.26](https://containerlab.dev/rn/0.26/#keysight-ixia-c).
 * **srl linux**: Nokia SR Linux is a truly open network operating system (NOS), that makes your data center switching infrastructure more scalable, more flexible, and simpler to operate.

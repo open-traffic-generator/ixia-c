@@ -59,7 +59,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   docker run -d --network=host ghcr.io/open-traffic-generator/keng-controller --accept-eula
   docker run --net=host -d ghcr.io/open-traffic-generator/keng-app-usage-reporter
 
-  # start ixia-c traffic engine on eth1 interface
+  # start Ixia-c traffic engine on eth1 interface
   docker run -d --network=host --privileged     \
     -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
     -e OPT_NO_HUGEPAGES="Yes"                   \
