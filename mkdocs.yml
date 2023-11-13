@@ -53,26 +53,26 @@ nav:
     - FAQ: faq.md # Review if there are any valuable items left
     - EULA: eula.md # Check / update
   - Quick Start:
-     - Introduction: quick-start/introduction.md # Now goes as Ixia-c Quick Start. Call the section to reflect that
-     - Deployment: quick-start/deployment.md # Link to deployment dir is broken. Need a compose file in text. Need to move to docker compose later
-     - Sample test: quick-start/sample-test.md # Empty - otgen example or hello snappi?. See "clients" in UG Intro
+    - Introduction: quick-start/introduction.md # Now goes as Ixia-c Quick Start. Add a paragraph why
+    - Deployment: quick-start/deployment.md # Link to deployment dir is broken. Need a compose file in text. Need to move to docker compose later
+#    - Sample test: quick-start/sample-test.md # Empty - otgen example or hello snappi?. See "clients" in UG Intro
+    - First script: developer/hello-snappi.md # Took from Developer Guide
   - User Guide:
     - Introduction: user-guide-introduction.md # Update images. Ixia-c link leads to empty page
     - Prerequisites: prerequisites.md # Make clear when you need Python. Network Int Prereqs - do we need this at all?
-    - Deployment: deployments.md # All deployments are via links, easy to miss. Do we make this top-level for Ixia-c/UHD/HW?
-    - Use cases: usecases.md # Remove for now, rethink what is this later
+    - Deployment:
+      - Ixia-c: deployments.md # All deployments are via links, easy to miss. Do we make this top-level for Ixia-c/UHD/HW?
+      - UHD400T: tests-uhd400.md # This is UHD400 intro. Not deployment, not scripts. Need to align with HW
+      - IxOS Hardware: tests-chassis-app.md # This this HW deployment, there is no scripts (and likely should not be)
+#    - Use cases: usecases.md # Remove for now, rethink what is this later
     - Integrated environments: integrated-environments.md # A strange mix of otg-examples and clab/kne. Move Clab/KNE deployments here
-    - Ixia-c tests: tests-ixia-c.md # Empty. Use otg-examples?
-    - Ixia chassis/appliance tests: tests-chassis-app.md # This this HW deployment, there is no scripts (and likely should not be)
-    - UHD 400 tests: tests-uhd400.md # This is UHD400 intro. Not deployment, not scripts. Need to align with HW
     - Limitations: limitations.md # Align with the DS, clarify if this is for Ixia-c/UHD/HW
     - Troubleshooting: troubleshooting.md # Move how to see logs from Deployment here
     - Licensing: licensing.md # Update from otg-examples
   - Developer Guide: # This section is not ready yet for publishing
-    - Introduction: developer/introduction.md # Take from otg.dev?
-    - Common constructs: developer/snappi-constructs.md # Cleanup TBD at the end
-    - Installing snappi: developer/snappi-install.md # Split into python and go. Rename as sample scripts?
-    - Using snappi: developer/hello-snappi.md # Move to quick start
+#    - Introduction: developer/introduction.md # Take from otg.dev?
+    - Python with snappi: developer/snappi-constructs.md # Cleanup TBD at the end
+    - Go with gosnappi: developer/snappi-install.md # Split into python and go. Rename as sample scripts?
     - Contributing: contribute.md # Move to Developer guide
   - Reference Guide:
     - Resource requirements: reference/resource-requirements.md
