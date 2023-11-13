@@ -12,7 +12,7 @@ Ixia-c can be deployed in the k8s environment by using the [Kubernetes Network E
 
 ### CPU and RAM
 
-Following are the recommended resources for a basic use-case. 
+Following are the recommended resources for a basic use-case.
 
 - `keng-operator`: Each instance requires at least 1 CPU core and 2GB RAM.
 - `keng-controller`: Each instance requires at least 1 CPU core and 2GB RAM.
@@ -58,32 +58,32 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "0.0.1-4435",
+                "release": "0.1.0-53",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "0.0.1-4435"
+                          "tag": "0.1.0-53"
                       },
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.12.4"
+                          "tag": "1.13.0"
                       },
                       {
                           "name": "traffic-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
-                          "tag": "1.6.0.35"
+                          "tag": "1.6.0.85"
                       },
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.325"
+                          "tag": "1.00.0.337"
                       },
                       {
                           "name": "ixhw-server",
                           "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
-                          "tag": "0.12.2-2"
+                          "tag": "0.13.0-6"
                       }
                   ]
               }
@@ -100,39 +100,39 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "0.0.1-4435",
+                "release": "0.1.0-53",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "0.0.1-4435",
-                          "env": { 
+                          "tag": "0.1.0-53",
+                          "env": {
                                 "LICENSE_SERVERS": "ip/hostname of license server"
-                            } 
+                            }
                       },
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.12.4"
+                          "tag": "1.13.0"
                       },
                       {
                           "name": "traffic-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
-                          "tag": "1.6.0.35"
+                          "tag": "1.6.0.85"
                       },
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.325"
+                          "tag": "1.00.0.337"
                       },
                       {
                           "name": "ixhw-server",
                           "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
-                          "tag": "0.12.2-2"
+                          "tag": "0.13.0-6"
                       }
                   ]
               }
-    ```  
+    ```
 
   ```sh
     # After saving the configmap snippet in a yaml file
@@ -148,7 +148,7 @@ Following are the recommended resources for a basic use-case.
   nodes:
     - name: otg
       vendor: KEYSIGHT
-      version: 0.0.1-4435
+      version: 0.1.0-53
       services:
         8443:
           name: https
@@ -170,12 +170,12 @@ Following are the recommended resources for a basic use-case.
   # After saving the topology snippet in a yaml file
   kne create topology.yaml
   ```
-  
+
 * After deployment, you are now ready to run a test using this topology.
 
 ## Destroy/Remove the topology
 
   ```sh
-  # delete a particular topology 
+  # delete a particular topology
   kne delete topology.yaml
   ```

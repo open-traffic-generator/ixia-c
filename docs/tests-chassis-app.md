@@ -7,7 +7,7 @@ To run KENG tests with Ixia hardware, the following pre-requisites must be satis
 
 - You must have access to Keysight Elastic Network Generator (KENG) images and a valid KENG license.
 - For information on how to deploy and activate a KENG license, see the Licensing section of the User Guide.
-- The test hardware must be Keysight Ixia Novus or AresOne [Network Test Hardware](https://www.keysight.com/us/en/products/network-test/network-test-hardware.html) with [IxOS](https://support.ixiacom.com/ixos-software-downloads-documentation) 9.20 Patch 4 or higher.  
+- The test hardware must be Keysight Ixia Novus or AresOne [Network Test Hardware](https://www.keysight.com/us/en/products/network-test/network-test-hardware.html) with [IxOS](https://support.ixiacom.com/ixos-software-downloads-documentation) 9.20 Patch 4 or higher.
 **NOTE:**  Currently, only Linux-based IxOS platforms are supported with KENG.
 - There must be physical link connectivity between the test ports on the Keysight Ixia Chassis and the devices under test (DUTs).
 - You must have a Linux host or virtual machine (VM) with sudo permissions and Docker support.
@@ -28,7 +28,7 @@ To run KENG tests with Ixia hardware, the following pre-requisites must be satis
 	`sudo usermod -aG docker $USER`
 
 - Python3 (version 3.9 or higher), pip and virtualenv
-	
+
 	Use the following command to install Python, pip, and virtualenv:
 
 	`sudo apt install python3 python3-pip python3.10-venv -y`
@@ -75,7 +75,7 @@ The following procedure shows an example of how to deploy using Docker Compose.
 ```
 services:
   keng-controller:
-    image: ghcr.io/open-traffic-generator/keng-controller:0.0.1-4139
+    image: ghcr.io/open-traffic-generator/keng-controller:0.1.0-53
     restart: always
     depends_on:
       keng-layer23-hw-server:
@@ -129,10 +129,10 @@ logging:
 ```
 
 2. Start the Compose tool:
-  
+
 	`docker compose up -d`
 
- 
+
 3. Use the `docker ps` command to verify that KENG services are running:
 
 	`docker ps`
@@ -148,7 +148,7 @@ When the controller and ixhw-server services are running, the deployment is read
 
 KENG uses '/config.ports.locations' parameter to determine the test ports involved in the test.
 
-The ‘/config.ports.locations’ parameter needs to be set to reference a test port. 
+The ‘/config.ports.locations’ parameter needs to be set to reference a test port.
 
 This parameter is to be specified in a ‘chassis ip;card;port’ format.
 
