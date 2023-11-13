@@ -14,12 +14,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.12.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.12.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.12.1](https://pypi.org/project/snappi/0.12.1)        |
 | gosnappi                      | [0.12.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.12.1)        |
-| keng-controller             | [0.0.1-4399](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4399](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.320](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.12.1-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.12.1-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.12.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4399](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 `
@@ -50,12 +50,12 @@ This build includes stability fixes.
 | Open Traffic Generator API    | [0.11.11](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.17](https://pypi.org/project/snappi/0.11.17)        |
 | gosnappi                      | [0.11.17](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.17)        |
-| keng-controller             | [0.0.1-4306](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4306](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.318](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.11-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.11-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.16](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4306](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 `
@@ -80,12 +80,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.11.10](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.10/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.16](https://pypi.org/project/snappi/0.11.16)        |
 | gosnappi                      | [0.11.16](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.16)        |
-| keng-controller             | [0.0.1-4167](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4167](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.316](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.10-13](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.10-13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.16](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4167](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -136,12 +136,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.11.10](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.10/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.16](https://pypi.org/project/snappi/0.11.16)        |
 | gosnappi                      | [0.11.16](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.16)        |
-| keng-controller             | [0.0.1-4139](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4139](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.315](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.10-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.10-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.16](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4139](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -220,12 +220,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.11.9](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.9/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.15](https://pypi.org/project/snappi/0.11.14)        |
 | gosnappi                      | [0.11.15](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
-| keng-controller             | [0.0.1-4124](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4124](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.310](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.9-6](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.9-6](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.14](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4124](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -265,12 +265,12 @@ This build includes bug fix.
 | Open Traffic Generator API    | [0.11.9](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.9/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.15](https://pypi.org/project/snappi/0.11.14)        |
 | gosnappi                      | [0.11.15](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
-| keng-controller             | [0.0.1-4080](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4080](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.02.21.29](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.9-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.9-3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.14](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4080](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -295,17 +295,17 @@ This build includes bug fix.
 | Open Traffic Generator API    | [0.11.8](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.8/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.14](https://pypi.org/project/snappi/0.11.14)        |
 | gosnappi                      | [0.11.14](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
-|  keng-controller            | [0.0.1-4064](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4064](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.02.21.17](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.8-12](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.8-12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4064](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 # Bug Fix(s)
-* [Stop exposing TLS 1.0/1.1 ](https://github.com/open-traffic-generator/ixia-c/issues/125) in `keng-controller`.
+* [Stop exposing TLS 1.0/1.1 ](https://github.com/open-traffic-generator/ixia-c/issues/125) in `ixia-c-controller`.
  
 #### Known Issues
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
@@ -327,12 +327,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.11.8](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.8/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.14](https://pypi.org/project/snappi/0.11.14)        |
 | gosnappi                      | [0.11.14](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
-| keng-controller             | [0.0.1-4013](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-4013](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.299](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.8-8](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.8-8](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-4013](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -359,7 +359,7 @@ This build includes new features.
     ```
 
 # Bug Fix(s)
-* Intermittent crash in keng-controller while fetching `flow_metrics` is fixed.
+* Intermittent crash in ixia-c-controller while fetching `flow_metrics` is fixed.
  
 #### Known Issues
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
@@ -381,12 +381,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.11.8](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.8/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.14](https://pypi.org/project/snappi/0.11.14)        |
 | gosnappi                      | [0.11.14](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.14)        |
-| keng-controller             | [0.0.1-3927](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3927](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.298](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.8-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.8-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.10](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3927](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -433,12 +433,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.11.4](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.4/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.6](https://pypi.org/project/snappi/0.11.6)        |
 | gosnappi                      | [0.11.6](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.6)        |
-| keng-controller             | [0.0.1-3889](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3889](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.290](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.4-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.4-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3889](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -498,12 +498,12 @@ This build includes new features.
 | Open Traffic Generator API    | [0.11.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.11.1](https://pypi.org/project/snappi/0.11.1)        |
 | gosnappi                      | [0.11.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.11.1)        |
-| keng-controller             | [0.0.1-3865](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3865](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.283](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.11.1-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.11.1-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.11.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3865](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -537,18 +537,18 @@ This build includes new features.
 | Open Traffic Generator API    | [0.10.12](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.12/artifacts/openapi.yaml)         |
 | snappi                        | [0.10.9](https://pypi.org/project/snappi/0.10.9)        |
 | gosnappi                      | [0.10.9](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.9)        |
-| keng-controller             | [0.0.1-3841](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3841](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.35](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.279](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.10.12-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.10.12-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.10.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3841](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 ### Features(s)
-* API version compatibility check is now automatically performed between ixia-c containers upon API calls to `keng-controller` . It can be disabled by booting `keng-controller` container with `--disable-version-check` flag.
-* API version compatibility check can now be automatically performed between `snappi`/`gosnappi` and keng-controller upon API calls by enabling version check flag in API handle like so:
+* API version compatibility check is now automatically performed between ixia-c containers upon API calls to `ixia-c-controller` . It can be disabled by booting `ixia-c-controller` container with `--disable-version-check` flag.
+* API version compatibility check can now be automatically performed between `snappi`/`gosnappi` and ixia-c-controller upon API calls by enabling version check flag in API handle like so:
     - gosnappi
     ```
         api := gosnappi.NewApi()
@@ -585,17 +585,17 @@ This build contains bug fixes.
 | Open Traffic Generator API    | [0.10.9](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.9/artifacts/openapi.yaml)         |
 | snappi                        | [0.10.7](https://pypi.org/project/snappi/0.10.7)        |
 | gosnappi                      | [0.10.7](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.7)        |
-| keng-controller             | [0.0.1-3807](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3807](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.30](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.271](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.10.7-8](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.10.7-8](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.10.14](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3807](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 ### Bug Fix(s)
-* Concurrent API calls (where at least one call was `set_config`) to `keng-controller` was resulting in crash.
+* Concurrent API calls (where at least one call was `set_config`) to `ixia-c-controller` was resulting in crash.
 
 #### Known Issues
 * Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
@@ -621,12 +621,12 @@ This build contains bug fixes.
 | Open Traffic Generator API    | [0.10.7](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.7/artifacts/openapi.yaml)         |
 | snappi                        | [0.10.5](https://pypi.org/project/snappi/0.10.5)        |
 | gosnappi                      | [0.10.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.5)        |
-| keng-controller             | [0.0.1-3768](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3768](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.29](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.271](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.10.7-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-|  keng-operator              | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.10.7-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.10.8](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3768](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -657,12 +657,12 @@ This build contains bug fixes.
 | Open Traffic Generator API    | [0.10.6](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.6/artifacts/openapi.yaml)         |
 | snappi                        | [0.10.4](https://pypi.org/project/snappi/0.10.4)        |
 | gosnappi                      | [0.10.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.4)        |
-| keng-controller             | [0.0.1-3724](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3724](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.24](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.256](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.10.6-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-ixhw-server        | [0.10.6-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-ixhw-server)    |
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.10.6](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3722](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -694,11 +694,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.10.5](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.10.5/artifacts/openapi.yaml)         |
 | snappi                        | [0.10.3](https://pypi.org/project/snappi/0.10.3)        |
 | gosnappi                      | [0.10.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.10.3)        |
-| keng-controller             | [0.0.1-3698](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3698](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.252](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.3.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.10.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3698](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -723,17 +723,17 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.9.10](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.10/artifacts/openapi.yaml)         |
 | snappi                        | [0.9.8](https://pypi.org/project/snappi/0.9.8)        |
 | gosnappi                      | [0.9.8](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.8)        |
-| keng-controller             | [0.0.1-3662](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3662](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.243](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-|  keng-operator              | [0.3.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.3.0](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3662](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 ### Features(s)
-* `keng-controller` now runs with a non-root user inside the container (instead of root user previously)
-* `keng-controller` now listens on non-privileged HTTPs port 8443 (instead of 443 previously)
+* `ixia-c-controller` now runs with a non-root user inside the container (instead of root user previously)
+* `ixia-c-controller` now listens on non-privileged HTTPs port 8443 (instead of 443 previously)
 
 
 #### Known Issues
@@ -757,21 +757,21 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.9.4](https://pypi.org/project/snappi/0.9.4)        |
 | gosnappi                      | [0.9.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.4)        |
-| keng-controller             | [0.0.1-3619](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3619](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.238](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-operator               | [0.2.6](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.2.6](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.7](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3619](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 ### Features(s)
-* `keng-controller` and `ixia-c-gnmi-server` can now accept the environment variables `HTTP_PORT` and `HTTP_SERVER` respectively, overriding the values provided for corresponding arguments `--http-port` and `--http-server`.
+* `ixia-c-controller` and `ixia-c-gnmi-server` can now accept the environment variables `HTTP_PORT` and `HTTP_SERVER` respectively, overriding the values provided for corresponding arguments `--http-port` and `--http-server`.
 
-* `keng-controller` and `ixia-c-gnmi-server` can now be run using an arbitrary UID (user ID), to support deployment in OpenShift environment.
+* `ixia-c-controller` and `ixia-c-gnmi-server` can now be run using an arbitrary UID (user ID), to support deployment in OpenShift environment.
 
 #### Bug Fix(s)
-* Fixed [#15](https://github.com/open-traffic-generator/keng-operator/issues/15).
+* Fixed [#15](https://github.com/open-traffic-generator/ixia-c-operator/issues/15).
 
 
 #### Known Issues
@@ -798,11 +798,11 @@ This build contains bug fixes.
 | Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.9.4](https://pypi.org/project/snappi/0.9.4)        |
 | gosnappi                      | [0.9.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.4)        |
-|  keng-controller            | [0.0.1-3587](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3587](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.236](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-operator               | [0.2.5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.2.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3587](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -837,11 +837,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.9.4](https://pypi.org/project/snappi/0.9.4)        |
 | gosnappi                      | [0.9.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.4)        |
-| keng-controller             | [0.0.1-3423](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3423](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.19](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.232](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-operator               | [0.2.2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.2.2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3423](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -865,11 +865,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.9.4](https://pypi.org/project/snappi/0.9.4)        |
 | gosnappi                      | [0.9.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.4)        |
-| keng-controller             | [0.0.1-3383](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3383](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.17](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.225](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-operator               | [0.2.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.2.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3380](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
@@ -903,18 +903,18 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.9.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.9.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.9.3](https://pypi.org/project/snappi/0.9.3)        |
 | gosnappi                      | [0.9.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.9.3)        |
-| keng-controller             | [0.0.1-3182](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3182](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.217](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-operator               | [0.2.1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.2.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.9.1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-one                    | [0.0.1-3182](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 #### Release Features(s)
 
-* `keng-controller` container now supports gRPC requests on default TCP port 40051 (alongside TCP port 8443 for HTTP) and hence `ixia-c-grpc-server` container is no longer needed.
-* There has been a breaking change in OTG API to provide stronger compatibility guarantees across different `semver patch versions` of snappi and keng-controller.
+* `ixia-c-controller` container now supports gRPC requests on default TCP port 40051 (alongside TCP port 8443 for HTTP) and hence `ixia-c-grpc-server` container is no longer needed.
+* There has been a breaking change in OTG API to provide stronger compatibility guarantees across different `semver patch versions` of snappi and ixia-c-controller.
 
 #### Known Issues
 
@@ -935,11 +935,11 @@ From now onwards `ixia-c` container images will be hosted on [GitHub Container R
 | Open Traffic Generator API    | [0.8.6](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.6/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.8](https://pypi.org/project/snappi/0.8.8)        |
 | gosnappi                      | [0.8.8](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.8)        |
-| keng-controller             | [0.0.1-3113](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-controller             | [0.0.1-3113](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.214](https://github.com/orgs/open-traffic-generator/packages/container/package/licensed%2Fixia-c-protocol-engine)    | 
-| keng-operator               | [0.1.95](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| ixia-c-operator               | [0.1.95](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-operator)        | 
 | ixia-c-gnmi-server            | [1.8.13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-gnmi-server)         |
 | ixia-c-grpc-server            | [0.8.9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-grpc-server)         |
 | ixia-c-one                    | [0.0.1-3113](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -974,11 +974,11 @@ Support added for static `MPLS` packet header in flows.
 | Open Traffic Generator API    | [0.8.6](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.6/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.8](https://pypi.org/project/snappi/0.8.8)        |
 | gosnappi                      | [0.8.8](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.8)        |
-| keng-controller             | [0.0.1-3027](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-3027](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.29](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.209     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.8.10](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.8.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-3027](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -1008,11 +1008,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.8.5](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.5/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.5](https://pypi.org/project/snappi/0.8.5)        |
 | gosnappi                      | [0.8.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.5)        |
-| keng-controller             | [0.0.1-3002](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-3002](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.29](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.205     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.8.8](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.8.7](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-3002](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -1036,11 +1036,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.8.5](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.5/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.5](https://pypi.org/project/snappi/0.8.5)        |
 | gosnappi                      | [0.8.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.5)        |
-| keng-controller             | [0.0.1-3000](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-3000](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.29](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.203     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.8.8](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.8.7](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-3000](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -1064,11 +1064,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.8.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.2](https://pypi.org/project/snappi/0.8.2)        |
 | gosnappi                      | [0.8.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.2)        |
-| keng-controller             | [0.0.1-2994](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2994](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.29](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.192     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.8.3](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.8.2](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-2994](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -1091,11 +1091,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.8.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.8.1/artifacts/openapi.yaml)         |
 | snappi                        | [0.8.2](https://pypi.org/project/snappi/0.8.2)        |
 | gosnappi                      | [0.8.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.8.2)        |
-| keng-controller             | [0.0.1-2992](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2992](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.29](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.191     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.8.3](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.8.2](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-2992](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -1118,11 +1118,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.7.15](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.15/openapi.yaml)         |
 | snappi                        | [0.7.41](https://pypi.org/project/snappi/0.7.41)        |
 | gosnappi                      | [0.7.41](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.41)        |
-| keng-controller             | [0.0.1-2969](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2969](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.29](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.181     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.31](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.17](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-2969](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -1145,17 +1145,17 @@ This build contains bug fixes.
 | Open Traffic Generator API    | [0.7.13](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.13/openapi.yaml)         |
 | snappi                        | [0.7.37](https://pypi.org/project/snappi/0.7.37)        |
 | gosnappi                      | [0.7.37](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.37)        |
-| keng-controller             | [0.0.1-2934](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2934](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.26](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.174     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.27](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.15](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-2934](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 
 #### Bug Fix(s)
-* `keng-controller` will return an empty response instead of error when `metrics` / `states` are queried right after boot-up.
+* `ixia-c-controller` will return an empty response instead of error when `metrics` / `states` are queried right after boot-up.
 * `ixia-c-gnmi-server` will return an empty response instead of error when `metrics` / `states` are queried without ever setting config
 
 #### Known Issues
@@ -1172,11 +1172,11 @@ This build contains bug fixes.
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| keng-controller             | [0.0.1-2897](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2897](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.26](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.165     | 
-| keng-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.94](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.23](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.12](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 | ixia-c-one                    | [0.0.1-2897](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -1203,11 +1203,11 @@ This build includes stability fixes.
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| keng-controller             | [0.0.1-2801](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2801](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.26](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.158     | 
-| keng-operator               | [0.1.89](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.1.89](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.15](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1229,11 +1229,11 @@ This build includes stability fixes.
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| keng-controller             | [0.0.1-2790](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2790](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.26](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.158     | 
-| keng-operator               | [0.0.80](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.80](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.15](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1255,11 +1255,11 @@ This build includes stability fixes.
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| keng-controller             | [0.0.1-2770](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2770](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.0.0.275](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.154     | 
-| keng-operator               | [0.0.80](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.80](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [1.7.13](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1283,11 +1283,11 @@ This build includes following bug fix
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| keng-controller             | [0.0.1-2755](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2755](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.152     | 
-| keng-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1314,11 +1314,11 @@ This build includes following new functionalities
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| keng-controller             | [0.0.1-2738](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2738](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.151     | 
-| keng-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1346,11 +1346,11 @@ This build includes following new functionalities
 | Open Traffic Generator API    | [0.7.8](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.8/openapi.yaml)         |
 | snappi                        | [0.7.18](https://pypi.org/project/snappi/0.7.18)        |
 | gosnappi                      | [0.7.18](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.18)        |
-| keng-controller             | [0.0.1-2727](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2727](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.151     | 
-| keng-operator              | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.8](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1394,11 +1394,11 @@ This build contains stability and debuggability enhancements.
 | Open Traffic Generator API    | [0.7.3](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.3/openapi.yaml)         |
 | snappi                        | [0.7.13](https://pypi.org/project/snappi/0.7.13)        |
 | gosnappi                      | [0.7.13](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.13)        |
-| keng-controller             | [0.0.1-2678](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2678](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.146     | 
-| keng-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.5](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.7](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1420,11 +1420,11 @@ This build implements transmit(tx) statistics & transmit state of flow metrics.
 | Open Traffic Generator API    | [0.7.3](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.3/openapi.yaml)         |
 | snappi                        | [0.7.13](https://pypi.org/project/snappi/0.7.13)        |
 | gosnappi                      | [0.7.13](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.13)        |
-| keng-controller             | [0.0.1-2662](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2662](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.23](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.144     | 
-| keng-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.75](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.5](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.6](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1453,11 +1453,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.7.3](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.3/openapi.yaml)         |
 | snappi                        | [0.7.13](https://pypi.org/project/snappi/0.7.13)        |
 | gosnappi                      | [0.7.13](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.13)        |
-| keng-controller             | [0.0.1-2610](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2610](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.5](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.133     | 
-| keng-operator               | [0.0.72](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.72](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.5](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.5](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1481,11 +1481,11 @@ This build contains debuggability enhancements.
 | Open Traffic Generator API    | [0.7.2](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.2/openapi.yaml)         |
 | snappi                        | [0.7.6](https://pypi.org/project/snappi/0.7.6)        |
 | gosnappi                      | [0.7.6](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.6)        |
-| keng-controller             | [0.0.1-2597](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2597](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.2](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.133     | 
-| keng-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.4](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.4](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1507,11 +1507,11 @@ This build contains stability fixes.
 | Open Traffic Generator API    | [0.7.2](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.7.2/openapi.yaml)         |
 | snappi                        | [0.7.3](https://pypi.org/project/snappi/0.7.3)        |
 | gosnappi                      | [0.7.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.7.3)        |
-| keng-controller             | [0.0.1-2543](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2543](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.1.2](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.127     | 
-| keng-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.7.2](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.7.2](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1532,11 +1532,11 @@ This build introduces ability to return large `FramesTx/RX` values by `metric` A
 | Open Traffic Generator API    | [0.6.13](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.13/openapi.yaml)         |
 | snappi                        | [0.6.21](https://pypi.org/project/snappi/0.6.21)        |
 | gosnappi                      | [0.6.21](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.21)        |
-| keng-controller             | [0.0.1-2446](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2446](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.15](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.115     | 
-| keng-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.6.18](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.6.17](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
@@ -1563,18 +1563,18 @@ This build introduces ability to auto plug in default values for missing fields 
 | Open Traffic Generator API    | [0.6.10](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.10/openapi.yaml)         |
 | snappi                        | [0.6.16](https://pypi.org/project/snappi/0.6.16)        |
 | gosnappi                      | [0.6.16](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.16)        |
-| keng-controller             | [0.0.1-2399](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2399](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.15](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.111     | 
-| keng-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
+| ixia-c-operator               | [0.0.70](https://hub.docker.com/r/ixiacom/ixia-c-operator/tags)        | 
 | ixia-c-gnmi-server            | [0.6.14](https://hub.docker.com/r/ixiacom/ixia-c-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.6.15](https://hub.docker.com/r/ixiacom/ixia-c-grpc-server/tags)         |
 
 
 #### New Feature(s)
 
-* Upon receiving JSON payload, keng-controller will now automatically plug in default values for missing fields with primitive types.
+* Upon receiving JSON payload, ixia-c-controller will now automatically plug in default values for missing fields with primitive types.
 
 #### Known Issues
 
@@ -1594,11 +1594,11 @@ This build introduces uniform logging across some Ixia-c components.
 | Open Traffic Generator API    | [0.6.7](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.7/openapi.yaml)         |
 | snappi                        | [0.6.12](https://pypi.org/project/snappi/0.6.12)        |
 | gosnappi                      | [0.6.12](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.12)        |
-| keng-controller             | [0.0.1-2367](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2367](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.15](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.96      | 
-| keng-operator               | 0.0.1-65       | 
+| ixia-c-operator               | 0.0.1-65       | 
 | ixia-c-gnmi-server            | [0.6.11](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.6.11](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
 
@@ -1625,11 +1625,11 @@ This build contains validation bug fixes.
 | Open Traffic Generator API    | [0.6.5](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.5/openapi.yaml)         |
 | snappi                        | [0.6.5](https://pypi.org/project/snappi/0.6.5)        |
 | gosnappi                      | [0.6.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.5)        |
-| keng-controller             | [0.0.1-2342](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2342](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.15](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.83      | 
-| keng-operator               | 0.0.1-65       | 
+| ixia-c-operator               | 0.0.1-65       | 
 | ixia-c-gnmi-server            | [0.6.6](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.6.6](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
 
@@ -1657,11 +1657,11 @@ This build contains bugfixes for SetConfig and FPS values in GetMetrics.
 | Open Traffic Generator API    | [0.6.5](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.5/openapi.yaml)         |
 | snappi                        | [0.6.5](https://pypi.org/project/snappi/0.6.5)        |
 | gosnappi                      | [0.6.5](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.6.5)        |
-| keng-controller             | [0.0.1-2337](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2337](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.14](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.83      | 
-| keng-operator               | 0.0.1-65       | 
+| ixia-c-operator               | 0.0.1-65       | 
 | ixia-c-gnmi-server            | [0.6.6](https://hub.docker.com/r/otgservices/otg-gnmi-server/tags)         |
 | ixia-c-grpc-server            | [0.6.6](https://hub.docker.com/r/otgservices/otg-grpc-server/tags)         |
 
@@ -1688,7 +1688,7 @@ This build contains support for performance optimisation through concurrent port
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.6.1](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.6.1/openapi.yaml)         |
 | snappi                        | [0.6.1](https://pypi.org/project/snappi/0.6.1)        |
-| keng-controller             | [0.0.1-2289](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2289](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.13](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.70      | 
@@ -1718,7 +1718,7 @@ This build contains support for updating flow rate without disrupting transmit s
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.5.4](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.5.4/openapi.yaml)         |
 | snappi                        | [0.5.3](https://pypi.org/project/snappi/0.5.3)        |
-| keng-controller             | [0.0.1-2185](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2185](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.11](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.56     | 
@@ -1748,7 +1748,7 @@ This build contains support for capture filter, setting GRE checksum flag, redir
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.4.12](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.12/openapi.yaml)         |
 | snappi                        | [0.4.25](https://pypi.org/project/snappi/0.4.25)        |
-| keng-controller             | [0.0.1-2120](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
+| ixia-c-controller             | [0.0.1-2120](https://hub.docker.com/r/ixiacom/ixia-c-controller/tags)    |
 | ixia-c-traffic-engine         | [1.4.0.9](https://hub.docker.com/r/ixiacom/ixia-c-traffic-engine/tags)       |
 | ixia-c-app-usage-reporter     | [0.0.1-37](https://hub.docker.com/r/ixiacom/ixia-c-app-usage-reporter/tags)      |
 | ixia-c-protocol-engine        | 1.00.0.50     | 
@@ -1785,7 +1785,7 @@ This build contains support for protocols GRE and VXLAN (RFC 2784), enabling/dis
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.4.0](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.4.0/openapi.yaml) |
 | snappi                        | 0.4.0         |
-| keng-controller             | 0.0.1-1622    |
+| ixia-c-controller             | 0.0.1-1622    |
 | ixia-c-traffic-engine         | 1.4.0.1       |
 | ixia-c-app-usage-reporter     | 0.0.1-36      |
 
@@ -1797,7 +1797,7 @@ This build contains support for protocols GRE and VXLAN (RFC 2784), enabling/dis
 
 #### Bug Fixes
 
-* `keng-controller` can now safely serve multiple parallel requests from different clients preventing any undefined behavior.
+* `ixia-c-controller` can now safely serve multiple parallel requests from different clients preventing any undefined behavior.
 * Port metrics can now be fetched for ports which are not part of flow configuration.
 * Providing port locations for `ixia-c-traffic-engine` running in unsupported mode will now throw a user-friendly error.
 * Default values for `increment` and `decrement` properties in flow header fields are now aligned per Open Traffic Generator API.
@@ -1821,7 +1821,7 @@ This build contains support for flow delay and some bug fixes.
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [0.3.10](https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v0.3.10/openapi.yaml) |
 | snappi                        | 0.3.20        |
-| keng-controller             | 0.0.1-1388    |
+| ixia-c-controller             | 0.0.1-1388    |
 | ixia-c-traffic-engine         | 1.2.0.12      |
 | ixia-c-app-usage-reporter     | 0.0.1-36      |
 
