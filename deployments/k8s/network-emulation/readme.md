@@ -15,7 +15,7 @@ This document discusses the first approach using a minimal Ubuntu container as D
 ### Overview
 
 Ixia-C is distributed as a multi-container application with following as core components:
-1. `ixia-c-controller`: API Server driving operation on one or more test port based on API requests
+1. `keng-controller`: API Server driving operation on one or more test port based on API requests
 2. `ixia-c-traffic-engine`: Drives data plane operations on test port
 3. `ixia-c-protocol-engine`: Drives control plane operations on test port
 
@@ -73,10 +73,10 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
     docker login ghcr.io
 
     # download ixia-c images
-    docker pull ghcr.io/open-traffic-generator/licensed/ixia-c-controller:0.0.1-3889
-    docker pull ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.6.0.35
-    docker pull ghcr.io/open-traffic-generator/licensed/ixia-c-protocol-engine:1.00.0.290
-    
+    docker pull ghcr.io/open-traffic-generator/keng-controller:0.1.0-53
+    docker pull ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.6.0.85
+    docker pull ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.337
+
     # download DUT image
     docker pull ubuntu:22.04
 
@@ -86,9 +86,9 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
     docker pull networkop/init-wait:latest
 
     # push images to nodes
-    kind load docker-image ghcr.io/open-traffic-generator/licensed/ixia-c-controller:0.0.1-3889
-    kind load docker-image ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.6.0.35
-    kind load docker-image ghcr.io/open-traffic-generator/licensed/ixia-c-protocol-engine:1.00.0.290
+    kind load docker-image ghcr.io/open-traffic-generator/keng-controller:0.1.0-53
+    kind load docker-image ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.6.0.85
+    kind load docker-image ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.337
     kind load docker-image ubuntu:22.04
     kind load docker-image networkop/meshnet:latest
     kind load docker-image networkop/init-wait:latest

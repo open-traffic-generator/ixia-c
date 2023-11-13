@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-ixia-c-controller
+  name: service-keng-controller
   namespace: ixia-c
 spec:
   ports:

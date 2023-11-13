@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   controller:
-    image: ghcr.io/open-traffic-generator/ixia-c-controller:${CONTROLLER_VERSION:-latest}
+    image: ghcr.io/open-traffic-generator/keng-controller:${CONTROLLER_VERSION:-latest}
     command: --accept-eula
     network_mode: "host"
     restart: always
@@ -26,6 +26,6 @@ services:
     - ARG_IFACE_LIST=virtual@af_packet,${IFC2}
     - OPT_NO_HUGEPAGES=Yes
   aur:
-    image: ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter:${AUR_VERSION:-latest}
+    image: ghcr.io/open-traffic-generator/keng-app-usage-reporter:${AUR_VERSION:-latest}
     network_mode: "host"
     restart: always

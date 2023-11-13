@@ -9,9 +9,9 @@
 </h4>
 
 <p align="center">
-  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller"><img alt="Release v0.0.1-4399" src="https://img.shields.io/badge/release-v0.0.1--4399-brightgreen"></a>
-  <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.11.11" src="https://img.shields.io/badge/open--traffic--generator-v0.11.11-brightgreen"></a>
-  <a href="https://pypi.org/project/snappi/0.12.1"><img alt="snappi v0.12.1" src="https://img.shields.io/badge/snappi-v0.12.1-brightgreen"></a>
+  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller"><img alt="Release v0.1.0-53" src="https://img.shields.io/badge/release-v0.1.0--53-brightgreen"></a>
+  <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.0/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.13.0" src="https://img.shields.io/badge/open--traffic--generator-v0.13.0-brightgreen"></a>
+  <a href="https://pypi.org/project/snappi/0.13.0"><img alt="snappi v0.13.0" src="https://img.shields.io/badge/snappi-v0.13.0-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
   <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
   <a href="docs/support.md"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
@@ -32,7 +32,7 @@
 
 Ixia-c is a modern, powerful and API-driven traffic generator designed to cater to the needs of hyperscalers, network hardware vendors and hobbyists alike.
 
-It is **available for free** and distributed / deployed as a multi-container application consisting of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine) and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-app-usage-reporter).
+It is **available for free** and distributed / deployed as a multi-container application consisting of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine) and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter).
 
 As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
 
@@ -55,9 +55,9 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 * Deploy Ixia-c
 
   ```bash
-  # start Ixia-c controller
-  docker run -d --network=host ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter
+  # start KENG controller
+  docker run -d --network=host ghcr.io/open-traffic-generator/keng-controller --accept-eula
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-app-usage-reporter
 
   # start Ixia-c traffic engine on eth1 interface
   docker run -d --network=host --privileged     \
@@ -81,7 +81,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
   ```
 
   > Upon successful run, you should see port metrics printed on console.
- 
+
   <details>
   <summary><b>Expand</b> this section for overview of the script we just ran. For more details on snappi, checkout <a href="docs/hello-snappi.md">hello-snappi</a>.</summary>
 
@@ -126,7 +126,7 @@ Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) a
 
 * Optionally, Generate Traffic Using [curl](https://curl.se/)
 
-  >You can also pass equivalent **JSON configuration** directly to the Ixia-c controller, without installing snappi, using **curl**.  
+  >We can also pass equivalent **JSON configuration** directly to KENG controller, without installing snappi, using **curl**.
   >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml).
 
   ```bash

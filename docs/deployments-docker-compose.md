@@ -43,10 +43,10 @@ On most of the systems, `docker-compose` needs to be installed separately even i
 
   ```bash
   # For community users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --debug --http-port 5050
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula --debug --http-port 5050
 
   # For commercial users
-  docker run --net=host -d ghcr.io/open-traffic-generator/ixia-c-controller --accept-eula --debug --http-port 5050 --license-servers="ip/hostname of license server"
+  docker run --net=host -d ghcr.io/open-traffic-generator/keng-controller --accept-eula --debug --http-port 5050 --license-servers="ip/hostname of license server"
   ```
 
 ### Traffic Engine

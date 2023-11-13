@@ -1,69 +1,69 @@
-<mxfile host="Electron" modified="2023-09-12T23:41:03.679Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.8 Chrome/114.0.5735.289 Electron/25.5.0 Safari/537.36" etag="LhihdfWidobOhiph_mJy" version="21.6.8" type="device">
-  <diagram name="Page-1" id="kdscWATnTdKI_hbdzj3E">
-    <mxGraphModel dx="1020" dy="470" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-3" value="Test Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFCC;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="200" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-4" value="gNMI client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFCC;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="340" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-9" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="330" y="40" width="240" height="420" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-5" value="ixia-c-ixhw-server" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#FFF4C3;" vertex="1" parent="1">
-          <mxGeometry x="380" y="70" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="bLDb5Kxm9XP_twkMBnbg-6" target="bLDb5Kxm9XP_twkMBnbg-7">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="440" y="280" />
-              <mxPoint x="440" y="280" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" edge="1" parent="1" source="bLDb5Kxm9XP_twkMBnbg-6" target="bLDb5Kxm9XP_twkMBnbg-5">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-6" value="ixia-c-controller&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;localhost:8443&lt;br&gt;localhost:40051&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#FFF4C3;" vertex="1" parent="1">
-          <mxGeometry x="380" y="190" width="120" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-7" value="&lt;b&gt;ixia-c-gnmi-server&lt;/b&gt;&lt;br&gt;&lt;br&gt;localhost:50051" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4C3;" vertex="1" parent="1">
-          <mxGeometry x="380" y="340" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-13" value="&lt;b&gt;Keysight Ixia Hardware Chassis with IxOS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCFFFF;" vertex="1" parent="1">
-          <mxGeometry x="650" y="60" width="160" height="360" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.017;entryY=0.108;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" target="bLDb5Kxm9XP_twkMBnbg-13">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="500" y="100" as="sourcePoint" />
-            <mxPoint x="540" y="170" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-20" value="Keysight Elastic Network Generator" style="whiteSpace=wrap;html=1;strokeColor=none;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="340" width="220" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-22" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;dashed=1;" edge="1" parent="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="180" y="230.96" as="sourcePoint" />
-            <mxPoint x="380" y="231" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-25" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bLDb5Kxm9XP_twkMBnbg-4">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="190" y="370" as="sourcePoint" />
-            <mxPoint x="380" y="370" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-31" value="Open Traffic Generator (OTG) API" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="210" y="190" width="110" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="bLDb5Kxm9XP_twkMBnbg-33" value="gNMI&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="190" y="340" width="110" height="20" as="geometry" />
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="kdscWATnTdKI_hbdzj3E">
+        <mxGraphModel dx="714" dy="571" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-3" value="Test Client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFCC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="60" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-4" value="gNMI client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6FFCC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="60" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-9" value="" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="40" width="240" height="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-5" value="&lt;span style=&quot;color: rgb(33, 33, 33);&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;keng-layer23-hw-server&lt;/font&gt;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#FFF4C3;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="70" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" parent="1" source="bLDb5Kxm9XP_twkMBnbg-6" target="bLDb5Kxm9XP_twkMBnbg-7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="440" y="280"/>
+                            <mxPoint x="440" y="280"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;" parent="1" source="bLDb5Kxm9XP_twkMBnbg-6" target="bLDb5Kxm9XP_twkMBnbg-5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-6" value="&lt;span style=&quot;font-family: Consolas; color: rgb(33, 33, 33);&quot;&gt;keng-controller&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;localhost:8443&lt;br&gt;localhost:40051&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fillColor=#FFF4C3;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="190" width="120" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-7" value="&lt;span style=&quot;color: rgb(33, 33, 33);&quot;&gt;&lt;b style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;otg-gnmi-server&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;br&gt;&lt;br&gt;localhost:50051" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4C3;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="340" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-13" value="&lt;b&gt;Keysight Ixia Hardware Chassis with IxOS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCFFFF;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="60" width="160" height="360" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.017;entryY=0.108;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" target="bLDb5Kxm9XP_twkMBnbg-13" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="500" y="100" as="sourcePoint"/>
+                        <mxPoint x="540" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-20" value="Keysight Elastic Network Generator" style="whiteSpace=wrap;html=1;strokeColor=none;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="340" width="220" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-22" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;dashed=1;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="180" y="230.96" as="sourcePoint"/>
+                        <mxPoint x="380" y="231" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-25" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="bLDb5Kxm9XP_twkMBnbg-4" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="190" y="370" as="sourcePoint"/>
+                        <mxPoint x="380" y="370" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-31" value="Open Traffic Generator (OTG) API" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="210" y="190" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="bLDb5Kxm9XP_twkMBnbg-33" value="gNMI&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="340" width="110" height="20" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
 </mxfile>

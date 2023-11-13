@@ -7,7 +7,7 @@ To run KENG tests with Ixia hardware, the following pre-requisites must be satis
 
 - You must have access to Keysight Elastic Network Generator (KENG) images and a valid KENG license.
 - For information on how to deploy and activate a KENG license, see the Licensing section of the User Guide.
-- The test hardware must be Keysight Ixia Novus or AresOne [Network Test Hardware](https://www.keysight.com/us/en/products/network-test/network-test-hardware.html) with [IxOS](https://support.ixiacom.com/ixos-software-downloads-documentation) 9.20 Patch 4 or higher.  
+- The test hardware must be Keysight Ixia Novus or AresOne [Network Test Hardware](https://www.keysight.com/us/en/products/network-test/network-test-hardware.html) with [IxOS](https://support.ixiacom.com/ixos-software-downloads-documentation) 9.20 Patch 4 or higher.
 **NOTE:**  Currently, only Linux-based IxOS platforms are supported with KENG.
 - There must be physical link connectivity between the test ports on the Keysight Ixia Chassis and the devices under test (DUTs).
 - You must have a Linux host or virtual machine (VM) with sudo permissions and Docker support.
@@ -28,7 +28,7 @@ To run KENG tests with Ixia hardware, the following pre-requisites must be satis
 	`sudo usermod -aG docker $USER`
 
 - Python3 (version 3.9 or higher), pip and virtualenv
-	
+
 	Use the following command to install Python, pip, and virtualenv:
 
 	`sudo apt install python3 python3-pip python3.10-venv -y`
@@ -74,17 +74,17 @@ The following procedure shows an example of how to deploy using Docker Compose.
 
 ```
 services:
-  ixia-c-controller:
-    image: ghcr.io/open-traffic-generator/licensed/ixia-c-controller:0.0.1-4139
+  keng-controller:
+    image: ghcr.io/open-traffic-generator/keng-controller:0.1.0-53
     restart: always
     depends_on:
-      ixia-c-ixhw-server:
+      keng-layer23-hw-server:
         condition: service_started
     command:
       - "--accept-eula"
       - "--debug"
-      - "--ixia-c-ixhw-server"
-      - "ixia-c-ixhw-server:5001"
+      - "--keng-layer23-hw-server"
+      - "keng-layer23-hw-server:5001"
     ports:
       - "40051:40051"
 logging:
@@ -93,8 +93,8 @@ logging:
         max-size: "100m"
         max-file: "10"
         mode: "non-blocking"
-  ixia-c-ixhw-server:
-    image: ghcr.io/open-traffic-generator/ixia-c-ixhw-server:0.11.10-2
+  keng-layer23-hw-server:
+    image: ghcr.io/open-traffic-generator/keng-layer23-hw-server:0.13.0-6
     restart: always
     command:
       - "dotnet"
@@ -108,15 +108,15 @@ logging:
         max-size: "100m"
         max-file: "10"
         mode: "non-blocking"
-  ixia-c-gnmi-server:
-    image: ghcr.io/open-traffic-generator/ixia-c-gnmi-server:1.11.16
+  otg-gnmi-server:
+    image: ghcr.io/open-traffic-generator/otg-gnmi-server:1.13.0
     restart: always
     depends_on:
-      ixia-c-controller:
+      keng-controller:
         condition: service_started
     command:
       - "-http-server"
-      - "https://ixia-c-controller:8443"
+      - "https://keng-controller:8443"
       - "--debug"
     ports:
       - "50051:50051"
@@ -129,18 +129,18 @@ logging:
 ```
 
 2. Start the Compose tool:
-  
+
 	`docker compose up -d`
 
- 
+
 3. Use the `docker ps` command to verify that KENG services are running:
 
 	`docker ps`
 
 The list of containers should include:
-- `ixia-c-controller`
-- `ixia-c-ixhw-server`
-- `ixia-c-gnmi-server`  (optional if gNMI access is needed)
+- `keng-controller`
+- `keng-layer23-hw-server`
+- `otg-gnmi-server`  (optional if gNMI access is needed)
 
 When the controller and ixhw-server services are running, the deployment is ready to run a test.
 
@@ -148,7 +148,7 @@ When the controller and ixhw-server services are running, the deployment is read
 
 KENG uses '/config.ports.locations' parameter to determine the test ports involved in the test.
 
-The ‘/config.ports.locations’ parameter needs to be set to reference a test port. 
+The ‘/config.ports.locations’ parameter needs to be set to reference a test port.
 
 This parameter is to be specified in a ‘chassis ip;card;port’ format.
 
