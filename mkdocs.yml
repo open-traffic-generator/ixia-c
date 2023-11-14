@@ -50,8 +50,8 @@ extra:
 # Page tree
 nav:
   - Home:
-    - Welcome: index.md # Needs re-writing as a landing page
-    - FAQ: faq.md # Review if there are any valuable items left
+    - Overview: index.md # Needs re-writing as a landing page
+#    - FAQ: faq.md # Review if there are any valuable items left
     - EULA: eula.md # Check / update
   - Quick Start:
     - Introduction: quick-start/introduction.md # Now goes as Ixia-c Quick Start. Add a paragraph why
