@@ -38,14 +38,14 @@
                         <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                 <font color="#000000" style="font-size: 16px">
-                                    Test Script         Ixia-c Controller
+                                    Test Script         KENG controller
                                 </font>
                             </div>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="385" y="344" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
-                    Test Script         Ixia-c Controller
+                    Test Script         KENG controller
                 </text>
             </switch>
         </g>
@@ -60,7 +60,7 @@
                             <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; font-weight: bold; white-space: normal; overflow-wrap: normal;">
                                 <span>
                                     <font color="#333333">
-                                        Ixia-c Controller
+                                        KENG controller
                                         <br/>
                                         :8443
                                     </font>
@@ -71,7 +71,7 @@
                     </div>
                 </foreignObject>
                 <text x="590" y="184" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle" font-weight="bold">
-                    Ixia-c Controller...
+                    KENG controller...
                 </text>
             </switch>
         </g>

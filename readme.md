@@ -52,7 +52,7 @@ Please ensure that following prerequisites are met by the setup:
 #### 1. Deploy Ixia-C
 
 ```bash
-# clone this repository 
+# clone this repository
 git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c.git && cd ixia-c
 
 # create a veth pair and deploy ixia-c containers where one traffic-engine is bound
@@ -82,7 +82,7 @@ cd conformance
 
 #### 3. Optionally, run test using [curl](https://curl.se/)
 
-We can also pass equivalent **JSON configuration** directly to **controller**, just by using **curl**.  
+We can also pass equivalent **JSON configuration** directly to **controller**, just by using **curl**.
 The description of each node in the configuration is detailed in self-updating  [online documentation](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.0/artifacts/openapi.yaml).
 
 
@@ -117,7 +117,7 @@ curl -skL https://localhost:8443/monitor/metrics -H "Content-Type: application/j
   * Rate specification in pps (packets per second) or % line-rate
   * Ability to send bursts
 * Statistics
-  * Per port and per flow
+  * Per-port and per-flow
   * One way latency measurements (min, max, average) on a per flow basis
 * Capture
   * Packets with filters

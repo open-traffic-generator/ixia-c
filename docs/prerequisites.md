@@ -1,39 +1,46 @@
 # Ixia-c Prerequisites
 
-* [Table of Contents](readme.md)
-
 ## System Prerequisites
 
 ### CPU and RAM
 
-- `controller` - each instance requires at least 1 CPU core and 2GB RAM.
-- `traffic-engine` - each instance requires 2 dedicated CPU cores and 3GB dedicated RAM (FIXME).
+The minimum memory and cpu requirements for a basic use-case are as follows:
+
+* `keng-controller`: Each instance requires at least 10m CPU core and 25Mi RAM.
+* `ixia-c-traffic-engine`: Each instance requires 200m CPU core per test port, plus one shared CPU core and 60Mi RAM. Generic formula for CPU cores is `1 + 2 * number_of_ports`.
+* `ixia-c-protocol-engine`: Each instance requires 200m CPU core and 350Mi RAM per port.
+
+For more granularity on resource requirements for advanced deployments, see [Resource requirements](reference/resource-requirements.md).
 
 ### OS and Software
 
-- x86_64 Linux Distribution (Centos 7+ or Ubuntu 18+ have been tested)
-- Python 2.7+ or Python 3.6+
-- Docker 19+ (as distributed by https://docs.docker.com/)
+* x86_64 Linux Distribution (Centos 7+ or Ubuntu 18+ have been tested)
+* Docker 19+ (as distributed by <https://docs.docker.com/>)
+* For test-environment,
+    * Python 3.6+ (with `pip`) or
+    * Go 1.17+
 
 ## Software Prerequisites
 
 ### Docker
 
+* Docker Engine (Community Edition)
+
 ### Python
 
-  - **Please make sure you have `python` and `pip` installed on your system.**
+* **Ensure that you have `python` and `pip` installed on your system.**
 
-    You may have to use `python3` or `absolute path to python executable` depending on Python Installation on system, instead of `python`.
+    You may have to use `python3` or `absolute path to python executable` depending on the Python Installation on your system.
 
     ```sh
       python -m pip --help
     ```
-    
-    Please see [pip installation guide](https://pip.pypa.io/en/stable/installing/), if you don't see a help message.
 
-  - **It is recommended that you use a python virtual environment for development.**
+    If you do not see a help message, see [pip installation guide](https://pip.pypa.io/en/stable/installing/), .
 
-      ```sh
+  * **It is recommended that you use a python virtual environment for development.**
+
+    ```sh
         python -m pip install --upgrade virtualenv
         # create virtual environment inside `env/` and activate it.
         python -m virtualenv env
@@ -43,24 +50,25 @@
         env\Scripts\activate on Windows
     ```
 
-> If you do not wish to activate virtual env, you can use `env/bin/python` (or `env\scripts\python` on Windows) instead of `python`.
-
+> If you do not want to activate the virtual env, use `env/bin/python` (or `env\scripts\python` on Windows) instead of `python`.
 
 ## Network Interface Prerequisites
 
-In order for Ixia-c Traffic Engine to function, several settings need to be tuned on the host system as described below.
+In order for `ixia-c-traffic-engine` to function, several settings need to be tuned on the host system. They are as follows:
 
-1. Ensure existing network interfaces are `Up` and have `Promiscuous` mode enabled.
+1. Ensure that all the existing network interfaces are `Up` and have `Promiscuous` mode enabled.
 
-   ```sh
-   # check interface details
-   ip addr
-   # configure as required
-   ip link set eth1 up
-   ip link set eth1 promisc on
-   ```
+* The following example illustrates a sample configured interface `eth1`
 
-2. (Optional) To deploy `traffic-engine` against veth interface pairs, you need to create them as follows:
+    ```sh
+    # check interface details
+      ip addr
+    # configure as required
+      ip link set eth1 up
+      ip link set eth1 promisc on
+    ```
+
+2. (Optional) You need to create the `veth` interface pairs, to deploy the `ixia-c-traffic-engine` against them.
 
    ```sh
    # create veth pair veth1 and veth2
@@ -68,4 +76,3 @@ In order for Ixia-c Traffic Engine to function, several settings need to be tune
    ip link set veth1 up
    ip link set veth2 up
    ```
-

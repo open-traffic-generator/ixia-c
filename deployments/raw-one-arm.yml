@@ -16,6 +16,6 @@ services:
     - ARG_IFACE_LIST=virtual@af_packet,${IFC1}
     - OPT_NO_HUGEPAGES=Yes
   aur:
-    image: ghcr.io/open-traffic-generator/ixia-c-app-usage-reporter:${AUR_VERSION:-latest}
+    image: ghcr.io/open-traffic-generator/keng-app-usage-reporter:${AUR_VERSION:-latest}
     network_mode: "host"
     restart: always
