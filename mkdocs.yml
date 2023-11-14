@@ -55,7 +55,7 @@ nav:
     - EULA: eula.md # Check / update
   - Quick Start:
     - Introduction: quick-start/introduction.md # Now goes as Ixia-c Quick Start. Add a paragraph why
-    - Deployment: quick-start/deployment.md # Link to deployment dir is broken. Need a compose file in text. Need to move to docker compose later
+#    - Deployment: quick-start/deployment.md # Link to deployment dir is broken. Need a compose file in text. Need to move to docker compose later
 #    - Sample test: quick-start/sample-test.md # Empty - otgen example or hello snappi?. See "clients" in UG Intro
     - First script: developer/hello-snappi.md # Took from Developer Guide
   - User Guide:
