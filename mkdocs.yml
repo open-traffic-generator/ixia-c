@@ -66,7 +66,7 @@ nav:
       - UHD400T: tests-uhd400.md # This is UHD400 intro. Not deployment, not scripts. Need to align with HW
       - IxOS Hardware: tests-chassis-app.md # This this HW deployment, there is no scripts (and likely should not be)
 #    - Use cases: usecases.md # Remove for now, rethink what is this later
-    - Integrated environments: integrated-environments.md # A strange mix of otg-examples and clab/kne. Move Clab/KNE deployments here
+    - Integrations: integrated-environments.md # A strange mix of otg-examples and clab/kne. Move Clab/KNE deployments here
     - Limitations: limitations.md # Align with the DS, clarify if this is for Ixia-c/UHD/HW
     - Troubleshooting: troubleshooting.md # Move how to see logs from Deployment here
     - Licensing: licensing.md # Update from otg-examples
