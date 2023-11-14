@@ -30,12 +30,10 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
 
 ### Prerequisites
 
-- Recommended OS is Ubuntu LTS release.
-- Go 1.20 or newer
-- Docker Engine (Community Edition) - Needed when using kind for setting up K8S cluster
-- At least 2 CPU cores
-- At least 6GB RAM
-- At least 30GB Free Hard Disk Space
+- At least **2 x86 CPU cores**, **7GB RAM** and **30GB Free Hard Disk Space**
+- Recommended OS is **Ubuntu 22.04 LTS** release.
+- Go **1.20+**
+- **Docker Engine** (Community Edition) - Needed when using kind for setting up K8S cluster
 
 ### Steps
 
@@ -49,7 +47,7 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
 
     ```bash
     # install kind
-    go install sigs.k8s.io/kind@v0.16.0
+    go install sigs.k8s.io/kind@v0.20.0
 
     # create a single-node cluster
     kind create cluster --config=deployments/k8s/network-emulation/kind.yaml --wait 30s
@@ -64,10 +62,6 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
 
 3. (Optional) If cluster does not have access to ghcr.io, manually download container images and push them to all nodes in the cluster
 
-    **NOTE**: Some Ixia-C container images have restricted access and hence following needs to be done to ensure all images are downloaded successfully.
-    - Create a Github account and generate [PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-    - Make sure the PAT has been assigned permission for package download
-    - Request access for Ixia-C images to Keysight Support (requires Github user ID)
     ```bash
     # Enter Github user ID and PAT when asked for credentials
     docker login ghcr.io

@@ -1,11 +1,11 @@
 <h1 align="center">
   <br>
-  Ixia-c
+  Ixia-C
   <br>
 </h1>
 
 <h4 align="center">
-  A powerful traffic generator based on <a href="https://github.com/open-traffic-generator/models" target="_blank">Open Traffic Generator API</a>
+  Ixia-C - A powerful traffic generator based on <a href="https://github.com/open-traffic-generator/models" target="_blank">Open Traffic Generator API</a>
 </h4>
 
 <p align="center">
@@ -18,7 +18,6 @@
 </p>
 
 <p align="center">
-  <a href="#quick-demo">Quick Demo</a> &nbsp;•&nbsp;
   <a href="#quick-start">Quick Start</a> &nbsp;•&nbsp;
   <a href="#key-features">Key Features</a> &nbsp;•&nbsp;
   <a href="docs/readme.md">Documentation</a> &nbsp;•&nbsp;
@@ -28,115 +27,75 @@
   <br>
 </p>
 
-### What is Ixia-c ?
+### What is Ixia-C ?
 
-Ixia-c is a modern, powerful and API-driven traffic generator designed to cater to the needs of hyperscalers, network hardware vendors and hobbyists alike.
+- A modern, powerful and **API-driven** traffic generator designed to cater to the needs of hyper-scalers, network hardware vendors and hobbyists alike.
 
-It is **available for free** and distributed / deployed as a multi-container application consisting of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine) and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter).
+- **Free for basic use-cases** and distributed / deployed as a multi-container application consisting primarily of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine) and a [protocol-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine).
 
-As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), Ixia-c supports client SDKs in various languages, most prevalent being [snappi](https://pypi.org/project/snappi/) (Python SDK).
-
-<p align="center">
-<img src="docs/res/ixia-c.drawio.svg" alt="Ixia-c Deployment for Bidirectional Traffic">
-</p>
-
-> [Keysight](https://www.keysight.com) also offers a well supported commercial version, [Keysight Elastic Network Generator](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html), with no restrictions on **performance and scalability**. Scripts written for the free version are **compatible** with this version.
-
-### Quick Demo
+- As a reference implementation of [Open Traffic Generator API](https://github.com/open-traffic-generator/models), supports client SDKs in various languages, most prevalent being [snappi](https://github.com/open-traffic-generator/snappi) (Python SDK) and [gosnappi](https://github.com/open-traffic-generator/snappi/tree/main/gosnappi).
 
 <p align="center">
-<img src="docs/res/quick-demo.gif" alt="Quick Demo">
+<img src="docs/res/ixia-c.drawio.svg" alt="Ixia-C deployment for two-arm test with DUT">
 </p>
+
+> [Keysight](https://www.keysight.com) also offers a well supported commercial version, [Keysight Elastic Network Generator (KENG)](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html), with no restrictions on **performance and scalability**. Scripts written for the community version are **compatible** with this version.
 
 ### Quick Start
 
-Before proceeding, please ensure [system prerequisites](docs/prerequisites.md) are met.
+Please ensure that following prerequisites are met by the setup:
+  - At least **2 x86_64 CPU cores** and **7GB RAM**, preferably running **Ubuntu 22.04 LTS** OS
+  - **Python 3.8+** (and **pip**) or **Go 1.19+**
+  - **Docker Engine** (Community Edition)
 
-* Deploy Ixia-c
 
-  ```bash
-  # start KENG controller
-  docker run -d --network=host ghcr.io/open-traffic-generator/keng-controller --accept-eula
-  docker run --net=host -d ghcr.io/open-traffic-generator/keng-app-usage-reporter
+#### 1. Deploy Ixia-C
 
-  # start Ixia-c traffic engine on eth1 interface
-  docker run -d --network=host --privileged     \
-    -e ARG_IFACE_LIST="virtual@af_packet,eth1"  \
-    -e OPT_NO_HUGEPAGES="Yes"                   \
-    ghcr.io/open-traffic-generator/ixia-c-traffic-engine
-  ```
+```bash
+# clone this repository
+git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c.git && cd ixia-c
 
-  > Once the containers are up, accessing https://controller-ip/docs/ will open up an interactive REST API documentation. Check out [deployment guide](docs/deployments.md) for more details.
+# create a veth pair and deploy ixia-c containers where one traffic-engine is bound
+# to each interface in the pair, and controller is configured to figure out how to
+# talk to those traffic-engine containers
+cd conformance && ./do.sh topo new dp
+```
 
-* Generate Traffic using [snappi](https://pypi.org/project/snappi/)
+#### 2. Setup and run standalone test using [snappi](https://github.com/open-traffic-generator/snappi) or [gosnappi](https://github.com/open-traffic-generator/snappi/tree/main/gosnappi)
 
-  ```bash
-  # clone repo for test suites, useful helper scripts, deployment files, etc.
-  git clone --recurse-submodules https://github.com/open-traffic-generator/ixia-c && cd ixia-c
+```bash
+# change dir to conformance if you haven't already
+cd conformance
 
-  # install snappi
-  python -m pip install --upgrade snappi==0.12.1
-  # run a standalone script to generate TCP traffic and fetch metrics
-  python snappi-tests/scripts/quickstart_snappi.py
-  ```
+# setup python virtual environment and install dependencies
+./do.sh prepytest
 
-  > Upon successful run, you should see port metrics printed on console.
+# run standalone snappi test that configures and sends UDP traffic
+# upon successful run, flow metrics shall be printed on console
+./do.sh pytest examples/test_quickstart.py
 
-  <details>
-  <summary><b>Expand</b> this section for overview of the script we just ran. For more details on snappi, checkout <a href="docs/hello-snappi.md">hello-snappi</a>.</summary>
+# optionally, go equivalent of the test can be run like so
+./do.sh gotest examples/quickstart_test.go
+```
 
-  ```python
-  import snappi
-  # create a new API instance over HTTPS transport where location points to controller
-  api = snappi.api(location="https://localhost:8443", verify=False)
-  # OR
-  # create a new API instance over gRPC transport where location points to controller
-  api = snappi.api(location="localhost:40051", transport=snappi.Transport.GRPC)
+> Checkout the contents of [test_quickstart.py](https://github.com/open-traffic-generator/conformance/blob/22563e20fe512ef13baf44c1bc69bc59f87f6c25/examples/test_quickstart.py) and equivalent [quickstart_test.go](https://github.com/open-traffic-generator/conformance/blob/22563e20fe512ef13baf44c1bc69bc59f87f6c25/examples/quickstart_test.go) for quick explanation on test steps
 
-  # create a config object to be pushed to controller
-  config = api.config()
-  # add a port with location pointing to traffic engine
-  prt = config.ports.port(name='prt', location='localhost:5555')[-1]
-  # add a flow and assign endpoints
-  flw = config.flows.flow(name='flw')[-1]
-  flw.tx_rx.port.tx_name = prt.name
+#### 3. Optionally, run test using [curl](https://curl.se/)
 
-  # configure 100 packets to be sent, each having a size of 128 bytes
-  flw.size.fixed = 128
-  flw.duration.fixed_packets.packets = 100
+We can also pass equivalent **JSON configuration** directly to **controller**, just by using **curl**.
+The description of each node in the configuration is detailed in self-updating  [online documentation](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.0/artifacts/openapi.yaml).
 
-  # add Ethernet, IP and TCP protocol headers with defaults
-  flw.packet.ethernet().ipv4().tcp()
 
-  # push configuration
-  api.set_config(config)
+```bash
+# push traffic configuration
+curl -skL https://localhost:8443/config -H "Content-Type: application/json" -d @conformance/examples/quickstart_config.json
 
-  # start transmitting configured flows
-  ts = api.transmit_state()
-  ts.state = ts.START
-  api.set_transmit_state(ts)
+# start transmitting configured flows
+curl -skL https://localhost:8443/control/state -H "Content-Type: application/json" -d @conformance/examples/quickstart_control.json
 
-  # fetch & print port metrics
-  req = api.metrics_request()
-  req.port.port_names = [prt.name]
-  print(api.get_metrics(req))
-  ```
-
-  </details>
-
-* Optionally, Generate Traffic Using [curl](https://curl.se/)
-
-  >We can also pass equivalent **JSON configuration** directly to KENG controller, without installing snappi, using **curl**.
-  >The detailed description of each node (and their attributes) in JSON configuration are well documented [here](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml).
-
-  ```bash
-  # push the contents of config file snappi-tests/configs/quickstart_snappi.json
-  curl -k https://localhost:8443/config -H "Content-Type: application/json" -d @snappi-tests/configs/quickstart_snappi.json
-  # start transmitting configured flows
-  curl -k https://localhost:8443/control/transmit -H  "Content-Type: application/json" -d '{"state": "start"}'
-  # fetch all port metrics
-  curl -k https://localhost:8443/monitor/metrics -H  "Content-Type: application/json" -d '{"choice": "port"}}'
-  ```
+# fetch flow metrics
+curl -skL https://localhost:8443/monitor/metrics -H "Content-Type: application/json" -d @conformance/examples/quickstart_metrics.json
+```
 
 ### Key Features
 
