@@ -111,6 +111,14 @@
 }
 
 .md-grid {
-    max-width: 1440px; 
+    max-width: 1440px;
 }
-  
+
+.container {
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+}

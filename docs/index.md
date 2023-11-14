@@ -1,33 +1,48 @@
-# <h1 align="center">ixia-c</h1>
+<h1 align="center">Ixia-c & Elastic Network Generator Documentation</h1>
+<h3 align="center">Agile and composable network test system designed for continuous integration</h3>
 
-<h3 align="center">
-  A powerful traffic generator based on the <a href="https://github.com/open-traffic-generator/models" target="_blank">Open Traffic Generator API</a>
-</h3>
+<section>
+    <h2 align="center">Highlights</h2>
+    <div class="container">
+        <div class="column">
+            <ul>
+                <li>Implements <a href="https://otg.dev" target="_blank">Open Traffic Generator API</a></li>
+                <li>Emulates key <a href="reference/capabilities/#protocol-emulation">control plane protocols</a></li>
+                <li>Generates complex <a href="reference/capabilities/#traffic-generation">data plane traffic</a></li>
+                <li>Supports <a href="deployments">software</a>, <a href="tests-uhd400">white-box</a> and <a href="tests-chassis-app">hardware</a> test ports​</li>
+            </ul>
+        </div>
+        <div class="column">
+            <ul>
+                <li>Reduces time-to-test with fast API response time and <a href="developer/hello-snappi">agile developer experience</a></li>
+                <li>Deploys using <a href="quick-start/deployment">modular architecture</a> based on containers and microservices</li>
+                <li>Accelerates network validation by <a href="integrated-environments">integrating</a> with popular network emulation software.</li>
+            </ul>
+        </div>
+    </div>
+    <h2 align="center">Start with Community Edition at no cost</h2>
+</section>
 
-It is **available for free** and distributed as a multi-container application that consists of a [controller](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller), a [traffic-engine](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine), and an [app-usage-reporter](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter).
+
 
 ## Key Features
 
-* High Performance
-  * Runs on servers or Keysight hardware (commercial version only)
-  * Generates kbps to Tbps of traffic using same script
-  * 10Gbps @ 64 byte frame size using one Xeon class core (commercial version only)
-  * Built using [DPDK](https://www.dpdk.org)
-* Fast REST API for automation
-  * Easily integrates with test frameworks like [pytest](https://www.pytest.org)
-  * Easily integrates into CI/CD pipelines with Jenkins, GitHub, GitLab
-* Up to 256 flows per port.  Each Flow supports:
-  * Packet Templates for Ethernet, VLAN, VXLAN, GTPv1, GTPv2, IPv4, IPv6, ICMP, ICMPv6, GRE, UDP, & TCP.  More protocols are on the way.
-  * Ability to use tools like Scapy to add headers for unsupported protocols.
-  * Manipulation of any field in the packet headers
-  * Patterns to modify common packet header fields to generate millions of unique packets
-  * Ability to track flows based on common packet header fields
-  * Configurable frame size
-  * Rate specification in pps (packets per second) or % line-rate
-  * Ability to send bursts
-* Statistics
-  * Per port and per flow
-  * One way latency measurements (min, max, average) on a per flow basis
-* Capture
-  * Packets with filters
-  * Write to PCAP or redirect to tcpdump
+* Software multi-container application:
+    * runs on Linux x86 compute,
+    * includes software traffic generation and protocol emulation capabilities,
+    * built using DPDK to generate high traffic rates on a single CPU core,
+    * can control Keysight network test hardware.
+* Easily integrates into CI/CD pipelines like GitHub, GitLab, Jenkins.
+* Supports test frameworks like Pytest or Golang test.
+* Emulates key data center protocols with high scale of sessions and routes:
+    * capable of leveraging 3rd party libraries to add unsupported packet formats,
+    * provides patterns to modify common packet header fields to generate millions of unique packets.
+* Supports:
+    * configurable frame sizes,
+    * rate specification in pps (packets per second) or % line-rate,
+    * ability to send traffic bursts.
+* Statistics:
+    * per port and per flow,
+    * tracks flows based on common packet header fields,
+    * one way latency measurements (min, max, average) on a per flow basis,
+    * capture packets and write to PCAP or analyze in the test logic.

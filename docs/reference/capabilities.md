@@ -1,10 +1,9 @@
-# Feature gap list
+# Supported capabilities
 
-This section provides the feature gap details for KENG.
+## Protocol emulation
 
-| Feature  |  Model |   ixia-c|  OTG-HW |  UHD400 | Comments  |
+| Feature  | OTG model specification | Ixia-c software | IxOS hardware | UHD400T system | Comments  |
 |---|---|---|---|---|---|
-|***Protocol:***|   |   |   |   |   |
 | <span style="color: grey;">**BGP(v4/v6)**</span>  | Y  | Y  |  Y | Y  |   |
 |  v4/v6  Routes   | Y  |  Y |  Y | Y  |   |
 |  Route Withdraw/Re-advertise | Y  | Y  | Y  | Y  |   |
@@ -27,17 +26,17 @@ This section provides the feature gap details for KENG.
 |   Per Port | Y  | Y  | N | Y  |   |
 |  Learned LLDP Neighbors | Y  | Y  | N  |  Y |   |
 | Per LAG member Port  | Y  |  Y |  N |  N |   |
-|***Traffic:***   |   |   |   |   |   |
+
+## Traffic generation
+
+| Feature  | OTG model specification | Ixia-c software | IxOS hardware | UHD400T system | Comments  |
+|---|---|---|---|---|---|
 |  Egress Tracking | Y  |  Y | Y  |  N |   |
 | Imix  | Y  |  Y |  Y |  N |   |
 | Dynamic ARP Resolution  | Y  | Y  | Y  |  Y |   |
 |  Dynamic Frame Size control | Y  |  Y |  Y |  N |   |
 | Dynamic Rate Control  | Y  |  Y |  N |  N |   |
 |  Multiple Rx Ports and drilldown  | Y  | Y  |   Y|  N |   |
-|***Infra:*** |   |   |   |   |   |
-|  Capture (Rx only) |  Y |  Y | Y  |  N |   |
-|  Link Down/Up  | Y  |  N |  Y | N  |   |
-|  MTU greater than 1500 | Y (under disc for L1)  |  N |  Y | N  | Need to change/fix L1 properties for common script to work with MTU setting. Ixia-c pending controller handling . PE/TE supports MTU changes.   |
 | <span style="color: grey;">**Packet headers**</span>  |   |   |   |   |   |
 | Vlan  | Y  | Y  | Y  | Y  |   |
 | IPv4  |  Y | Y  | Y  | Y  |   |
@@ -55,3 +54,11 @@ This section provides the feature gap details for KENG.
 |  VXLAN | Y  |  Y |  Y | N  |   |
 |  PFCPAUSE | Y  | N  |  Y |  N |   |
 |  CUSTOM |  Y | Y  |  Y |  N |   |
+
+## Infrastructure
+
+| Feature  | OTG model specification | Ixia-c software | IxOS hardware | UHD400T system | Comments  |
+|---|---|---|---|---|---|
+|  Capture (Rx only) |  Y |  Y | Y  |  N |   |
+|  Link Down/Up  | Y  |  N |  Y | N  |   |
+|  MTU greater than 1500 | Y (under disc for L1)  |  N |  Y | N  | Need to change/fix L1 properties for common script to work with MTU setting. Ixia-c pending controller handling . PE/TE supports MTU changes.   |
