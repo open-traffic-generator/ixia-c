@@ -9,7 +9,6 @@ theme:
   font:
     text: Arial
   palette:
-
     # Palette toggle for light mode
     - scheme: ks-light
       media: "(prefers-color-scheme: light)"
@@ -42,6 +41,9 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
 extra:
+  analytics:
+    provider: google
+    property: G-L42048L6R5
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/open-traffic-generator
