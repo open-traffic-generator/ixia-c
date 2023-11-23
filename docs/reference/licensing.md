@@ -2,8 +2,7 @@
 
 ## Section1:License consumption mechanism and feature licenses
 
-Details on how the features are consumed is given below:
-
+Details on how the features are consumed is given below: <br />
 KENG provides the following license features based on license bundles.
 
 #### Table1: KENG Feature License 
@@ -29,13 +28,12 @@ Test cost is calculated based on the test configuration such as port type, port 
   | Ixia-c SW             | If CP Cost <= 50     |  1 x KENG-SEAT                                                        |  SUM (Protocol Cost<sup>1</sup>)​   | SUM (Speed Cost<sup>2</sup>)                  |
   | Ixia-c SW             | If CP Cost > 50      |  1 x KENG-SEAT,​ <br /> 1 x KENG-UNLIMITED-CP                          |  50                     | SUM (Speed Cost<sup>2</sup>) |
   
- <sup>1</sup> See “Control Plane Cost” reference table [Table3] for Protocol cost. 
-
- <sup>2</sup> See “Data Plane Speed Cost” reference table [Table4] for Speed cost. 
+ <sup>1</sup> “Control Plane Cost” reference table [Table3] for Protocol cost. <br />
+ <sup>2</sup> “Data Plane Speed Cost” reference table [Table4] for Speed cost. 
 
  Seat is the number of running keng-controller instances and Seat cost is calculated based on controller instances (KENG-SEAT) and port type (KENG-SEAT-UHD, KENG-SEAT-IXHW) in a test configuration. Data Plane License Unit (KENG-DPLU) is associated with traffic port capacity. The number of required units is determined as a sum of configured port speeds (1, 10, 25, 40, 50, 100GE). Maximum port performance might be less than configured port speed. Control Plane License unit (KENG-CPLU) is associated with control plane protocol scale. The number of required CP units is determined as a sum of configured protocol sessions. Configurations exceeding 50 protocol sessions will consume KENG-UNLIMITED-CP license if available and 50 KENG-CPLU. If KENG-UNLIMITED-CP is not available, an exact required number of KENG-CPLU will be consumed. 
 
- Total Test Cost = Seat Cost + CP Cost * KENG-CPLU + DP Cost * KENG-DPLU​ 
+        Total Test Cost = Seat Cost + CP Cost * KENG-CPLU + DP Cost * KENG-DPLU​ 
 
 #### Table3: Control Plane Cost Reference Table 
 
@@ -50,7 +48,7 @@ Test cost is calculated based on the test configuration such as port type, port 
   | RSVP                         | devices: <br /> - rsvp: <br /> - ipv4_interfaces:<br />  - neighbor_ip: ​ | 1            | Session = RSVP neighbor​   |
 
 
-CP Cost/Port = SUM (Protocol Cost) on each port 
+        CP Cost/Port = SUM (Protocol Cost) on each port 
 
 
 #### Table4: Data Plane Speed Cost Reference Table
@@ -71,26 +69,17 @@ Number of keng-controller instance: 1
 * Protocol: 100 BGP sessions/port 
 * Port type: ixia-c Software 
 
-**Scenario1: License without unlimited CP capability**
+**Scenario1: License without unlimited CP capability** <br />
+**Consumed features:** <br />
+  KENG-SEAT: 1 [1 keng-controller instance and ixia-c SW port]<sup>3</sup> <br />
+  KENG-DPLU: 400 [100G speed * 4 ports]<sup>4</sup> <br />
+  KENG-CPLU: 400 [100 BGP sessions/port * 4 ports]<sup>5</sup> <br />
 
-**Consumed features:**
-
-  KENG-SEAT: 1 [1 keng-controller instance and ixia-c SW port]<sup>3</sup> 
-
-  KENG-DPLU: 400 [100G speed * 4 ports]<sup>4</sup> 
-
-  KENG-CPLU: 400 [100 BGP sessions/port * 4 ports]<sup>5</sup> 
-
-**Scenario2: License with unlimited CP capability**
-
-**Consumed features:**
-
-  KENG-SEAT: 1 [1 keng-controller instance and ixia-c SW port]<sup>3</sup> 
-
-  KENG-DPLU: 400 [100G speed * 4 ports]<sup>4</sup>
-
-  KENG-CPLU: 50 [CP cost = 400 (100 BGP sessions/port * 4 ports) which is greater than 50 	and unlimited cp capability present]<sup>5</sup> 
-
+**Scenario2: License with unlimited CP capability** <br />
+**Consumed features:** <br />
+  KENG-SEAT: 1 [1 keng-controller instance and ixia-c SW port]<sup>3</sup> <br />
+  KENG-DPLU: 400 [100G speed * 4 ports]<sup>4</sup> <br />
+  KENG-CPLU: 50 [CP cost = 400 (100 BGP sessions/port * 4 ports) which is greater than 50 	and unlimited cp capability is present]<sup>5</sup> <br />
   KENG-UNLIMITED-CP: 1 
 
 <sup>3</sup>Test Cost Matrix “Table2” ; <sup>4</sup>Control Plane Cost Reference Table “Table4”; <sup>5</sup>Control Plane Cost Reference Table “Table3”
