@@ -9,9 +9,9 @@
 </h4>
 
 <p align="center">
-  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller"><img alt="Release v0.1.0-53" src="https://img.shields.io/badge/release-v0.1.0--53-brightgreen"></a>
-  <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.0/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.13.0" src="https://img.shields.io/badge/open--traffic--generator-v0.13.0-brightgreen"></a>
-  <a href="https://pypi.org/project/snappi/0.13.0"><img alt="snappi v0.13.0" src="https://img.shields.io/badge/snappi-v0.13.0-brightgreen"></a>
+  <a href="https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller"><img alt="Release v0.1.0-81" src="https://img.shields.io/badge/release-v0.1.0--81-brightgreen"></a>
+  <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.2/artifacts/openapi.yaml"><img alt="Open Traffic Generator v0.13.2" src="https://img.shields.io/badge/open--traffic--generator-v0.13.2-brightgreen"></a>
+  <a href="https://pypi.org/project/snappi/0.13.2"><img alt="snappi v0.13.2" src="https://img.shields.io/badge/snappi-v0.13.2-brightgreen"></a>
   <a href="docs/news.md"><img alt="news" src="https://img.shields.io/badge/-news-blue?logo=github"></a>
   <a href="docs/contribute.md"><img alt="news" src="https://img.shields.io/badge/-contribute-blue?logo=github"></a>
   <a href="docs/support.md"><img alt="Slack Status" src="https://img.shields.io/badge/slack-support-blue?logo=slack"></a>
@@ -83,7 +83,7 @@ cd conformance
 #### 3. Optionally, run test using [curl](https://curl.se/)
 
 We can also pass equivalent **JSON configuration** directly to **controller**, just by using **curl**.
-The description of each node in the configuration is detailed in self-updating  [online documentation](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.0/artifacts/openapi.yaml).
+The description of each node in the configuration is detailed in self-updating  [online documentation](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.2/artifacts/openapi.yaml).
 
 
 ```bash
