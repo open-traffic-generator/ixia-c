@@ -1,6 +1,6 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.1.0-79 (Latest)
+## Release  v0.1.0-81 (Latest)
 > 24th November, 2023
 
 #### About
@@ -14,14 +14,14 @@ This build includes new features and bug fixes.
 | Open Traffic Generator API    | [0.13.2](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.2/artifacts/openapi.yaml)         |
 | snappi                        | [0.13.2](https://pypi.org/project/snappi/0.13.2)        |
 | gosnappi                      | [0.13.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.13.2)        |
-| keng-controller               | [0.1.0-79](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [0.1.0-81](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.100](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.339](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [0.13.2-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-layer23-hw-server        | [0.13.2-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.13](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.13.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [0.1.0-79](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [0.1.0-81](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                    | [1.0.27](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.27/artifacts.tar)         |
 
 # Release Features(s)
