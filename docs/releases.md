@@ -25,22 +25,29 @@ This build includes new features and bug fixes.
 | UHD400                    | [1.0.27](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.27/artifacts.tar)         |
 
 # Release Features(s)
-* TBD
+* Support for BGP/BGP+ passive mode <b><i>Ixia-C, UHD400</i></b>. If `passive_mode` of a peer is set to true, it will wait for the remote peer to initiate the BGP session.
+  - User needs to set `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].advance.passive_mode` to `true` for enabling passive mode.
 
+* When `layer1[i].speed` is not explicitly set, the current speed of underlying test interface shall be assumed.
+  - This allows setting of `layer1` MTU in tests to run on  setups with different port speeds on <b><i>Ixia-C and Ixia Chassis & Appliances(Novus, AresOne)</i></b> without any modifications.
+    ```go
+      otgConfig.Layer1().Add().
+          SetName("layerOne").
+          SetPortNames(portNames).
+          SetMtu(9000)
+    ```
+  - For traffic with `flow.rate.percentage` specified and `layer1[i].speed` not specified, the rate is now automatically calculated based on the port speed of the port from where traffic is being transmitted.
 
 # Bug Fix(s)
-* TBD
+* Issue where `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].v4/v6_routes[m].communities` was not being sent properly for <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b> is now fixed.
 
 
 #### Known Issues
-* If `keng-layer23-hw-server` version is upgraded/downgraded, the ports from Ixia Chassis & Appliances(Novus, AresOne) which will be used from this container must be rebooted once before running the tests.
-* Adding more than 256 devices on a single ixia-c-port causing failure for Ixia Chassis & Appliances(Novus, AresOne).
-* Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* With certain DUTs, ssh service hangs if ISIS L1 MD5 is enabled.
-* Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* The metric `loss` in flow metrics is currently not supported.
-* When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
-* [#118](https://github.com/open-traffic-generator/ixia-c/issues/118)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
 
 ## Release  v0.1.0-53
 > 10th November, 2023
