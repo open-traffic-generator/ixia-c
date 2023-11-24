@@ -25,7 +25,7 @@ This build includes new features and bug fixes.
 | UHD400                    | [1.0.27](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.27/artifacts.tar)         |
 
 # Release Features(s)
-* Support for BGP/BGP+ passive mode <b><i>Ixia-C, UHD400</i></b>. If `passive_mode` of a peer is set to true, it will wait for the remote peer to initiate the BGP session.
+* Support for BGP/BGP+ passive mode <b><i>Ixia-C, UHD400 and Ixia Chassis & Appliances(Novus, AresOne)</i></b>. If `passive_mode` of a peer is set to true, it will wait for the remote peer to initiate the BGP session.
   - User needs to set `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].advance.passive_mode` to `true` for enabling passive mode.
 
 * When `layer1[i].speed` is not explicitly set, the current speed of underlying test interface shall be assumed.
