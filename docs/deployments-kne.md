@@ -58,12 +58,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "0.1.0-81",
+                "release": "0.1.0-84",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "0.1.0-81"
+                          "tag": "0.1.0-84"
                       },
                       {
                           "name": "gnmi-server",
@@ -78,7 +78,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.339"
+                          "tag": "1.00.0.340"
                       },
                       {
                           "name": "ixhw-server",
@@ -100,12 +100,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "0.1.0-81",
+                "release": "0.1.0-84",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "0.1.0-81",
+                          "tag": "0.1.0-84",
                           "env": {
                                 "LICENSE_SERVERS": "ip/hostname of license server"
                             }
@@ -123,7 +123,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.339"
+                          "tag": "1.00.0.340"
                       },
                       {
                           "name": "ixhw-server",
@@ -148,7 +148,7 @@ Following are the recommended resources for a basic use-case.
   nodes:
     - name: otg
       vendor: KEYSIGHT
-      version: 0.1.0-81
+      version: 0.1.0-84
       services:
         8443:
           name: https

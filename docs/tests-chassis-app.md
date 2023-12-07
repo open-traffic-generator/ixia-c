@@ -75,7 +75,7 @@ The following procedure shows an example of how to deploy using Docker Compose.
 ```
 services:
   keng-controller:
-    image: ghcr.io/open-traffic-generator/keng-controller:0.1.0-81
+    image: ghcr.io/open-traffic-generator/keng-controller:0.1.0-84
     restart: always
     depends_on:
       keng-layer23-hw-server:
