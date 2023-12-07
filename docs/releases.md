@@ -1,6 +1,49 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.1.0-81 (Latest)
+## Release  v0.1.0-84 (Latest)
+> 7th December, 2023
+
+#### About
+
+This build includes new features.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.13.2](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.2/artifacts/openapi.yaml)         |
+| snappi                        | [0.13.2](https://pypi.org/project/snappi/0.13.2)        |
+| gosnappi                      | [0.13.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.13.2)        |
+| keng-controller               | [0.1.0-84](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.100](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.340](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [0.13.2-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.13](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [0.1.0-84](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                    | [1.0.27](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.27/artifacts.tar)         |
+
+# Release Features(s)
+* <b><i>Ixia-C</i></b>: Support added to trigger link `up/down` on test ports using the API `set_control_state.port.link`. This applicable only when the test port is directly connected to device under test via `veth` connection, e.g in KNE single node cluster, containerlab.
+  ```go
+    portStateAction := gosnappi.NewControlState()
+    linkState := portStateAction.Port().Link().
+                    SetPortNames([]string{port.Name()}).
+                    SetState(gosnappi.StatePortLinkState.DOWN/UP)
+    api.SetControlState(portStateAction)
+  ```
+  - It removes the deviation (`deviation_ate_port_link_state_operations_unsupported`) which was added in `featuresprofile` tests for no supporting the LinkState trigger in <b><i>Ixia-C</i></b>.
+
+
+#### Known Issues
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
+
+## Release  v0.1.0-81
 > 24th November, 2023
 
 #### About
