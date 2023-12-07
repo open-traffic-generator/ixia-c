@@ -25,7 +25,7 @@ This build includes new features.
 | UHD400                    | [1.0.27](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.27/artifacts.tar)         |
 
 # Release Features(s)
-* <b><i>Ixia-C</i></b>: Support added to trigger link `up/down` on test ports in KNE single node cluster by using the API `set_control_state.port.link`.
+* <b><i>Ixia-C</i></b>: Support added to trigger link `up/down` on test ports using the API `set_control_state.port.link`. This applicable only when the test port is directly connected to device under test via `veth` connection, e.g in KNE single node cluster, containerlab.
   ```go
     portStateAction := gosnappi.NewControlState()
     linkState := portStateAction.Port().Link().
