@@ -36,7 +36,7 @@ Test Cost = Seat Cost + CP Cost * KENG-CPLU + DP Cost * KENG-DPLU​
 The number of required units is determined as a sum of the configured port speeds (1, 10, 25, 40, 50, 100GE). The maximum port performance might be less than the configured port speed.
 - **The Control Plane License unit** (`KENG-CPLU`) is associated with the control plane protocol scale. The number of required CP units is determined as a sum of the configured protocol sessions.
 - If `KENG-UNLIMITED-CP` is not available, an exact number of `KENG-CPLU` will be consumed.
-- See [Control Plane Cost Reference Table](#control-plane-cost) for the `Protocol Cost` and [Data Plane Speed Cost Reference Table](#data-plane-cost) for the `Speed Cost`.
+- See [Control Plane Cost](#control-plane-cost) for the `Protocol Cost` and [Data Plane Cost](#data-plane-cost) for the `Speed Cost`.
 
 ### Control Plane Cost
 
