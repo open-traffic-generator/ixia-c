@@ -54,6 +54,7 @@ nav:
   - Home:
     - Overview: index.md # Needs re-writing as a landing page
 #    - FAQ: faq.md # Review if there are any valuable items left
+    - Resources: resources.md
     - EULA: eula.md # Check / update
   - Quick Start:
     - Introduction: quick-start/introduction.md # Now goes as Ixia-c Quick Start. Add a paragraph why
