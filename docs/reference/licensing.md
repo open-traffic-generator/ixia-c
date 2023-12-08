@@ -4,7 +4,7 @@
 
 Elastic Network Generator [licenses](../licensing.md) include the following features which depends on the license edition. Details on how the features are consumed are as follows:
 
-### KENG Feature Licenses
+### Feature Licenses
 
 | Feature Licenses                    | Developer            | Team            | System                 |
 |-------------------------------------|----------------------|-----------------|------------------------|
@@ -25,9 +25,9 @@ Test Cost = Seat Cost + CP Cost * KENG-CPLU + DP Cost * KENG-DPLU​
 
 | Port Type        | Condition                     | Seat Cost                                                             | CP Cost                            | DP cost                        |
 |------------------|-------------------            |-----------------------------------------------------------------------|-------------------------           |---------------                 |
-| Ixia-c SW        | `If CP Cost <= 50`            |  `1x KENG-SEAT`                                                       |  `SUM (Protocol Cost)`<sup>1</sup>​ |  `SUM (Speed Cost)`<sup>2</sup>|
-| Ixia-c SW        | `If CP Cost > 50`<sup>3</sup> |  `1x KENG-SEAT`<br/>`1x KENG-UNLIMITED-CP`                            |  `50`                              |  `SUM (Speed Cost)`<sup>2</sup>|
-| UHD400T          | `If CP Cost <= 50`​            |  `1x KENG-SEAT`​<br/>`1x KENG-SEAT-UHD`​                                |  `SUM (Protocol Cost)​`<sup>1</sup> |  `0`                           |
+| Ixia-c SW        | `If CP Cost <= 50`            |  `1x KENG-SEAT`                                                       |  `SUM (Protocol Cost)`            ​ |  `SUM (Speed Cost)`            |
+| Ixia-c SW        | `If CP Cost > 50`<sup>3</sup> |  `1x KENG-SEAT`<br/>`1x KENG-UNLIMITED-CP`                            |  `50`                              |  `SUM (Speed Cost)`            |
+| UHD400T          | `If CP Cost <= 50`​            |  `1x KENG-SEAT`​<br/>`1x KENG-SEAT-UHD`​                                |  `SUM (Protocol Cost)​`             |  `0`                           |
 | UHD400T          | `If CP Cost > 50`<sup>3</sup> |  `1x KENG-SEAT`<br/>`1x KENG-SEAT-UHD`<br/>`1x KENG-UNLIMITED-CP`     |  `50`                              |  `0`                           |
 | IxOS Hardware    |                               |  `1x KENG-SEAT`<br/>`1x KENG-SEAT-IXHW`​                               |  `0`                               |  `0`                           |
 
@@ -36,9 +36,9 @@ Test Cost = Seat Cost + CP Cost * KENG-CPLU + DP Cost * KENG-DPLU​
 The number of required units is determined as a sum of the configured port speeds (1, 10, 25, 40, 50, 100GE). The maximum port performance might be less than the configured port speed.
 - **The Control Plane License unit** (`KENG-CPLU`) is associated with the control plane protocol scale. The number of required CP units is determined as a sum of the configured protocol sessions.
 - If `KENG-UNLIMITED-CP` is not available, an exact number of `KENG-CPLU` will be consumed.
-- See [Control Plane Cost Reference Table](#control-plane-cost-reference-table) for the `Protocol Cost` and [Data Plane Speed Cost Reference Table](#data-plane-speed-cost-reference-table) for the `Speed Cost`.
+- See [Control Plane Cost Reference Table](#control-plane-cost) for the `Protocol Cost` and [Data Plane Speed Cost Reference Table](#data-plane-cost) for the `Speed Cost`.
 
-### Control Plane Cost Reference Table
+### Control Plane Cost
 
 Applies only to the Ixia-c software and UHD400T ports.
 
@@ -56,7 +56,7 @@ CP Cost = For each Port: SUM (Protocol Cost)
 | ISIS                         | devices: <br /> - isis: <br /> - interfaces:<br />  - eth_name: ​                         | 1                     | Session = ISIS interface                  |
 | RSVP                         | devices: <br /> - rsvp: <br /> - ipv4_interfaces:<br />  - neighbor_ip: ​                 | 1                     | Session = RSVP neighbor​                   |
 
-### Data Plane Speed Cost Reference Table
+### Data Plane Cost
 
 Applies only to the Ixia-c software ports.
 
@@ -71,36 +71,32 @@ Applies only to the Ixia-c software ports.
 | 200GE                  | 200             |
 | 400GE                  | 400             |
 
-### Sample Use cases
+## Sample license consumption scenarios
 
-#### Test configuration
+### Test configuration
 
 Number of `keng-controller` instances: `1`
 
 * Number of ports: `4`
-* Port Speed: `100G`
-* Protocol: `100 BGP sessions/port`
 * Port type: `Ixia-c software`
+* Port Speed: `100GE`
+* Protocol scale: `100 BGP sessions/port`
 
-#### Scenario 1: Unlimited CP capability `KENG-UNLIMITED-CP` is unavailable
+### Scenario 1: Limited control plane licenses
 
-* Consumed features
-
-```bash
-KENG-SEAT: 1 = (1 keng-controller instance and ixia-c SW port)
-    KENG-DPLU: 400 = (100G speed * 4 ports)
-    KENG-CPLU: 400 = (100 BGP sessions/port * 4 ports)
+```
+KENG-SEAT:         1 = (1 keng-controller instance and ixia-c SW port)
+KENG-DPLU:         400 = (100G speed * 4 ports)
+KENG-CPLU:         400 = (100 BGP sessions/port * 4 ports)
 ```
 
-#### Scenario 2: Unlimited CP capability `KENG-UNLIMITED-CP` is available
+### Scenario 2: Unlimited control plane licenses
 
-* Consumed features
-
-```bash
-KENG-SEAT: 1 = (1 keng-controller instance and ixia-c SW port)
-    KENG-DPLU: 400 = (100G speed * 4 ports)
-    KENG-CPLU: 50 = (CP cost = 400 (100 BGP sessions/port * 4 ports) which is greater than 50 and unlimited cp capability is present)
-    KENG-UNLIMITED-CP: 1
+```
+KENG-SEAT:         1 = (1 keng-controller instance and ixia-c SW port)
+KENG-DPLU:         400 = (100G speed * 4 ports)
+KENG-CPLU:         50 = (CP cost = 400 (100 BGP sessions/port * 4 ports) which is greater than 50 and unlimited cp capability is present)
+KENG-UNLIMITED-CP: 1
 ```
 
 ## Liveliness check and timeout on license server communication
