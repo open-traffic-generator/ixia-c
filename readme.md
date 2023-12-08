@@ -122,3 +122,7 @@ curl -skL https://localhost:8443/monitor/metrics -H "Content-Type: application/j
 * Capture
   * Packets with filters
   * Write to PCAP or redirect to tcpdump
+
+## Copyright notice
+
+© Copyright Keysight Technologies, Inc. 2021, 2022, 2023
