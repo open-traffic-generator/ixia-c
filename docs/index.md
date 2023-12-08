@@ -50,3 +50,6 @@ Explore [otg-examples](https://otg.dev/examples/otg-examples/) library to get ha
     * one way latency measurements (min, max, average) on a per flow basis,
     * capture packets and write to PCAP or analyze in the test logic.
 
+## Copyright notice
+
+© Copyright Keysight Technologies, Inc. 2021, 2022, 2023
