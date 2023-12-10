@@ -30,6 +30,8 @@ The following License Editions are available for Keysight Elastic Network Genera
 
 In order to use capabilities of Elastic Network Generator that require a valid license, you need to deploy a Keysight License Server. Keysight uses the license server to manage floating or network shared licenses for its software products. The license server enables licenses to float and not be tied to a specific Elastic Network Generator instance. The Elastic Network Generator controllers must be able to reach the License server.
 
+### Deployment
+
 The license server is a virtual machine and it is distributed as OVA and QCOW2 images (you only need one of them depending on your hypervisor).
 
 * [OVA image](https://storage.googleapis.com/kt-nas-images-cloud-ist/slum-4.2.0-208.ova), 5.8GB
@@ -47,32 +49,46 @@ To make a decision where to deploy the License Server VM, take into the account 
 Network connectivity requirements for the License Server VM
 
 1. Internet access from the VM over HTTPS is desirable for online license activation, but not strictly required. Offline activation method is available as well.
-2. Access from a user over SSH (TCP/22) for license operations (activation, deactivation, reservation, sync)
-3. Access from any `keng-controller` that needs a license during a test run over gRPC (TCP/7443) for license checkout and check-in
+2. Access from a user over HTTPS (TCP/443) for license operations (activation, deactivation, reservation, sync).
+3. Access from any `keng-controller` that needs a license during a test run over gRPC (TCP/7443) for license checkout and check-in.
 
 Here is an example of how different components communicate with the License Server:
 
 ![License Server Connectivity](./res/license-server.drawio.svg)
 
-## Configuring a static IP address
+### Configuration
 
 If your network doesn't provide DHCP, you can configure a static IP address for the License Server VM. Access the VM console and go through two-step login process:
-* first prompt: `console` (no password)
-* second promt: `admin`/`admin`. Run the following commands to configure a static IP address, where `x.x.x.x` is the IP address, `yy` is the prefix length, `z.z.z.z` is the default gateway, `a.a.a.a` and `b.b.b.b` are DNS servers:
+
+* First prompt: `console` (no password)
+* Second promt: `admin`/`admin`
+* Run the following commands to configure a static IP address, where `x.x.x.x` is the IP address, `yy` is the prefix length, `z.z.z.z` is the default gateway, `a.a.a.a` and `b.b.b.b` are DNS servers:
 
 ```Shell
 kcos networking ip set mgmt0 x.x.x.x/yy z.z.z.z
 kcos networking dns-servers add a.a.a.a b.b.b.b
 ```
 
-## License Activation
+### Activation
 
-You will now be able to activate licenses and use the License Server on your Elastic Network Generator setup. Go to `https://your-license-server-hostname` to access the application. Enter credentials: `admin`/`admin` to login.
+Now you shall be able to activate licenses and use the License Server with your Elastic Network Generator environments. Go to `https://your-license-server-hostname` to access the application. Enter credentials: `admin`/`admin` to login.
 
 If you have an activation code, to perform an online activation, click "Activate Licenses", enter the code and click "Activate". For offline mode, choose "Offline Operations" instead.
 
 You can also use a command-line session, via console or SSH, to perform license operations. Run `kcos licensing --help` to see the list of available commands.
 
-## Connecting Elastic Network Generator to the License Server
+## Using Licenses
 
-To connect the Elastic Network Generator controller instance to the License Server, use `--license-servers="server1 server2 server3 server4"` argument when launching the controller. An alternative way is to use an environment variable `LICENSE_SERVERS`. The argument accepts a space-separated list of hostnames or IP addresses of the License Servers, up to four. The controller will try to connect to the License Servers in the order they are specified in the list. If the first License Server is not available, or doesn't have enough available licenses to run the test, the controller will try to connect to the next one in the list.
+To use the licenses with the Elastic Network Generator, provide the location of the license servers to the controller instances using
+
+```
+--license-servers="server1 server2 server3 server4"
+```
+
+argument when launching the controller. The argument accepts a space-separated list of hostnames or IP addresses of the License Servers, up to four. The controller will try to connect to the License Servers in the order they are specified in the list. If the first License Server is not available, or doesn't have enough available licenses to run the test, the controller will try to connect to the next one in the list.
+
+An alternative way is to use an environment variable `LICENSE_SERVERS`.
+
+## Additional Information
+
+Please refer to the [Reference Guide](reference/licensing.md) for more information on the license operations.
