@@ -28,9 +28,9 @@ The following License Editions are available for Keysight Elastic Network Genera
 
 ## License Server
 
-Keysight uses a license server to manage floating or network shared licenses for its software products. The license server enables licenses to float and not be tied to a specific Elastic Network Generator instance. The Elastic Network Generator controllers must be able to reach the License server.
+In order to use capabilities of Elastic Network Generator that require a valid license, you need to deploy a Keysight License Server. Keysight uses the license server to manage floating or network shared licenses for its software products. The license server enables licenses to float and not be tied to a specific Elastic Network Generator instance. The Elastic Network Generator controllers must be able to reach the License server.
 
-In order to use capabilities of Elastic Network Generator that require a valid license, you need to deploy a Keysight License Server. The License Server is a virtual machine and it is distributed as OVA and QCOW2 images (you only need one of them depending on your hypervisor).
+The license server is a virtual machine and it is distributed as OVA and QCOW2 images (you only need one of them depending on your hypervisor).
 
 * [OVA image](https://storage.googleapis.com/kt-nas-images-cloud-ist/slum-4.2.0-208.ova), 5.8GB
 * [QCOW2 image](https://storage.googleapis.com/kt-nas-images-cloud-ist/slum-4.2.0-208.2.qcow2), 6GB
