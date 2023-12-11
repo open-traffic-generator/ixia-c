@@ -55,7 +55,7 @@ nav:
     - Overview: index.md # Needs re-writing as a landing page
 #    - FAQ: faq.md # Review if there are any valuable items left
     - Resources: resources.md
-    - EULA: eula.md # Check / update
+    - EULA: eula.md # Updated to use www.keysight.com/find/sweula
   - Quick Start:
     - Introduction: quick-start/introduction.md # Now goes as Ixia-c Quick Start. Add a paragraph why
 #    - Deployment: quick-start/deployment.md # Link to deployment dir is broken. Need a compose file in text. Need to move to docker compose later
