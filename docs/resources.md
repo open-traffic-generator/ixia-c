@@ -1,0 +1,18 @@
+# Resources
+
+1. [Product page](https://www.keysight.com/us/en/products/network-test/protocol-load-test/keysight-elastic-network-generator.html)
+2. [Data Sheet](https://www.keysight.com/in/en/assets/3122-1455/data-sheets/Elastic-Network-Generator.pdf)
+3. [Documentation](https://ixia-c.dev)
+      * [Quick Start](https://ixia-c.dev/quick-start/introduction/)
+      * [User Guide](https://ixia-c.dev/user-guide-introduction/)
+      * [Developer Guide](https://ixia-c.dev/developer/snappi-constructs/)
+      * [Reference Guide](https://ixia-c.dev/reference/capabilities/)
+      * [Releases](https://ixia-c.dev/releases/)
+4. [Open Traffic Generator](https://otg.dev)
+      * [Model Browser](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml&nocors)
+      * [Clients](https://otg.dev/clients/)
+      * [Examples](https://otg.dev/examples/otg-examples/)
+5. [OpenConfig](https://openconfig.net/)
+      * [KNE IxiaTG Controller](https://github.com/openconfig/kne/blob/main/docs/create_topology.md#ixiatg-controller)
+      * [FeatureProfiles Test Suite](https://github.com/openconfig/featureprofiles)
+6. [Containerlab Ixia-c-one](https://containerlab.dev/manual/kinds/keysight_ixia-c-one/)
