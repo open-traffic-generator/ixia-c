@@ -22,7 +22,7 @@ This build includes new features and bug fixes.
 | keng-operator                 | [0.3.14](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.13.4](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [0.1.0-158](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                    | [1.0.27](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.27/artifacts.tar)         |
+| UHD400                    | [1.0.28](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.28/artifacts.tar)         |
 
 # Release Features(s)
 * <b><i>Ixia-C, UHD400, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for BGP/BGP+ peers to use `custom` ports instead of default `179` tcp port.
