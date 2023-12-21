@@ -159,7 +159,7 @@ This build includes new features and bug fixes.
                           Link().
                           SetPortNames([]string{"port1"}).
                           SetState(gosnappi.StatePortLinkState.DOWN)
-    gosnappi.NewApi().setControlState(portStateAction)
+    gosnappi.setControlState(portStateAction)
   ```
 * Support added for 0x8100(Vlan) and 0x6007(Google Discovery Protocol) ether types in data plane traffic in <b><i>UHD400</i></b>.
 

@@ -56,7 +56,7 @@ func main() {
 	}
 
 	log.Println("Starting flow transmission ...")
-	cs := api.NewControlState()
+	cs := gosnappi.NewControlState()
 	cs.Traffic().FlowTransmit().SetState(gosnappi.StateTrafficFlowTransmitState.START)
 	if wrn, err := api.SetControlState(cs); err != nil {
 		log.Fatal(err)
@@ -75,7 +75,7 @@ func main() {
 }
 
 func otgConfig(api gosnappi.GosnappiApi, tc map[string]interface{}) gosnappi.Config {
-	c := api.NewConfig()
+	c := gosnappi.NewConfig()
 
 	ptx := c.Ports().Add().SetName("ptx").SetLocation(tc["txPortLocation"].(string))
 	prx := c.Ports().Add().SetName("prx").SetLocation(tc["rxPortLocation"].(string))
@@ -146,7 +146,7 @@ func ipNeighborsOk(api gosnappi.GosnappiApi, tc map[string]interface{}) bool {
 	count := 0
 
 	log.Println("Getting IPv4 neighbors ...")
-	req := api.NewStatesRequest()
+	req := gosnappi.NewStatesRequest()
 	// query to fetch states for all configured IPv4 interfaces
 	req.Ipv4Neighbors()
 	states, err := api.GetStates(req)
@@ -172,7 +172,7 @@ func flowMetricsOk(api gosnappi.GosnappiApi, tc map[string]interface{}) bool {
 	pktCount := uint64(tc["pktCount"].(uint32))
 
 	log.Println("Getting flow metrics ...")
-	req := api.NewMetricsRequest()
+	req := gosnappi.NewMetricsRequest()
 	// query to fetch metrics for all configured flows
 	req.Flow()
 	metrics, err := api.GetMetrics(req)
