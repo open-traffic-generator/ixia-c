@@ -1,6 +1,68 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.1.0-84 (Latest)
+## Release  v0.1.0-158 (Latest)
+> 21st December, 2023
+
+#### About
+
+This build includes new features and bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.13.4](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.4/artifacts/openapi.yaml)         |
+| snappi                        | [0.13.4](https://pypi.org/project/snappi/0.13.4)        |
+| gosnappi                      | [0.13.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.13.4)        |
+| keng-controller               | [0.1.0-158](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.348](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [0.13.4-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.14](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.4](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [0.1.0-158](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                    | [1.0.28](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.28/artifacts.tar)         |
+
+# Release Features(s)
+* <b><i>Ixia-C, UHD400, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for BGP/BGP+ peers to use `custom` ports instead of default `179` tcp port.
+  - Listen Port - TCP port number on which to accept BGP/BGP+ connections from the remote peer.
+  - Neighbor Port - Destination TCP port number to be used by the BGP/BGP+ peer when initiating a session to the remote peer. 
+  ```go
+    bgpPeer.Advanced().SetListenPort(55555)
+    bgpPeer.Advanced().SetNeighborPort(55555)
+  ```
+* <b><i>Ixia-C</i></b>: Support added to enable/disable BGP/BGP+ peers on the fly.
+  ```go
+    s := gosnappi.NewControlState().               ​
+        SetChoice(gosnappi.ControlStateChoice.PROTOCOL)​
+    bgpPeers := s.Protocol().Bgp().Peers()        ​
+    bgpPeers.SetPeerNames(peerNames).​
+    SetState(gosnappi.StateProtocolBgpPeersState.UP/DOWN)​
+    _ , err := client.Api().SetControlState(s)​
+  ```
+* Public API in `gosnappi` SDK has been cleaned up and refactored. [PR with the details](https://github.com/open-traffic-generator/snappi/pull/214)
+  - `GosnappiApi` interface is now renamed to `Api` interface.
+  - All public methods for creation of structs are now removed from `GosnappiApi` interface.
+  - There were helper methods defined on each struct which have been reorganized or hidden.
+  - Choice setter `SetChoice()` has been made private and is now implicitly set based on the `choice` property set by the user.
+  - Impact on backward compatibility:
+    - Updating of gosnappi to `0.13.4` or higher will need change of test programs/implementations utilizing `gosnappi` SDK.
+    - If gosnappi is not updated on the client current tests will continue to work with new `keng-controller:0.1.0-158`.
+
+# Bug Fix(s)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If a port was in link down state, the state was not being cleared on fresh `SetConfig` for `AresOne` ports and `Novus100G` mode, affecting future tests. This issue is fixed.
+
+
+
+#### Known Issues
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
+
+## Release  v0.1.0-84
 > 7th December, 2023
 
 #### About
@@ -124,7 +186,7 @@ This build includes new features and bug fixes.
                           Link().
                           SetPortNames([]string{"port1"}).
                           SetState(gosnappi.StatePortLinkState.DOWN)
-    gosnappi.NewApi().setControlState(portStateAction)
+    gosnappi.setControlState(portStateAction)
   ```
 * Support added for 0x8100(Vlan) and 0x6007(Google Discovery Protocol) ether types in data plane traffic in <b><i>UHD400</i></b>.
 

@@ -35,7 +35,7 @@ func TestQuickstart(t *testing.T) {
 	api.NewHttpTransport().SetLocation("https://localhost:8443")
 
 	// Create a new traffic configuration that will be set on OTG
-	config := api.NewConfig()
+	config := gosnappi.NewConfig()
 
 	// Add a test port to the configuration
 	ptx := config.Ports().Add().SetName("ptx").SetLocation("veth-a")
@@ -84,14 +84,14 @@ func TestQuickstart(t *testing.T) {
 	}
 
 	// Start transmitting the packets from configured flow
-	ts := api.NewTransmitState()
+	ts := gosnappi.NewTransmitState()
 	ts.SetState(gosnappi.TransmitStateState.START)
 	if _, err := api.SetTransmitState(ts); err != nil {
 		t.Fatal(err)
 	}
 
 	// Fetch metrics for configured flow
-	req := api.NewMetricsRequest()
+	req := gosnappi.NewMetricsRequest()
 	req.Flow().SetFlowNames([]string{flow.Name()})
 	// and keep polling until either expectation is met or deadline exceeds
 	deadline := time.Now().Add(10 * time.Second)
