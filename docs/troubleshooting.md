@@ -80,6 +80,6 @@ After this change, do not forget to restart the containers and reboot the hardwa
 
 **<ins>Test may not run</ins>**: This error can occur for multiple reasons:
 
-* A mismatch in the version of the rustic containers and the controller that is in use. Ensure that they are compatible.
-* The Rustic containers (that are deployed) may not be reachable. There are rare cases when you observe that even if the container is running, the exposed port may have gone corrupt. In such scenarios, the only solution is to redeploy the docker containers.
-* The UHD ports may not be responsive. When the rustic container is ready, ensure that the UHD ports are up. For this, refer to the port-api-service that is provided in the [UHD docs](tests-uhd400.md#vlan-port-mapping).
+* A mismatch in the version of the `ixia-c-protocol-engine` containers and the controller that is in use. Ensure that they are compatible.
+* The `ixia-c-protocol-engine` containers (that are deployed) may not be reachable. There are rare cases when you observe that even if the container is running, the exposed port may have gone corrupt. In such scenarios, the only solution is to redeploy the docker containers.
+* The UHD ports may not be responsive. When the `ixia-c-protocol-engine` container is ready, ensure that the UHD ports are up. For this, refer to the port-api-service that is provided in the [UHD docs](tests-uhd400.md#vlan-port-mapping).
