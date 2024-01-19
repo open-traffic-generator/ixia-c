@@ -1,6 +1,46 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v0.1.0-158 (Latest)
+
+## Release  v0.1.0-222 (Latest)
+> 19th January, 2024
+
+#### About
+
+This build includes new features and bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [0.13.7](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.13.7/artifacts/openapi.yaml)         |
+| snappi                        | [0.13.7](https://pypi.org/project/snappi/0.13.7)        |
+| gosnappi                      | [0.13.7](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.13.7)        |
+| keng-controller               | [0.1.0-222](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.355](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [0.13.7-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.15](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.7](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [0.1.0-222](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                    | [1.0.28](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.28/artifacts.tar)         |
+
+# Release Features(s)
+* TBD
+
+# Bug Fix(s)
+* TBD
+
+
+
+#### Known Issues
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
+
+## Release  v0.1.0-158
 > 21st December, 2023
 
 #### About
