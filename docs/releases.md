@@ -1,7 +1,66 @@
 # Ixia-c Release Notes and Version Compatibility
 
 
-## Release  v0.1.0-222 (Latest)
+## Release  v1.0.0-7 (Latest)
+> 5th February, 2024
+
+#### About
+
+This build includes new features and bug fixes.
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [1.0.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.0.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.0.0](https://pypi.org/project/snappi/1.0.0)        |
+| gosnappi                      | [1.0.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v0.13.7)        |
+| keng-controller               | [1.0.0-7](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.358](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.0.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.22](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.8](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.0.0-7](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                    | [1.0.28](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.0/1.0.28/artifacts.tar)         |
+
+# Release Features(s)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `snmpv2c` raw traffic.
+  - User can encode `snmpv2c` packet using `flows` and invoke `set_control_state.traffic.flow_transmit` to transmit the `snmpv2c` packets.
+  ```go
+    flowEth := flow.Packet().Add().Ethernet()
+    .... 
+    flowIp := flow.Packet().Add().Ipv4()
+    ....
+    flowUdp := flow.Packet().Add().Udp()
+    ....
+    flowUdp.DstPort().SetValue(uint32(161)) // 161 = SNMP
+    flowSnmpv2c := flow.Packet().Add().Snmpv2C()​​​
+    pdu := flowSnmpv2c.Data().GetRequest()​
+    pdu.RequestId().SetValue(77777)​​​
+    varBinds := pdu.VariableBindings().Add()​
+    varBinds.SetObjectIdentifier(​
+      "1.3.6....",​
+    )​​
+  ```
+  Note: Variable field values within the same flow using `increment`, `decrement` and `values` are not supported for `snmpv2c` fields.
+
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `AresOne-M 800G`` load modules. For using this, `IXOS 10.00` must be installed on the chassis. For other load modules, it will continue to work with `IXOS 9.20 and 9.30` setups.
+
+* This release introduces `snappi v1.0` and `keng-controller v1.0`.
+
+# Bug Fix(s)
+* <b><i>Ixia-C</i></b>: Issue where `set_control_state.port.link.state` was not working when applied to member ports of a LAG is now fixed.
+
+#### Known Issues
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+
+## Release  v0.1.0-222
 > 19th January, 2024
 
 #### About
