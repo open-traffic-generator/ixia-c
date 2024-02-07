@@ -6,7 +6,8 @@
 
 #### About
 
-This build includes new features and bug fixes.
+This release introduces `snappi v1.0` and `keng-controller v1.0`.
+Backwards API compatibility will be maintained within  `1.x` versions of Open Traffic Generator, `go-snappi` and `snappi` APIs.
 
 #### Build Details
 
@@ -47,8 +48,6 @@ This build includes new features and bug fixes.
   Note: Variable field values within the same flow using `increment`, `decrement` and `values` are not supported for `snmpv2c` fields.
 
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `AresOne-M 800G`` load modules. For using this, `IXOS 10.00` must be installed on the chassis. For other load modules, it will continue to work with `IXOS 9.20 and 9.30` setups.
-
-* This release introduces `snappi v1.0` and `keng-controller v1.0`.
 
 # Bug Fix(s)
 * <b><i>Ixia-C</i></b>: Issue where `set_control_state.port.link.state` was not working when applied to member ports of a LAG is now fixed.
