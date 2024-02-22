@@ -1,7 +1,87 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release  v1.0.0-92 (Latest)
+> 22nd February, 2024
 
-## Release  v1.0.0-7 (Latest)
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [1.0.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.0.1/artifacts/openapi.yaml)         |
+| snappi                        | [1.0.1](https://pypi.org/project/snappi/1.0.1)        |
+| gosnappi                      | [1.0.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.0.1)        |
+| keng-controller               | [1.0.0-92](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.360](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.0.1-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.9](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.0.1-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                    | [1.1.1](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.1/1.1.1/artifacts.tar)         |
+
+
+# Release Features(s)
+* <b><i>UHD400</i></b>: Enabling metric_tags for egress tracking is now supported for ethernet.src/ dst, vlan.id, vlan.priority, ipv4.src/ dst, ipv4.precedence, ipv6.src/ dst, ipv6.traffic_class
+  ```go
+  eth := flow.EgressPacket().Add().Ethernet()
+  ipv4 := flow.EgressPacket().Add().Ipv4()
+  ipv4Tag := ipv4.Dst().MetricTags().Add()
+  ipv4Tag.SetName("flow_ipv4_dst")
+  ipv4Tag.SetOffset(22)
+  ipv4Tag.SetLength(10)
+  ```
+  - Limitations:
+    - Maximum of 10 tracking bits is supported.
+    - Only a single flow is supported when egress tracking is enabled, except when the tracking header field is Vlan.priority, IPv4.precedence or IPv6.traffic_class. Multiple flows are supported when tracking is enabled on these fields.
+    - Tracking is supported on the last 10 bits of header fields, except for IPv4 src/ dst where first 5 bit tracking is also supported.
+
+* <b><i>UHD400</i></b>: Support is added for `values` on header fields ethernet.src /dst, ipv4.src /dst, ipv6.src /dst, vlan.id, tcp.src_port, tcp.dst_port, udp.src_port, udp.dst_port.
+
+* <b><i>Ixia-C</i></b>: Support added for `rsvp` Path Message PDU in raw traffic.
+  - User can encode `rsvp` packet using `flows` and invoke `set_control_state.traffic.flow_transmit` to transmit the `rsvp` packets.
+  ```go
+    f1.Packet().Add().Ethernet()
+    ip := f1.Packet().Add().Ipv4()
+    ip.Options().Add().SetChoice("router_alert")
+    rsvp := f1.Packet().Add().Rsvp()
+    rsvpPathMsg := rsvp.MessageType().Path()
+    session := rsvpPathMsg.Objects().Add().ClassNum().Session().CType().LspTunnelIpv4()
+    session.Ipv4TunnelEndPointAddress().SetValue("2.2.2.2")
+    session.TunnelId().SetValue(1)
+    session.ExtendedTunnelId().AsIpv4().SetValue("1.1.1.1")
+    rsvpHop := rsvpPathMsg.Objects().Add().ClassNum().RsvpHop().CType().Ipv4()
+    rsvpHop.Ipv4Address().SetValue("1.1.2.1")
+    rsvpPathMsg.Objects().Add().ClassNum().TimeValues()
+    rsvpPathMsg.Objects().Add().ClassNum().LabelRequest()
+    sessionAttribute := rsvpPathMsg.Objects().Add().ClassNum().SessionAttribute().CType().LspTunnel()
+    sessionAttribute.SetSessionName("otg_test_port")
+    senderTemplate := rsvpPathMsg.Objects().Add().ClassNum().SenderTemplate().CType().LspTunnelIpv4()
+    senderTemplate.Ipv4TunnelSenderAddress().SetValue("1.1.1.1")
+    senderTemplate.LspId().SetValue(1)
+    senderTspec := rsvpPathMsg.Objects().Add().ClassNum().SenderTspec().CType().IntServ()
+    senderTspec.MaximumPacketSize().SetValue(1500)
+    senderTspec.SetPeakDataRate(1e+10)
+  ```
+  - Note:
+    - Variable field values within the flow using `increment`, `decrement` and `values` are not supported for `rsvp` fields.
+    - Optional objects `ClassNum().ExplicitRoute()` and `ClassNum().RecordRoute()` are not yet supported.
+    - Tracking should not be enabled if intention is for device under test to consume the generated packets.
+
+
+# Bug Fix(s)
+* <b><i>keng-operator</i></b>: Issue is fixed where `Ixia-C` containers would incorrectly signal readiness even when containers were not fully started in kne deployment, resulting in `SetConfig` and licensing errors.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `SetConfig` fails for a traffic flow where inner header (v4/v6) has DSCP value set.
+
+#### Known Issues
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
+
+
+## Release  v1.0.0-7
 > 5th February, 2024
 
 #### About
