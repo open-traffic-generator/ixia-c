@@ -20,7 +20,7 @@
 <p align="center">
   <a href="#quick-start">Quick Start</a> &nbsp;•&nbsp;
   <a href="#key-features">Key Features</a> &nbsp;•&nbsp;
-  <a href="docs/readme.md">Documentation</a> &nbsp;•&nbsp;
+  <a href="docs/user-guide-introduction.md">Documentation</a> &nbsp;•&nbsp;
   <a href="docs/usecases.md">Use Cases</a> &nbsp;•&nbsp;
   <a href="docs/roadmap.md">Roadmap</a> &nbsp;•&nbsp;
   <a href="docs/faq.md">FAQ</a>
