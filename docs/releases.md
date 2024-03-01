@@ -18,7 +18,7 @@
 | keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.13.10](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [1.0.1-104](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                    | [1.1.1](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.1/1.1.1/artifacts.tar)         |
+| UHD400                        | [1.1.1](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.1/1.1.1/artifacts.tar)         |
 
 
 # Release Features(s)
@@ -27,11 +27,11 @@
     flowEth := flow.Packet().Add().Ethernet()
     .... 
     ipv6 := flow.Packet().Add().Ipv6()
-	ipv6.Src().SetValue(srcAddr)
-	ipv6.Dst().SetValue(dstAddr)
-	ipv6.FlowLabel().SetValues(valuelist)
+	  ipv6.Src().SetValue(srcAddr)
+	  ipv6.Dst().SetValue(dstAddr)
+	  ipv6.FlowLabel().SetValues([]uint32{1000,2000, ...})
   ```
-* <b><i>UHD400</i></b>: Support for egress tracking Priority.Dscp.Phb and Priority.Dscp.Ecn fields in IPv4 traffic header using Priority.Raw field.
+* <b><i>UHD400</i></b>: Support added for egress tracking on DSCP field in IPv4 traffic header using Priority.Raw field with appropriate offsets.
   ```go
     eth := flow.EgressPacket().Add().Ethernet()
     ipv4 := flow.EgressPacket().Add().Ipv4()
@@ -44,25 +44,21 @@
     ipv4EcnTag.SetOffset(6)
     ipv4EcnTag.SetLength(2)
   ```
-* <b><i>All</i></b>: Support for partial Start / Stop for ISIS .
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne), Ixia-C and UHD400</i></b>: Support added for partial Start / Stop for ISIS .
   ```go
-    s := gosnappi.NewControlState().               ​
-        SetChoice(gosnappi.ControlStateChoice.PROTOCOL)​
+    s := gosnappi.NewControlState()​
     isisRouters := s.Protocol().Isis().Routers()        ​
-    isisRouters.SetRouterNames(routerNames).​
-    SetState(gosnappi.StateProtocolIsisRouterState.UP/DOWN)​
+    isisRouters.SetRouterNames(routerNames).​SetState("up/down")​
     _ , err := client.Api().SetControlState(s)​
   ```
-* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Support for partial Start / Stop for BGP.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Support added for partial Start / Stop for BGP.
   ```go
-    s := gosnappi.NewControlState().               ​
-        SetChoice(gosnappi.ControlStateChoice.PROTOCOL)​
+    s := gosnappi.NewControlState()
     bgpPeers := s.Protocol().Bgp().Peers()        ​
-    bgpPeers.SetPeerNames(peerNames).​
-    SetState(gosnappi.StateProtocolBgpPeersState.UP/DOWN)​
+    bgpPeers.SetPeerNames(peerNames).​SetState("up/down")​
     _ , err := client.Api().SetControlState(s)​
   ```
-* <b><i>Ixia Chassis & Appliances(Novus + AresOne) and Ixia-C</i></b>: Support for all objects including ERO and RRO are now avalable for RSVP packet header.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne) and Ixia-C</i></b>: Support for all objects including ERO and RRO are now available for RSVP packet header.
   - User can encode `rsvp` packet using `flows` and invoke `set_control_state.traffic.flow_transmit` to transmit the `rsvp` packets.
   ```go
     f1.Packet().Add().Ethernet()
@@ -78,9 +74,9 @@
     rsvpHop.Ipv4Address().SetValue("1.1.2.1")
     rsvpPathMsg.Objects().Add().ClassNum().TimeValues()
     rsvpPathMsg.Objects().Add().ClassNum().LabelRequest()
-	  ero := rsvpPathMsg.Objects().Add().ClassNum().ExplicitRoute().CType().Type1()
-	  ero.Subobjects().Add().Type().Ipv4Prefix().Ipv4Address().SetValue("1.1.3.1")
-	  ero.Subobjects().Add().Type().Ipv4Prefix().Ipv4Address().SetValue("1.1.4.1")
+    ero := rsvpPathMsg.Objects().Add().ClassNum().ExplicitRoute().CType().Type1()
+    ero.Subobjects().Add().Type().Ipv4Prefix().Ipv4Address().SetValue("1.1.3.1")
+    ero.Subobjects().Add().Type().Ipv4Prefix().Ipv4Address().SetValue("1.1.4.1")
     sessionAttribute := rsvpPathMsg.Objects().Add().ClassNum().SessionAttribute().CType().LspTunnel()
     sessionAttribute.SetSessionName("otg_test_port")
     senderTemplate := rsvpPathMsg.Objects().Add().ClassNum().SenderTemplate().CType().LspTunnelIpv4()
@@ -93,6 +89,9 @@
     rro.Subobjects().Add().Type().Ipv4Address().Ipv4Address().SetValue("1.1.1.1")
     rro.Subobjects().Add().Type().Ipv4Address().Ipv4Address().SetValue("1.1.2.1")
   ```
+  - Note:
+    - Variable field values within the flow using `increment`, `decrement` and `values` are not supported for `rsvp` fields.
+    - Tracking should not be enabled if intention is for device under test to consume the generated packets.
 
 
 # Bug Fix(s)
@@ -100,10 +99,10 @@
 * <b><i>Ixia-C and UHD400</i></b>: Potential deadlock during `SetConfig` related to creation of interfaces is fixed. 
 * <b><i>Ixia-C and UHD400</i></b>: Intermittent issue is fixed where ixia-c-protocol-engine container was restarting during BGP session establishment in certain scenarios. 
 * <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where `SetConfig` returns error `Object reference not set to an instance of an object.` for AresOne ports (QSFP-DD-400GE+200G+100G+50G) is fixed.
-* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Issue where `SetConfig` error for BGP over LAG is fixed (Please refer to Known Issues section for BGP metrics for BGP over LAG scenario).​
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Issue where `SetConfig` returns error `Somehow <lag_name> not available within BGP portData` for BGP over LAG is fixed (Please refer to Known Issues section for issue related to BGP metrics returning empty values for BGP over LAG scenario).​
 
 #### Known Issues
-* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: For protocol over LAG scenarios (BGP over LAG) `get_metrics` is not working for the protocol metrics.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: For protocol over LAG scenarios (e.g. BGP over LAG) `get_metrics` is returning empty protocol metrics. 
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
 * <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
@@ -113,7 +112,7 @@
 
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v1.0.0-92 (Latest)
+## Release  v1.0.0-92 
 > 22nd February, 2024
 
 #### Build Details
