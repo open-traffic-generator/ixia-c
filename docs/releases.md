@@ -23,7 +23,27 @@
 
 # Release Features(s)
 * <b><i>UHD400</i></b>: Value-list support added for IPv6 flow label.
-* <b><i>UHD400</i></b>: Support for egress tracking DSCP field in IPv4 traffic header using raw.
+  ```go
+    flowEth := flow.Packet().Add().Ethernet()
+    .... 
+    ipv6 := flow.Packet().Add().Ipv6()
+	ipv6.Src().SetValue(srcAddr)
+	ipv6.Dst().SetValue(dstAddr)
+	ipv6.FlowLabel().SetValues(valuelist)
+  ```
+* <b><i>UHD400</i></b>: Support for egress tracking Priority.Dscp.Phb and Priority.Dscp.Ecn fields in IPv4 traffic header using Priority.Raw field.
+  ```go
+    eth := flow.EgressPacket().Add().Ethernet()
+    ipv4 := flow.EgressPacket().Add().Ipv4()
+    ipv4PhbTag := ipv4.Priority().Raw().MetricTags().Add()
+    ipv4PhbTag.SetName("flow_ipv4_dscp_phb")
+    ipv4PhbTag.SetOffset(0)
+    ipv4PhbTag.SetLength(6)
+	  ipv4EcnTag := ipv4.Priority().Raw().MetricTags().Add()
+    ipv4EcnTag.SetName("flow_ipv4_dscp_ecn")
+    ipv4EcnTag.SetOffset(6)
+    ipv4EcnTag.SetLength(2)
+  ```
 * <b><i>All</i></b>: Support for partial Start / Stop for ISIS .
   ```go
     s := gosnappi.NewControlState().               ​
