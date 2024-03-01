@@ -8,8 +8,8 @@
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [1.0.2](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.0.2/artifacts/openapi.yaml)         |
-| snappi                        | [1.0.1](https://pypi.org/project/snappi/1.0.2)        |
-| gosnappi                      | [1.0.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.0.2)        |
+| snappi                        | [1.0.2](https://pypi.org/project/snappi/1.0.2)        |
+| gosnappi                      | [1.0.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.0.2)        |
 | keng-controller               | [1.0.0-104](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-37](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
