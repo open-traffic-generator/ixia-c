@@ -103,6 +103,7 @@
 
 #### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: For protocol over LAG scenarios (e.g. BGP over LAG) `get_metrics` is returning empty protocol metrics. 
+* <b><i>Ixia-C</i></b>: Get neighbor states for a LAG member port fails.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
 * <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
