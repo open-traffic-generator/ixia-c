@@ -20,9 +20,9 @@
 |  Simulated Topology | N |  N | N  | N  |    |
 |  Segment Routing  | N  |  N | N  | N |   |
 | Multiple ports/adjacencies  |  Y | N  | N  |  N |   |
-| <span style="color: grey;">**RSVP p2p LSPs (Ingress or Egress)**</span>  | Y  |  Y | Y  |  N |  UHD work = MPLS Label insertion in traffic flows. |
+| <span style="color: grey;">**RSVP p2p LSPs (Ingress or Egress)**</span>  | Y  |  Y | Y  |  N |  |
 |  Srefresh and Bundle extensions | Y  | Y  | Y  | N  |   |
-|  <span style="color: grey;">**LLDP**</span> |  Y | Y  |  N |  Y | Should work on UHD as it is.  |
+|  <span style="color: grey;">**LLDP**</span> |  Y | Y  |  N |  Y |   |
 |   Per Port | Y  | Y  | N | Y  |   |
 |  Learned LLDP Neighbors | Y  | Y  | N  |  Y |   |
 | Per LAG member Port  | Y  |  Y |  N |  N |   |
