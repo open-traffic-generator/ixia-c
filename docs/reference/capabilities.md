@@ -61,4 +61,4 @@
 |---|---|---|---|---|---|
 |  Capture (Rx only) |  Y |  Y | Y  |  N |   |
 |  Link Down/Up  | Y  |  N |  Y | N  |   |
-|  MTU greater than 1500 | Y (under disc for L1)  |  N |  Y | N  | Need to change/fix L1 properties for common script to work with MTU setting. Ixia-c pending controller handling . PE/TE supports MTU changes.   |
+|  MTU greater than 1500 | Y (under disc for L1)  |  N |  Y | N  |   |
