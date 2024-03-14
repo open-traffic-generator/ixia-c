@@ -10,13 +10,13 @@
 |  Md5 Authentication  |  Y  |  Y |  Y | Y  |  |
 |  Learned Routes Retrieval | Y  | Y  | Y  |  Y |   |
 |  Extended Community  |  Y |  Y | Y  | Y  |   |
-|  Graceful Restart (Helper and Restarting) |   | Y  | Y  |  Y |   |
+|  Graceful Restart (Helper and Restarting) | Y | Y  | Y  |  Y |   |
 | <span style="color: grey;">**Static LAG**</span>   | Y  | Y  | Y  |  N |   |
 | <span style="color: grey;">**LAG with LACP**</span>  | Y  | Y  | Y  |  N |   |
 | Protocols/Data over LAG with traffic switch   | Y  |  Y |  N |  N |   |
-| <span style="color: grey;">**ISIS**</span> |   |   |   |  N |   |
-|  v4/v6 Routes  | Y  |   |   |  N |   |
-|  Learned Routes Retrieval |  Y | Y  | _N_  | N  |   |
+| <span style="color: grey;">**ISIS**</span> | Y | Y | Y | Y  |   |
+|  v4/v6 Routes  | Y  | Y | Y | Y  |   |
+|  Learned Routes Retrieval |  Y | Y  | Y | Y  |   |
 |  Simulated Topology | N |  N | N  | N  |    |
 |  Segment Routing  | N  |  N | N  | N |   |
 | Multiple ports/adjacencies  |  Y | N  | N  |  N |   |
@@ -60,5 +60,5 @@
 | Feature  | OTG model specification | Ixia-c software | IxOS hardware | UHD400T system | Comments  |
 |---|---|---|---|---|---|
 |  Capture (Rx only) |  Y |  Y | Y  |  N |   |
-|  Link Down/Up  | Y  |  N |  Y | N  |   |
-|  MTU greater than 1500 | Y (under disc for L1)  |  N |  Y | N  |   |
+|  Link Down/Up  | Y  |  Y |  Y | N  |   |
+|  MTU greater than 1500 | Y  |  Y |  Y | N  |   |
