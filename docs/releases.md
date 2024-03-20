@@ -2,7 +2,7 @@
 
 
 ## Release  v1.1.0-10 (Latest)
-> 15th March, 2024
+> 20th March, 2024
 
 #### Build Details
 
@@ -19,7 +19,7 @@
 | keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.13.12](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [1.1.0-10](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                        | [1.1.3](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.1/1.1.3/artifacts.tar)         |
+| UHD400                        | [1.1.1](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.1/1.1.1/artifacts.tar)         |
 
 
 # Release Features(s)
@@ -66,14 +66,6 @@
 	  ipv4.Dst().SetValue(dstAddr)
 	  ipv4.Priority().Dscp().Phb().SetValues([]uint32{10,12,14,18 ...})
   ```
-
-* <b><i>UHD400</i></b>: Support for LAG and LACP protocol is added.
-  - LACP parameters are supported as per LAG/LACP section in OTG model <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v1.1.0/openapi.yaml"><img alt="Release v1.1.0" src="https://img.shields.io/badge/release-v1.1.0-brightgreen"></a>
-  - Per Port LACP Metrics can be retrieved using GNMI as per otg-models-yang <a href="https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-lacp.txt">details</a>.
-  - Per LAG Metrics can be retrieved using GNMI as per otg-models-yang <a href="https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-lag.txt">details</a>.
-
-* <b><i>UHD400</i></b>: Support for data traffic over LAG is added for `rx` ports.
-
 * <b><i>OTG-gNMI-Server</i></b>: Support added for `InUpdates`, `OutUpdates`, `InOpens`, `OutOpens`, `InNotifications` and `OutNotifications` for gNMI path `/bgp-peers/bgp-peer/state/counters`.
 
 # Bug Fix(s)
