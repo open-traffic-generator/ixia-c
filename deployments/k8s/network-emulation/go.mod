@@ -2,7 +2,7 @@ module ipfwd
 
 go 1.20
 
-require github.com/open-traffic-generator/snappi/gosnappi v1.0.2
+require github.com/open-traffic-generator/snappi/gosnappi v1.1.0
 
 require (
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
@@ -12,7 +12,7 @@ require (
 	golang.org/x/sys v0.16.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240123012728-ef4313101c80 // indirect
-	google.golang.org/grpc v1.62.0 // indirect
-	google.golang.org/protobuf v1.32.0 // indirect
+	google.golang.org/grpc v1.62.1 // indirect
+	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/yaml.v2 v2.2.3 // indirect
 )
