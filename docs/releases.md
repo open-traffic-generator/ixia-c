@@ -1,7 +1,46 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release  v1.1.0-12 (Latest)
+> 22nd March, 2024
 
-## Release  v1.1.0-10 (Latest)
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [1.1.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.1.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.1.0](https://pypi.org/project/snappi/1.1.0)        |
+| gosnappi                      | [1.1.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.1.0)        |
+| keng-controller               | [1.1.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.370](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.1.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.13](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.1.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                        | [1.2.3](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.2/1.2.3/artifacts.tar)         |
+
+
+# Release Features(s)
+* <b><i>UHD400</i></b>: Support for LAG and LACP protocol is added.
+  - LACP parameters are supported as per LAG/LACP section in OTG model <a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v1.1.0/openapi.yaml"><img alt="Release v1.1.0" src="https://img.shields.io/badge/release-v1.1.0-brightgreen"></a>
+  - Per Port LACP Metrics can be retrieved using GNMI as per otg-models-yang <a href="https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-lacp.txt">details</a>.
+  - Per LAG Metrics can be retrieved using GNMI as per otg-models-yang <a href="https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-lag.txt">details</a>.
+
+* <b><i>UHD400</i></b>: Support for data traffic over LAG is added for `rx` ports.
+
+
+#### Known Issues
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
+
+
+## Release  v1.1.0-10
 > 20th March, 2024
 
 #### Build Details
@@ -9,7 +48,7 @@
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [1.1.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.1.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.1.0](https://pypi.org/project/snappi/1.0.2)        |
+| snappi                        | [1.1.0](https://pypi.org/project/snappi/1.1.0)        |
 | gosnappi                      | [1.1.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.1.0)        |
 | keng-controller               | [1.1.0-10](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
