@@ -24,7 +24,7 @@ After the set up is completed, install the python packages:
 * [dpkt](https://pypi.org/project/dpkt/) - for processing `.pcap` files.
 
 ```sh
-python -m pip install --upgrade snappi==0.12.1 dpkt
+python -m pip install --upgrade snappi==1.1.1 dpkt
 ```
 
 ## Create the API Handle
