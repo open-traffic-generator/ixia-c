@@ -1,6 +1,70 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v1.1.0-12 (Latest)
+## Release  v1.1.0-21 (Latest)
+> 29th March, 2024
+
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [1.1.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.1.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.1.1](https://pypi.org/project/snappi/1.1.1)        |
+| gosnappi                      | [1.1.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.1.1)        |
+| keng-controller               | [1.1.0-21](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.109](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.375](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.1.0-6](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.14](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.1.0-21](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                        | [1.2.4](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.2/1.2.4/artifacts.tar)         |
+
+
+# Release Features(s)
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Support added for BGP/BGP+ update replay. This feature can be used to configure the BGP/BGP+ peer to send series of updates containing advertised or withdrawn IPv4/v6 unicast routes.
+    ```go
+      updateReplayBlock := bgpPeer.ReplayUpdates().StructuredPdus()
+      adv := updateReplayBlock.Updates().Add()​
+      adv.PathAttributes().SetOrigin(gosnappi.BgpAttributesOrigin.IGP)​
+      adv.PathAttributes().AsPath().
+            FourByteAsPath().
+            Segments().
+            Add().
+            SetType(gosnappi.BgpAttributesFourByteAsPathSegmentType.AS_SEQ).​
+            SetAsNumbers([]uint32{2222, 1113, 7000, 80000})
+            
+      adv.PathAttributes().Community().Add().​CustomCommunity().SetAsNumber(65534).SetCustom("4FBA")
+      adv.PathAttributes().Community().Add().​CustomCommunity().SetAsNumber(65534).SetCustom("AAAA")​​
+      ....
+      adv.PathAttributes().MpReach(). NextHop().SetIpv4("1.1.1.2")​
+      ipv4_unicast_routes_adv := adv.PathAttributes().MpReach().Ipv4Unicast()​ ​
+      ipv4_unicast_routes_adv.Add().SetAddress("10.10.10.10").SetPrefix(32)​
+      ...    
+    ```
+
+* <b><i>UHD400</i></b>: Support added for setting ports state using `set_control_state.port.link.state=up/down`.
+
+* <b><i>snappi</i></b>: support added for python `v3.12`.
+
+
+# Bug Fix(s)
+* <b><i>Ixia-C</i></b>: Issue where BGP/BGP+ sessions were intermittently flapping for large number of routes such as 1 million is fixed.
+* <b><i>Ixia-C</i></b>: Issue where if `priority` bits were set in VLAN header for incoming ISIS PDUs session was not coming up is fixed.
+* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where port stats were not coming for port type `TA1-KD08D` of AresOne is fixed.
+* <b><i>UHD400</i></b>: Intermittent issue where `rx` counters were not being incremented for flow stats is fixed.
+
+
+#### Known Issues
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
+
+## Release  v1.1.0-12
 > 22nd March, 2024
 
 #### Build Details
