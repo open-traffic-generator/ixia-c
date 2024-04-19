@@ -23,17 +23,67 @@
 
 
 # Release Features(s)
-* TBD
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Support added for advertising Segment Routing Traffic Engineering(SR-TE) policy using `replay_updates`.
+  ```go
+    peer.Capability().SetIpv4SrTePolicy(true) ​
+    updateReplayBlock := peer.ReplayUpdates().StructuredPdus()​
+    adv := updateReplayBlock.Updates().Add()​
+    ...​
+    adv.PathAttributes().
+      Community().
+      Add().
+      NoAdvertised()​
+    ipv4_sr_routes_adv := adv.PathAttributes().
+      MpReach().
+      Ipv4Srpolicy()​
+    ipv4_sr_routes_adv.SetEndpoint("0.0.0.0").
+      SetColor(100).
+      SetDistinguisher(1)​
+    sr := adv.PathAttributes().
+      TunnelEncapsulation().
+      SrPolicy()​
+    sr.Preference().SetValue(3)​
+    sr.PolicyName().SetValue("TypeA Policy")​
+    ...​
+    sr.BindingSegmentIdentifier().Mpls().
+      SetFlagSpecifiedBsidOnly(true).​
+      MplsSid().
+      SetLabel(22222)​
+    segmentList := sr.SegmentList().Add()​
+    segmentList.Weight().
+      SetValue(200)​
+    typeA := segmentList.Segments().Add().TypeA()​
+    typeA.Flags().
+      SetSFlag(true)​
+    typeA.MplsSid().
+      SetLabel(10000)​
+    //More segments and segments lists​
+  ```
+* <b><i>Ixia-C </i></b>: Support added for zero and custom checksum in `TCP/UDP/ICMPv4/v6/IPv4/GRE` packet templates in flows.
+  ```go
+    udp := cfg.Flows().Add().Packet().Add().Udp()
+    udp.Checksum().SetCustom(0)
+  ```
+* <b><i>Ixia-C </i></b>: DPDK version upgraded from v21.11 to v23.11 for standalone `ixia-c-traffic-engine` container based deployment in DPDK mode. 
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for IPv4/v6 route ranges with varying number of `communities`/`extended_communities` for BGP/BGP+ peers.
+  ```go
+    route.Communities().Add().​
+      SetAsNumber(65534).​
+      SetAsCustom(20410).​
+      SetType(gosnappi.BgpCommunityType.MANUAL_AS_NUMBER)
+  ```
 
 
 # Bug Fix(s)
-* TBD
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where sometimes fetching ISIS `get_states` would result in `Error occurred while fetching isis lsps states:Index was outside the bounds of the array` exception.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Issue is fixed where sometimes misleading warnings were being returned from `set_config` when running consecutive `replay_updates` tests with different types of BGP peers configured(iBGP/eBGP).
+* <b><i>Ixia-C </i></b>: Memory leak fixed for BGPv4/v6 peers with large number of routes configured.
 
 
 #### Known Issues
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
 * <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
 * <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
