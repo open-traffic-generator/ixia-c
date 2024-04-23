@@ -33,7 +33,7 @@ For more granularity on resource requirements for advanced deployments, see [Res
     You may have to use `python3` or `absolute path to python executable` depending on the Python Installation on your system.
 
     ```sh
-      python -m pip --help
+    python -m pip --help
     ```
 
     If you do not see a help message, see [pip installation guide](https://pip.pypa.io/en/stable/installing/), .
@@ -41,13 +41,13 @@ For more granularity on resource requirements for advanced deployments, see [Res
   * **It is recommended that you use a python virtual environment for development.**
 
     ```sh
-        python -m pip install --upgrade virtualenv
-        # create virtual environment inside `env/` and activate it.
-        python -m virtualenv env
-        # on linux
-        source env/bin/activate
-        # on windows
-        env\Scripts\activate on Windows
+    python -m pip install --upgrade virtualenv
+    # create virtual environment inside `env/` and activate it.
+    python -m virtualenv env
+    # on linux
+    source env/bin/activate
+    # on windows
+    env\Scripts\activate on Windows
     ```
 
 > If you do not want to activate the virtual env, use `env/bin/python` (or `env\scripts\python` on Windows) instead of `python`.
@@ -62,17 +62,17 @@ In order for `ixia-c-traffic-engine` to function, several settings need to be tu
 
     ```sh
     # check interface details
-      ip addr
+    ip addr
     # configure as required
-      ip link set eth1 up
-      ip link set eth1 promisc on
+    ip link set eth1 up
+    ip link set eth1 promisc on
     ```
 
 2. (Optional) You need to create the `veth` interface pairs, to deploy the `ixia-c-traffic-engine` against them.
 
-   ```sh
-   # create veth pair veth1 and veth2
-   ip link add veth1 type veth peer name veth2
-   ip link set veth1 up
-   ip link set veth2 up
-   ```
+    ```sh
+    # create veth pair veth1 and veth2
+    ip link add veth1 type veth peer name veth2
+    ip link set veth1 up
+    ip link set veth2 up
+    ```
