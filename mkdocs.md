@@ -4,7 +4,7 @@ This repo contains the content for the [Ixia-c.dev](https://ixia-c.dev/) web-sit
 
 ## Prerequisites
 
-* Python 3.7+. In the commands below we assume use have `python3` executable. If you have a different name, change accordingly.
+* Python 3.10+. In the commands below we assume use have `python3` executable. If you have a different name, change accordingly.
 
 * PIP
 
@@ -25,8 +25,8 @@ This repo contains the content for the [Ixia-c.dev](https://ixia-c.dev/) web-sit
     ```Shell
     git clone https://github.com/open-traffic-generator/ixia-c.git --recursive
     cd ixia-c
-    git checkout mkdocs
-    python3 -m venv venv
+    git checkout -b __NEW_BRANCH_NAME__
+    python3.10 -m venv venv
     source venv/bin/activate
     ```
 
