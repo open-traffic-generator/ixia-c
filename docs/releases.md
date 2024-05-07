@@ -48,6 +48,7 @@
 * <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Issue is fixed where metric columns were being returned that were not part of the requested metric columns in the `get_metrics` request for `bgpv4`/`bgpv6`/`isis`/`rsvp`/`lag`/`lacp`.
 * <b><i>Ixia-C</i></b>: Issue is fixed where extended communities of type Transitive IPv4 were being sent with reversed bytes on the wire is fixed.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where storage of learned LSPs for ISIS was always enabled is now fixed. User can enable it by setting `devices[i].isis.basic.learned_lsp_filter=true`. 
+* <b><i>UHD400</i></b>: Issue where tx and rx statistics returned erroneously for multiple runs on same traffic config is now fixed.
 
 
 #### Known Issues
