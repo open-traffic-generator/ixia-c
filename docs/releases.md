@@ -1,7 +1,66 @@
 # Ixia-c Release Notes and Version Compatibility
 
+## Release  v1.4.0-1 (Latest)
+> 7th May, 2024
 
-## Release  v1.3.0-2 (Latest)
+#### Build Details
+
+| Component                     | Version       |
+|-------------------------------|---------------|
+| Open Traffic Generator API    | [1.4.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.4.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.4.0](https://pypi.org/project/snappi/1.4.0)        |
+| gosnappi                      | [1.4.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.4.0)        |
+| keng-controller               | [1.4.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.6.0.167](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
+| ixia-c-protocol-engine        | [1.00.0.379](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.4.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.13.18](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.4.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                        | [1.2.7](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.2/1.2.7/artifacts.tar)         |
+
+
+# Release Features(s)
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Support added for fetching information about received extended community attributes in `get_states` for `bgp_prefixes`. 
+  - OTG support [details](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml&nocors#tag/Monitor/operation/get_states). For more details and example please refer [here](https://github.com/open-traffic-generator/models/pull/374).
+    ```
+    monitor/get_state/responses/200/bgp_prefixes/ipv[4|6]_unicast_prefixes/extended_communities
+    ```
+    
+  - gNMI support [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-bgp.txt).
+    ```
+      bgp-peers/bgp-peer[name=*]/unicast-ipv4-prefixes/unicast-ipv4-prefix/state/extended-community
+
+      bgp-peers/bgp-peer[name=*]/unicast-ipv6-prefixes/unicast-ipv6-prefix/state/extended-community
+    ```
+
+  Note: To store the received routes, please set `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].learned_information_filter.unicast_ipv4/v6_prefix=true`.
+
+* <b><i>OTG-gNMI-Server</i></b>: Support added for get software and sdk version of keng-controller. [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-platform.txt)
+  * gNMI query path
+    ```
+    /components/component[name=keng-controller]/​
+    ```
+
+
+# Bug Fix(s)
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Issue is fixed where metric columns were being returned that were not part of the requested metric columns in the `get_metrics` request for `bgpv4`/`bgpv6`/`isis`/`rsvp`/`lag`/`lacp`.
+* <b><i>Ixia-C</i></b>: Issue is fixed where extended communities of type Transitive IPv4 were being sent with reversed bytes on the wire is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where storage of learned LSPs for ISIS was always enabled is now fixed. User can enable it by setting `devices[i].isis.basic.learned_lsp_filter=true`. 
+
+
+#### Known Issues
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
+
+
+## Release  v1.3.0-2
 > 19th April, 2024
 
 #### Build Details
