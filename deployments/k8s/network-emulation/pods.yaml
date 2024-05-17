@@ -28,7 +28,7 @@ spec:
     - args:
         - --accept-eula
         - --debug
-      image: ghcr.io/open-traffic-generator/keng-controller:1.4.0-1
+      image: ghcr.io/open-traffic-generator/keng-controller:1.4.0-9
       imagePullPolicy: IfNotPresent
       name: keng-controller
       volumeMounts:
@@ -63,7 +63,7 @@ spec:
           value: "5555"
         - name: ARG_CORE_LIST
           value: 1 1 1
-      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.6.0.167
+      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.3
       imagePullPolicy: IfNotPresent
       name: ixia-c-port1-traffic-engine
       securityContext:
@@ -99,7 +99,7 @@ spec:
           value: "5555"
         - name: ARG_CORE_LIST
           value: 1 1 1
-      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.6.0.167
+      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.3
       imagePullPolicy: IfNotPresent
       name: ixia-c-port2-traffic-engine
       securityContext:
