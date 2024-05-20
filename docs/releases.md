@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v1.4.0-9 (Latest)
-> 17th May, 2024
+## Release  v1.4.0-15 (Latest)
+> 20th May, 2024
 
 #### Build Details
 
@@ -10,27 +10,15 @@
 | Open Traffic Generator API    | [1.4.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.4.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.4.0](https://pypi.org/project/snappi/1.4.0)        |
 | gosnappi                      | [1.4.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.4.0)        |
-| keng-controller               | [1.4.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [1.4.0-15](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.379](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
 | keng-layer23-hw-server        | [1.4.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.13.18](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.4.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [1.4.0-15](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.2.7](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.2/1.2.7/artifacts.tar)         |
-
-
-# Release Features(s)
-* <b><i>UHD400</i></b>: Value-list support added for IPv4 `dscp` field.
-  ```go
-    flowEth := flow.Packet().Add().Ethernet()
-    .... 
-    ipv4 := flow.Packet().Add().ipv4()
-      ipv4.Src().SetValue(srcAddr)
-      ipv4.Dst().SetValue(dstAddr)
-      ipv4.Priority().Dscp().Phb().SetValues([]uint32{10,12,14,18 ...})
-  ```
 
 
 # Bug Fix(s)

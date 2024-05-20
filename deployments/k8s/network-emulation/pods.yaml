@@ -28,7 +28,7 @@ spec:
     - args:
         - --accept-eula
         - --debug
-      image: ghcr.io/open-traffic-generator/keng-controller:1.4.0-9
+      image: ghcr.io/open-traffic-generator/keng-controller:1.4.0-15
       imagePullPolicy: IfNotPresent
       name: keng-controller
       volumeMounts:
