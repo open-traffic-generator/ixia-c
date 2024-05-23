@@ -1,6 +1,6 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v1.4.0-21 (Latest)
+## Release  v1.5.0-1 (Latest)
 > 23rd May, 2024
 
 #### Build Details
@@ -10,19 +10,25 @@
 | Open Traffic Generator API    | [1.5.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.5.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.5.0](https://pypi.org/project/snappi/1.5.0)        |
 | gosnappi                      | [1.5.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.5.0)        |
-| keng-controller               | [1.4.0-21](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [1.5.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.7](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.382](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
 | keng-layer23-hw-server        | [1.5.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.14.1](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.4.0-21](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [1.5.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.2.7](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.2/1.2.7/artifacts.tar)         |
 
 
 # Bug Fix(s)
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>:
+* <b><i>Ixia-C</i></b>: An issue has been detected whereby some internal certificates used in the ixia-c containerized solution has expired. <b><i>This is fixed in this patch build.</i></b>
+
+  The most common manifestation of this is that despite proper ARP resolution, Traffic Start in tests will fail in combined protocol-engine/traffic-engine setups with `Error occurred while starting flows: [error starting tx port <portname>: unsuccessful Response: MAC address resolution failed for IP: <ip address>  ]`.
+
+  <b><i>This issue should not affect standalone traffic-engine setups using 'port' or raw traffic flows.</i></b>
+
+  This issue is visible for ixia-c community releases starting from `v0.1.0-3` to `v1.4.0-15`.
 
 
 
