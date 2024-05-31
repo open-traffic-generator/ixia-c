@@ -76,10 +76,6 @@
     Note: Support for `GetStates`/`dhcpv4-servers/dhcpv4-servers[name=serverName]/state/leases` of DHCP Server will be provided in subsequent release. 
 
 ### Bug Fix(s)
-* <b><i>UHD400</i></b>: An issue has been detected whereby some internal certificates used in the UHD400 solution has expired.
-  The most common manifestation of this is that despite proper ARP resolution, packets of `flows` of type `device` might not get forwarded by the DUT, resulting in 0 `rx` statistics.
-  This issue is visible for UHD400/ixia-c releases up to `v1.5.0-1`.
-
 * <b><i>UHD400</i></b>: An issue has been fixed where, Despite proper ARP resolution, packets of `flows` of type `device` might not get forwarded by the DUT, resulting in 0 `rx` statistics.
   This issue is visible for UHD400/ixia-c releases up to `v1.5.0-1`.
 
