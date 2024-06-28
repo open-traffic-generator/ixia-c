@@ -2,42 +2,25 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.5.1](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.5.1/artifacts/openapi.yaml)         |
-| snappi                        | [1.5.1](https://pypi.org/project/snappi/1.5.1)        |
-| gosnappi                      | [1.5.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.5.1)        |
-| keng-controller               | [1.5.1-12](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| Open Traffic Generator API    | [1.6.2](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.6.2/artifacts/openapi.yaml)         |
+| snappi                        | [1.6.2](https://pypi.org/project/snappi/1.6.2)        |
+| gosnappi                      | [1.6.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.6.2)        |
+| keng-controller               | [1.6.2-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.383](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.5.1-6](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator                 | [0.3.29](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.14.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.5.1-12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                        | [1.2.9](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.2/1.2.9/artifacts.tar)         |
+| ixia-c-protocol-engine        | [1.00.0.390](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.6.2-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-operator                 | [0.3.30](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| otg-gnmi-server               | [1.14.4](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.6.2-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                        | [1.3.3](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.3/1.3.3/artifacts.tar)         |
 
 
 # Release Features(s)
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support for `GetStates` of DHCP Server added.
-  - [DHCPv4 Server](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv4server.txt)
-
-  ```gNMI
-    # States information
-    dhcpv4-servers/dhcpv4-servers[name=serverName]/state/leases
-  ```
-* <b><i>UHD400</i></b>: Value-list support added for IPv4 `dscp` field.
-  ```go
-    flowEth := flow.Packet().Add().Ethernet()
-    .... 
-    ipv4 := flow.Packet().Add().ipv4()
-	  ipv4.Src().SetValue(srcAddr)
-	  ipv4.Dst().SetValue(dstAddr)
-	  ipv4.Priority().Dscp().Phb().SetValues([]uint32{10,12,14,18 ...})
-  ```
+* TBD
 
 ### Bug Fix(s)
-* <b><i>Ixia-C</i></b>: Issue where withdrawing BGP/BGP+ routes using `set_control_state.protocol.route.withdraw` was failing in multi-nic topology is fixed.
-* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where after running BGP/BGP+ tests on multi-nic ports would result intermittently in `context deadline` errors for subsequent tests/sub tests is fixed.
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where after running tests involving continuous connect/reconnect of test ports for long duration (e.g. 2 - 3 hrs) would result in intermittent `context deadline` errors for a bunch of consecutive tests is fixed.
+* TBD
 
 
 #### Known Issues

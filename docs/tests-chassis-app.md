@@ -75,7 +75,7 @@ The following procedure shows an example of how to deploy using Docker Compose.
 ```
 services:
   keng-controller:
-    image: ghcr.io/open-traffic-generator/keng-controller:1.5.1-12
+    image: ghcr.io/open-traffic-generator/keng-controller:1.6.2-1
     restart: always
     depends_on:
       keng-layer23-hw-server:
@@ -94,7 +94,7 @@ logging:
         max-file: "10"
         mode: "non-blocking"
   keng-layer23-hw-server:
-    image: ghcr.io/open-traffic-generator/keng-layer23-hw-server:1.5.1-6
+    image: ghcr.io/open-traffic-generator/keng-layer23-hw-server:1.6.2-1
     restart: always
     command:
       - "dotnet"
@@ -109,7 +109,7 @@ logging:
         max-file: "10"
         mode: "non-blocking"
   otg-gnmi-server:
-    image: ghcr.io/open-traffic-generator/otg-gnmi-server:1.14.2
+    image: ghcr.io/open-traffic-generator/otg-gnmi-server:1.14.4
     restart: always
     depends_on:
       keng-controller:
