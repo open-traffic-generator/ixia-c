@@ -40,7 +40,7 @@
 ### Bug Fix(s)
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where `devices[i].rsvp.ipv4_interfaces[j].summary_refresh_interval` was not setting correctly, is fixed.
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Intermittent issue where destination mac address was not getting resolved properly for traffic over ISIS IPv6 routes, is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where destination mac address was not getting resolved properly for traffic over ISIS IPv6 routes, is fixed.
 
 
 #### Known Issues
