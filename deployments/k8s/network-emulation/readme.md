@@ -67,7 +67,7 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
     docker login ghcr.io
 
     # download ixia-c images
-    docker pull ghcr.io/open-traffic-generator/keng-controller:1.6.2-1
+    docker pull ghcr.io/open-traffic-generator/keng-controller:1.6.2-13
     docker pull ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.12
     docker pull ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.390
 
@@ -80,7 +80,7 @@ To achieve this, we'll be using [Meshnet CNI](https://github.com/networkop/meshn
     docker pull networkop/init-wait:latest
 
     # push images to nodes
-    kind load docker-image ghcr.io/open-traffic-generator/keng-controller:1.6.2-1
+    kind load docker-image ghcr.io/open-traffic-generator/keng-controller:1.6.2-13
     kind load docker-image ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.12
     kind load docker-image ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.390
     kind load docker-image ubuntu:22.04
