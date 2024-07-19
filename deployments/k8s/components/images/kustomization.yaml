@@ -5,10 +5,10 @@ kind: Component
 images:
   - name: keng-controller
     newName: ghcr.io/open-traffic-generator/keng-controller
-    newTag: "1.6.2-1"
+    newTag: "1.6.2-13"
   - name: otg-gnmi-server
     newName: ghcr.io/open-traffic-generator/otg-gnmi-server
-    newTag: "1.14.4"
+    newTag: "1.14.6"
   - name: ixia-c-traffic-engine
     newName: ghcr.io/open-traffic-generator/ixia-c-traffic-engine
     newTag: "1.8.0.12"
