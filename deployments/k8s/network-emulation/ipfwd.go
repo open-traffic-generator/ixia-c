@@ -37,7 +37,7 @@ func main() {
 	api.NewHttpTransport().SetLocation(testConst["apiLocation"].(string)).SetVerify(false)
 
 	log.Println("Constructing OTG configuration ...")
-	c := otgConfig(api, testConst)
+	c := otgConfig(testConst)
 
 	log.Println("Pushing OTG configuration ...")
 	if wrn, err := api.SetConfig(c); err != nil {
@@ -74,7 +74,7 @@ func main() {
 	}
 }
 
-func otgConfig(api gosnappi.GosnappiApi, tc map[string]interface{}) gosnappi.Config {
+func otgConfig(tc map[string]interface{}) gosnappi.Config {
 	c := gosnappi.NewConfig()
 
 	ptx := c.Ports().Add().SetName("ptx").SetLocation(tc["txPortLocation"].(string))
@@ -142,7 +142,7 @@ func otgConfig(api gosnappi.GosnappiApi, tc map[string]interface{}) gosnappi.Con
 	return c
 }
 
-func ipNeighborsOk(api gosnappi.GosnappiApi, tc map[string]interface{}) bool {
+func ipNeighborsOk(api gosnappi.Api, tc map[string]interface{}) bool {
 	count := 0
 
 	log.Println("Getting IPv4 neighbors ...")
@@ -168,7 +168,7 @@ func ipNeighborsOk(api gosnappi.GosnappiApi, tc map[string]interface{}) bool {
 	return count == 2
 }
 
-func flowMetricsOk(api gosnappi.GosnappiApi, tc map[string]interface{}) bool {
+func flowMetricsOk(api gosnappi.Api, tc map[string]interface{}) bool {
 	pktCount := uint64(tc["pktCount"].(uint32))
 
 	log.Println("Getting flow metrics ...")
