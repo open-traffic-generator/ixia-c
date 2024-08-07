@@ -90,9 +90,9 @@
 
 * <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where `port_metrics` were not available when load module of type `1 x 400G AresOne-M` with transceiver of type `800GE LAN QSFP-DD` was being used, is fixed.
 
-* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where `set_control_state.protocol.route.state=withdraw/advertise` is triggered with an empty `names` field, all configured route ranges were being not withdrawn or advertised, is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where `set_control_state.protocol.route.state=withdraw/advertise` is triggered with an empty `names` field, all configured route ranges were being not withdrawn or advertised, is fixed.
 
-* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where on `set_control_state.protocol.all.state=start`, a `l1` `up/down` event was triggered even when `l1` state was already `up`, is now fixed. 
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where on `set_control_state.protocol.all.state=start`, a `l1` `up/down` event was triggered even when `l1` state was already `up`, is now fixed. 
 
   Note: If port is in `down` state, it has to be brought back to `up` state before starting a test.
 
