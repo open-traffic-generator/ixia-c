@@ -45,7 +45,7 @@
   Note: Support for `devices[i].dhcp_server.ipv6_interfaces[j].options` and `devices[i].dhcp_server.ipv6_interfaces[j].leases[k].ia_type.choice.iapd/ianapd` will be available in the subsequent sprints.
 
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support added to fetch control plane metics and states of DHCPv6 [Client](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6client.txt) and [Server](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6server.txt).
-  - User able for DHCPv6 Client/Server metrics using following gNMI paths.
+  - Support added for DHCPv6 Client/Server metrics using following gNMI paths.
    ```gNMI
     // dhcpv6 client
     dhcpv6-clients/dhcpv6-client[name=*]/state/counters
@@ -53,7 +53,7 @@
     // dhcpv6 server
     dhcpv6-servers/dhcpv6-server[name=*]/state/counters​
    ```
-  - User able for DHCPv6 Client/Server states using following gNMI paths.
+  - Support added for DHCPv6 Client/Server states using following gNMI paths.
    ```gNMI
     // dhcpv6 client
     dhcpv6-clients/dhcpv6-client[name=*]/state/interface
