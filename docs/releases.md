@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
 ## Release  v1.8.0-1 (Latest)
-> 19th August, 2024
+> 20th August, 2024
 
 
 #### Build Details
@@ -23,21 +23,61 @@
 
 
 # Release Features(s)
-* <b><i>Ixia-C Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: TBD
 
-### Bug Fix(s)
-* <b><i>Ixia-C Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: TBD
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for DHCPv6 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/369)
+  - User will be the able to configure DHCPv6 Client and Server by the following code snippet.
+  ```go
+        // Configure a DHCP Client
+        dhcpv6client := d1Eth1.Dhcpv6Interfaces().Add().
+          SetName("p1d1dhcpv61")
+
+        dhcpv6client.IaType().Iata()
+        dhcpv6client.DuidType().Llt()
+
+        // Configure a DHCPv6 Server
+        d1Dhcpv6Server := d2.DhcpServer().Ipv6Interfaces().Add().
+          SetName("p2d1Dhcpv6Server1").
+
+        d1Dhcpv6ServerPool := d1Dhcpv6Server.SetIpv6Name("p2d1ipv6").
+          Leases().Add().
+          SetLeaseTime(3600)
+        IaType := d1Dhcpv6ServerPool.IaType().Iata()
+        IaType.
+          SetStartAddress("2000:0:0:1::100").
+          SetStep(1).
+          SetSize(10).
+          SetPrefixLen(64) 
+  ```
+  Note: Support for `devices[i].dhcp_server.ipv6_interfaces[j].options` and `devices[i].dhcp_server.ipv6_interfaces[j].leases[k].ia_type.choice.iapd/ianapd` will be available in the subsequent sprints.
+
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support added to fetch control plane metics and states of DHCPv6 [Client](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6client.txt) and [Server](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6server.txt).
+  - User able for DHCPv6 Client/Server metrics using following gNMI paths.
+   ```gNMI
+    // dhcpv6 client
+    dhcpv6-clients/dhcpv6-client[name=*]/state/counters
+
+    // dhcpv6 server
+    dhcpv6-servers/dhcpv6-server[name=*]/state/counters​
+   ```
+  - User able for DHCPv6 Client/Server states using following gNMI paths.
+   ```gNMI
+    // dhcpv6 client
+    dhcpv6-clients/dhcpv6-client[name=*]/state/interface
+
+    // dhcpv6 server
+    dhcpv6-servers/dhcpv6-server[name=*]/state/interface
+   ```
 
 
 #### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
 * <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
 * <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
 * <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
 * <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
-* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
 
 
 ## Release  v1.7.2-1
