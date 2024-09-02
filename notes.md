@@ -2,65 +2,98 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.8.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.8.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.8.0](https://pypi.org/project/snappi/1.8.0)        |
-| gosnappi                      | [1.8.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.8.0)        |
-| keng-controller               | [1.8.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| Open Traffic Generator API    | [1.12.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.12.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.12.0](https://pypi.org/project/snappi/1.12.0)        |
+| gosnappi                      | [1.12.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.12.0)        |
+| keng-controller               | [1.12.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.25](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.393](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.8.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.398](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.12.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.30](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.14.8](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.8.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.14.12](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.12.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.3.5](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.3/1.3.5/artifacts.tar)         |
 
 
 # Release Features(s)
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for DHCPv6 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/369)
-  - User will be the able to configure DHCPv6 Client and Server by the following code snippet.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for DHCPv6 client interfaces to be used as source/destination for device traffic.
+  - In this the learned IPv6 address from the DHCPv6 server is automatically populated in `ipv6.src/dst` if the choice is set to auto.dhcp.
   ```go
-        // Configure a DHCP Client
-        dhcpv6client := d1Eth1.Dhcpv6Interfaces().Add().
-          SetName("p1d1dhcpv61")
+    clientToServerFlow.SetName("ClientToServer").TxRx().Device().
+    SetTxNames([]string{"DHCPv6ClientName"}).
+    SetRxNames([]string{"DHCPv6ServerInterfaceName"})
+    clientToServerFlow.Packet().Add().Ethernet()
+    clientToServerFlowIp := clientToServerFlow.Packet().Add().Ipv6()
+    clientToServerFlowIp.Src().Auto().Dhcp()
+    
+    serverToClientFlow.SetName("ServerToClient").TxRx().Device().
+        SetTxNames([]string{"DHCPv6ServerInterfaceName"}).
+        SetRxNames([]string{"DHCPv6ClientName"})
+    serverToClientFlow.Packet().Add().Ethernet()
+    serverToClientFlowIp := serverToClientFlow.Packet().Add().Ipv6()
+    serverToClientFlowIp.Dst().Auto().Dhcp()
+  ```
+  Note: For DHCPv6 client to DHCPv6 server each flow supports only one source endpoint in tx_rx.device.tx_names, hence a separate flow has to be configured for each DHCPv6 client if packet[i].ipv6.src.auto.dhcp is set.
 
-        dhcpv6client.IaType().Iata()
-        dhcpv6client.DuidType().Llt()
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `devices[i].ethernets[j].dhcpv6_interfaces[k].options/options_request` and `devices[i].dhcp_server.ipv6_interfaces[j].options`.
+  ```go
+        // Configure a DHCPv6 Client
+        dhcpv6Client := d1Eth1.Dhcpv6Interfaces().Add().
+          SetName("DHCPv6-Client")
+        
+        .........
+
+        //options
+        dhcpv6Client.Options().VendorInfo().
+          SetEnterpriseNumber(1000).
+          OptionData().
+          Add().
+          SetCode(88).
+          SetData("enterprise")
+        dhcpv6Client.Options().VendorInfo().AssociatedDhcpMessages().All()
+
+        //option request
+        dhcpv6Client.OptionsRequest().Request().Add().BootfileUrl()
+        dhcpv6Client.OptionsRequest().Request().Add().Custom().SetType(3)
+        dhcpv6Client.OptionsRequest().AssociatedDhcpMessages().All()
 
         // Configure a DHCPv6 Server
-        d1Dhcpv6Server := d2.DhcpServer().Ipv6Interfaces().Add().
-          SetName("p2d1Dhcpv6Server1").
+        dhcpv6Server := d2.DhcpServer().Ipv6Interfaces().Add().
+          SetName("DHCPv6-Server")
 
-        d1Dhcpv6ServerPool := d1Dhcpv6Server.SetIpv6Name("p2d1ipv6").
+        ............
+        dhcpv6Server.Options().BootfileUrl().SetUrl("URL").AssociatedDhcpMessages().All()
+	      dhcpv6Server.Options().Dns().SetPrimary("8::8").SecondaryDns().Add().SetIp("9::9")
+  ```
+
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `devices[i].dhcp_server.ipv6_interfaces[j].leases[k].ia_type.choice.iapd/ianapd`.
+  ```go
+        // Configure a DHCPv6 Server
+        dhcpv6Server := d2.DhcpServer().Ipv6Interfaces().Add().
+          SetName("DHCPv6-Server")
+
+        dhcpv6ServerPool := dhcpv6Server.SetIpv6Name("p2d1ipv6").
           Leases().Add().
           SetLeaseTime(3600)
-        IaType := d1Dhcpv6ServerPool.IaType().Iata()
+        IaType := dhcpv6ServerPool.IaType().Iapd()
         IaType.
-          SetStartAddress("2000:0:0:1::100").
-          SetStep(1).
-          SetSize(10).
-          SetPrefixLen(64) 
+          SetAdvertisedPrefixLen(64).
+          SetStartPrefixAddress("2000:0:0:100::0").
+          SetPrefixStep(1).
+          SetPrefixSize(10)
   ```
-  Note: Support for `devices[i].dhcp_server.ipv6_interfaces[j].options` and `devices[i].dhcp_server.ipv6_interfaces[j].leases[k].ia_type.choice.iapd/ianapd` will be available in the subsequent sprints.
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support added to fetch control plane metics and states of DHCPv6 [Client](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6client.txt) and [Server](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6server.txt).
-  - Support added for DHCPv6 Client/Server metrics using following gNMI paths.
-   ```gNMI
-    // dhcpv6 client
-    dhcpv6-clients/dhcpv6-client[name=*]/state/counters
+* <b><i>Ixia-c</i></b>: Support added for sending Organizational tlvs in LLDP PDUs.
+  ```go
+    lldp := config.Lldp().Items()[0]
 
-    // dhcpv6 server
-    dhcpv6-servers/dhcpv6-server[name=*]/state/counters​
-   ```
-  - Support added for DHCPv6 Client/Server states using following gNMI paths.
-   ```gNMI
-    // dhcpv6 client
-    dhcpv6-clients/dhcpv6-client[name=*]/state/interface
-
-    // dhcpv6 server
-    dhcpv6-servers/dhcpv6-server[name=*]/state/interface
-   ```
+    orgInfos1 := lldp.OrgInfos().Add()
+    orgInfos1.Information().SetInfo("AABB11")
+    orgInfos1.SetOui("1abcdf").SetSubtype(1)
+  ```
+  Note: Received Organizational tlvs can be seen in the `get_states` response of `lldp_neighbors`.
 
 
 #### Known Issues
