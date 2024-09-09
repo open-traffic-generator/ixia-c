@@ -1,6 +1,6 @@
 module ipfwd
 
-go 1.19
+go 1.23
 
 require github.com/open-traffic-generator/snappi/gosnappi v1.12.0
 
