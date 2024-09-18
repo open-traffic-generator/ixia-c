@@ -2,7 +2,7 @@ name: CI
 
 env:
   PYTHON_VERSION: "3.8"
-  GO_VERSION: "1.19"
+  GO_VERSION: "1.23"
 
 on:
   push:
