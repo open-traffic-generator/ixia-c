@@ -1,14 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
-# Release: https://github.com/open-traffic-generator/ixia-c/releases/tag/v1.13.0-9
+# Release: https://github.com/open-traffic-generator/ixia-c/releases/tag/v1.14.0-1
 images:
   - name: keng-controller
     newName: ghcr.io/open-traffic-generator/keng-controller
-    newTag: "1.13.0-9"
+    newTag: "1.14.0-1"
   - name: otg-gnmi-server
     newName: ghcr.io/open-traffic-generator/otg-gnmi-server
-    newTag: "1.14.14"
+    newTag: "1.14.15"
   - name: ixia-c-traffic-engine
     newName: ghcr.io/open-traffic-generator/ixia-c-traffic-engine
-    newTag: "1.8.0.90"
+    newTag: "1.8.0.99"
