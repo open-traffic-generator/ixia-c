@@ -57,8 +57,8 @@
   - OSPFv2 metrics can be fetched by the following 
   ```go
     req := gosnappi.NewMetricsRequest()
-    reqIsis := req.Ospfv2()
-    reqIsis.SetRouterNames(routerNames)
+    reqOspf := req.Ospfv2()
+    reqOspf.SetRouterNames(routerNames)
   ```
 
 
