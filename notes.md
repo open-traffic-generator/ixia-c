@@ -9,7 +9,7 @@
 | ixia-c-traffic-engine         | [1.8.0.99](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.405](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.13.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-layer23-hw-server        | [1.14.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.14.15](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [1.14.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
@@ -18,58 +18,72 @@
 
 # Release Features(s)
 
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Scaling support in BGP configuration.
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for OSPFv2 routers in control plane. [details](https://github.com/open-traffic-generator/models/pull/384)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for OSPFv2. [details](https://github.com/open-traffic-generator/models/pull/384)
   ```go
-    ospfName := "OSPFv2RR1"
-
-    p1d1ospfv2rtr1 := p1d1.Ospfv2().​
-            SetName("OSPFv2RR1").​
+    ospfRouter := device1.Ospfv2().​
+            SetName("OspfRtr").​
             SetStoreLsa(true)​
 
-    intf := p1d1ospfv2rtr1.Interfaces().Add().​
-                    SetName(interfaceName).​
-                    SetIpv4Name(ipName)​
+    intf := ospfRouter.Interfaces().Add().​
+                    SetName("OspfIntf").​
+                    SetIpv4Name("Ipv4Intf1")​
 
-    intf.Area().SetId(intAreaId)​
+    intf.Area().SetId(0)​
     intf.NetworkType().PointToPoint()​
-    p1d1ospfv2rtr1rr1 := p1d1ospfv2rtr1.V4Routes().​
+    ospfRoutes := ospfRouter.V4Routes().​
                             Add().​
-                            SetName(ospfRrname)​
-      p1d1ospfv2rtr1rr1.​
-              Addresses().​
-              Add().​
-              SetAddress(startRr).​
-              SetPrefix(prefixRr).​
-              SetCount(countRr).​
-              SetStep(stepRr)​​
-    ```
+                            SetName("OspfRoutes")​
+    ospfRoutes.​
+            Addresses().​
+            Add().​
+            SetAddress("10.10.10.0").​
+            SetPrefix(24).​
+            SetCount(100).​
+            SetStep(2)​​
+  ```
 
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added to update `flows[i].size` and `flows[i].rate` of traffic on the fly.
+  - Learned LSAs can be fetched by the following
   ```go
-    fu1: = gosnappi.NewConfigUpdate().Flows()​
-    flow1 = get_config.Flows().Items()[0]​
-    flow1.Rate().SetPps(120)​
-    flow1.Size().SetFixed(512)​
-    fu1.Flows().Append(flow1)​
+    req := gosnappi.NewStatesRequest()​
+    req.Ospfv2Lsas().SetRouterNames(routerNames)​
+    res, err := client.GetStates(req)
+  ```
 
-    fu1.SetPropertyNames ([]gosnappi.FlowsUpdatePropertyNamesEnum{​
-    gosnappi.FlowsUpdatePropertyNames.SIZE, gosnappi.FlowsUpdatePropertyNames.RATE})​
+  - OSPFv2 metrics can be fetched by the following 
+  ```go
+    req := gosnappi.NewMetricsRequest()
+    reqIsis := req.Ospfv2()
+    reqIsis.SetRouterNames(routerNames)
+  ```
 
-    cu = gosnappi.NewConfigUpdate()​
-    cu.SetFlows(fu1)​​
+
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added to update `flows[i].size` and `flows[i].rate` on the fly.
+  ```go
+    ​
+    flow = get_config.Flows().Items()[0]​
+    flow.Rate().SetPps(120)​
+    flow.Size().SetFixed(512)​
+
+    flowUpdateCfg: = gosnappi.NewConfigUpdate().Flows()
+    flowUpdateCfg.Flows().Append(flow)​
+    flowUpdateCfg.SetPropertyNames ([]gosnappi.FlowsUpdatePropertyNamesEnum{​
+      gosnappi.FlowsUpdatePropertyNames.SIZE, gosnappi.FlowsUpdatePropertyNames.RATE
+    })​
+
+    configUpdate = gosnappi.NewConfigUpdate()​
+    configUpdate.SetFlows(flowUpdateCfg)
+    res, err := client.Api().UpdateConfig(configUpdate)​​
   ```
 	
 ### Bug Fix(s)
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: TBD
+* <b><i>Ixia-C</i></b>: Issue where flows containing `ipv4/v6` header without `src/dst` specified was returning error on `set_config` <i>"Error flow [ flow-name ] has AUTO IPv4 src address and Tx device [ flow-end-point ] with no dhcpv4 interface"</i> is fixed.
 
 
 #### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
 * <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
 * <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down. 
 * <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
 * <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
