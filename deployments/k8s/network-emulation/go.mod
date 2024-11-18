@@ -2,7 +2,7 @@ module ipfwd
 
 go 1.23
 
-require github.com/open-traffic-generator/snappi/gosnappi v1.14.0
+require github.com/open-traffic-generator/snappi/gosnappi v1.16.0
 
 require (
 	github.com/Masterminds/semver/v3 v3.3.0 // indirect
