@@ -2,84 +2,86 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.14.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.14.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.14.0](https://pypi.org/project/snappi/1.14.0)        |
-| gosnappi                      | [1.14.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.14.0)        |
-| keng-controller               | [1.14.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
-| ixia-c-traffic-engine         | [1.8.0.99](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| Open Traffic Generator API    | [1.16.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.16.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.16.0](https://pypi.org/project/snappi/1.16.0)        |
+| gosnappi                      | [1.16.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.16.0)        |
+| keng-controller               | [1.16.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.8.0.193](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.405](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.14.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.415](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.16.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.14.15](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.14.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                        | [1.4.0](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.4/1.4.0/artifacts.tar)         |
+| otg-gnmi-server               | [1.14.16](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.16.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                        | [1.5.1](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.1/artifacts.tar)         |
 
 
 # Release Features(s)
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for OSPFv2. [details](https://github.com/open-traffic-generator/models/pull/384)
+* <b><i>Ixia-C, UHD400</i></b>: Support added for DHCPv6 Client and Server in control plane.
+  - User will be the able to configure DHCPv6 Client and Server by the following code snippet.
   ```go
-    ospfRouter := device1.Ospfv2().​
-            SetName("OspfRtr").​
-            SetStoreLsa(true)​
+    // Configure a DHCP Client
+      dhcpv6client := d1Eth1.Dhcpv6Interfaces().Add().
+        SetName("p1d1dhcpv61")
 
-    intf := ospfRouter.Interfaces().Add().​
-                    SetName("OspfIntf").​
-                    SetIpv4Name("Ipv4Intf1")​
+      dhcpv6client.IaType().Iata()
+      dhcpv6client.DuidType().Llt()
 
-    intf.Area().SetId(0)​
-    intf.NetworkType().PointToPoint()​
-    ospfRoutes := ospfRouter.V4Routes().​
-                            Add().​
-                            SetName("OspfRoutes")​
-    ospfRoutes.​
-            Addresses().​
-            Add().​
-            SetAddress("10.10.10.0").​
-            SetPrefix(24).​
-            SetCount(100).​
-            SetStep(2)​​
+      // Configure a DHCPv6 Server
+      d1Dhcpv6Server := d2.DhcpServer().Ipv6Interfaces().Add().
+        SetName("p2d1Dhcpv6Server1").
+
+      d1Dhcpv6ServerPool := d1Dhcpv6Server.SetIpv6Name("p2d1ipv6").
+        Leases().Add().
+        SetLeaseTime(3600)
+      IaType := d1Dhcpv6ServerPool.IaType().Iata()
+      IaType.
+        SetStartAddress("2000:0:0:1::100").
+        SetStep(1).
+        SetSize(10).
+        SetPrefixLen(64) 
   ```
 
-  - Learned LSAs can be fetched by the following
+* <b><i>UHD400</i></b>: Support of Egress Flow tracking for multiple flows is added any location of supported fields upto 10 bits.
+  - Supported fields are `ethernet.src/dst`, `vlan.id`, `vlan.priority`, `ipv4.src/dst`, `ipv4.precedence`, `ipv6.src/dst`, `ipv6.traffic_class`.
   ```go
-    req := gosnappi.NewStatesRequest()​
-    req.Ospfv2Lsas().SetRouterNames(routerNames)​
-    res, err := client.GetStates(req)
+    eth := flow.EgressPacket().Add().Ethernet()
+    ipv4 := flow.EgressPacket().Add().Ipv4()
+    ipv4Tag := ipv4.Dst().MetricTags().Add()
+    ipv4Tag.SetName("flow_ipv4_dst")
+    ipv4Tag.SetOffset(22)
+    ipv4Tag.SetLength(10)
   ```
 
-  - OSPFv2 metrics can be fetched by the following 
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for ISIS Simulated Topology. [More Details](https://github.com/open-traffic-generator/models/pull/327)
+  - Configuration for ISIS attributes for newly introduced simulated routers are identical to configuration for currently supported directly connected emulated routers.
+  -  `devices[i].ethernets[j].connection.simulated_link`​ is introduced to create a simulated ethernet connection to build a Simulated Topology.
   ```go
-    req := gosnappi.NewMetricsRequest()
-    reqOspf := req.Ospfv2()
-    reqOspf.SetRouterNames(routerNames)
+    simulatedRouterEthernet := simulatedRouter.Ethernets().Add().
+                SetName("simRtrEth").
+                SetMac("00:00:11:02:02:02")
+    simulatedRouterEthernet.Connection().SimulatedLink().SetRemoteSimulatedLink("connRtrSimEth")
+
+    connectedRouterSimulatedEthernet := connectedRouter.Ethernets().Add().
+                SetName("connRtrSimEth").
+                SetMac("00:00:01:01:01:01")
+    connectedRouterSimulatedEthernet.Connection().SimulatedLink().SetRemoteSimulatedLink("simRtrEth")
   ```
+  Note: `get_metrics/states` APIs are only applicable for the connected emulated routers and not for the simulated routers.
 
-
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added to update `flows[i].size` and `flows[i].rate` on the fly.
-  ```go
-    ​
-    flow = get_config.Flows().Items()[0]​
-    flow.Rate().SetPps(120)​
-    flow.Size().SetFixed(512)​
-
-    flowUpdateCfg: = gosnappi.NewConfigUpdate().Flows()
-    flowUpdateCfg.Flows().Append(flow)​
-    flowUpdateCfg.SetPropertyNames ([]gosnappi.FlowsUpdatePropertyNamesEnum{​
-      gosnappi.FlowsUpdatePropertyNames.SIZE, gosnappi.FlowsUpdatePropertyNames.RATE
-    })​
-
-    configUpdate = gosnappi.NewConfigUpdate()​
-    configUpdate.SetFlows(flowUpdateCfg)
-    res, err := client.Api().UpdateConfig(configUpdate)​​
-  ```
+* <b><i>Ixia-C, UHD400, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for fetching `lldp_neighbors[i].custom_tlvs[j].information` as hex bytes using `get_states` API. [More details](https://github.com/open-traffic-generator/models/pull/392)
 	
 ### Bug Fix(s)
-* <b><i>Ixia-C</i></b>: Issue where flows containing `ipv4/v6` header without `src/dst` specified was returning error on `set_config` <i>"Error flow [ flow-name ] has AUTO IPv4 src address and Tx device [ flow-end-point ] with no dhcpv4 interface"</i> is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where for certain scenarios such as retrieving large control capture buffer or fetching `get_metrics/states` for large amount of data results in errors similar to <i>"grpc: received message larger than max (7934807 vs. 4194304)"</i>. 
+  - For such scenarios note that the grpc receive buffer on the client should also be locally increased if necessary from default value of 4 MB.
+
+* <b><i>Ixia-C</i></b>: Issue is fixed for LLDP where, when multiple custom tlvs are configured to be sent, sometimes the bytes in the `information` field in the outgoing LLDP PDUs were corrupted.
 
 
 #### Known Issues
+* <b><i>Ixia-C, UHD400</i></b>: When the DHCPv6 client type is configured as IANAPD, DHCPv6 Server `get_states` doesn't show IAPD addresses
+* <b><i>Ixia-C, UHD400</i></b>: When DHCPv6 Server is configured with multiple pools, The DHCPv6 clients are not accepting addresses from different pools.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
 * <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.

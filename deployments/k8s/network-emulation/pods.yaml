@@ -28,7 +28,7 @@ spec:
     - args:
         - --accept-eula
         - --debug
-      image: ghcr.io/open-traffic-generator/keng-controller:1.14.0-1
+      image: ghcr.io/open-traffic-generator/keng-controller:1.16.0-2
       imagePullPolicy: IfNotPresent
       name: keng-controller
       volumeMounts:
@@ -63,7 +63,7 @@ spec:
           value: "5555"
         - name: ARG_CORE_LIST
           value: 1 1 1
-      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.99
+      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.193
       imagePullPolicy: IfNotPresent
       name: ixia-c-port1-traffic-engine
       securityContext:
@@ -71,7 +71,7 @@ spec:
     - env:
         - name: INTF_LIST
           value: eth1
-      image: ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.405
+      image: ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.415
       imagePullPolicy: IfNotPresent
       name: ixia-c-port1-protocol-engine
       securityContext:
@@ -99,7 +99,7 @@ spec:
           value: "5555"
         - name: ARG_CORE_LIST
           value: 1 1 1
-      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.99
+      image: ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.193
       imagePullPolicy: IfNotPresent
       name: ixia-c-port2-traffic-engine
       securityContext:
@@ -107,7 +107,7 @@ spec:
     - env:
         - name: INTF_LIST
           value: eth2
-      image: ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.405
+      image: ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.415
       imagePullPolicy: IfNotPresent
       name: ixia-c-port2-protocol-engine
       securityContext:
