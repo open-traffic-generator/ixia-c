@@ -80,6 +80,8 @@
 
 
 #### Known Issues
+* <b><i>Ixia-C, UHD400</i></b>: When the DHCPv6 client type is configured as IANAPD, DHCPv6 Server `get_states` doesn't show IAPD addresses
+* <b><i>Ixia-C, UHD400</i></b>: When DHCPv6 Server is configured with multiple pools, The DHCPv6 clients are not accepting addresses from different pools.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
 * <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
