@@ -58,32 +58,32 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.17.0-9",
+                "release": "1.19.0-5",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.17.0-9"
+                          "tag": "1.19.0-5"
                       },
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.14.18"
+                          "tag": "1.19.0"
                       },
                       {
                           "name": "traffic-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
-                          "tag": "1.8.0.193"
+                          "tag": "1.8.0.241"
                       },
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.419"
+                          "tag": "1.00.0.424"
                       },
                       {
                           "name": "ixhw-server",
                           "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
-                          "tag": "1.17.0-1"
+                          "tag": "1.19.0-5"
                       }
                   ]
               }
@@ -100,12 +100,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.17.0-9",
+                "release": "1.19.0-5",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.17.0-9",
+                          "tag": "1.19.0-5",
                           "env": {
                                 "LICENSE_SERVERS": "ip/hostname of license server"
                             }
@@ -113,22 +113,22 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.14.18"
+                          "tag": "1.19.0"
                       },
                       {
                           "name": "traffic-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-traffic-engine",
-                          "tag": "1.8.0.193"
+                          "tag": "1.8.0.241"
                       },
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.419"
+                          "tag": "1.00.0.424"
                       },
                       {
                           "name": "ixhw-server",
                           "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
-                          "tag": "1.17.0-1"
+                          "tag": "1.19.0-5"
                       }
                   ]
               }
@@ -148,7 +148,7 @@ Following are the recommended resources for a basic use-case.
   nodes:
     - name: otg
       vendor: KEYSIGHT
-      version: 1.17.0-9
+      version: 1.19.0-5
       services:
         8443:
           name: https
