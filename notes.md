@@ -5,80 +5,90 @@
 | Open Traffic Generator API    | [1.19.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.19.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.19.0](https://pypi.org/project/snappi/1.19.0)        |
 | gosnappi                      | [1.19.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.19.0)        |
-| keng-controller               | [1.19.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
-| ixia-c-traffic-engine         | [1.8.0.241](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| keng-controller               | [1.19.0-18](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.424](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.19.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.426](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.19.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.19.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.19.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [1.19.0-18](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.1](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.1/artifacts.tar)         |
 
 
 # Release Features(s)
 
-* <b><i>Ixia-C</i></b>: Support added to send flows over DHCPv6 endpoints.
-  ```go
-    f1 := config.Flows().Add()​
-    f1.SetName(flowName).​
-      TxRx().Device().​
-      SetTxNames([]string{"p1d1dhcpv6_1"}).​
-      SetRxNames([]string{"p2d1ipv6"})​
-    f1Ip := f1.Packet().Add().Ipv6()​
-    // will be populated automatically with the the dynamically allocated Ip to DHCP client​
-    f1Ip.Src().Auto().Dhcp()​
-    …​
-    f2Ip.Dst().Auto().Dhcp()​
-  ```
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for GUEv1 IPv4/v6 over UDP traffic.
+    ```go
+        f1Ip1 := f1.Packet().Add().Ipv4()​
+        f1Ip1.Src().SetValue("1.1.1.1")​
+        f1Ip1.Dst().SetValue("1.1.1.2")​
+        ​
+        f1Udp := f1.Packet().Add().Udp()​
+        f1Udp.SrcPort().SetValue(30000)​
+        f1Udp.DstPort().SetValue(6080)​
+        // IPv4 Over UDP​
+        f1Ip2 := f1.Packet().Add().Ipv4()​
+        f1Ip2.Src().SetValues([]string{​
+            "2.2.2.1",​
+            "2.2.2.2",​
+            "2.2.2.3",​
+            "2.2.2.4",​
+        })​
+        f1Ip2.Dst().SetValue("3.3.3.1")​
+    ```
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models/pull/398)
-  - This can be retrieved by accessing `port_metrics[i].last_change`.
-  
-    Note:
-      - As mentioned in the `Known Issues`, ports being used in the tests must be rebooted once after upgrading to the latest version of `keng-layer23-hw-server`. 
-      - Test ports and DUT must be time synced to the same time source if link state change timestamps need to be co-related.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for MPLS Over UDP traffic.
+    ```go
+        //udp Dst port as 6635​
+        f1Udp := f1.Packet().Add().Udp()​
+        f1Udp.DstPort().SetValue(6635)​
+        f1Udp.SrcPort().SetValue(65530)​
+        //mpls over udp​
+        f1Mpls1 := f1.Packet().Add().Mpls()​
+        f1Mpls1.Label().SetValue(10001)​
+        f1Mpls1.BottomOfStack().SetValue(0)
+        f1Mpls2 := f1.Packet().Add().Mpls()​
+        f1Mpls2.Label().SetValue(10011)​
+        //ipv4 over mpls over udp​
+        f1MplsIp := f1.Packet().Add().Ipv4()​
+        f1MplsIp.Dst().SetValues([]string{​
+            "20.20.20.1",​
+            "20.20.20.2",​
+            "20.20.20.3",​
+            "20.20.20.4",​
+        })​
+        f1MplsIp.Src().SetValue("10.10.10.1")
+    ```
+    Note: MPLS Over UDP with DTLS is not supported.
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for RSVP over ISIS Simulated Topology.
-  ```go
-    // Create RSVP neighbor on interface connected to DUT.
-    // Note that get_states and get_metrics are supported only for the connected RSVP neighbors.
-    p2RsvpNeighbor := p2d1.Rsvp().SetName("p2RsvpNbr")
-    p2RsvpNeighbor.Ipv4Interfaces().
-            Add().SetIpv4Name(p2d1Ipv4.Name()).
-            SetNeighborIp(p2d1Ipv4.Gateway())
-
-    // Create RSVP ingress LSPs on the loopback behind the simulated topology.
-    fromLoRsvpIngress := fromLoRsvpLsp.P2PIngressIpv4Lsps().Add().SetName("ingressLsp")
-    fromLoRsvpIngress.SetRemoteAddress("1.1.1.1").SetTunnelId(100)
-
-    // Create RSVP egress endpoint on the loopback behind the simulated topology.
-    toLoRsvpLsp := toLoRsvpPeer.LspIpv4Interfaces().Add().SetIpv4Name("loopback")
-    toLoRsvpLspEgress := toLoRsvpLsp.P2PEgressIpv4Lsps().SetName("egressLsp")
-
-    // Note: for TE SPF to work properly on DUT, ensure you have added TrafficEngineering to all ISIS interfaces.
-    te = p2d1IsisIntf.TrafficEngineering().Add().SetMetricLevel(10)
-    te.PriorityBandwidths().
-            SetPb0(125000000).
-            ...
-            SetPb7(125000000)
-  ```
-
-
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Egress tracking is now supported for UDP, TCP(src/dst port fields), MPLS and IPv4/v6 inner header fields when encapsulated inside UDP/TCP.
+    ```go
+        //egress tracking
+        f1.EgressPacket().Add().Ethernet()
+        f1.EgressPacket().Add().Ipv4()
+        f1.EgressPacket().Add().Udp()
+        f1.EgressPacket().Add().Mpls()
+        mplsLabelTracking := f1.EgressPacket().Add().Mpls()
+        tr1 := mplsLabelTracking.Label().MetricTags().Add()
+        tr1.SetName("MplsLabelEgressTracking")
+        tr1.SetOffset(17)
+        tr1.SetLength(3)
+    ```
 	
 ### Bug Fix(s)
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `set_config` was failing with the error `"BgpIPRouteRange is missing"` when IPv4 routes with IPv6 next-hops (RFC5549) was configured.
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `get_states` on `bgpv4/6_prefixes` was returning error `"Error occurred while fetching bgp_prefix states:Length cannot be less than zero. (Parameter 'length')"` if the prefix contained `as_path` with multiple segments.
-
-* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where `get_states` for `isis` was returning IPv6 prefixes in upper case causing prefix match for IPv6 prefixes to fail in tests.
-
-* <b><i>Ixia-C</i></b>: Issue is fixed where `set_config` was failing with error `"Error occurred while setting Traffic config (Layer1 only) for user common:Error fetching stats for port port9: unsuccessful Response: Port 7 is not added"` when the traffic engine was deployed in multi nic mode (e.g. for lag setups with 8 ports).
-
-* <b><i>Ixia-C</i></b>: Issue is fixed where the traffic engine was crashing on deployment using a single cpu core (`--cpuset-cpus="0-1"`).
-
-* <b><i>VM Licensing</i></b>: Issue is fixed for users using the VM License Server where,  after a reboot, license-server VM serving multiple keng-controller(s) did not come up and tests running with those controller(s) started failing.
-
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where configs with RSVP and multiple Loopback interfaces was throwing error similar to `"loopback p2.d2.lo and lo.d not compatible"` on `set_config`.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where config with large number of route ranges was causing error similar to `"grpc: received message larger than max (114278270 vs. 104857600)"` on `set_config` is fixed by increasing the default gRPC receive buffer size to 1GB.
+    - Note that for Ixia Chassis & Appliances(Novus, AresOne) the buffer can now be controlled by setting the environment variable of `keng-controller` as given below.
+        ```sh
+            command:
+                ...
+                - "--grpc-max-msg-size"​
+                - "500"
+        ```
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `set_config` was throwing error if Traffic Engineering was enabled for ISIS interface, but Priority BandWidths were not explicitly specified.
+* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where DHCPv4 was intermittently crashing on stop.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where OSPFv2 Router Ids were not getting set properly when multiple OSPFv2 Routers were configured on a port. 
 
 
 #### Known Issues
