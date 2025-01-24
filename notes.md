@@ -88,8 +88,7 @@
         ```
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `set_config` was throwing error if Traffic Engineering was enabled for ISIS interface, but Priority BandWidths were not explicitly specified.
 * <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where DHCPv4 was intermittently crashing on stop.
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where OSPFv2 Router Ids were not getting set properly when multiple OSPFv2 Routers were configured on
- a port. 
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where OSPFv2 Router Ids were not getting set properly when multiple OSPFv2 Routers were configured on a port. 
 
 
 #### Known Issues
