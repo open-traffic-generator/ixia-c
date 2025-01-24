@@ -62,7 +62,7 @@
     ```
     Note: MPLS Over UDP with DTLS is not supported.
 
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Egress tracking is now supported for UDP, TCP, MPLS and IPv4/v6 inner header fields when encapsulated inside UDP.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: * <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Egress tracking is now supported for UDP, TCP(src/dst port fields), MPLS and IPv4/v6 inner header fields when encapsulated inside UDP/TCP.
     ```go
         //egress tracking
         f1.EgressPacket().Add().Ethernet()
