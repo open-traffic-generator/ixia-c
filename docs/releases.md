@@ -23,10 +23,15 @@
 
 # Release Features(s)
 
-TBD
+* <b><i>UHD400</i></b>: Support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models/pull/398)
+  - This can be retrieved by accessing `port_metrics[i].last_change`.
+  
+    Note:
+      - Test ports and DUT must be time synced to the same time source if link state change timestamps need to be co-related.
+
 	
 ### Bug Fix(s)
-TBD
+* <b><i>Ixia-C & UHD400</i></b>: For certain asymmetric configurations of BGPv4/v6 `replay_updates` with a large number of updates, `set_config` or `set_control_state.protocol.start` would result in the protocol-engine container to get stuck and ultimately result in `context_deadline_exceeded` error and subsequent actions to not return a response. This issue is fixed.
 
 
 #### Known Issues
