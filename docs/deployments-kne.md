@@ -58,17 +58,17 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.20.0-3",
+                "release": "1.20.0-6",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.20.0-3"
+                          "tag": "1.20.0-6"
                       },
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.20.0"
+                          "tag": "1.20.2"
                       },
                       {
                           "name": "traffic-engine",
@@ -100,12 +100,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.20.0-3",
+                "release": "1.20.0-6",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.20.0-3",
+                          "tag": "1.20.0-6",
                           "env": {
                                 "LICENSE_SERVERS": "ip/hostname of license server"
                             }
@@ -113,7 +113,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.20.0"
+                          "tag": "1.20.2"
                       },
                       {
                           "name": "traffic-engine",
@@ -148,7 +148,7 @@ Following are the recommended resources for a basic use-case.
   nodes:
     - name: otg
       vendor: KEYSIGHT
-      version: 1.20.0-3
+      version: 1.20.0-6
       services:
         8443:
           name: https

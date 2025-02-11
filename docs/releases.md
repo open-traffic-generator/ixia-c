@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v1.20.0-3 (Latest)
-> 10th February, 2024
+## Release  v1.20.0-6 (Latest)
+> 11th February, 2025
 
 #### Build Details
 
@@ -10,14 +10,14 @@
 | Open Traffic Generator API    | [1.20.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.20.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.20.0](https://pypi.org/project/snappi/1.20.0)        |
 | gosnappi                      | [1.20.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.20.0)        |
-| keng-controller               | [1.20.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [1.20.0-6](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.431](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
 | keng-layer23-hw-server        | [1.20.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.20.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.20.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.20.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.20.0-6](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.3](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.3/artifacts.tar)         |
 
 
@@ -45,7 +45,7 @@
 * <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets. 
 
 ## Release  v1.19.0-18
-> 24th January, 2024
+> 24th January, 2025
 
 #### Build Details
 
