@@ -58,12 +58,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.20.0-6",
+                "release": "1.20.0-8",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.20.0-6"
+                          "tag": "1.20.0-8"
                       },
                       {
                           "name": "gnmi-server",
@@ -83,7 +83,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "ixhw-server",
                           "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
-                          "tag": "1.20.0-1"
+                          "tag": "1.20.0-2"
                       }
                   ]
               }
@@ -100,12 +100,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.20.0-6",
+                "release": "1.20.0-8",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.20.0-6",
+                          "tag": "1.20.0-8",
                           "env": {
                                 "LICENSE_SERVERS": "ip/hostname of license server"
                             }
@@ -128,7 +128,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "ixhw-server",
                           "path": "ghcr.io/open-traffic-generator/keng-layer23-hw-server",
-                          "tag": "1.20.0-1"
+                          "tag": "1.20.0-2"
                       }
                   ]
               }
@@ -148,7 +148,7 @@ Following are the recommended resources for a basic use-case.
   nodes:
     - name: otg
       vendor: KEYSIGHT
-      version: 1.20.0-6
+      version: 1.20.0-8
       services:
         8443:
           name: https
