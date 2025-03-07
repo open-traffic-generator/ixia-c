@@ -23,7 +23,7 @@
 
 # Release Features(s):
 
-* `<b><i>`Ixia-C & UHD400`</i></b>`: Support added for ISIS Simulated Topology. [More Details](https://github.com/open-traffic-generator/models/pull/327)
+* <b><i>Ixia-C & UHD400</i></b>: Support added for ISIS Simulated Topology. [More Details](https://github.com/open-traffic-generator/models/pull/327)
 
   - Configuration for ISIS attributes for newly introduced simulated routers are identical to configuration for currently supported directly connected emulated routers.
   - `devices[i].ethernets[j].connection.simulated_link` is introduced to create a simulated ethernet connection to build a Simulated Topology.
@@ -42,7 +42,7 @@
 
   - BGP/BGP+/RSVP-TE can also be configured on loopback interfaces on the simulated devices.
     Note: `get_metrics/states` APIs are only applicable for the connected emulated routers and not for the simulated routers.
-* `<b><i>`Ixia-C & UHD400`</i></b>`: Support added for ISIS Segment Routing for emulated ISIS routers.
+* <b><i>Ixia-C & UHD400</i></b>: Support added for ISIS Segment Routing for emulated ISIS routers.
 
   - To configure Router Capability with Segment Routing in `devices[i].isis.segment_routing.router_capability` use the following snippet.
 
@@ -83,7 +83,7 @@
   ```
 
   Note: MPLS headers in flows is not yet supported for UHD400.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: gNMI support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models-yang/pull/40)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: gNMI support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models-yang/pull/40)
 
   ```gNMI
       ports/port[name=*]/state/last-change
@@ -91,19 +91,19 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia-C & UHD400`</i></b>`:  Issue is fixed where DHCPv6 was intermittently crashing on stop.
+* <b><i>Ixia-C & UHD400</i></b>:  Issue is fixed where DHCPv6 was intermittently crashing on stop.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Non default virtual wiring configuration can result in ARP failures and traffic loss due to dropped packets on the rx path.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Non default virtual wiring configuration can result in ARP failures and traffic loss due to dropped packets on the rx path.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.20.0-8
 
@@ -128,19 +128,19 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where on running a test with a large number of `replay_updates` multiple times would cause a PCPU out of memory crash, resulting in `<i>`"context deadline"`</i>` error on `set_config` or `set_control_state.protocol.start`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where on running a test with a large number of `replay_updates` multiple times would cause a PCPU out of memory crash, resulting in `<i>`"context deadline"`</i>` error on `set_config` or `set_control_state.protocol.start`.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Non default virtual wiring configuration can result in ARP failures and traffic loss due to dropped packets on the rx path.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Non default virtual wiring configuration can result in ARP failures and traffic loss due to dropped packets on the rx path.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.20.0-6
 
@@ -165,7 +165,7 @@
 
 # Release Features(s)
 
-* `<b><i>`UHD400`</i></b>`: Support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models/pull/398)
+* <b><i>UHD400</i></b>: Support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models/pull/398)
   - This can be retrieved by accessing `port_metrics[i].last_change`.
 
     Note:
@@ -174,18 +174,18 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia-C & UHD400`</i></b>`: For certain asymmetric configurations of BGPv4/v6 `replay_updates` with a large number of updates, `set_config` or `set_control_state.protocol.start` would result in the protocol-engine container to get stuck and ultimately result in `context_deadline_exceeded` error and subsequent actions to not return a response. This issue is fixed.
+* <b><i>Ixia-C & UHD400</i></b>: For certain asymmetric configurations of BGPv4/v6 `replay_updates` with a large number of updates, `set_config` or `set_control_state.protocol.start` would result in the protocol-engine container to get stuck and ultimately result in `context_deadline_exceeded` error and subsequent actions to not return a response. This issue is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.19.0-18
 
@@ -210,7 +210,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for GUEv1 IPv4/v6 over UDP traffic.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for GUEv1 IPv4/v6 over UDP traffic.
 
   ```go
       f1Ip1 := f1.Packet().Add().Ipv4()
@@ -230,7 +230,7 @@
       })
       f1Ip2.Dst().SetValue("3.3.3.1")
   ```
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for MPLS Over UDP traffic.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for MPLS Over UDP traffic.
 
   ```go
       //udp Dst port as 6635
@@ -255,7 +255,7 @@
   ```
 
   Note: MPLS Over UDP with DTLS is not supported.
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Egress tracking is now supported for UDP, TCP(src/dst port fields), MPLS and IPv4/v6 inner header fields when encapsulated inside UDP/TCP.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Egress tracking is now supported for UDP, TCP(src/dst port fields), MPLS and IPv4/v6 inner header fields when encapsulated inside UDP/TCP.
 
   ```go
       //egress tracking
@@ -272,8 +272,8 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where configs with RSVP and multiple Loopback interfaces was throwing error similar to `"loopback p2.d2.lo and lo.d not compatible"` on `set_config`.
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where config with large number of route ranges was causing error similar to `"grpc: received message larger than max (114278270 vs. 104857600)"` on `set_config` is fixed by increasing the default gRPC receive buffer size to 1GB.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where configs with RSVP and multiple Loopback interfaces was throwing error similar to `"loopback p2.d2.lo and lo.d not compatible"` on `set_config`.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where config with large number of route ranges was causing error similar to `"grpc: received message larger than max (114278270 vs. 104857600)"` on `set_config` is fixed by increasing the default gRPC receive buffer size to 1GB.
   - Note that for Ixia Chassis & Appliances(Novus, AresOne) the buffer can now be controlled by setting the environment variable of `keng-controller` as given below.
     ```sh
         command:
@@ -281,20 +281,20 @@
             - "--grpc-max-msg-size"
             - "500"
     ```
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where `set_config` was throwing error if Traffic Engineering was enabled for ISIS interface, but Priority BandWidths were not explicitly specified.
-* `<b><i>`Ixia-C, UHD400`</i></b>`: Issue is fixed where DHCPv4 was intermittently crashing on stop.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where OSPFv2 Router Ids were not getting set properly when multiple OSPFv2 Routers were configured on a port.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `set_config` was throwing error if Traffic Engineering was enabled for ISIS interface, but Priority BandWidths were not explicitly specified.
+* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where DHCPv4 was intermittently crashing on stop.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where OSPFv2 Router Ids were not getting set properly when multiple OSPFv2 Routers were configured on a port.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.19.0-5
 
@@ -319,7 +319,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C`</i></b>`: Support added to send flows over DHCPv6 endpoints.
+* <b><i>Ixia-C</i></b>: Support added to send flows over DHCPv6 endpoints.
 
   ```go
     f1 := config.Flows().Add()
@@ -333,7 +333,7 @@
     …
     f2Ip.Dst().Auto().Dhcp()
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models/pull/398)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added to retrieve timestamp of the last link state change event of the test port. [More Details](https://github.com/open-traffic-generator/models/pull/398)
 
   - This can be retrieved by accessing `port_metrics[i].last_change`.
 
@@ -341,7 +341,7 @@
 
     - As mentioned in the `Known Issues`, ports being used in the tests must be rebooted once after upgrading to the latest version of `keng-layer23-hw-server`.
     - Test ports and DUT must be time synced to the same time source if link state change timestamps need to be co-related.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for RSVP over ISIS Simulated Topology.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for RSVP over ISIS Simulated Topology.
 
   ```go
     // Create RSVP neighbor on interface connected to DUT.
@@ -369,23 +369,23 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where `set_config` was failing with the error `"BgpIPRouteRange is missing"` when IPv4 routes with IPv6 next-hops (RFC5549) was configured.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where `get_states` on `bgpv4/6_prefixes` was returning error `"Error occurred while fetching bgp_prefix states:Length cannot be less than zero. (Parameter 'length')"` if the prefix contained `as_path` with multiple segments.
-* `<b><i>`Ixia-C, UHD400`</i></b>`: Issue is fixed where `get_states` for `isis` was returning IPv6 prefixes in upper case causing prefix match for IPv6 prefixes to fail in tests.
-* `<b><i>`Ixia-C`</i></b>`: Issue is fixed where `set_config` was failing with error `"Error occurred while setting Traffic config (Layer1 only) for user common:Error fetching stats for port port9: unsuccessful Response: Port 7 is not added"` when the traffic engine was deployed in multi nic mode (e.g. for lag setups with 8 ports).
-* `<b><i>`Ixia-C`</i></b>`: Issue is fixed where the traffic engine was crashing on deployment using a single cpu core (`--cpuset-cpus="0-1"`).
-* `<b><i>`VM Licensing`</i></b>`: Issue is fixed for users using the VM License Server where,  after a reboot, license-server VM serving multiple keng-controller(s) did not come up and tests running with those controller(s) started failing.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `set_config` was failing with the error `"BgpIPRouteRange is missing"` when IPv4 routes with IPv6 next-hops (RFC5549) was configured.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `get_states` on `bgpv4/6_prefixes` was returning error `"Error occurred while fetching bgp_prefix states:Length cannot be less than zero. (Parameter 'length')"` if the prefix contained `as_path` with multiple segments.
+* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where `get_states` for `isis` was returning IPv6 prefixes in upper case causing prefix match for IPv6 prefixes to fail in tests.
+* <b><i>Ixia-C</i></b>: Issue is fixed where `set_config` was failing with error `"Error occurred while setting Traffic config (Layer1 only) for user common:Error fetching stats for port port9: unsuccessful Response: Port 7 is not added"` when the traffic engine was deployed in multi nic mode (e.g. for lag setups with 8 ports).
+* <b><i>Ixia-C</i></b>: Issue is fixed where the traffic engine was crashing on deployment using a single cpu core (`--cpuset-cpus="0-1"`).
+* <b><i>VM Licensing</i></b>: Issue is fixed for users using the VM License Server where,  after a reboot, license-server VM serving multiple keng-controller(s) did not come up and tests running with those controller(s) started failing.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.17.0-9
 
@@ -410,7 +410,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for BGP/BGP+ over ISIS Simulated Topology. [More Details](https://github.com/open-traffic-generator/models/pull/327)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for BGP/BGP+ over ISIS Simulated Topology. [More Details](https://github.com/open-traffic-generator/models/pull/327)
 
   ```go
     loopback = simRtr.Ipv4Loopbacks().
@@ -430,7 +430,7 @@
   ```
 
   Note: For configuration of simulated topology please refer [here](https://github.com/open-traffic-generator/ixia-c/releases/tag/v1.16.0-2).
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for GRE header in traffic flows.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for GRE header in traffic flows.
 
   ```go
     flow1 := config.Flows().Add()
@@ -443,23 +443,23 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where fetching ISIS learned information using `get_states` would sometimes fail with a error `<i>`Cannot clear data while transfer is in progress - data would be inconsistent`</i>`.
-* `<b><i>`Ixia-C`</i></b>`: Issue is fixed where ARP/ND resolution was failing for LAG configurations with a mix of Loopback and connected interfaces.
-* `<b><i>`Ixia-C`</i></b>`: Issue is fixed where on fetching BGP/BGP+ learned prefix information using `get_states` would return an incorrect prefix in certain scenarios. This was more likely to happen for IPv6 prefixes.
-* `<b><i>`Ixia-C, UHD400`</i></b>`: Issue is fixed where if the DHCPv6 client type is configured as IANAPD, DHCPv6 Server `get_states` doesn't show IAPD addresses.
-* `<b><i>`UHD400`</i></b>`: Issue is fixed where Auto MAC resolution was not working properly for multinic scenarios such as LAG, resulting in flows being transmitted with dest MAC as 00:00:00:00:00:00 and DUT not forwarding these packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where fetching ISIS learned information using `get_states` would sometimes fail with a error `<i>`Cannot clear data while transfer is in progress - data would be inconsistent`</i>`.
+* <b><i>Ixia-C</i></b>: Issue is fixed where ARP/ND resolution was failing for LAG configurations with a mix of Loopback and connected interfaces.
+* <b><i>Ixia-C</i></b>: Issue is fixed where on fetching BGP/BGP+ learned prefix information using `get_states` would return an incorrect prefix in certain scenarios. This was more likely to happen for IPv6 prefixes.
+* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where if the DHCPv6 client type is configured as IANAPD, DHCPv6 Server `get_states` doesn't show IAPD addresses.
+* <b><i>UHD400</i></b>: Issue is fixed where Auto MAC resolution was not working properly for multinic scenarios such as LAG, resulting in flows being transmitted with dest MAC as 00:00:00:00:00:00 and DUT not forwarding these packets.
 
 #### Known Issues
 
-* `<b><i>`Ixia-C, UHD400`</i></b>`: When DHCPv6 Server is configured with multiple pools, The DHCPv6 clients are not accepting addresses from different pools.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia-C, UHD400</i></b>: When DHCPv6 Server is configured with multiple pools, The DHCPv6 clients are not accepting addresses from different pools.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.16.0-2
 
@@ -484,7 +484,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C, UHD400`</i></b>`: Support added for DHCPv6 Client and Server in control plane.
+* <b><i>Ixia-C, UHD400</i></b>: Support added for DHCPv6 Client and Server in control plane.
 
   - User will be the able to configure DHCPv6 Client and Server by the following code snippet.
 
@@ -510,7 +510,7 @@
         SetSize(10).
         SetPrefixLen(64) 
   ```
-* `<b><i>`UHD400`</i></b>`: Support of Egress Flow tracking for multiple flows is added any location of supported fields upto 10 bits.
+* <b><i>UHD400</i></b>: Support of Egress Flow tracking for multiple flows is added any location of supported fields upto 10 bits.
 
   - Supported fields are `ethernet.src/dst`, `vlan.id`, `vlan.priority`, `ipv4.src/dst`, `ipv4.precedence`, `ipv6.src/dst`, `ipv6.traffic_class`.
 
@@ -522,7 +522,7 @@
     ipv4Tag.SetOffset(22)
     ipv4Tag.SetLength(10)
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for ISIS Simulated Topology. [More Details](https://github.com/open-traffic-generator/models/pull/327)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for ISIS Simulated Topology. [More Details](https://github.com/open-traffic-generator/models/pull/327)
 
   - Configuration for ISIS attributes for newly introduced simulated routers are identical to configuration for currently supported directly connected emulated routers.
   - `devices[i].ethernets[j].connection.simulated_link` is introduced to create a simulated ethernet connection to build a Simulated Topology.
@@ -540,27 +540,27 @@
   ```
 
   Note: `get_metrics/states` APIs are only applicable for the connected emulated routers and not for the simulated routers.
-* `<b><i>`Ixia-C, UHD400, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for fetching `lldp_neighbors[i].custom_tlvs[j].information` as hex bytes using `get_states` API. [More details](https://github.com/open-traffic-generator/models/pull/392)
+* <b><i>Ixia-C, UHD400, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for fetching `lldp_neighbors[i].custom_tlvs[j].information` as hex bytes using `get_states` API. [More details](https://github.com/open-traffic-generator/models/pull/392)
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where for certain scenarios such as retrieving large control capture buffer or fetching `get_metrics/states` for large amount of data results in errors similar to `<i>`"grpc: received message larger than max (7934807 vs. 4194304)"`</i>`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where for certain scenarios such as retrieving large control capture buffer or fetching `get_metrics/states` for large amount of data results in errors similar to `<i>`"grpc: received message larger than max (7934807 vs. 4194304)"`</i>`.
 
   - For such scenarios note that the grpc receive buffer on the client should also be locally increased if necessary from default value of 4 MB.
-* `<b><i>`Ixia-C`</i></b>`: Issue is fixed for LLDP where, when multiple custom tlvs are configured to be sent, sometimes the bytes in the `information` field in the outgoing LLDP PDUs were corrupted.
+* <b><i>Ixia-C</i></b>: Issue is fixed for LLDP where, when multiple custom tlvs are configured to be sent, sometimes the bytes in the `information` field in the outgoing LLDP PDUs were corrupted.
 
 #### Known Issues
 
-* `<b><i>`Ixia-C, UHD400`</i></b>`: When the DHCPv6 client type is configured as IANAPD, DHCPv6 Server `get_states` doesn't show IAPD addresses
-* `<b><i>`Ixia-C, UHD400`</i></b>`: When DHCPv6 Server is configured with multiple pools, The DHCPv6 clients are not accepting addresses from different pools.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia-C, UHD400</i></b>: When the DHCPv6 client type is configured as IANAPD, DHCPv6 Server `get_states` doesn't show IAPD addresses
+* <b><i>Ixia-C, UHD400</i></b>: When DHCPv6 Server is configured with multiple pools, The DHCPv6 clients are not accepting addresses from different pools.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.14.0-1
 
@@ -585,7 +585,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for OSPFv2. [details](https://github.com/open-traffic-generator/models/pull/384)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for OSPFv2. [details](https://github.com/open-traffic-generator/models/pull/384)
 
   ```go
     ospfRouter := device1.Ospfv2().
@@ -625,7 +625,7 @@
     reqOspf := req.Ospfv2()
     reqOspf.SetRouterNames(routerNames)
   ```
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added to update `flows[i].size` and `flows[i].rate` on the fly.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added to update `flows[i].size` and `flows[i].rate` on the fly.
 
   ```go
     
@@ -646,18 +646,18 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia-C`</i></b>`: Issue where flows containing `ipv4/v6` header without `src/dst` specified was returning error on `set_config` `<i>`"Error flow [ flow-name ] has AUTO IPv4 src address and Tx device [ flow-end-point ] with no dhcpv4 interface"`</i>` is fixed.
+* <b><i>Ixia-C</i></b>: Issue where flows containing `ipv4/v6` header without `src/dst` specified was returning error on `set_config` `<i>`"Error flow [ flow-name ] has AUTO IPv4 src address and Tx device [ flow-end-point ] with no dhcpv4 interface"`</i>` is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values. If larger set of values are required for a field which are random, please use `random` instead of `values`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.13.0-9
 
@@ -682,8 +682,8 @@
 
 # Release Features(s)
 
-* `<b><i>`Keng-Operator`</i></b>`: go version is upgraded to use `v1.23` along with security updates.
-* `<b><i>`Ixia-C`</i></b>`: Support added to send flows over DHCPv4 endpoints.
+* <b><i>Keng-Operator</i></b>: go version is upgraded to use `v1.23` along with security updates.
+* <b><i>Ixia-C</i></b>: Support added to send flows over DHCPv4 endpoints.
 
   ```go
     f1 := config.Flows().Add()
@@ -697,7 +697,7 @@
     …
     f2Ip.Dst().Auto().Dhcp()
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for LLDP.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for LLDP.
 
   ```go
     // LLDP configuration.
@@ -711,20 +711,20 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: There was degradation in time taken for starting large number of  BGP/BGP+ peers on one port. This issue is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: There was an exception being returned from `set_config` on creating multiple loopbacks in a device and configuring protocols on top of that. This issue is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If multiple routes are received by a BGP/BGP+ peer with some having MED/Local Preference and some not having MED/Local Preference, in `get_states` MED/Local Preference were not being correctly returned. This issue is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: There was degradation in time taken for starting large number of  BGP/BGP+ peers on one port. This issue is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: There was an exception being returned from `set_config` on creating multiple loopbacks in a device and configuring protocols on top of that. This issue is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If multiple routes are received by a BGP/BGP+ peer with some having MED/Local Preference and some not having MED/Local Preference, in `get_states` MED/Local Preference were not being correctly returned. This issue is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.13.0-1
 
@@ -749,13 +749,13 @@
 
 # Release Features(s)
 
-* `<b><i>`gosnappi`</i></b>`: `gosnappi` is updated to work with `go` >= `v1.21`.
+* <b><i>gosnappi</i></b>: `gosnappi` is updated to work with `go` >= `v1.21`.
 
   - Older versions of `go` are no longer supported.
     - When older version of `go` is installed on the server, User will be liable to get errors like `"slices: package slices is not in GOROOT (/root/.local/go/src/slices)"`.
 
   Note: `keng-controller` and `otg-gnmi-server` are upgraded to use `go` `v1.23`.
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: Support added for BGP GracefulRestart Notification Enhancement based on [RFC8538](https://datatracker.ietf.org/doc/html/rfc8538).
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Support added for BGP GracefulRestart Notification Enhancement based on [RFC8538](https://datatracker.ietf.org/doc/html/rfc8538).
 
   - To enable advertisement of Notification support in GracefulRestart capability:
 
@@ -782,7 +782,7 @@
             gosnappi.DeviceBgpCeaseErrorSubcode.OUT_OF_RESOURCES_CODE6_SUBCODE8)
       }
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added to update traffic rate on the fly.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added to update traffic rate on the fly.
 
   ```go
     req := gosnappi.NewConfigUpdate()
@@ -796,18 +796,18 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`UHD400`</i></b>`: Issue where `flows[i].packet.ipv6.dst.increment` was not being reflected in transmitted packets when two or more flows were configured, is now fixed.
+* <b><i>UHD400</i></b>: Issue where `flows[i].packet.ipv6.dst.increment` was not being reflected in transmitted packets when two or more flows were configured, is now fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.12.0-1
 
@@ -832,7 +832,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for DHCPv6 client interfaces to be used as source/destination for device traffic.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for DHCPv6 client interfaces to be used as source/destination for device traffic.
 
   - In this the learned IPv6 address from the DHCPv6 server is automatically populated in `ipv6.src/dst` if the choice is set to auto.dhcp.
 
@@ -853,7 +853,7 @@
   ```
 
   Note: For DHCPv6 client to DHCPv6 server each flow supports only one source endpoint in tx_rx.device.tx_names, hence a separate flow has to be configured for each DHCPv6 client if packet[i].ipv6.src.auto.dhcp is set.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for `devices[i].ethernets[j].dhcpv6_interfaces[k].options/options_request` and `devices[i].dhcp_server.ipv6_interfaces[j].options`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `devices[i].ethernets[j].dhcpv6_interfaces[k].options/options_request` and `devices[i].dhcp_server.ipv6_interfaces[j].options`.
 
   ```go
         // Configure a DHCPv6 Client
@@ -884,7 +884,7 @@
         dhcpv6Server.Options().BootfileUrl().SetUrl("URL").AssociatedDhcpMessages().All()
           dhcpv6Server.Options().Dns().SetPrimary("8::8").SecondaryDns().Add().SetIp("9::9")
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for `devices[i].dhcp_server.ipv6_interfaces[j].leases[k].ia_type.choice.iapd/ianapd`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `devices[i].dhcp_server.ipv6_interfaces[j].leases[k].ia_type.choice.iapd/ianapd`.
 
   ```go
         // Configure a DHCPv6 Server
@@ -901,7 +901,7 @@
           SetPrefixStep(1).
           SetPrefixSize(10)
   ```
-* `<b><i>`Ixia-c`</i></b>`: Support added for sending Organizational tlvs in LLDP PDUs.
+* <b><i>Ixia-c</i></b>: Support added for sending Organizational tlvs in LLDP PDUs.
 
   ```go
     lldp := config.Lldp().Items()[0]
@@ -915,14 +915,14 @@
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.8.0-1
 
@@ -947,7 +947,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for DHCPv6 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/369)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for DHCPv6 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/369)
 
   - User will be the able to configure DHCPv6 Client and Server by the following code snippet.
 
@@ -975,7 +975,7 @@
   ```
 
   Note: Support for `devices[i].dhcp_server.ipv6_interfaces[j].options` and `devices[i].dhcp_server.ipv6_interfaces[j].leases[k].ia_type.choice.iapd/ianapd` will be available in the subsequent sprints.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: gNMI support added to fetch control plane metics and states of DHCPv6 [Client](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6client.txt) and [Server](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6server.txt).
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support added to fetch control plane metics and states of DHCPv6 [Client](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6client.txt) and [Server](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv6server.txt).
 
   - Support added for DHCPv6 Client/Server metrics using following gNMI paths.
 
@@ -999,14 +999,14 @@
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.7.2-1
 
@@ -1031,17 +1031,17 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for new traffic applying infrastructure.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for new traffic applying infrastructure.
 
-  - Instead of `<b><i>`"Failed to apply flow configurations due to: Please contact Ixia Support."`</i></b>` ,
-    - In scenarios where underlying hardware module doesn't have the resources to apply the flow a proper error message such as `<b><i>`"Failed to apply flow configurations due to: Error  occurred for flow 'ipv6flowlabel': The Tx Ports of the flow do not support the combinations of fields and size of value lists configured. Please reduce the size of the value lists or/and fields with value lists configured or use a load module ( or variant) with more resources."`</i></b>` Based on this either test can be modified or appropriate load modules can be used for the test.
+  - Instead of <b><i>"Failed to apply flow configurations due to: Please contact Ixia Support."</i></b> ,
+    - In scenarios where underlying hardware module doesn't have the resources to apply the flow a proper error message such as <b><i>"Failed to apply flow configurations due to: Error  occurred for flow 'ipv6flowlabel': The Tx Ports of the flow do not support the combinations of fields and size of value lists configured. Please reduce the size of the value lists or/and fields with value lists configured or use a load module ( or variant) with more resources."</i></b> Based on this either test can be modified or appropriate load modules can be used for the test.
     - There were certain scenarios with large `values` in packet fields in the flows which were failing with above error inspite of being within the modules capabilities and can now be applied without any error.
-  - Earlier configuration with multiples flows with large `values` in packet fields would fail with error as `<b><i>`"Failed to apply flow configurations due to: Traffic configuration exceeds port background memory size."`</i></b>`. This issue is also fixed with the upgrade to new traffic applying infrastructure.
+  - Earlier configuration with multiples flows with large `values` in packet fields would fail with error as <b><i>"Failed to apply flow configurations due to: Traffic configuration exceeds port background memory size."</i></b>. This issue is also fixed with the upgrade to new traffic applying infrastructure.
   - Issue where  correct `values`/`increment`/`decrement` for `ethernet.src/dst` was not being transmitted on the wire is fixed.
   - In this new infrastructure, traffic will be directly applied to the hardware ports resulting in better performance on `set_transmit_state`.
-* `<b><i>`gosnappi`</i></b>`: Client side file organization of the `gosnappi` sdk is modified to allow for better auto-completion support when writing test programs.
+* <b><i>gosnappi</i></b>: Client side file organization of the `gosnappi` sdk is modified to allow for better auto-completion support when writing test programs.
   Note: Client must be upgraded to gosnappi [v1.7.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.7.2).
-* `<b><i>`Ixia-C, UHD400`</i></b>`: Support added for DHCPv4 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/371)
+* <b><i>Ixia-C, UHD400</i></b>: Support added for DHCPv4 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/371)
 
   - User will be the able to configure DHCPv4 Client and Server by the following code snippet. More comprehensive [B2B example](https://github.com/open-traffic-generator/featureprofiles/blob/dev-dhcp/feature/dhcp/dhcpv4_client_server_b2b_test.go)
 
@@ -1068,7 +1068,7 @@
         SetCount(1).
         SetPrefixLength(16).Options().SetRouterAddress("100.1.0.1").SetEchoRelayWithTlv82(true)
   ```
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: Support added for `random` in following flow fields. [details](https://github.com/open-traffic-generator/models/pull/380)
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Support added for `random` in following flow fields. [details](https://github.com/open-traffic-generator/models/pull/380)
 
   - `ipv4.src/dst`
   - `ipv6.flow_label`
@@ -1081,8 +1081,8 @@
         ipv6.FlowLabel().Random().SetMin(1).SetMax(1048574).SetCount(250000).SetSeed(1)
       ```
 
-    Note: For `<b><i>`UHD400`</i></b>` an intermittent issue is present on using `random`, where `rx` fields of `flow_metrics` can return zero values.
-* `<b><i>`Ixia-C`</i></b>`: New environment variable `OPT_ADAPTIVE_CPU_USAGE=""` is introduced for docker based ixia-c-traffic-engine setups which enables adaptive CPU usage on the `rx` port for a flow. By default a non adaptive receiver is used when the `rx` CPU core usage reaches up to 100%. The adaptive receiver reduces `rx` CPU core usage from 100% to less than 5% in idle mode. To disable the adaptive receiver please remove this environment variable from docker run command. It is recommended to also pin the `rx` to specific cpu cores using the `ARG_CORE_LIST` environment variable when enabling `OPT_ADAPTIVE_CPU_USAGE`.
+    Note: For <b><i>UHD400</i></b> an intermittent issue is present on using `random`, where `rx` fields of `flow_metrics` can return zero values.
+* <b><i>Ixia-C</i></b>: New environment variable `OPT_ADAPTIVE_CPU_USAGE=""` is introduced for docker based ixia-c-traffic-engine setups which enables adaptive CPU usage on the `rx` port for a flow. By default a non adaptive receiver is used when the `rx` CPU core usage reaches up to 100%. The adaptive receiver reduces `rx` CPU core usage from 100% to less than 5% in idle mode. To disable the adaptive receiver please remove this environment variable from docker run command. It is recommended to also pin the `rx` to specific cpu cores using the `ARG_CORE_LIST` environment variable when enabling `OPT_ADAPTIVE_CPU_USAGE`.
 
   - Example docker usage:
 
@@ -1099,24 +1099,24 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where `flow_metrics` were not being returned within timeout resulting in `<b><i>`"Could not send message, error: unexpected queue Get(1) error: queue: disposed" and "Stats may be inconsistent"`</i></b>` error is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where BGP/BGP+ learned information containing `origin` of type `incomplete` was not being returned properly by `get_states` is fixed. This would result in deserialization error while accessing BGP/BGP+ learned information using `otg-gNMI-server`.
-* `<b><i>`Ixia Chassis & Appliances(AresOne)`</i></b>`: Issue where `port_metrics` were not available when load module of type `1 x 400G AresOne-M` with transceiver of type `800GE LAN QSFP-DD` was being used, is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where `set_control_state.protocol.route.state=withdraw/advertise` is triggered with an empty `names` field, all configured route ranges were being not withdrawn or advertised, is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where on `set_control_state.protocol.all.state=start`, a `l1` `up/down` event was triggered even when `l1` state was already `up`, is now fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where `flow_metrics` were not being returned within timeout resulting in <b><i>"Could not send message, error: unexpected queue Get(1) error: queue: disposed" and "Stats may be inconsistent"</i></b> error is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where BGP/BGP+ learned information containing `origin` of type `incomplete` was not being returned properly by `get_states` is fixed. This would result in deserialization error while accessing BGP/BGP+ learned information using `otg-gNMI-server`.
+* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where `port_metrics` were not available when load module of type `1 x 400G AresOne-M` with transceiver of type `800GE LAN QSFP-DD` was being used, is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where `set_control_state.protocol.route.state=withdraw/advertise` is triggered with an empty `names` field, all configured route ranges were being not withdrawn or advertised, is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where on `set_control_state.protocol.all.state=start`, a `l1` `up/down` event was triggered even when `l1` state was already `up`, is now fixed.
 
   Note: If port is in `down` state, it has to be brought back to `up` state before starting a test.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.6.2-13
 
@@ -1141,7 +1141,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: gNMI support added for `first-timestamp` and `last-timestamp` in flow metrics. [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-flow.txt)
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support added for `first-timestamp` and `last-timestamp` in flow metrics. [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-flow.txt)
 
   - User needs to set `flows[i].metrics.timestamps=true` to fetch these new fields.
 
@@ -1159,19 +1159,19 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where `devices[i].rsvp.ipv4_interfaces[j].summary_refresh_interval` was not setting correctly, is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where destination mac address was not getting resolved properly for traffic over ISIS IPv6 routes, is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where `devices[i].rsvp.ipv4_interfaces[j].summary_refresh_interval` was not setting correctly, is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where destination mac address was not getting resolved properly for traffic over ISIS IPv6 routes, is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.6.2-1
 
@@ -1196,7 +1196,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for DHCPv4 client interfaces to be used as source/destination for device traffic.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for DHCPv4 client interfaces to be used as source/destination for device traffic.
 
   - In this the learned IPv4 address from the DHCPv4 server is automatically populated in `ipv4.src/dst` if the choice is set to `auto.dhcp`.
 
@@ -1215,7 +1215,7 @@
   ```
 
   Note: For DHCPv4 client to DHCPv4 server each flow supports only one source endpoint in `tx_rx.device.tx_names`, hence a separate flow has to be configured for each DHCPv4 client if `packet[i].ipv4.src.auto.dhcp` is set.
-* `<b><i>`Ixia-C`</i></b>`: Support added for multiple address groups in BGPv4/v6 routes.
+* <b><i>Ixia-C</i></b>: Support added for multiple address groups in BGPv4/v6 routes.
 
   ```go
     route = peer.V4Routes().Add().
@@ -1231,22 +1231,22 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where if a BGPv4/v6 prefix with extended-community or community attributes was updated via a BGP Update with the extended-community or community attribute deleted without a Route Withdraw in between , the subsequent get_states call on the bgp prefixes would incorrectly continue to show the extended-community or community attributes learned via the previous received Update is fixed.
-* `<b><i>`Ixia-C`</i></b>`: Issue where If a test was setup such that only test port would initiate ARP/ND and time taken to configure the soft-DUT connected to the test port was taking extended time such that it would not respond to ARP/ND requests within 10s, ARP/ND procedures would fail resulting in test failures in ARP/ND verification step is fixed.
-* `<b><i>`Ixia-C`</i></b>`: Issue where if a IPv6 address on the emulated interface was configured in non-shortest format e.g.  `2001:0db8::192:0:2:2` instead of `2001:db8::192:0:2:2` (notice the redundant leading 0 in :0db8), the test port would not initiate IPv6 Neighbor Discovery for corresponding IPv6 gateway result in Neighbor Discovery failure is fixed.
-* `<b><i>`Keng-Operator`</i></b>`: Some fixes are provided to handle security warnings raised by k8s security scanning tool such as `<i>'container "manager" in Deployment "ixiatg-op-controller-manager" does not set readOnlyRootFilesystem: true in its securityContext. This setting is encouraged because it can prevent attackers from writing malicious binaries into runnable locations in the container filesystem.'``</i>`.
-* `<b><i>`UHD400`</i></b>`: Issue is fixed where `frames_rx` is reported twice of `frames_tx` in `flow_metrics` is fixed.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where if a BGPv4/v6 prefix with extended-community or community attributes was updated via a BGP Update with the extended-community or community attribute deleted without a Route Withdraw in between , the subsequent get_states call on the bgp prefixes would incorrectly continue to show the extended-community or community attributes learned via the previous received Update is fixed.
+* <b><i>Ixia-C</i></b>: Issue where If a test was setup such that only test port would initiate ARP/ND and time taken to configure the soft-DUT connected to the test port was taking extended time such that it would not respond to ARP/ND requests within 10s, ARP/ND procedures would fail resulting in test failures in ARP/ND verification step is fixed.
+* <b><i>Ixia-C</i></b>: Issue where if a IPv6 address on the emulated interface was configured in non-shortest format e.g.  `2001:0db8::192:0:2:2` instead of `2001:db8::192:0:2:2` (notice the redundant leading 0 in :0db8), the test port would not initiate IPv6 Neighbor Discovery for corresponding IPv6 gateway result in Neighbor Discovery failure is fixed.
+* <b><i>Keng-Operator</i></b>: Some fixes are provided to handle security warnings raised by k8s security scanning tool such as `<i>'container "manager" in Deployment "ixiatg-op-controller-manager" does not set readOnlyRootFilesystem: true in its securityContext. This setting is encouraged because it can prevent attackers from writing malicious binaries into runnable locations in the container filesystem.'``</i>`.
+* <b><i>UHD400</i></b>: Issue is fixed where `frames_rx` is reported twice of `frames_tx` in `flow_metrics` is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.5.1-12
 
@@ -1271,7 +1271,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: gNMI support for `GetStates` of DHCP Server added.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support for `GetStates` of DHCP Server added.
 
   - [DHCPv4 Server](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv4server.txt)
 
@@ -1279,7 +1279,7 @@
     # States information
     dhcpv4-servers/dhcpv4-servers[name=serverName]/state/leases
   ```
-* `<b><i>`UHD400`</i></b>`: Value-list support added for IPv4 `dscp` field.
+* <b><i>UHD400</i></b>: Value-list support added for IPv4 `dscp` field.
 
   ```go
     flowEth := flow.Packet().Add().Ethernet()
@@ -1292,20 +1292,20 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`Ixia-C`</i></b>`: Issue where withdrawing BGP/BGP+ routes using `set_control_state.protocol.route.withdraw` was failing in multi-nic topology is fixed.
-* `<b><i>`Ixia Chassis & Appliances(AresOne)`</i></b>`: Issue where after running BGP/BGP+ tests on multi-nic ports would result intermittently in `context deadline` errors for subsequent tests/sub tests is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where after running tests involving continuous connect/reconnect of test ports for long duration (e.g. 2 - 3 hrs) would result in intermittent `context deadline` errors for a bunch of consecutive tests is fixed.
+* <b><i>Ixia-C</i></b>: Issue where withdrawing BGP/BGP+ routes using `set_control_state.protocol.route.withdraw` was failing in multi-nic topology is fixed.
+* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where after running BGP/BGP+ tests on multi-nic ports would result intermittently in `context deadline` errors for subsequent tests/sub tests is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where after running tests involving continuous connect/reconnect of test ports for long duration (e.g. 2 - 3 hrs) would result in intermittent `context deadline` errors for a bunch of consecutive tests is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.5.1-3
 
@@ -1330,7 +1330,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for DHCPv4 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/371)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for DHCPv4 Client and Server in control plane. [details](https://github.com/open-traffic-generator/models/pull/371)
 
   - User will be the able to configure DHCPv4 Client and Server by the following code snippet. More comprehensive [B2B example](https://github.com/open-traffic-generator/featureprofiles/blob/dev-dhcp/feature/dhcp/dhcpv4_client_server_b2b_test.go)
 
@@ -1357,7 +1357,7 @@
           SetCount(1).
           SetPrefixLength(16).Options().SetRouterAddress("100.1.0.1").SetEchoRelayWithTlv82(true)
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: gNMI support added to fetch DHCPv4 Client and Server statistics.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support added to fetch DHCPv4 Client and Server statistics.
 
   - [DHCPv4 Client](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-dhcpv4client.txt)
 
@@ -1389,19 +1389,19 @@
 
 ### Bug Fix(s)
 
-* `<b><i>`UHD400`</i></b>`: An issue has been fixed where, Despite proper ARP resolution, packets of `flows` of type `device` might not get forwarded by the DUT, resulting in 0 `rx` statistics.
+* <b><i>UHD400</i></b>: An issue has been fixed where, Despite proper ARP resolution, packets of `flows` of type `device` might not get forwarded by the DUT, resulting in 0 `rx` statistics.
   This issue is visible for UHD400/ixia-c releases up to `v1.5.0-1`.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: `set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `set_control_state.protocol.all.start` can get stuck till the time all DHPCv4 clients receive the leased IPv4 addresses from the DHCPv4 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.5.0-1
 
@@ -1426,23 +1426,23 @@
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia-C`</i></b>`: An issue has been detected whereby some internal certificates used in the ixia-c containerized solution has expired. `<b><i>`This is fixed in this patch build.`</i></b>`
+* <b><i>Ixia-C</i></b>: An issue has been detected whereby some internal certificates used in the ixia-c containerized solution has expired. <b><i>This is fixed in this patch build.</i></b>
 
   The most common manifestation of this is that despite proper ARP resolution, Traffic Start in tests will fail in combined protocol-engine/traffic-engine setups with `Error occurred while starting flows: [error starting tx port <portname>: unsuccessful Response: MAC address resolution failed for IP: <ip address>  ]`.
 
-  `<b><i>`This issue should not affect standalone traffic-engine setups using 'port' or raw traffic flows.`</i></b>`
+  <b><i>This issue should not affect standalone traffic-engine setups using 'port' or raw traffic flows.</i></b>
 
   This issue is visible for ixia-c community releases starting from `v0.1.0-3` to `v1.4.0-15`.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.4.0-15
 
@@ -1467,19 +1467,19 @@
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: Issue is fixed where metric columns were being returned that were not part of the requested metric columns in the `get_metrics` request for `port`/`flow`.
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>` Issue where BGP learned information intermittently fails to correctly fetch information from peers across multiple test ports is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where `flow_metrics[i].timestamps.first_timestamp_ns/last_timestamp_ns` is being returned with wrong values is fixed.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Issue is fixed where metric columns were being returned that were not part of the requested metric columns in the `get_metrics` request for `port`/`flow`.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b> Issue where BGP learned information intermittently fails to correctly fetch information from peers across multiple test ports is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where `flow_metrics[i].timestamps.first_timestamp_ns/last_timestamp_ns` is being returned with wrong values is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`UHD400`</i></b>`: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>UHD400</i></b>: Packets will not be transmitted if `flows[i].rate.pps` is less than 50.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.4.0-1
 
@@ -1504,7 +1504,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: Support added for fetching information about received extended community attributes in `get_states` for `bgp_prefixes`.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Support added for fetching information about received extended community attributes in `get_states` for `bgp_prefixes`.
 
   - OTG support [details](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/master/artifacts/openapi.yaml&nocors#tag/Monitor/operation/get_states). For more details and example please refer [here](https://github.com/open-traffic-generator/models/pull/374).
 
@@ -1520,7 +1520,7 @@
     ```
 
   Note: To store the received routes, please set `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].learned_information_filter.unicast_ipv4/v6_prefix=true`.
-* `<b><i>`OTG-gNMI-Server`</i></b>`: Support added for get software and sdk version of keng-controller. [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-platform.txt)
+* <b><i>OTG-gNMI-Server</i></b>: Support added for get software and sdk version of keng-controller. [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-platform.txt)
 
   * gNMI query path
     ```
@@ -1529,19 +1529,19 @@
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: Issue is fixed where metric columns were being returned that were not part of the requested metric columns in the `get_metrics` request for `bgpv4`/`bgpv6`/`isis`/`rsvp`/`lag`/`lacp`.
-* `<b><i>`Ixia-C`</i></b>`: Issue is fixed where extended communities of type Transitive IPv4 were being sent with reversed bytes on the wire is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where storage of learned LSPs for ISIS was always enabled is now fixed. User can enable it by setting `devices[i].isis.basic.learned_lsp_filter=true`.
-* `<b><i>`UHD400`</i></b>`: Issue where tx and rx statistics returned erroneously for multiple runs on same traffic config is now fixed.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Issue is fixed where metric columns were being returned that were not part of the requested metric columns in the `get_metrics` request for `bgpv4`/`bgpv6`/`isis`/`rsvp`/`lag`/`lacp`.
+* <b><i>Ixia-C</i></b>: Issue is fixed where extended communities of type Transitive IPv4 were being sent with reversed bytes on the wire is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where storage of learned LSPs for ISIS was always enabled is now fixed. User can enable it by setting `devices[i].isis.basic.learned_lsp_filter=true`.
+* <b><i>UHD400</i></b>: Issue where tx and rx statistics returned erroneously for multiple runs on same traffic config is now fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.3.0-2
 
@@ -1566,7 +1566,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: Support added for advertising Segment Routing Traffic Engineering(SR-TE) policy using `replay_updates`.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Support added for advertising Segment Routing Traffic Engineering(SR-TE) policy using `replay_updates`.
   ```go
     peer.Capability().SetIpv4SrTePolicy(true) 
     updateReplayBlock := peer.ReplayUpdates().StructuredPdus()
@@ -1602,13 +1602,13 @@
       SetLabel(10000)
     //More segments and segments lists
   ```
-* `<b><i>`Ixia-C `</i></b>`: Support added for zero and custom checksum in `TCP/UDP/ICMPv4/v6/IPv4/GRE` packet templates in flows.
+* <b><i>Ixia-C </i></b>: Support added for zero and custom checksum in `TCP/UDP/ICMPv4/v6/IPv4/GRE` packet templates in flows.
   ```go
     udp := cfg.Flows().Add().Packet().Add().Udp()
     udp.Checksum().SetCustom(0)
   ```
-* `<b><i>`Ixia-C `</i></b>`: DPDK version upgraded from v21.11 to v23.11 for standalone `ixia-c-traffic-engine` container based deployment in DPDK mode.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for IPv4/v6 route ranges with varying number of `communities`/`extended_communities` for BGP/BGP+ peers.
+* <b><i>Ixia-C </i></b>: DPDK version upgraded from v21.11 to v23.11 for standalone `ixia-c-traffic-engine` container based deployment in DPDK mode.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for IPv4/v6 route ranges with varying number of `communities`/`extended_communities` for BGP/BGP+ peers.
   ```go
     route.Communities().Add().
       SetAsNumber(65534).
@@ -1618,19 +1618,19 @@
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where sometimes fetching ISIS `get_states` would result in `Error occurred while fetching isis lsps states:Index was outside the bounds of the array` exception.
-* `<b><i>`Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400`</i></b>`: Issue is fixed where sometimes misleading warnings were being returned from `set_config` when running consecutive `replay_updates` tests with different types of BGP peers configured(iBGP/eBGP).
-* `<b><i>`Ixia-C `</i></b>`: Memory leak fixed for BGPv4/v6 peers with large number of routes configured.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where sometimes fetching ISIS `get_states` would result in `Error occurred while fetching isis lsps states:Index was outside the bounds of the array` exception.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Issue is fixed where sometimes misleading warnings were being returned from `set_config` when running consecutive `replay_updates` tests with different types of BGP peers configured(iBGP/eBGP).
+* <b><i>Ixia-C </i></b>: Memory leak fixed for BGPv4/v6 peers with large number of routes configured.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`UHD400`</i></b>`: Port statistics are not getting cleared on `SetConfig`.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.1.0-21
 
@@ -1655,7 +1655,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus + AresOne)`</i></b>`: Support added for BGP/BGP+ update replay. This feature can be used to configure the BGP/BGP+ peer to send series of updates containing advertised or withdrawn IPv4/v6 unicast routes.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Support added for BGP/BGP+ update replay. This feature can be used to configure the BGP/BGP+ peer to send series of updates containing advertised or withdrawn IPv4/v6 unicast routes.
 
   ```go
     updateReplayBlock := bgpPeer.ReplayUpdates().StructuredPdus()
@@ -1676,25 +1676,25 @@
     ipv4_unicast_routes_adv.Add().SetAddress("10.10.10.10").SetPrefix(32)
     ...  
   ```
-* `<b><i>`UHD400`</i></b>`: Support added for setting ports state using `set_control_state.port.link.state=up/down`.
-* `<b><i>`snappi`</i></b>`: support added for python `v3.12`.
+* <b><i>UHD400</i></b>: Support added for setting ports state using `set_control_state.port.link.state=up/down`.
+* <b><i>snappi</i></b>: support added for python `v3.12`.
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia-C`</i></b>`: Issue where BGP/BGP+ sessions were intermittently flapping for large number of routes such as 1 million is fixed.
-* `<b><i>`Ixia-C`</i></b>`: Issue where if `priority` bits were set in VLAN header for incoming ISIS PDUs session was not coming up is fixed.
-* `<b><i>`Ixia Chassis & Appliances(AresOne)`</i></b>`: Issue where port stats were not coming for port type `TA1-KD08D` of AresOne is fixed.
-* `<b><i>`UHD400`</i></b>`: Intermittent issue where `rx` counters were not being incremented for flow stats is fixed.
+* <b><i>Ixia-C</i></b>: Issue where BGP/BGP+ sessions were intermittently flapping for large number of routes such as 1 million is fixed.
+* <b><i>Ixia-C</i></b>: Issue where if `priority` bits were set in VLAN header for incoming ISIS PDUs session was not coming up is fixed.
+* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where port stats were not coming for port type `TA1-KD08D` of AresOne is fixed.
+* <b><i>UHD400</i></b>: Intermittent issue where `rx` counters were not being incremented for flow stats is fixed.
 
 #### Known Issues
 
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`UHD400`</i></b>`: Port statistics are not getting cleared on `SetConfig`.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.1.0-12
 
@@ -1719,22 +1719,22 @@
 
 # Release Features(s)
 
-* `<b><i>`UHD400`</i></b>`: Support for LAG and LACP protocol is added.
+* <b><i>UHD400</i></b>: Support for LAG and LACP protocol is added.
 
   - LACP parameters are supported as per LAG/LACP section in OTG model `<a href="https://redocly.github.io/redoc/?url=https://github.com/open-traffic-generator/models/releases/download/v1.1.0/openapi.yaml"><img alt="Release v1.1.0" src="https://img.shields.io/badge/release-v1.1.0-brightgreen">``</a>`
   - Per Port LACP Metrics can be retrieved using GNMI as per otg-models-yang `<a href="https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-lacp.txt">`details`</a>`.
   - Per LAG Metrics can be retrieved using GNMI as per otg-models-yang `<a href="https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-lag.txt">`details`</a>`.
-* `<b><i>`UHD400`</i></b>`: Support for data traffic over LAG is added for `rx` ports.
+* <b><i>UHD400</i></b>: Support for data traffic over LAG is added for `rx` ports.
 
 #### Known Issues
 
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`UHD400`</i></b>`: Port statistics are not getting cleared on `SetConfig`.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.1.0-10
 
@@ -1759,7 +1759,7 @@
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C & UHD400`</i></b>`: Support added for BGP/BGP+ update replay. This feature can be used to configure the BGP/BGP+ peer to send series of updates containing advertised or withdrawn IPv4/v6 unicast routes.
+* <b><i>Ixia-C & UHD400</i></b>: Support added for BGP/BGP+ update replay. This feature can be used to configure the BGP/BGP+ peer to send series of updates containing advertised or withdrawn IPv4/v6 unicast routes.
 
   ```go
     updateReplayBlock := bgpPeer.ReplayUpdates().StructuredPdus()
@@ -1796,7 +1796,7 @@
         adv1 := updateReplayBlock.Updates().Add()
         adv1.SetUpdateBytes("400101004002004005040")
   ```
-* `<b><i>`Ixia-C`</i></b>`: Value-list support added for IPv4 `dscp` field.
+* <b><i>Ixia-C</i></b>: Value-list support added for IPv4 `dscp` field.
 
   ```go
     flowEth := flow.Packet().Add().Ethernet()
@@ -1806,23 +1806,23 @@
       ipv4.Dst().SetValue(dstAddr)
       ipv4.Priority().Dscp().Phb().SetValues([]uint32{10,12,14,18 ...})
   ```
-* `<b><i>`OTG-gNMI-Server`</i></b>`: Support added for `InUpdates`, `OutUpdates`, `InOpens`, `OutOpens`, `InNotifications` and `OutNotifications` for gNMI path `/bgp-peers/bgp-peer/state/counters`.
+* <b><i>OTG-gNMI-Server</i></b>: Support added for `InUpdates`, `OutUpdates`, `InOpens`, `OutOpens`, `InNotifications` and `OutNotifications` for gNMI path `/bgp-peers/bgp-peer/state/counters`.
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus + AresOne)`</i></b>`: Issue where for protocol over LAG scenarios (e.g. BGP over LAG) `get_metrics` was returning empty protocol metrics, is fixed.
-* `<b><i>`Ixia-C`</i></b>`: Issue where `get_states.ipv4/v6_neighbors` for interfaces created over LAG was failing, is now fixed.
-* `<b><i>`Ixia-C`</i></b>`: Issue where `peers[i].advanced.time_to_live` attribute was not working as expected for BGPv4 peers is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Issue where for protocol over LAG scenarios (e.g. BGP over LAG) `get_metrics` was returning empty protocol metrics, is fixed.
+* <b><i>Ixia-C</i></b>: Issue where `get_states.ipv4/v6_neighbors` for interfaces created over LAG was failing, is now fixed.
+* <b><i>Ixia-C</i></b>: Issue where `peers[i].advanced.time_to_live` attribute was not working as expected for BGPv4 peers is fixed.
 
 #### Known Issues
 
-* `<b><i>`UHD400`</i></b>`: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
-* `<b><i>`UHD400`</i></b>`: Port statistics are not getting cleared on `SetConfig`.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>UHD400</i></b>: `values` for fields in flow packet headers can be created with maximum length of 1000 values.
+* <b><i>UHD400</i></b>: Port statistics are not getting cleared on `SetConfig`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.0.0-104
 
@@ -1847,7 +1847,7 @@
 
 # Release Features(s)
 
-* `<b><i>`UHD400`</i></b>`: Value-list support added for IPv6 flow label.
+* <b><i>UHD400</i></b>: Value-list support added for IPv6 flow label.
 
   ```go
     flowEth := flow.Packet().Add().Ethernet()
@@ -1857,7 +1857,7 @@
       ipv6.Dst().SetValue(dstAddr)
       ipv6.FlowLabel().SetValues([]uint32{1000,2000, ...})
   ```
-* `<b><i>`UHD400`</i></b>`: Support added for egress tracking on DSCP field in IPv4 traffic header using Priority.Raw field with appropriate offsets.
+* <b><i>UHD400</i></b>: Support added for egress tracking on DSCP field in IPv4 traffic header using Priority.Raw field with appropriate offsets.
 
   ```go
     eth := flow.EgressPacket().Add().Ethernet()
@@ -1871,7 +1871,7 @@
     ipv4EcnTag.SetOffset(6)
     ipv4EcnTag.SetLength(2)
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus + AresOne), Ixia-C and UHD400`</i></b>`: Support added for partial Start / Stop for ISIS .
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne), Ixia-C and UHD400</i></b>: Support added for partial Start / Stop for ISIS .
 
   ```go
     s := gosnappi.NewControlState()
@@ -1879,7 +1879,7 @@
     isisRouters.SetRouterNames(routerNames).SetState("up/down")
     _ , err := client.Api().SetControlState(s)
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus + AresOne)`</i></b>`: Support added for partial Start / Stop for BGP.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Support added for partial Start / Stop for BGP.
 
   ```go
     s := gosnappi.NewControlState()
@@ -1887,7 +1887,7 @@
     bgpPeers.SetPeerNames(peerNames).SetState("up/down")
     _ , err := client.Api().SetControlState(s)
   ```
-* `<b><i>`Ixia Chassis & Appliances(Novus + AresOne) and Ixia-C`</i></b>`: Support for all objects including ERO and RRO are now available for RSVP packet header.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne) and Ixia-C</i></b>: Support for all objects including ERO and RRO are now available for RSVP packet header.
 
   - User can encode `rsvp` packet using `flows` and invoke `set_control_state.traffic.flow_transmit` to transmit the `rsvp` packets.
 
@@ -1927,21 +1927,21 @@
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia-C and UHD400`</i></b>`: Intermittent issue is fixed where for certain ISIS L1+L2 test scenarios, ISIS Hello PDUs were not being transmitted from test ports.
-* `<b><i>`Ixia-C and UHD400`</i></b>`: Potential deadlock during `SetConfig` related to creation of interfaces is fixed.
-* `<b><i>`Ixia-C and UHD400`</i></b>`: Intermittent issue is fixed where ixia-c-protocol-engine container was restarting during BGP session establishment in certain scenarios.
-* `<b><i>`Ixia Chassis & Appliances(AresOne)`</i></b>`: Issue where `SetConfig` returns error `Object reference not set to an instance of an object.` for AresOne ports (QSFP-DD-400GE+200G+100G+50G) is fixed.
-* `<b><i>`Ixia Chassis & Appliances(Novus + AresOne)`</i></b>`: Issue where `SetConfig` returns error `Somehow <lag_name> not available within BGP portData` for BGP over LAG is fixed (Please refer to Known Issues section for issue related to BGP metrics returning empty values for BGP over LAG scenario).
+* <b><i>Ixia-C and UHD400</i></b>: Intermittent issue is fixed where for certain ISIS L1+L2 test scenarios, ISIS Hello PDUs were not being transmitted from test ports.
+* <b><i>Ixia-C and UHD400</i></b>: Potential deadlock during `SetConfig` related to creation of interfaces is fixed.
+* <b><i>Ixia-C and UHD400</i></b>: Intermittent issue is fixed where ixia-c-protocol-engine container was restarting during BGP session establishment in certain scenarios.
+* <b><i>Ixia Chassis & Appliances(AresOne)</i></b>: Issue where `SetConfig` returns error `Object reference not set to an instance of an object.` for AresOne ports (QSFP-DD-400GE+200G+100G+50G) is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: Issue where `SetConfig` returns error `Somehow <lag_name> not available within BGP portData` for BGP over LAG is fixed (Please refer to Known Issues section for issue related to BGP metrics returning empty values for BGP over LAG scenario).
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus + AresOne)`</i></b>`: For protocol over LAG scenarios (e.g. BGP over LAG) `get_metrics` is returning empty protocol metrics.
-* `<b><i>`Ixia-C`</i></b>`: Get neighbor states for a LAG member port fails.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus + AresOne)</i></b>: For protocol over LAG scenarios (e.g. BGP over LAG) `get_metrics` is returning empty protocol metrics.
+* <b><i>Ixia-C</i></b>: Get neighbor states for a LAG member port fails.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.0.0-92
 
@@ -1966,7 +1966,7 @@
 
 # Release Features(s)
 
-* `<b><i>`UHD400`</i></b>`: Enabling metric_tags for egress tracking is now supported for ethernet.src/ dst, vlan.id, vlan.priority, ipv4.src/ dst, ipv4.precedence, ipv6.src/ dst, ipv6.traffic_class
+* <b><i>UHD400</i></b>: Enabling metric_tags for egress tracking is now supported for ethernet.src/ dst, vlan.id, vlan.priority, ipv4.src/ dst, ipv4.precedence, ipv6.src/ dst, ipv6.traffic_class
 
   ```go
   eth := flow.EgressPacket().Add().Ethernet()
@@ -1981,8 +1981,8 @@
     - Maximum of 10 tracking bits is supported.
     - Only a single flow is supported when egress tracking is enabled, except when the tracking header field is Vlan.priority, IPv4.precedence or IPv6.traffic_class. Multiple flows are supported when tracking is enabled on these fields.
     - Tracking is supported on the last 10 bits of header fields, except for IPv4 src/ dst where first 5 bit tracking is also supported.
-* `<b><i>`UHD400`</i></b>`: Support is added for `values` on header fields ethernet.src /dst, ipv4.src /dst, ipv6.src /dst, vlan.id, tcp.src_port, tcp.dst_port, udp.src_port, udp.dst_port.
-* `<b><i>`Ixia-C`</i></b>`: Support added for `rsvp` Path Message PDU in raw traffic.
+* <b><i>UHD400</i></b>: Support is added for `values` on header fields ethernet.src /dst, ipv4.src /dst, ipv6.src /dst, vlan.id, tcp.src_port, tcp.dst_port, udp.src_port, udp.dst_port.
+* <b><i>Ixia-C</i></b>: Support added for `rsvp` Path Message PDU in raw traffic.
 
   - User can encode `rsvp` packet using `flows` and invoke `set_control_state.traffic.flow_transmit` to transmit the `rsvp` packets.
 
@@ -2017,16 +2017,16 @@
 
 # Bug Fix(s)
 
-* `<b><i>`keng-operator`</i></b>`: Issue is fixed where `Ixia-C` containers would incorrectly signal readiness even when containers were not fully started in kne deployment, resulting in `SetConfig` and licensing errors.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue is fixed where `SetConfig` fails for a traffic flow where inner header (v4/v6) has DSCP value set.
+* <b><i>keng-operator</i></b>: Issue is fixed where `Ixia-C` containers would incorrectly signal readiness even when containers were not fully started in kne deployment, resulting in `SetConfig` and licensing errors.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `SetConfig` fails for a traffic flow where inner header (v4/v6) has DSCP value set.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v1.0.0-7
 
@@ -2056,7 +2056,7 @@ Backwards API compatibility will be maintained within  `1.x` versions of Open Tr
 
 # Release Features(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for `snmpv2c` raw traffic.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `snmpv2c` raw traffic.
 
   - User can encode `snmpv2c` packet using `flows` and invoke `set_control_state.traffic.flow_transmit` to transmit the `snmpv2c` packets.
 
@@ -2078,19 +2078,19 @@ Backwards API compatibility will be maintained within  `1.x` versions of Open Tr
   ```
 
   Note: Variable field values within the same flow using `increment`, `decrement` and `values` are not supported for `snmpv2c` fields.
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for `AresOne-M 800G`` load modules. For using this, `IXOS 10.00 `must be installed on the chassis. For other load modules, it will continue to work with`IXOS 9.20 and 9.30` setups.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `AresOne-M 800G`` load modules. For using this, `IXOS 10.00 `must be installed on the chassis. For other load modules, it will continue to work with`IXOS 9.20 and 9.30` setups.
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia-C`</i></b>`: Issue where `set_control_state.port.link.state` was not working when applied to member ports of a LAG is now fixed.
+* <b><i>Ixia-C</i></b>: Issue where `set_control_state.port.link.state` was not working when applied to member ports of a LAG is now fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v0.1.0-222
 
@@ -2119,7 +2119,7 @@ This build includes new features and bug fixes.
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C`</i></b>`: Support added for `snmpv2c` raw traffic.
+* <b><i>Ixia-C</i></b>: Support added for `snmpv2c` raw traffic.
 
   - User can encode `snmpv2c` packet using `flows` and invoke `set_control_state.traffic.flow_transmit` to transmit the `snmpv2c` packets.
 
@@ -2141,7 +2141,7 @@ This build includes new features and bug fixes.
   ```
 
   Note: Variable field values within the same flow using `increment`, `decrement` and `values` are not supported for `snmpv2c` fields.
-* `<b><i>`Ixia-C`</i></b>`: Support added for `ipv4.options` in `ipv4` header of raw traffic.
+* <b><i>Ixia-C</i></b>: Support added for `ipv4.options` in `ipv4` header of raw traffic.
 
   - `router_alert` option allows devices to intercept packets not addressed to them directly as defined in RFC2113.
   - `custom` option is provided for to be able to configure user defined `ipv4.options` as needed.
@@ -2159,7 +2159,7 @@ This build includes new features and bug fixes.
     ipOptionCustom.Custom().Length().SetChoice("value").SetValue(4)
     ipOptionCustom.Custom().SetValue("0088")
   ```
-* `<b><i>`Ixia-C`</i></b>`: Support added to enable/disable LACP sessions on the fly.
+* <b><i>Ixia-C</i></b>: Support added to enable/disable LACP sessions on the fly.
 
   ```go
     lagOnlyStart := port2.NewControlState().
@@ -2173,17 +2173,17 @@ This build includes new features and bug fixes.
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Issue where egress tracking(`metric_tags`) was returning an error when trying to track on 'ipv4.priority.raw'(for DSCP) is fixed.
-* `<b><i>`Ixia-C`</i></b>`: Issue where `BGP` AS4 number was being logged incorrectly in `ixia-c-protocol-engine` logs is fixed. [#217](https://github.com/open-traffic-generator/snappi/issues/217)
-* `<b><i>`Ixia-C`</i></b>`: Couple of memory leak issues fixed in BGP seen for multiple start/stop of large number of BGP sessions on a port.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue where egress tracking(`metric_tags`) was returning an error when trying to track on 'ipv4.priority.raw'(for DSCP) is fixed.
+* <b><i>Ixia-C</i></b>: Issue where `BGP` AS4 number was being logged incorrectly in `ixia-c-protocol-engine` logs is fixed. [#217](https://github.com/open-traffic-generator/snappi/issues/217)
+* <b><i>Ixia-C</i></b>: Couple of memory leak issues fixed in BGP seen for multiple start/stop of large number of BGP sessions on a port.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v0.1.0-158
 
@@ -2212,7 +2212,7 @@ This build includes new features and bug fixes.
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C, UHD400, Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: Support added for BGP/BGP+ peers to use `custom` ports instead of default `179` tcp port.
+* <b><i>Ixia-C, UHD400, Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for BGP/BGP+ peers to use `custom` ports instead of default `179` tcp port.
   - Listen Port - TCP port number on which to accept BGP/BGP+ connections from the remote peer.
   - Neighbor Port - Destination TCP port number to be used by the BGP/BGP+ peer when initiating a session to the remote peer.
 
@@ -2220,7 +2220,7 @@ This build includes new features and bug fixes.
     bgpPeer.Advanced().SetListenPort(55555)
     bgpPeer.Advanced().SetNeighborPort(55555)
   ```
-* `<b><i>`Ixia-C`</i></b>`: Support added to enable/disable BGP/BGP+ peers on the fly.
+* <b><i>Ixia-C</i></b>: Support added to enable/disable BGP/BGP+ peers on the fly.
   ```go
     s := gosnappi.NewControlState().             
         SetChoice(gosnappi.ControlStateChoice.PROTOCOL)
@@ -2240,15 +2240,15 @@ This build includes new features and bug fixes.
 
 # Bug Fix(s)
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If a port was in link down state, the state was not being cleared on fresh `SetConfig` for `AresOne` ports and `Novus100G` mode, affecting future tests. This issue is fixed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If a port was in link down state, the state was not being cleared on fresh `SetConfig` for `AresOne` ports and `Novus100G` mode, affecting future tests. This issue is fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v0.1.0-84
 
@@ -2277,7 +2277,7 @@ This build includes new features.
 
 # Release Features(s)
 
-* `<b><i>`Ixia-C`</i></b>`: Support added to trigger link `up/down` on test ports using the API `set_control_state.port.link`. This applicable only when the test port is directly connected to device under test via `veth` connection, e.g in KNE single node cluster, containerlab.
+* <b><i>Ixia-C</i></b>: Support added to trigger link `up/down` on test ports using the API `set_control_state.port.link`. This applicable only when the test port is directly connected to device under test via `veth` connection, e.g in KNE single node cluster, containerlab.
   ```go
     portStateAction := gosnappi.NewControlState()
     linkState := portStateAction.Port().Link().
@@ -2286,15 +2286,15 @@ This build includes new features.
     api.SetControlState(portStateAction)
   ```
 
-  - It removes the deviation (`deviation_ate_port_link_state_operations_unsupported`) which was added in `featuresprofile` tests for no supporting the LinkState trigger in `<b><i>`Ixia-C`</i></b>`.
+  - It removes the deviation (`deviation_ate_port_link_state_operations_unsupported`) which was added in `featuresprofile` tests for no supporting the LinkState trigger in <b><i>Ixia-C</i></b>.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v0.1.0-81
 
@@ -2323,12 +2323,12 @@ This build includes new features and bug fixes.
 
 # Release Features(s)
 
-* Support for BGP/BGP+ passive mode `<b><i>`Ixia-C, UHD400 and Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`. If `passive_mode` of a peer is set to true, it will wait for the remote peer to initiate the BGP session.
+* Support for BGP/BGP+ passive mode <b><i>Ixia-C, UHD400 and Ixia Chassis & Appliances(Novus, AresOne)</i></b>. If `passive_mode` of a peer is set to true, it will wait for the remote peer to initiate the BGP session.
 
   - User needs to set `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].advance.passive_mode` to `true` for enabling passive mode.
 * When `layer1[i].speed` is not explicitly set, the current speed of underlying test interface shall be assumed.
 
-  - This allows setting of `layer1` MTU in tests to run on  setups with different port speeds on `<b><i>`Ixia-C and Ixia Chassis & Appliances(Novus, AresOne)`</i></b>` without any modifications.
+  - This allows setting of `layer1` MTU in tests to run on  setups with different port speeds on <b><i>Ixia-C and Ixia Chassis & Appliances(Novus, AresOne)</i></b> without any modifications.
     ```go
       otgConfig.Layer1().Add().
           SetName("layerOne").
@@ -2339,15 +2339,15 @@ This build includes new features and bug fixes.
 
 # Bug Fix(s)
 
-* Issue where `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].v4/v6_routes[m].communities` was not being sent properly for `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>` is now fixed.
+* Issue where `devices[i].bgp.ipv4/v6_interfaces[j].peers[k].v4/v6_routes[m].communities` was not being sent properly for <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b> is now fixed.
 
 #### Known Issues
 
-* `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
-* `<b><i>`Ixia-C`</i></b>`: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
-* `<b><i>`Ixia-C`</i></b>`: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
-* `<b><i>`Ixia-C`</i></b>`: The metric `loss` in flow metrics is currently not supported.
-* `<b><i>`Ixia-C`</i></b>`: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
+* <b><i>Ixia-C</i></b>: Flow Tx is incremented for flow with tx endpoints as LAG, even if no packets are sent on the wire when all active links of the LAG are down.
+* <b><i>Ixia-C</i></b>: Supported value for `flows[i].metrics.latency.mode` is `cut_through`.
+* <b><i>Ixia-C</i></b>: The metric `loss` in flow metrics is currently not supported.
+* <b><i>Ixia-C</i></b>: When flow transmit is started, transmission will be restarted on any existing flows already transmitting packets.
 
 ## Release  v0.1.0-53
 
@@ -2376,7 +2376,7 @@ This build includes new features and bug fixes.
 
 # Release Features(s)
 
-* Support added for link `up/down` trigger for `<b><i>`UHD400`</i></b>`.
+* Support added for link `up/down` trigger for <b><i>UHD400</i></b>.
   ```go
     portStateAction := gosnappi.NewControlState().
                           Port().
@@ -2385,14 +2385,14 @@ This build includes new features and bug fixes.
                           SetState(gosnappi.StatePortLinkState.DOWN)
     gosnappi.setControlState(portStateAction)
   ```
-* Support added for 0x8100(Vlan) and 0x6007(Google Discovery Protocol) ether types in data plane traffic in `<b><i>`UHD400`</i></b>`.
+* Support added for 0x8100(Vlan) and 0x6007(Google Discovery Protocol) ether types in data plane traffic in <b><i>UHD400</i></b>.
 
 # Bug Fix(s)
 
-* Some tests were failing because packets were not sent on wire due to frame size of flows not being sufficient to include tracking information in `<b><i>`Ixia Chassis & Appliances(AresOne only)`</i></b>` is fixed.
-* `egress` tracking on VLAN id or other fields for more than 3 bits was not working in `<b><i>`Ixia Chassis & Appliances(Novus, AresOne)`</i></b>`, is fixed.
+* Some tests were failing because packets were not sent on wire due to frame size of flows not being sufficient to include tracking information in <b><i>Ixia Chassis & Appliances(AresOne only)</i></b> is fixed.
+* `egress` tracking on VLAN id or other fields for more than 3 bits was not working in <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>, is fixed.
   - `egress` tracking now supports upto 11 bits.
-* Issue in ARP resolution in certain cases is now fixed in `<b><i>`UHD400`</i></b>`.
+* Issue in ARP resolution in certain cases is now fixed in <b><i>UHD400</i></b>.
 
 #### Known Issues
 
@@ -2705,7 +2705,7 @@ This build includes new features.
 
 # Release Feature(s)
 
-* Enabling `metric_tags` for egress tracking is now also supported on ipv6.src/dst, ipv6.traffic_class, ipv6.flow_label and ipv6.payload_length. `<b><i>`[Ixia-C]`</i></b>`
+* Enabling `metric_tags` for egress tracking is now also supported on ipv6.src/dst, ipv6.traffic_class, ipv6.flow_label and ipv6.payload_length. <b><i>[Ixia-C]</i></b>
   ```go
     eth := flow.EgressPacket().Add().Ethernet()
     ipv6 := flow.EgressPacket().Add().Ipv6()
@@ -2714,7 +2714,7 @@ This build includes new features.
     ipv6Tag.SetOffset(120)
     ipv6Tag.SetLength(8)
   ```
-* Support is available in gNMI to fetch the drill-down statistics for egress tracking as follows `<b><i>`[Ixia-C]`</i></b>` [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-flow.txt):
+* Support is available in gNMI to fetch the drill-down statistics for egress tracking as follows <b><i>[Ixia-C]</i></b> [details](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-flow.txt):
   ```
     1. Flow level metrics + Tagged Metrics:
         example path: "flows/flow[name=f1]“
