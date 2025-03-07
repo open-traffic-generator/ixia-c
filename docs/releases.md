@@ -88,6 +88,7 @@
   ```gNMI
       ports/port[name=*]/state/last-change
   ```
+  Note: Please update kne to latest if the setup is upgraded to this build , otherwise gnmi failures might be seen while fetching port metrics.
 
 ### Bug Fix(s)
 
