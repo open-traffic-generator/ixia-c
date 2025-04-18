@@ -84,8 +84,7 @@
   ```
   Note: Please update featureprofiles/ondatra to latest if the setup is upgraded to this build, otherwise gnmi failures might be seen while fetching isis link-state-database.
 * <b><i>snappi</i></b>: Support is added for `grpcio` <= 1.59.5 [earlier supported till <=1.59.0].
-        
-    Note: As of now, we are unable to upgrade to higher version of `grpcio` to continue providing support for python versions 3.6 and 3.7.
+  Note: As of now, we are unable to upgrade to higher version of `grpcio` to continue providing support for python versions 3.6 and 3.7.
 ### Bug Fix(s)
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where ISIS `get_states` was returning only one set of learned LSPs for L1+L2 LSP advertisements.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where for certain scenarios `flow_metrics.bytes_tx` was returning incorrect values[same as `bytes_rx`].
