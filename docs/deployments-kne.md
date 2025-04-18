@@ -78,7 +78,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.447"
+                          "tag": "1.00.0.448"
                       },
                       {
                           "name": "ixhw-server",
@@ -123,7 +123,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "protocol-engine",
                           "path": "ghcr.io/open-traffic-generator/ixia-c-protocol-engine",
-                          "tag": "1.00.0.447"
+                          "tag": "1.00.0.448"
                       },
                       {
                           "name": "ixhw-server",
