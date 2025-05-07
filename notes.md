@@ -17,7 +17,7 @@
 
 
 ### Release Features(s):
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>: Support added for `tx/rx_rate_bps` in `flow_metrics`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `tx/rx_rate_bps` in `flow_metrics`.
 
     ```sh
         # flow Tx rate in bits per second
