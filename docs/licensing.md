@@ -32,10 +32,10 @@ In order to use capabilities of Elastic Network Generator that require a valid l
 
 ### Deployment
 
-The license server is a virtual machine and it is distributed as OVA and QCOW2 images (you only need one of them depending on your hypervisor).
+The license server is a virtual machine and it is distributed as OVA and QCOW2 images (you only need one of them depending on your hypervisor, downloading may need credentials for support website.).
 
-* [OVA image](https://storage.googleapis.com/kt-nas-images-cloud-ist/slum-4.2.0-208.ova), 5.8GB
-* [QCOW2 image](https://storage.googleapis.com/kt-nas-images-cloud-ist/slum-4.2.0-208.2.qcow2), 6GB
+* [OVA image](https://downloads.ixiacom.com/support/downloads_and_updates/public/KENG-License-Server-VM/4.4.0/4.4.0-202/slum-4.4.0-202.ova), 5.8GB
+* [QCOW2 image](https://downloads.ixiacom.com/support/downloads_and_updates/public/KENG-License-Server-VM/4.4.0/4.4.0-202/slum-4.4.0-202.qcow2), 6GB
 
 To make a decision where to deploy the License Server VM, take into the account the following requirements:
 
