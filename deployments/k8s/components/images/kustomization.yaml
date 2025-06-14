@@ -1,11 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1alpha1
 kind: Component
 
-# Release: https://github.com/open-traffic-generator/ixia-c/releases/tag/v1.31.0-TBD
+# Release: https://github.com/open-traffic-generator/ixia-c/releases/tag/v1.31.0-6
 images:
   - name: keng-controller
     newName: ghcr.io/open-traffic-generator/keng-controller
-    newTag: "1.31.0-TBD"
+    newTag: "1.31.0-6"
   - name: otg-gnmi-server
     newName: ghcr.io/open-traffic-generator/otg-gnmi-server
     newTag: "1.31.0"

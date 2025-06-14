@@ -58,12 +58,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.31.0-TBD",
+                "release": "1.31.0-6",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.31.0-TBD"
+                          "tag": "1.31.0-6"
                       },
                       {
                           "name": "gnmi-server",
@@ -100,12 +100,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.31.0-TBD",
+                "release": "1.31.0-6",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.31.0-TBD",
+                          "tag": "1.31.0-6",
                           "env": {
                                 "LICENSE_SERVERS": "ip/hostname of license server"
                             }
@@ -148,7 +148,7 @@ Following are the recommended resources for a basic use-case.
   nodes:
     - name: otg
       vendor: KEYSIGHT
-      version: 1.31.0-TBD
+      version: 1.31.0-6
       services:
         8443:
           name: https
