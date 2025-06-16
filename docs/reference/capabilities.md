@@ -17,8 +17,8 @@
 | <span style="color: grey;">**ISIS**</span> | Y | Y | Y | Y  |   |
 |  v4/v6 Routes  | Y  | Y | Y | Y  |   |
 |  Learned Routes Retrieval |  Y | Y  | Y | Y  |   |
-|  Simulated Topology | N |  N | N  | N  |    |
-|  Segment Routing  | N  |  N | N  | N |   |
+|  Simulated Topology | Y |  Y | Y  | Y  |    |
+|  Segment Routing  | Y  |  Y | Y  | Y |   |
 | Multiple ports/adjacencies  |  Y | N  | N  |  N |   |
 | <span style="color: grey;">**RSVP p2p LSPs (Ingress or Egress)**</span>  | Y  |  Y | Y  |  N |  |
 |  Srefresh and Bundle extensions | Y  | Y  | Y  | N  |   |
