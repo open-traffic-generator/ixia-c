@@ -17,23 +17,22 @@
 
 
 ### Release Features(s):
-* <b><i>Ixia-C</i></b>:Support added for adding/deleting traffic flows without having to restart protocol separately from protocols.
-    - Append Config​
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>:Support added to send huge configuration to `keng-controller` in chunks.
+    - User needs to enable grpc streaming while creating connection with `keng-controller`.
     ```go
-        ca := gosnappi.NewConfigAppend()​
-        flow := ca.ConfigAppendList().Add().Flows().Add()​
-        ... // add more flows and associated properties
-        client.AppendConfig(ca)
+    api := gosnappi.NewApi()​
+    grpcTransport := api.NewGrpcTransport().​
+    SetClientConnection(conn).​
+    SetRequestTimeout(30 * time.Second)​
+    grpcTransport.SetLocation(addr).EnableGrpcStreaming().SetStreamChunkSize(100)​
     ```
-    - Delete Config
-    ```go
-        cd := gosnappi.NewConfigDelete()​
-        flowsToDelete := []string{}
-        flowsToDelete := append(flowsToDelete, flowName)
-        ...​ // add list of flow names to be deleted
-        cd.ConfigDeleteList().Add().SetFlows(flowsToDelete)​
-        client.DeleteConfig(cd)​
-    ```
+
+
+### Bug Fix(s):
+* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where `local-as` sub string is prepended to `as-path` for iBGP when `as-path segment` is set​.
+
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for rolling and archiving client-side logs.
+
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
