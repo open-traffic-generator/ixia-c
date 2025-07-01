@@ -17,21 +17,23 @@
 
 
 ### Release Features(s):
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne)</i></b>:Support added to send huge configuration to `keng-controller` in chunks.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne), UHD400</i></b>:Support added to enable communication between snappi/gosnappi client and `keng-controller` in streaming mode.
     - User needs to enable grpc streaming while creating connection with `keng-controller`.
     ```go
     api := gosnappi.NewApi()​
     grpcTransport := api.NewGrpcTransport().​
     SetClientConnection(conn).​
     SetRequestTimeout(30 * time.Second)​
-    grpcTransport.SetLocation(addr).EnableGrpcStreaming().SetStreamChunkSize(100)​
+    grpcTransport.SetLocation(addr).EnableGrpcStreaming().SetStreamChunkSize(100)​ // max 100 MB per chunk
     ```
+    Note: 
+        - If `StreamChunkSize` is not explicitly specified in streaming mode, default chunk size of 4 MB will be used.
+        - By default client will communicate in non-streaming mode as earlier.
+
 
 
 ### Bug Fix(s):
-* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where `local-as` sub string is prepended to `as-path` for iBGP when `as-path segment` is set​.
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for rolling and archiving client-side logs.
+* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where, for iBGP sessions, if `as-path` segments were explicitly specified for a route, the local AS was being incorrectly prepended to the transmitted as-path, resulting in the DUT dropping the route.
 
 
 ### Known Issues
