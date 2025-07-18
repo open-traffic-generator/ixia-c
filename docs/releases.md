@@ -65,7 +65,7 @@
     ```
 
 ### Bug Fix(s):
-* <b><i>Ixia-C</i></b>: Issue is fixed where, if Tx and Rx endpoints of a flow was terminating in different ports of a single multinic pods/container with `auto` dest mac enabled, intermittently <i>"error starting tx port ...: unsuccessful Response: MAC address resolution failed for IP..."</i> was being seen during start transmit despite proper ARP/ND resolution.
+* <b><i>Ixia-C</i></b>: Issue is fixed where, if Tx and Rx endpoints of a flow was terminating in different ports of a single multinic pod/container with `auto` dest mac enabled, intermittently <i>"error starting tx port ...: unsuccessful Response: MAC address resolution failed for IP..."</i> was being seen during start transmit despite proper ARP/ND resolution.
 
 
 ### Known Issues
