@@ -3,21 +3,21 @@
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [1.33.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.33.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.33.0](https://pypi.org/project/snappi/1.33.0)        |
-| gosnappi                      | [1.33.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.33.0)        |
-| keng-controller               | [1.33.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| snappi                        | [1.33.2](https://pypi.org/project/snappi/1.33.2)        |
+| gosnappi                      | [1.33.2](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.33.2)        |
+| keng-controller               | [1.33.0-18](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.461](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.33.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.462](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.33.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.33.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.33.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.33.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.33.0-18](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.8](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.8/artifacts.tar)         |
 
 
 ### Release Features(s):
-* <b><i>Ixia-C & UHD400</i></b>: Support added for ISIS Graceful Restart(both helper & restarting roles) in Unplanned Mode[RFC 8706]. [details](https://github.com/open-traffic-generator/models/pull/423)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for ISIS Graceful Restart(both helper & restarting roles) in Unplanned Mode[RFC 8706]. [details](https://github.com/open-traffic-generator/models/pull/423)
     - To configure Graceful Restart,
         ```go
             isisRtr.GracefulRestart().SetHelperMode(true)
@@ -38,29 +38,27 @@
         ```
     - New metrics exposed in ISIS `get_metrics` are `gr_initiated`,`gr_succeeded`,`neighbor_gr_initiated`,`neighbor_gr_succeeded`.
     - New `get_states` option `isis_adjacencies` is introduced to access adjacency information per ISIS neighbor including received Graceful Restart TLV.
-    
-    Note: gNMI support will be available in subsequent sprint.
 
-* <b><i>UHD400</i></b>:Support added for adding/deleting traffic flows without having to restart protocol separately from protocols.
-    - Append Config​
-    ```go
-        ca := gosnappi.NewConfigAppend()​
-        flow := ca.ConfigAppendList().Add().Flows().Add()​
-        ... // add more flows and associated properties
-        client.AppendConfig(ca)
-    ```
-    - Delete Config
-    ```go
-        cd := gosnappi.NewConfigDelete()​
-        flowsToDelete := []string{}
-        flowsToDelete := append(flowsToDelete, flowName)
-        ...​ // add list of flow names to be deleted
-        cd.ConfigDeleteList().Add().SetFlows(flowsToDelete)​
-        client.DeleteConfig(cd)​
-    ```
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: gNMI support added to fetch `gr-initiated`,`gr-succeeded`,`neighbor-gr-initiated`,`neighbor-gr_succeeded` and `adjacencies` for ISIS.
+    ```gNMI
+    // To fetch ISIS gr-initiated,gr-succeeded,neighbor-gr-initiated,neighbor-gr_succeeded counters
+    isis-routers/isis-router[name=*]/state/counters
 
-### Bug Fix(s):
-* <b><i>Ixia-C</i></b>: Issue is fixed where, if Tx and Rx endpoints of a flow was terminating in different ports of a single multinic pod/container with `auto` dest mac enabled, intermittently <i>"error starting tx port ...: unsuccessful Response: MAC address resolution failed for IP..."</i> was being seen during start transmit despite proper ARP/ND resolution.
+    // To fetch ISIS adjacencies state
+    isis-routers/isis-router[name=*]/state/adjacencies/state/adjacencies[neighbor-system-id=*][interface-name=*]/state
+    ```
+* <b><i>Snappi</i></b>: Support added to set `maximum_receive_buffer_size`  and `chunk_size` in `MB` for gRPC streaming API creation.
+    ```py
+        grpc_api = snappi.api(location="localhost:40051",
+                          transport=snappi.Transport.GRPC)
+
+        grpc_api.enable_grpc_streaming = True
+        grpc_api.chunk_size = 2 # 2 MB instead of default 4 MB
+
+        grpc_api.maximum_receive_buffer_size = 10 # 10 MB instead of default 4 MB
+        
+    ```
+    Note: `gosnappi` already supports both feature.
 
 
 ### Known Issues
