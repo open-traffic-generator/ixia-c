@@ -8,7 +8,7 @@ images:
     newTag: "1.33.0-20"
   - name: otg-gnmi-server
     newName: ghcr.io/open-traffic-generator/otg-gnmi-server
-    newTag: "1.33.2"
+    newTag: "1.33.3"
   - name: ixia-c-traffic-engine
     newName: ghcr.io/open-traffic-generator/ixia-c-traffic-engine
     newTag: "1.8.0.245"

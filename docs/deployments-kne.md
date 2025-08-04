@@ -68,7 +68,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.33.2"
+                          "tag": "1.33.3"
                       },
                       {
                           "name": "traffic-engine",
@@ -113,7 +113,7 @@ Following are the recommended resources for a basic use-case.
                       {
                           "name": "gnmi-server",
                           "path": "ghcr.io/open-traffic-generator/otg-gnmi-server",
-                          "tag": "1.33.2"
+                          "tag": "1.33.3"
                       },
                       {
                           "name": "traffic-engine",

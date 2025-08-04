@@ -109,7 +109,7 @@ logging:
         max-file: "10"
         mode: "non-blocking"
   otg-gnmi-server:
-    image: ghcr.io/open-traffic-generator/otg-gnmi-server:1.33.2
+    image: ghcr.io/open-traffic-generator/otg-gnmi-server:1.33.3
     restart: always
     depends_on:
       keng-controller:

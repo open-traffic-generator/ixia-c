@@ -15,7 +15,7 @@
 | ixia-c-protocol-engine        | [1.00.0.462](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
 | keng-layer23-hw-server        | [1.33.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.33.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| otg-gnmi-server               | [1.33.3](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [1.33.0-20](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.8](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.8/artifacts.tar)         |
 
