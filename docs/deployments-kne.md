@@ -58,12 +58,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.33.0-18",
+                "release": "1.33.0-20",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.33.0-18"
+                          "tag": "1.33.0-20"
                       },
                       {
                           "name": "gnmi-server",
@@ -100,12 +100,12 @@ Following are the recommended resources for a basic use-case.
       data:
           versions: |
               {
-                "release": "1.33.0-18",
+                "release": "1.33.0-20",
                 "images": [
                       {
                           "name": "controller",
                           "path": "ghcr.io/open-traffic-generator/keng-controller",
-                          "tag": "1.33.0-18",
+                          "tag": "1.33.0-20",
                           "env": {
                                 "LICENSE_SERVERS": "ip/hostname of license server"
                             }
@@ -148,7 +148,7 @@ Following are the recommended resources for a basic use-case.
   nodes:
     - name: otg
       vendor: KEYSIGHT
-      version: 1.33.0-18
+      version: 1.33.0-20
       services:
         8443:
           name: https
