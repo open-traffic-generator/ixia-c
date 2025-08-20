@@ -3,17 +3,17 @@
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [1.33.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.33.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.33.3](https://pypi.org/project/snappi/1.33.3)        |
-| gosnappi                      | [1.33.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.33.3)        |
-| keng-controller               | [1.33.0-28](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| snappi                        | [1.33.4](https://pypi.org/project/snappi/1.33.4)        |
+| gosnappi                      | [1.33.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.33.4)        |
+| keng-controller               | [1.33.0-34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.462](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.33.0-8](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-layer23-hw-server        | [1.33.0-11](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.33.5](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.33.0-28](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                        | [1.5.9](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.9/artifacts.tar)         |
+| otg-gnmi-server               | [1.33.7](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.33.0-34](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                        | [1.5.8](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.8/artifacts.tar)         |
 
 
 ### Release Features(s):
@@ -52,19 +52,7 @@
 
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Version compatibility check added for IxOS installed on chassis.
     - `set_config` will now return error, if ports are present in the configuration connected to chassis with IxOS version `< 9.20EA`.
-    - `set_config` will now return warning, if ports are present in the configuration connected to chassis with IxOS version `> 11.00EA`.
-
-* <b><i>UHD400</i></b>: support added to enable capture on multiple test ports.
-    ```go
-        c1 := config.Captures().Add().SetName("Capture")
-        c1.SetPortNames([]string{"p1", "p2"})
-
-        s := gosnappi.NewControlState()
-        s.Port().
-            Capture().
-            SetPortNames([]string{"p1", "p2"}).
-            SetState(gosnappi.StatePortCaptureState.START/STOP)
-    ```
+    - `set_config` will now return warning, if ports are present in the configuration connected to chassis with IxOS version `> 10.80EA`.
 
 * <b><i>Snappi</i></b>: Support added to set `maximum_receive_buffer_size`  and `chunk_size` in `MB` for gRPC streaming API creation.
     ```py
@@ -78,6 +66,13 @@
         
     ```
     Note: `gosnappi` already supports both feature.
+
+### Bug Fix(s):
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where prefix of “0x” was provided in value or mask fields for capture filter was resulting in incorrect capture filter getting set.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where input value & mask for capture filter were not working as expected for some fields which were not byte aligned (example: `vlan.cfi`).
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where the value in the capture filter was provided in short form without the leading Zero(s), then value was incorrectly set during filter matching. Example a value of "1" was being interpreted as "0x10" instead of expected "0x01" for a 1-byte field.
+* <b><i>Ixia-C</i></b>: Issue is fixed where prefix of “0x” was provided in value or mask fields for capture filter was resulting in runtime error in set_config. 
+* <b><i>Ixia-C</i></b>: Issue is fixed where capture filter for `vlan.protocol` field was not working.
 
 
 ### Known Issues
