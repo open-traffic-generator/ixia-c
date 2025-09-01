@@ -2,77 +2,36 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.33.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.33.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.33.4](https://pypi.org/project/snappi/1.33.4)        |
-| gosnappi                      | [1.33.4](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.33.4)        |
-| keng-controller               | [1.33.0-34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| Open Traffic Generator API    | [1.34.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.34.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.34.1](https://pypi.org/project/snappi/1.34.1)        |
+| gosnappi                      | [1.34.1](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.34.1)        |
+| keng-controller               | [1.34.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.462](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.33.0-11](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.465](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.34.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.33.7](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.33.0-34](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.34.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.34.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.8](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.8/artifacts.tar)         |
 
 
 ### Release Features(s):
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added for ISIS Graceful Restart(both helper & restarting roles) in Unplanned Mode[RFC 8706]. [details](https://github.com/open-traffic-generator/models/pull/423)
-    - To configure Graceful Restart,
-        ```go
-            isisRtr.GracefulRestart().SetHelperMode(true)
-        ```
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added for ISIS Graceful Restart(both helper & restarting roles) in planned Mode[RFC 8706](https://datatracker.ietf.org/doc/html/rfc8706#section-3.2.3). [details](https://github.com/open-traffic-generator/models/pull/431)
     - To trigger Unplanned Graceful Restart,
         ```go
             grAction := gosnappi.NewControlAction()
-            isisRestart := grAction.Protocol()
-                .Isis().InitiateRestart()
-            isisRestart.SetRouterNames([]string{"isisRtr"})
-                .Unplanned()
-                .SetHoldingTime(30)
-                .SetRestartAfter(20)
+            isisRestart := grAction.Protocol().Isis().InitiateGracefulRestart()
+            isisRestart.SetRouterNames([]string{"isisRtr"})
+            planned := isisRestart.Planned() 
+            planned.SetRestartTime(30)
+            planned.SetRestartAfter(20)
 
             if _, err := gosnappi.NewApi().SetControlAction(grAction); err != nil {
                 t.Fatal(err)
             }
+            
         ```
-    - New metrics exposed in ISIS `get_metrics` are `gr_initiated`,`gr_succeeded`,`neighbor_gr_initiated`,`neighbor_gr_succeeded`.
-    - New `get_states` option `isis_adjacencies` is introduced to access adjacency information per ISIS neighbor including received Graceful Restart TLV.
-
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: gNMI support added to fetch `gr-initiated`,`gr-succeeded`,`neighbor-gr-initiated`,`neighbor-gr_succeeded` and `adjacencies` for ISIS.
-    ```gNMI
-    // To fetch ISIS gr-initiated,gr-succeeded,neighbor-gr-initiated,neighbor-gr_succeeded counters
-    isis-routers/isis-router[name=*]/state/counters
-
-    // To fetch ISIS adjacencies state
-    isis-routers/isis-router[name=*]/state/adjacencies/state/adjacencies[neighbor-system-id=*][interface-name=*]/state
-    ```
-
-    Note: `featureprofiles` users needs to sync to latest otherwise retrieval of OTG ISIS counters/state using gNMI might give incorrect results.
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Version compatibility check added for IxOS installed on chassis.
-    - `set_config` will now return error, if ports are present in the configuration connected to chassis with IxOS version `< 9.20EA`.
-    - `set_config` will now return warning, if ports are present in the configuration connected to chassis with IxOS version `> 10.80EA`.
-
-* <b><i>Snappi</i></b>: Support added to set `maximum_receive_buffer_size`  and `chunk_size` in `MB` for gRPC streaming API creation.
-    ```py
-        grpc_api = snappi.api(location="localhost:40051",
-                          transport=snappi.Transport.GRPC)
-
-        grpc_api.enable_grpc_streaming = True
-        grpc_api.chunk_size = 2 # 2 MB instead of default 4 MB
-
-        grpc_api.maximum_receive_buffer_size = 10 # 10 MB instead of default 4 MB
-        
-    ```
-    Note: `gosnappi` already supports both feature.
-
-### Bug Fix(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where prefix of “0x” was provided in value or mask fields for capture filter was resulting in incorrect capture filter getting set.
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where input value & mask for capture filter were not working as expected for some fields which were not byte aligned (example: `vlan.cfi`).
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where the value in the capture filter was provided in short form without the leading Zero(s), then value was incorrectly set during filter matching. Example a value of "1" was being interpreted as "0x10" instead of expected "0x01" for a 1-byte field.
-* <b><i>Ixia-C</i></b>: Issue is fixed where prefix of “0x” was provided in value or mask fields for capture filter was resulting in runtime error in set_config. 
-* <b><i>Ixia-C</i></b>: Issue is fixed where capture filter for `vlan.protocol` field was not working.
 
 
 ### Known Issues
