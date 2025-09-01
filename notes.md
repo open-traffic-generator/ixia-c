@@ -18,7 +18,7 @@
 
 ### Release Features(s):
 * <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added for ISIS Graceful Restart(both helper & restarting roles) in planned Mode[RFC 8706](https://datatracker.ietf.org/doc/html/rfc8706#section-3.2.3). [details](https://github.com/open-traffic-generator/models/pull/431)
-    - To trigger Unplanned Graceful Restart,
+    - To trigger planned Graceful Restart,
         ```go
             grAction := gosnappi.NewControlAction()
             isisRestart := grAction.Protocol().Isis().InitiateGracefulRestart()
