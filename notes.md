@@ -35,7 +35,7 @@
 
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Changes in version compatibility check for IxOS installed on chassis.
     - `set_config` will now return a deprecation warning, if ports are present in the configuration connected to chassis with IxOS version `< 10.00EA`. Support for `9.xx` IxOS versions is planned to be removed in near future.
-    - Support is now added for `11.00EA` and no warnings will be returned any longer when connected to chassis with up-to IxOS version `11.00EA`.
+    - Support is now added for `11.10.x` and no warnings will be returned any longer when connected to chassis with up-to IxOS version `111.10.x`.
 
 
 * <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added in `keng-controller` to store last 10 configurations in compressed format(*.tar.gz) at location `~/logs/configs` within the container.
