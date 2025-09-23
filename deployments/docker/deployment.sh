@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # update for any release using
-curl -kLO https://github.com/open-traffic-generator/ixia-c/releases/download/v1.35.0-14/versions.yaml
+curl -kLO https://github.com/open-traffic-generator/ixia-c/releases/download/v1.38.0-1/versions.yaml
 VERSIONS_YAML="versions.yaml"
 CTRL_IMAGE="ghcr.io/open-traffic-generator/keng-controller"
 TE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-traffic-engine"
