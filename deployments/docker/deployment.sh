@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # update for any release using
 curl -kLO https://github.com/open-traffic-generator/ixia-c/releases/download/v1.40.0-1/versions.yaml
@@ -112,6 +112,26 @@ gen_controller_config_b2b_cpdp() {
     && rm -rf ./config.yaml
 }
 
+gen_controller_config_b2b_dp() {
+    configdir=/home/ixia-c/controller/config
+    OTG_PORTA=$(container_ip ixia-c-traffic-engine-${ETH_A})
+    OTG_PORTZ=$(container_ip ixia-c-traffic-engine-${ETH_Z})
+    
+    wait_for_sock ${OTG_PORTA} 5555
+    wait_for_sock ${OTG_PORTZ} 5555
+
+    yml="location_map:
+          - location: ${ETH_A}
+            endpoint: \"${OTG_PORTA}:5555\"
+          - location: ${ETH_Z}
+            endpoint: \"${OTG_PORTZ}:5555\"
+        "
+    echo -n "$yml" | sed "s/^        //g" | tee ./config.yaml > /dev/null \
+    && docker exec keng-controller mkdir -p ${configdir} \
+    && docker cp ./config.yaml keng-controller:${configdir}/ \
+    && rm -rf ./config.yaml
+}
+
 wait_for_sock() {
     TIMEOUT_SECONDS=30
     if [ ! -z "${3}" ]
@@ -171,13 +191,16 @@ create_ixia_c_b2b_cpdp() {
         -e OPT_NO_PINNING="Yes"                             \
         -e WAIT_FOR_IFACE="Yes"                             \
         -e OPT_ADAPTIVE_CPU_USAGE="Yes"                              \
-        $(ixia_c_traffic_engine_img)                        \
-    && docker run --privileged -d                           \
-        --net=container:ixia-c-traffic-engine-${ETH_A}     \
-        --name=ixia-c-protocol-engine-${ETH_A}             \
-        -e INTF_LIST="${ETH_A}"                            \
-        $(ixia_c_protocol_engine_img)                       \
-    && docker run --privileged -d                           \
+        $(ixia_c_traffic_engine_img)  
+    if [ -z "${DATA_PLANE_ONLY}" ]
+    then
+        docker run --privileged -d                           \
+            --net=container:ixia-c-traffic-engine-${ETH_A}     \
+            --name=ixia-c-protocol-engine-${ETH_A}             \
+            -e INTF_LIST="${ETH_A}"                            \
+            $(ixia_c_protocol_engine_img) 
+    fi                      
+    docker run --privileged -d                           \
         --name=ixia-c-traffic-engine-${ETH_Z}              \
         -e OPT_LISTEN_PORT="5555"                           \
         -e ARG_IFACE_LIST="virtual@af_packet,${ETH_Z}"     \
@@ -185,19 +208,27 @@ create_ixia_c_b2b_cpdp() {
         -e OPT_NO_PINNING="Yes"                             \
         -e WAIT_FOR_IFACE="Yes"                             \
         -e OPT_ADAPTIVE_CPU_USAGE="Yes"                              \
-        $(ixia_c_traffic_engine_img)                        \
-    && docker run --privileged -d                           \
-        --net=container:ixia-c-traffic-engine-${ETH_Z}     \
-        --name=ixia-c-protocol-engine-${ETH_Z}             \
-        -e INTF_LIST="${ETH_Z}"                            \
-        $(ixia_c_protocol_engine_img)                       \
-    && docker ps -a                                         \
-    && prepare_eth_pair ${ETH_A} ${ETH_Z}                 \
+        $(ixia_c_traffic_engine_img)                        
+    if [ -z "${DATA_PLANE_ONLY}" ]
+    then
+        docker run --privileged -d                           \
+            --net=container:ixia-c-traffic-engine-${ETH_Z}     \
+            --name=ixia-c-protocol-engine-${ETH_Z}             \
+            -e INTF_LIST="${ETH_Z}"                            \
+            $(ixia_c_protocol_engine_img)                       
+    fi
+    docker ps -a                                         \
+    && prepare_eth_pair ${ETH_A} ${ETH_Z}    \
     && push_ifc_to_container ${ETH_A} ixia-c-traffic-engine-${ETH_A}  \
-    && push_ifc_to_container ${ETH_Z} ixia-c-traffic-engine-${ETH_Z}  \
-    && gen_controller_config_b2b_cpdp $1                     \                         \
-    && docker ps -a \
-    && echo "Successfully deployed !"
+    && push_ifc_to_container ${ETH_Z} ixia-c-traffic-engine-${ETH_Z}              
+    if [ -z "${DATA_PLANE_ONLY}" ]
+    then
+        gen_controller_config_b2b_cpdp $1
+    else 
+        gen_controller_config_b2b_dp $1
+    fi
+    docker ps -a
+    echo "Successfully deployed !"
 }
 
 rm_ixia_c_b2b_cpdp() {
@@ -206,16 +237,24 @@ rm_ixia_c_b2b_cpdp() {
     docker stop keng-controller && docker rm keng-controller
 
     docker stop ixia-c-traffic-engine-${ETH_A}
-    docker stop ixia-c-protocol-engine-${ETH_A}
     docker rm ixia-c-traffic-engine-${ETH_A}
-    docker rm ixia-c-protocol-engine-${ETH_A}
-
     docker stop ixia-c-traffic-engine-${ETH_Z}
-    docker stop ixia-c-protocol-engine-${ETH_Z}
     docker rm ixia-c-traffic-engine-${ETH_Z}
-    docker rm ixia-c-protocol-engine-${ETH_Z}
 
+    if [ -z "${DATA_PLANE_ONLY}" ]
+    then
+        docker stop ixia-c-protocol-engine-${ETH_A}
+        docker rm ixia-c-protocol-engine-${ETH_A}
+        docker stop ixia-c-protocol-engine-${ETH_Z}
+        docker rm ixia-c-protocol-engine-${ETH_Z}
+    fi
     docker ps -a
+}
+
+create() {
+    sudo ip link add $ETH_A type veth peer name $ETH_Z
+    sudo ip link set $ETH_A up
+    sudo ip link set $ETH_Z up
 }
 
 topo() {
