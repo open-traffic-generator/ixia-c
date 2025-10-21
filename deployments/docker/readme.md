@@ -198,11 +198,11 @@
         ```
     - Test for control & data plane
         ```bash
-            go test -v examples/quickstart_cp_dp_test.go
+            go test -tags=all ./examples -run TestQuickstartB2BCpDp -args -portA=eth1 -portZ=eth2
         ```
     - Test for data plane only
         ```bash
-            go test -v examples/quickstart_dp_test.go
+            go test -tags=all ./examples -run TestQuickstartB2BDp -args -portA=eth1 -portZ=eth2
         ```
 
 
