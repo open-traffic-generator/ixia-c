@@ -1,13 +1,15 @@
 #!/bin/bash
 
-VERSIONS_YAML_LOC="https://github.com/open-traffic-generator/ixia-c/releases/download/v1.40.0-1/versions.yaml"
+
+
+VERSIONS_YAML_DWN_CMD="curl -kLO https://github.com/open-traffic-generator/ixia-c/releases/download/v1.40.0-1/versions.yaml"
 VERSIONS_YAML="versions.yaml"
 CTRL_IMAGE="ghcr.io/open-traffic-generator/keng-controller"
 TE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-traffic-engine"
 PE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-protocol-engine"
 
 # update for any release using
-curl -kLO $VERSIONS_YAML_LOC
+$($VERSIONS_YAML_DWN_CMD)
 
 TIMEOUT_SECONDS=300
 
