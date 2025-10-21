@@ -2,14 +2,17 @@
 
 
 
-VERSIONS_YAML_DWN_CMD="curl -kLO https://github.com/open-traffic-generator/ixia-c/releases/download/v1.40.0-1/versions.yaml"
+VERSIONS_YAML_LOC="https://generic-virtual-athena.artifactorylbj.it.keysight.com/artifactory/generic-virtual-athena/builds/1.40.0-1/versions.yaml"
 VERSIONS_YAML="versions.yaml"
 CTRL_IMAGE="ghcr.io/open-traffic-generator/keng-controller"
 TE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-traffic-engine"
 PE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-protocol-engine"
 
-# update for any release using
-$($VERSIONS_YAML_DWN_CMD)
+if [ -n "$GO_BIN_PATH" ]; then
+    curl -lO -H "Authorization: Bearer $AUTH_TOKEN" $VERSIONS_YAML_LOC
+else
+    curl -kLO $VERSIONS_YAML_LOC
+fi
 
 TIMEOUT_SECONDS=300
 
