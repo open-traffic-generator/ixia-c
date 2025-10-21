@@ -155,11 +155,20 @@
     cd ixia-c/deployments/docker
     chmod u+x ./deployment.sh
 
-    # deploy
+    # deploy control & data plane
     ./deployment.sh eth1 eth2 topo new
 
-    # teardown
+    # teardown control & data plane
     ./deployment.sh eth1 eth2 topo rm
+
+    # deploy data plane only
+    DATA_PLANE_ONLY=true ./deployment.sh eth1 eth2 topo new
+
+    # teardown data plane only
+    DATA_PLANE_ONLY=true ./deployment.sh eth1 eth2 topo rm
+
+    #create veth pair [ if needed ]
+    ./deployment.sh veth1 veth2 create
 ```
 
 
@@ -178,6 +187,23 @@
         ptx := config.Ports().Add().SetName("ptx").SetLocation("eth1")
         prx := config.Ports().Add().SetName("prx").SetLocation("eth2")
     ```
+
+## Example Go test
+    - Setup
+        ```bash
+            git clone --recurse-submodule https://github.com/open-traffic-generator/conformance.git
+            cd conformance
+            go mod tidy
+            go mod download
+        ```
+    - Test for control & data plane
+        ```bash
+            go test -v examples/quickstart_cp_dp_test.go
+        ```
+    - Test for data plane only
+        ```bash
+            go test -v examples/quickstart_dp_test.go
+        ```
 
 
 
