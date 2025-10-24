@@ -2,7 +2,7 @@
 
 
 
-VERSIONS_YAML_LOC="https://generic-virtual-athena.artifactorylbj.it.keysight.com/artifactory/generic-virtual-athena/builds/1.40.0-14/versions.yaml"
+VERSIONS_YAML_LOC="https://generic-virtual-athena.artifactorylbj.it.keysight.com/artifactory/generic-virtual-athena/builds/1.40.0-15/versions.yaml"
 VERSIONS_YAML="versions.yaml"
 CTRL_IMAGE="ghcr.io/open-traffic-generator/keng-controller"
 TE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-traffic-engine"

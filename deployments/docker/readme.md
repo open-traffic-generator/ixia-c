@@ -19,7 +19,7 @@
             --name=keng-controller                              \
             --publish 0.0.0.0:8443:8443                         \
             --publish 0.0.0.0:40051:40051                       \
-            ghcr.io/open-traffic-generator/keng-controller:1.40.0-14                              \
+            ghcr.io/open-traffic-generator/keng-controller:1.40.0-15                              \
             --accept-eula                                       \
             --trace                                             \
             --disable-app-usage-reporter
