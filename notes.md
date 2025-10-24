@@ -3,60 +3,67 @@
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [1.40.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.40.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.40.0](https://pypi.org/project/snappi/1.40.0)        |
-| gosnappi                      | [1.40.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.40.0)        |
-| keng-controller               | [1.40.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| snappi                        | [1.40.3](https://pypi.org/project/snappi/1.40.3)        |
+| gosnappi                      | [1.40.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.40.3)        |
+| keng-controller               | [1.40.0-14](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.482](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.40.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-layer23-hw-server        | [1.40.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.40.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.40.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
-| UHD400                        | [1.5.8](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.8/artifacts.tar)         |
+| otg-gnmi-server               | [1.40.3](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.40.0-14](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 
+***Note***
+
+`gosnappi` will support go version >=v1.24 and `snappi` will support python version from `v3.8` to `v3.12`.
 
 ### Release Features(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `LACP` header in flow. [details](https://github.com/open-traffic-generator/models/pull/435)
+* <b><i>UHD400</i></b>: Support added for capturing packets on multiple test ports.
     ```go
-        f1Eth := flow.Packet().Add().Ethernet()
-        f1Eth.Src().SetValue("00:00:00:00:00:AA")
-        f1Eth.Dst().SetValue("01:80:C2:00:00:02")
+        // Enabling capture ports​
+        enableCapture := config.Captures().Add().SetName("Capture")​
+        enableCapture.SetPortNames([]string{"p1", "p2", "p3", "p4"})​
 
-        f1Lacp := flow.Packet().Add().Lacp()
-        f1Lacpdu := f1Lacp.Lacpdu()
+        // startCapture on enabled ports​
+        for _, capture := range gosnappi.Config.Captures().Items() {​
+            capturePorts = append(capturePorts, capture.PortNames()...)​
+        }​
+        ​
+        s := gosnappi.NewControlState()​
+        s.Port().Capture().SetPortNames(portNames).SetState(gosnappi.StatePortCaptureState.START)​
+        client.Api().SetControlState(s, "StartCapture")​
+        ​
+        // Retrieve Capture​
+        captureFileObj, err := os.Create(“capture_test.pcap”)​
+        req := gosnappi.NewCaptureRequest().SetPortName(portName)​
+        captureBytes, err := client.Api().GetCapture(req)​
+        captureFileObj.Write(captureBytes)​
+        pcap.OpenOffline(outCaptureFile)​
+    ```​
 
-        f1LacpActor := f1Lacpdu.Actor()
-        f1LacpActor.SystemPriority().SetValue(32768)
-        f1LacpActor.SystemId().SetValue("00:00:00:00:00:AA")
-        f1LacpActor.Key().SetValue(13)
-        f1LacpActor.PortPriority().SetValue(32768)
-        f1LacpActor.PortNumber().SetValue(25)
-        f1LacpActor.ActorState().Activity.SetValue(1)
-        f1LacpActor.ActorState().Aggregation.SetValue(1)
-        f1LacpActor.ActorState().Collecting.SetValue(1)
-
-        f1LacpPartner := f1Lacpdu.Partner()
-        f1LacpPartner.SystemPriority().SetValue(32768)
-        f1LacpPartner.SystemId().SetValue("00:0c:29:1e:a2:6d")
-        f1LacpPartner.Key().SetValue(1)
-        f1LacpPartner.PortPriority().SetValue(32768)
-        f1LacpPartner.PortNumber().SetValue(1)
-        f1LacpPartner.PartnerState().Distributing.SetValue(1)  
-    ```
-
-    Note: `flows[i].metrics.enable` should be set to `false`, to ensure that instrumentation data is not appended to the `LACP` PDU being transmitted on the wire.
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for fetching user specified packet slice from captured packets. [details](https://github.com/open-traffic-generator/models/pull/436)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>:Support added for extended IPv6 routing header type 4(IPv6 SR) as Data traffic.
     ```go
-        // Capture Slice: get N number of packets starting from Mth packet 
-        captureRequest = gosnappi.NewCaptureRequest()
-        captureRequest.SetPortName("p1")
-        captureRequest.Packets().Slice().Initial().SetStart(10).SetCount(50)
+        // go-snappi snippet​
+        f1Eth := f1.Packet().Add().Ethernet()​
+        ...
+        f1Ip := f1.Packet().Add().Ipv6()​
+        ...​
+
+        // IPv6 SR Header ​
+        f1ExtHdr := f1.Packet().Add().Ipv6ExtensionHeader()​
+        f1SR := f1ExtHdr.Routing().SegmentRouting()​
+        f1SR.SegmentsLeft().SetValue(2)​
+        f1SR.LastEntry().SetValue(2)​
+        f1SegList := f1SR.SegmentList()​
+        f1SegList.Add().Segment().SetValue("5000:0:0:1:0:0:0:1")​
+        f1SegList.Add().Segment().SetValue("1000:0:0:1:0:0:0:1")​
+        ...
     ```
 
 ### Bug Fix(s): 
-* <b><i>Ixia-C, UHD400</i></b>: Issue is fixed where if `devices[i].bgp.ipv4/6_interfaces[j].peers[k].capability.route_refresh` was explicitly set to `false`, the IPv6 capability would not be advertised in the BGP Open message, resulting in IPv6 routes not getting installed in this specific scenario.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where for certain scaled ISIS simulated topology configs `"context deadline exceeded"` error was being encountered on `set_config`.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
