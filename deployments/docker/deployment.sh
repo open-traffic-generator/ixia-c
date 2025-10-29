@@ -27,9 +27,9 @@ ETH_Z=$2
 shift 2
 
 set_docker_permission() {
-    sudo chown root:docker /var/run/docker.sock
-    sudo chmod 660 /var/run/docker.sock
-    sudo systemctl start docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    docker ps -a
 }
 set_docker_permission
 configq() {
