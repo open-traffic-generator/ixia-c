@@ -8,7 +8,7 @@ CTRL_IMAGE="ghcr.io/open-traffic-generator/keng-controller"
 TE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-traffic-engine"
 PE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-protocol-engine"
 
-if [ -n "$GO_BIN_PATH" ]; then
+if [ -n "$AUTH_TOKEN" ]; then
     curl -lO -H "Authorization: Bearer $AUTH_TOKEN" $VERSIONS_YAML_LOC
 else
     curl -kLO $VERSIONS_YAML_LOC
@@ -26,6 +26,12 @@ ETH_A=$1
 ETH_Z=$2
 shift 2
 
+set_docker_permission() {
+    sudo chown root:docker /var/run/docker.sock
+    sudo chmod 660 /var/run/docker.sock
+    sudo systemctl start docker
+}
+set_docker_permission
 configq() {
     # echo is needed to further evaluate the 
     # contents extracted from configuration
