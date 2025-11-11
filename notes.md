@@ -2,68 +2,48 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.40.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.40.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.40.3](https://pypi.org/project/snappi/1.40.3)        |
-| gosnappi                      | [1.40.3](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.40.3)        |
-| keng-controller               | [1.40.0-15](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| Open Traffic Generator API    | [1.41.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.41.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.41.0](https://pypi.org/project/snappi/1.41.0)        |
+| gosnappi                      | [1.41.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.41.0)        |
+| keng-controller               | [1.41.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.482](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.40.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.483](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.41.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.40.3](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.40.0-15](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.41.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.41.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 
-***Note***
-
-`gosnappi` will support go version >=v1.24 and `snappi` will support python version from `v3.8` to `v3.12`.
 
 ### Release Features(s):
-* <b><i>UHD400</i></b>: Support added for capturing packets on multiple test ports.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added for BGP/BGP+ labeled IPv4/v6 unicast routes.
+    - To configure single label.
     ```go
-        // Enabling capture ports​
-        enableCapture := config.Captures().Add().SetName("Capture")​
-        enableCapture.SetPortNames([]string{"p1", "p2", "p3", "p4"})​
+        peer.Capability().SetIpv4Mpls(true).SetIpv6Mpls(true)​
+        peerRoutes := peer.​
+            V4Routes().Add().SetName("peer.routes")​
+        peerRoutes.Addresses().Add().SetAddress("20.20.20.1").SetPrefix(32).SetCount(2)
 
-        // startCapture on enabled ports​
-        for _, capture := range gosnappi.Config.Captures().Items() {​
-            capturePorts = append(capturePorts, capture.PortNames()...)​
-        }​
-        ​
-        s := gosnappi.NewControlState()​
-        s.Port().Capture().SetPortNames(portNames).SetState(gosnappi.StatePortCaptureState.START)​
-        client.Api().SetControlState(s, "StartCapture")​
-        ​
-        // Retrieve Capture​
-        captureFileObj, err := os.Create(“capture_test.pcap”)​
-        req := gosnappi.NewCaptureRequest().SetPortName(portName)​
-        captureBytes, err := client.Api().GetCapture(req)​
-        captureFileObj.Write(captureBytes)​
-        pcap.OpenOffline(outCaptureFile)​
-    ```​
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>:Support added for extended IPv6 routing header type 4(IPv6 SR) as Data traffic.
-    ```go
-        // go-snappi snippet​
-        f1Eth := f1.Packet().Add().Ethernet()​
-        ...
-        f1Ip := f1.Packet().Add().Ipv6()​
-        ...​
-
-        // IPv6 SR Header ​
-        f1ExtHdr := f1.Packet().Add().Ipv6ExtensionHeader()​
-        f1SR := f1ExtHdr.Routing().SegmentRouting()​
-        f1SR.SegmentsLeft().SetValue(2)​
-        f1SR.LastEntry().SetValue(2)​
-        f1SegList := f1SR.SegmentList()​
-        f1SegList.Add().Segment().SetValue("5000:0:0:1:0:0:0:1")​
-        f1SegList.Add().Segment().SetValue("1000:0:0:1:0:0:0:1")​
-        ...
+        peerRouteLabel := peerRoutes.MplsLabels()​
+        peerRouteLabel.Labels().Add().SetStart(10000).SetStep(10)
+        // This will result in prefix 20.20.20.1/32 to be sent with label 10000 and
+        // prefix 20.20.20.2/32 to be sent with label 10010
     ```
+    - To configure multiple labels.
+    ```go
+        multiMpls := peer.Capability().MultipleIpv4Mpls()​
+        multiMpls.SetLabelCount(2)
+        peerRoutes := peer.​
+            V4Routes().Add().SetName("peer.routes")​
+        peerRoutes.Addresses().Add().SetAddress("20.20.20.1").SetPrefix(32).SetCount(2)
 
-### Bug Fix(s): 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where for certain scaled ISIS simulated topology configs `"context deadline exceeded"` error was being encountered on `set_config`.
+        peerRouteLabels := peerRoutes.MplsLabels()​
+        peerRouteLabels.Labels().Add().SetStart(10000)​.SetStep(10)
+        peerRouteLabels.Labels().Add().SetStart(20000).SetStep(10)
+        // This will result in prefix 20.20.20.1/32 to be sent with label stack 10000, 20000 and
+        // prefix 20.20.20.2/32 to be sent with label stack 10010, 20020
+    ```
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
