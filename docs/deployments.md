@@ -12,7 +12,7 @@ All these services are available as docker images on the [GitHub Open-Traffic-Ge
 
 ![ixia-c-aur](res/ixia-c-aur.drawio.svg "ixia-c-aur")
 
-> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f) (a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations) can be setup to run against Ixia-c.
+> Once the services are deployed, [conformance](https://github.com/open-traffic-generator/conformance/tree/main) (a collection of [snappi](https://pypi.org/project/snappi/) & [gosnappi](https://otg.dev/clients/gosnappi/) test scripts and configurations) can be setup to run against Ixia-c.
 
 ## Bootstrap
 
@@ -188,91 +188,4 @@ This scenario binds traffic engine to the management network interface, that bel
 
 ## Tests
 
-### Clone Tests
-
-  ```sh
-    # Git clone sanppi-tests repo from github
-    # This repository consists of end-to-end test scripts written in [snappi](https://github.com/open-traffic-generator/snappi).
-    git clone https://github.com/open-traffic-generator/snappi-tests.git
-    cd snappi-tests
-  ```
-
-### Setup Tests
-
-  Ensure that the client setup meets the [Python Prerequisites](prerequisites.md#software-prerequisites).
-
-* **Install `snappi`.**
-
-    ```sh
-      python -m pip install --upgrade "snappi"
-    ```
-
-* **Install test dependencies**
-
-    ```sh
-      python -m pip install --upgrade -r requirements.txt
-    ```
-
-* **Ensure that a `sample test` script executes successfully. For more information, see [test details](#test-details).**
-
-    ```sh
-      # provide intended API Server and port addresses
-      vi tests/settings.json
-      # run a test
-      python -m pytest tests/raw/test_tcp_unidir_flows.py
-    ```
-
-## Test Details
-
-The test scripts are based on `snappi client SDK` (auto-generated from the [Open Traffic Generator Data Model](https://github.com/open-traffic-generator/models)) and have been written by using `pytest`.
-
-You can access the Open Traffic Generator Data Model from any browser by using [https://<controller-host-ip>/docs/](https://<controller-host-ip>/docs/) and start scripting.
-
-The test directory structure is as follows:
-
-* `snappi-tests/tests/settings.json`: Global test configuration, that includes `controller` host, `traffic-engine` host, and `speed` settings.
-* `snappi-tests/configs/`: Contains pre-defined traffic configurations in JSON, which can be loaded by test scripts.
-* `snappi-tests/tests`: Contains end-to-end test scripts covering the most of the common use-cases.
-* `snappi-tests/tests/utils/`: Contains the most commonly required helpers, that are used throughout the test scripts.
-* `snappi-tests/tests/env/bin/python`: Python executable (inside virtual environment) to be used for test execution.
-
-The most of the test scripts use the following format:
-
-* `snappi-tests/tests/raw/test_tcp_unidir_flows.py`: For unidirectional flow use case.
-* `snappi-tests/tests/raw/test_tcp_bidir_flows.py`: For using pre-defined JSON traffic config & bidirectional flow use case.
-* `snappi-tests/tests/raw/test_basic_flow_stats.py`: For basic flow statistics validation use case.
-* `<test to validate capture>`: For validating capture. TODO
-* `<test to cover multiple protocol fields for different variation like fixed, list, counter>`: Some examples from gtpv2 [ethernet - ipv4 - udp - gtpv2 - ipv6] TODO
-* `<test script for one arm testing>`: For one arm scenario TODO
-
-To execute batch tests marked as `sanity`:
-
-```sh
-tests/env/bin/python -m pytest tests/py -m "sanity"
-```
-
-**NOTE on tests/settings.json**:
-
-* When `controller` and `traffic-engine`s are located on separate systems (remote)
-
-  ```json
-  {
-   "controller": "https://<controller-ip>",
-    "ports": [
-        "<traffic-engine-ip>:5555",
-        "<traffic-engine-ip>:5556"
-    ]
-  }
-  ```
-
-* When `controller` and `traffic-engine`s are located on the same system (local - raw sockets)
-
-  ```json
-  {
-   "controller": "https://localhost:8443",
-    "ports": [
-        "localhost:5555",
-        "localhost:5556"
-    ]
-  }
-  ```
+  Please follow [readme](https://github.com/open-traffic-generator/conformance/blob/main/readme.md) to run sample go/python tests.

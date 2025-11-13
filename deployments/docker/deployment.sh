@@ -2,7 +2,7 @@
 
 
 
-VERSIONS_YAML_LOC="https://generic-virtual-athena.artifactorylbj.it.keysight.com/artifactory/generic-virtual-athena/builds/1.41.0-1/versions.yaml"
+VERSIONS_YAML_LOC="https://github.com/open-traffic-generator/ixia-c/releases/download/v1.41.0-1/versions.yaml"
 VERSIONS_YAML="versions.yaml"
 CTRL_IMAGE="ghcr.io/open-traffic-generator/keng-controller"
 TE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-traffic-engine"
@@ -27,11 +27,15 @@ ETH_Z=$2
 shift 2
 
 set_docker_permission() {
-    sudo usermod -aG docker $USER
-    newgrp docker
+    if ! groups $USER | grep -q '\bdocker\b'; then
+        echo "Adding $USER to docker group (relogin required to take effect)."
+        sudo usermod -aG docker $USER
+    fi
     docker ps -a
 }
+
 set_docker_permission
+
 configq() {
     # echo is needed to further evaluate the 
     # contents extracted from configuration
@@ -297,6 +301,7 @@ usage() {
 case $1 in
     *   )
         cmd=${1}
+        echo "Hi"
         shift 1
         ${cmd} "$@" || usage
     ;;
