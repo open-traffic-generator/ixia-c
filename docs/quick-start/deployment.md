@@ -10,7 +10,7 @@ All these services are available as docker images on the [GitHub Open-Traffic-Ge
 
 ![ixia-c-aur](../res/ixia-c-aur.drawio.svg "ixia-c-aur")
 
-> Once the services are deployed, [snappi-tests](https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f) (a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations) can be setup to run against Ixia-c.
+> Once the services are deployed, [conformance](https://github.com/open-traffic-generator/conformance/blob/main/readme.md) (a collection of [snappi](https://pypi.org/project/snappi/) test scripts and configurations) can be setup to run against Ixia-c.
 
 ## Deploy Ixia-c using docker-compose
 
