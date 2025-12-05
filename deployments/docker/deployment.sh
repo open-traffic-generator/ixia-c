@@ -27,11 +27,15 @@ ETH_Z=$2
 shift 2
 
 set_docker_permission() {
-    sudo usermod -aG docker $USER
-    newgrp docker
+    if ! groups $USER | grep -q '\bdocker\b'; then
+        echo "Adding $USER to docker group (relogin required to take effect)."
+        sudo usermod -aG docker $USER
+    fi
     docker ps -a
 }
+
 set_docker_permission
+
 configq() {
     # echo is needed to further evaluate the 
     # contents extracted from configuration
