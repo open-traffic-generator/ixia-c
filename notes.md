@@ -2,24 +2,73 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.41.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.41.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.41.0](https://pypi.org/project/snappi/1.41.0)        |
-| gosnappi                      | [1.41.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.41.0)        |
-| keng-controller               | [1.41.0-8](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| Open Traffic Generator API    | [1.42.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.42.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.42.0](https://pypi.org/project/snappi/1.42.0)        |
+| gosnappi                      | [1.42.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.42.0)        |
+| keng-controller               | [1.42.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.486](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.41.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.488](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.42.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.41.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.41.0-8](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.42.4](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.42.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 
 
-### Bug Fix(s):
-* <b><i>Ixia Chassis & Appliances(Novus)</i></b>: Issue is fixed where if protocols were restarted followed by restart of previously configured flows , flow packets were not being transmitted on the wire and flow `tx` metrics stayed at `0`. This issue is specific to `Novus` load module.
+### Release Feature(s):
+* <b><i>Ixia-C, UHD400 & Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for BGP Monitoring Protocol (BMP). [details](https://github.com/open-traffic-generator/models/pull/427)
+    ```go
+        p1 := config.Ports().Add().SetName("p1").SetLocation("...")
+        device := config.Devices().Add().SetName("p1.dev1")
+        ...
+        bmpIntf := device.Bmp().Ipv4Interfaces().Add()
+        bmpIntf.SetIpv4Name("p1.dev1.eth1.ipv4")
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>:  Issue is fixed where for certain cases multiple consecutive API calls would fail and result in `'potential deadlock'` related messages in `keng-layer23-hw-server` logs. Now if `keng-layer23-hw-server` is stuck & busy on processing last API, future API calls will immediately fail with proper error instead of earlier `'context deadline'` error after timeout of 10 min.
+        bmpServer := bmpIntf.Servers().Add()
+        bmpServer.SetName(device.Name()+".bmp")
+        bmpServer.SetClientIp("1.1.1.1")
+        // To control which TCP port on which to accept requests from DUT BMP Client.
+        bmpServer.Connection().Passive().SetListenPort(10123)
+
+        //To store all routes
+        //bmpServer.PrefixStorage().Ipv4Unicast().Store()
+
+        //Store specifically needed routes
+        discard := bmpServer.PrefixStorage().Ipv4Unicast().Discard()
+        discard.Exceptions().Add().
+                SetIpv4Prefix("172.16.0.0").
+                SetPrefixLength(16)
+
+        //Store all IPv6 prefixes
+        // bmpServer.PrefixStorage().Ipv6Unicast().Store()
+
+        //Store subset of IPv6 prefixes
+        v6discard := bmpServer.PrefixStorage().Ipv6Unicast().Discard()
+        v6discard.Exceptions().Add().
+                SetIpv6Prefix("172:16:0:1::").
+                SetPrefixLength(64)
+            
+        //To get BMP Metrics: 
+        reqMetrics := gosnappi.NewMetricsRequest()
+        reqMetrics.BmpServer()
+        bmpMetrics, err := client.Api().GetMetrics(reqMetrics)
+        ...
+
+        // To get BMP State info ( the per peer stats/prefixes information sent by BMP Client) 
+        reqStates := gosnappi.NewStatesRequest()
+        reqStates.BmpServers()
+        bmpState, err := client.Api().GetStates(reqStates)
+    ```
+    -  gNMI support added to fetch metics and states of BGP Monitoring Protocol (BMP) [models-yang](https://github.com/open-traffic-generator/models-yang/blob/main/artifacts/open-traffic-generator-bmp-server.txt).
+
+        ```gNMI
+            // metrics
+            bmp-servers/bmp-server[name=*]/state/counters
+            
+            // states
+            bmp-servers/bmp-server[name=*]/state/peer-state-database/peers
+        ```
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
