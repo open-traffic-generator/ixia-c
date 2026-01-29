@@ -19,7 +19,7 @@
             --name=keng-controller                              \
             --publish 0.0.0.0:8443:8443                         \
             --publish 0.0.0.0:40051:40051                       \
-            ghcr.io/open-traffic-generator/keng-controller:1.42.1-4                              \
+            ghcr.io/open-traffic-generator/keng-controller:1.43.0-7                              \
             --accept-eula                                       \
             --trace                                             \
             --disable-app-usage-reporter
@@ -64,14 +64,14 @@
             --net=container:ixia-c-traffic-engine-eth1     \
             --name=ixia-c-protocol-engine-eth1            \
             -e INTF_LIST="eth1"                            \
-            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.491                       \
+            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.494                       \
 
         # for network interface eth2
         docker run --privileged -d                           \
             --net=container:ixia-c-traffic-engine-eth2     \
             --name=ixia-c-protocol-engine-eth2            \
             -e INTF_LIST="eth2"                            \
-            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.491  
+            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.494  
      ```
 
 5. Ensure existing network interfaces are `Up` and have `Promiscuous` mode enabled.
