@@ -2,7 +2,7 @@
 
 
 
-VERSIONS_YAML_LOC="https://github.com/open-traffic-generator/ixia-c/releases/download/v1.43.0-7/versions.yaml"
+VERSIONS_YAML_LOC="https://github.com/open-traffic-generator/ixia-c/releases/download/v1.44.0-8/versions.yaml"
 VERSIONS_YAML="versions.yaml"
 CTRL_IMAGE="ghcr.io/open-traffic-generator/keng-controller"
 TE_IMAGE="ghcr.io/open-traffic-generator/ixia-c-traffic-engine"
