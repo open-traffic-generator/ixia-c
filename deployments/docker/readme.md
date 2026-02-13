@@ -171,6 +171,11 @@
     ./deployment.sh veth1 veth2 create
 ```
 
+## Note: 
+- If the source and destination NICs have IPv4 addresses configured and the traffic flow is configured such that the `flows[i].packet.ipv4.src/dst`  are matching the configured NICs IPv4 addresses, it is a known issue that due to ICMP protocol/port unreachable replies from the host linux kernel, the flow Rx can become greater than the flow Tx value. 
+- To avoid this, for eth/ipv4 flows install the filter `iptables -I INPUT -p 61 -j DROP` on destination host to prevent the flow traffic from reaching the host linux kernel. Also Note that the filter might have to be changed accordingly for eth/ipv4/udp or eth/ipv4/tcp to be filtered by udp/tcp port numbers. 
+- It is advisable to follow the similar steps if similar issue occurs for eth/ipv6 flows as well.
+
 
 ## Sample go snippet to use after deployment for testing
     ```go
