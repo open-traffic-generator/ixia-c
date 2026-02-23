@@ -65,6 +65,8 @@
 
 * <b><i>otg-gnmi-server</i></b>: Issue is fixed in `models-yang` due to which error `schema "lsp-id": "192000002001-00-00" does not match regular expression pattern "^([0-9a-fA-F]*)$"` would be seen during gNMI client validation when accessing ISIS `lsp-id` using `/isis-routers/isis-router[name=*]/state/link-state-database/lsp-states/lsps[lsp-id=*][pdu-type=*]/state/lsp-id`.
 
+* <b><i>Ixia Chassis & Appliances(AresOne-S Load Module)</i></b>: Issue specific to AresOne-S Load Module , when used in `8x100G` mode , is fixed where `set_config` was returning errors similar to `Unexpected speed mode: k80G` or `Unexpected speed mode: 80000`.
+
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `StartProtocols`/`set_control_state.protocol.all.start` can get stuck till the time all DHPCv4/v6 clients receive the leased IPv4/v6 addresses from the DHCPv4/v6 server/relay agent. This may result in getting `"context deadline exceeded"` error in the test program.
