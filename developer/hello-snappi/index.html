@@ -1,0 +1,2336 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../quick-start/introduction/">
+      
+      
+        <link rel="next" href="../../user-guide-introduction/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>First script - Ixia-c & Elastic Network Generator Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arial:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Arial";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-L42048L6R5"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-L42048L6R5",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-L42048L6R5",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="ks-light" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#use-case" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Ixia-c &amp; Elastic Network Generator Documentation" class="md-header__button md-logo" aria-label="Ixia-c & Elastic Network Generator Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ixia-c & Elastic Network Generator Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              First script
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="ks-light" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="ks-dark" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/open-traffic-generator/ixia-c" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ixia-c
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../quick-start/introduction/" class="md-tabs__link">
+          
+  
+  
+  Quick Start
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide-introduction/" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../snappi-constructs/" class="md-tabs__link">
+          
+  
+  
+  Developer Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../reference/capabilities/" class="md-tabs__link">
+          
+  
+  
+  Reference Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../releases/" class="md-tabs__link">
+          
+  
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../support/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Support
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Ixia-c &amp; Elastic Network Generator Documentation" class="md-nav__button md-logo" aria-label="Ixia-c & Elastic Network Generator Documentation" data-md-component="logo">
+      
+  <img src="../../assets/logo.png" alt="logo">
+
+    </a>
+    Ixia-c & Elastic Network Generator Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/open-traffic-generator/ixia-c" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ixia-c
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../eula/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EULA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quick Start
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick-start/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First script
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-api-handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create the API Handle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Headers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol Headers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Ethernet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-capture-and-traffic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start Capture and Traffic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetch-and-validate-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fetch and Validate Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetch-and-validate-captures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fetch and Validate Captures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deployments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ixia-c
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tests-uhd400/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UHD400T
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tests-chassis-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IxOS Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrated-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integrations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../limitations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Limitations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Developer Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snappi-constructs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python with snappi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snappi-install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Go with gosnappi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Guide
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference Guide
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/capabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capabilities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/resource-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resource requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/licensing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Licensing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releases
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Releases
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../news/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Announcements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use Case
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-the-api-handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create the API Handle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#layer1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protocol-headers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Headers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol Headers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup Ethernet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup UDP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#start-capture-and-traffic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Start Capture and Traffic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetch-and-validate-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fetch and Validate Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fetch-and-validate-captures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fetch and Validate Captures
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Putting It All Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>First script</h1>
+
+<h2 id="use-case">Use Case</h2>
+<p>This tutorial explains some key elements that are required to write a <strong>snappi script</strong> for exercising the following topology.</p>
+<ul>
+<li>Send 1000 UDP packets back and forth between the interfaces <code>eth1</code> &amp; <code>eth2</code> at a rate of 1000 packets per second.</li>
+<li>Ensure that the correct number of valid UDP packets are received on both the ends, by using port capture and port metrics.</li>
+</ul>
+<p>The <a href="https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f/scripts/hello_snappi.py">hello_snappi.py</a> script covers this extensively.</p>
+<p><img alt="Ixia-C Deployment for Bidirectional Traffic" src="../../res/ixia-c.drawio.svg" /></p>
+<h2 id="setup">Setup</h2>
+<p>You can start by setting up the topology as described above. For more detail, see <a href="../../deployments/#two-arm-scenario">deployment steps for two-arm scenario</a>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/open-traffic-generator/ixia-c<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>ixia-c
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker-compose<span class="w"> </span>-f<span class="w"> </span>deployments/raw-two-arm.yml<span class="w"> </span>up<span class="w"> </span>-d
+</code></pre></div>
+<p>After the set up is completed, install the python packages:</p>
+<ul>
+<li><a href="https://pypi.org/project/snappi/">snappi</a> - client SDK auto-generated from <a href="https://github.com/open-traffic-generator/models">Open Traffic Generator API</a>.</li>
+<li><a href="https://pypi.org/project/dpkt/">dpkt</a> - for processing <code>.pcap</code> files.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span><span class="nv">snappi</span><span class="o">==</span><span class="m">1</span>.45.0<span class="w"> </span>dpkt
+</code></pre></div>
+<h2 id="create-the-api-handle">Create the API Handle</h2>
+<p>The first step in any snappi script is to import the <code>snappi</code> package and instantiate an <code>api</code> object, where the <code>location</code> parameter takes the HTTPS/gRPC address of the controller and <code>verify</code> is used to turn off the insecure certificate warning.</p>
+<p>If the controller is deployed with a non-default TCP port by using the <a href="../../deployments/#deployment-parameters">deployment parameters</a>, it must be specified explicitly in the address (default port of HTTPS is 8443 and gRPC is 40051).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">snappi</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># HTTPS</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">api</span> <span class="o">=</span> <span class="n">snappi</span><span class="o">.</span><span class="n">api</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;https://localhost&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># or with non-default TCP port</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">api</span> <span class="o">=</span> <span class="n">snappi</span><span class="o">.</span><span class="n">api</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;https://localhost:8080&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">#gRPC</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">api</span> <span class="o">=</span> <span class="n">snappi</span><span class="o">.</span><span class="n">api</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;localhost:40051&quot;</span><span class="p">,</span> <span class="n">transport</span><span class="o">=</span><span class="n">snappi</span><span class="o">.</span><span class="n">Transport</span><span class="o">.</span><span class="n">GRPC</span><span class="p">)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># or with non-default TCP port</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="n">api</span> <span class="o">=</span> <span class="n">snappi</span><span class="o">.</span><span class="n">api</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;localhost:50020&quot;</span><span class="p">,</span> <span class="n">transport</span><span class="o">=</span><span class="n">snappi</span><span class="o">.</span><span class="n">Transport</span><span class="o">.</span><span class="n">GRPC</span><span class="p">)</span>
+</code></pre></div>
+<details>
+<summary><b>Expand</b> This section provides the details on an optional parameter <code>ext</code> which specifies the <i>snappi extension</i> to be loaded.</summary><br/>
+
+If a traffic generator does not natively support the  [Open Traffic Generator API](https://github.com/open-traffic-generator/models), snappi can be extended to write a translation layer to bridge the gap. For example, [snappi extension for IxNetwork](https://pypi.org/project/snappi-ixnetwork/). This can be installed by using `python -m pip install --upgrade snappi[ixnetwork]`.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">snappi</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># location here refers to HTTPS address of IxNetwork API Server</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">api</span> <span class="o">=</span> <span class="n">snappi</span><span class="o">.</span><span class="n">api</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;https://localhost&quot;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;ixnetwork&#39;</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+
+<h2 id="configuration">Configuration</h2>
+<p>You need to construct the traffic configuration to send it to the controller. Use the <code>api</code> object that you created previously. It will act as a handle for the following steps:</p>
+<ul>
+<li>Create new objects for API request (or response)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">config</span><span class="p">()</span>
+</code></pre></div>
+<blockquote>
+<p><code>api.config()</code> is a factory function for creating an empty <code>snappi.Config</code> object, which encapsulates the parameters that the controller needs to configure different aspects of the traffic generator. The next sections discuss about these configuration parameters in details.</p>
+</blockquote>
+<ul>
+<li>Initiate the API requests (and get back response)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># this pushes object of type `snappi.Config` to controller</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">api</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># this retrieves back object of type `snappi.Config` from controller</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">cfg</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+</code></pre></div>
+<blockquote>
+<p>By default, API requests in snappi are made over HTTPS with payloads as a JSON string. Since each object in snappi inherits <code>SnappiObject</code> or <code>SnappiIter</code>, they all share a common method called <code>.serialize()</code> and <code>deserialize()</code>, that are used internally during the API requests, for valid conversion to / from a JSON string. You will find more about such conveniences offered by snappi along the way.</p>
+</blockquote>
+<details>
+<summary><b>Expand</b> This section explains how you can effectively navigate through the <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml">snappi API documentation</a>.</summary><br/>
+
+The objects and methods (for API calls) in snappi are auto-generated from an [Open API Generator YAML file](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml). This file adheres to the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification), which can (by design) also be rendered as an interactive API documentation.
+
+[ReDoc](https://redocly.github.io/redoc/) is an open-source tool that provides a similar functionality. It accepts a link to valid OpenAPI YAML file and generates a document where all the methods (for API calls) are mentioned in the left navigation bar and for each selected method, there's a request/response body description in the center of the page. These descriptions lay out the entire object tree that documents each node in detail.
+
+The [snappi API documentation](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml) will always point to the API version **v0.11.11**. To use a different version, do the following:
+
+* Identify the API version from [open-traffic-generator releases](https://github.com/open-traffic-generator/snappi/releases/download/v0.11.11/models-release) and replace **v0.11.11** in the URL with the intended snappi version.
+
+* Open the [open-traffic-generator models](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml).
+
+</details>
+
+<h2 id="ports">Ports</h2>
+<p>Each instance of a <strong>traffic-engine</strong> is usually referred to as a <code>port</code>. As the ports are used to send or receive the traffic (as they are directly bound to the network interfaces), provide the following information to the config object, that you created earlier:</p>
+<ul>
+<li><code>name</code>: An unique identifier for each port.</li>
+<li><code>location</code>: A DNS name or TCP socket address of the traffic-engine (format is specific to a given traffic-engine implementations).</li>
+</ul>
+<blockquote>
+<p>Note: Unlike the config, creating a new port using <code>p = api.port()</code> is not required (and hence not supported), as the <code>snappi.Port</code> is never used directly as an API request or response.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># config has an attribute called `ports` which holds an iterator of type</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># `snappi.PortIter`, where each item is of type `snappi.Port` (p1 and p2)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;localhost:5555&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">port</span><span class="p">(</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;localhost:5556&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Instead of using <code>append()</code>, use factory method <code>.port()</code> on <code>cfg.ports</code> which instantiates <code>snappi.Port</code>, appends it to <code>cfg.ports</code>, and returns the entire iterator (so that it can be unpacked or accessed like a simple list). This is applicable to other iterators in snappi, for example, flows, capture, and layer1.</p>
+</blockquote>
+<details>
+<summary><b>Expand</b> this section for more examples on snappi iterators.</summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">p</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;p1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;p2&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">assert</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;p1&#39;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">p</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;p3&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">assert</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;p3&#39;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># This will remove 3rd index port</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">p4</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;p4&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="k">assert</span> <span class="n">p4</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;p4&#39;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># This will clear all the ports</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">p5</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">port</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;p5&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="k">assert</span> <span class="n">p5</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;p5&#39;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="n">p6</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;p6&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="k">assert</span> <span class="n">p6</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;p6&#39;</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="n">p7</span> <span class="o">=</span> <span class="n">p6</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="n">p7</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;p7&#39;</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p7</span><span class="p">)</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="k">assert</span> <span class="n">p7</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;p7&#39;</span>
+</code></pre></div>
+
+</details>
+
+<h2 id="layer1">Layer1</h2>
+<p>The <code>ports</code> that you configured earlier, may require a set up for <code>layer1</code> (physical layer) properties like speed, MTU, promiscuous mode, and etc.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># config has an attribute called `layer1` which holds an iterator of type</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># `snappi.Layer1Iter`, where each item is of type `snappi.Layer1` (ly)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">ly</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">layer1</span><span class="o">.</span><span class="n">layer1</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ly&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">ly</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="n">ly</span><span class="o">.</span><span class="n">SPEED_1_GBPS</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># set same properties on both ports</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">ly</span><span class="o">.</span><span class="n">port_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p1</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p2</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+</code></pre></div>
+<blockquote>
+<p>Note: You can set an enum value (all uppercase) defined in the <code>ly</code>'s namespace, instead of using an arbitrary value to the <code>ly.speed</code>. These enum values are available in the <a href="https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v0.11.11/artifacts/openapi.yaml">snappi API documentation</a>.</p>
+</blockquote>
+<h2 id="capture">Capture</h2>
+<p>To start capturing packets on both the ports, enable <code>capture</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># config has an attribute called `captures` which holds an iterator of type</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># `snappi.CaptureIter`, where each item is of type `snappi.Capture` (cp)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">cp</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">captures</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;cp&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">cp</span><span class="o">.</span><span class="n">port_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p1</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p2</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="flows">Flows</h3>
+<p>This section describes how to set up the traffic flows.</p>
+<p>Each flow in snappi can be characterized based on the <strong>tx/rx endpoints</strong>, <strong>duration</strong>, <strong>packet contents, packet rate, packet size</strong>, and etc.</p>
+<p>You can configure two flows, one that originates from port <code>p1</code> and the other from port <code>p2</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># config has an attribute called `flows` which holds an iterator of type</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="c1"># `snappi.FlowIter`, where each item is of type `snappi.Flow` (f1, f2)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;flow p1-&gt;p2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;flow p2-&gt;p1&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="c1"># and assign source and destination ports for each</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">f1</span><span class="o">.</span><span class="n">tx_rx</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">tx_name</span><span class="p">,</span> <span class="n">f1</span><span class="o">.</span><span class="n">tx_rx</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">rx_name</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p2</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">f2</span><span class="o">.</span><span class="n">tx_rx</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">tx_name</span><span class="p">,</span> <span class="n">f2</span><span class="o">.</span><span class="n">tx_rx</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">rx_name</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">p1</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># configure packet size, rate and duration for both flows</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">f1</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">fixed</span><span class="p">,</span> <span class="n">f2</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">fixed</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">256</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">flows</span><span class="p">:</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="c1"># send 1000 packets and stop</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="n">f</span><span class="o">.</span><span class="n">duration</span><span class="o">.</span><span class="n">fixed_packets</span><span class="o">.</span><span class="n">packets</span> <span class="o">=</span> <span class="mi">1000</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="c1"># send 1000 packets per second</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="n">f</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">pps</span> <span class="o">=</span> <span class="mi">1000</span>
+</code></pre></div>
+<p>Optionally, the flow duration and rate can be configured as follows:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># send packets for 5 seconds and stop (we could also specify duration in terms</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># of continuous or bursts)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">f</span><span class="o">.</span><span class="n">duration</span><span class="o">.</span><span class="n">fixed_seconds</span><span class="o">.</span><span class="n">seconds</span> <span class="o">=</span> <span class="mi">5</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># send packets at 50% of configured speed (we could also specify absolute rates</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="c1"># in terms of bps, kbps, etc.)</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="n">f</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">percentage</span> <span class="o">=</span> <span class="mi">50</span>
+</code></pre></div>
+<blockquote>
+<p>Note: The <code>f.rate</code> is <strong>polymorphic</strong> in nature. It can only be used to set either <code>pps</code> or <code>percentage</code>, but not both. A special attribute <code>choice</code> is used in such cases, which holds the name of the attribute that is currently in use.</p>
+</blockquote>
+<p>In snappi, <code>f.rate.choice</code> is automatically set based on the attribute that was last accessed. For example,</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">f</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">pps</span> <span class="o">=</span> <span class="mi">100</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">rate</span><span class="o">.</span><span class="n">serialize</span><span class="p">())</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># output</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">{</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>  <span class="s2">&quot;choice&quot;</span><span class="p">:</span> <span class="s2">&quot;pps&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>  <span class="s2">&quot;pps&quot;</span><span class="p">:</span> <span class="mi">100</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>You can set (or access) the <code>f1.rate.pps</code> without instantiating an object of type <code>snappi.FlowRate</code>, which is held by the <code>f1.rate</code>. <strong>Accessing an uninitialized attribute</strong> automatically initializes it with the type of object it holds.</p>
+</blockquote>
+<h2 id="protocol-headers">Protocol Headers</h2>
+<p>Packets sent out in a <code>flow</code> needs to be described in terms of the underlying <strong>protocol</strong> and <strong>payload</strong> contents. If no such description is provided, a simple ethernet frame is configured by default.</p>
+<p>The following section describes how you can construct a packet by adding Ethernet, IPv4, and UDP headers (strictly in an order, in which it should appear in the TCP/IP stack).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># configure packet with Ethernet, IPv4 and UDP headers for both flows</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">eth1</span><span class="p">,</span> <span class="n">ip1</span><span class="p">,</span> <span class="n">udp1</span> <span class="o">=</span> <span class="n">f1</span><span class="o">.</span><span class="n">packet</span><span class="o">.</span><span class="n">ethernet</span><span class="p">()</span><span class="o">.</span><span class="n">ipv4</span><span class="p">()</span><span class="o">.</span><span class="n">udp</span><span class="p">()</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">eth2</span><span class="p">,</span> <span class="n">ip2</span><span class="p">,</span> <span class="n">udp2</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">packet</span><span class="o">.</span><span class="n">ethernet</span><span class="p">()</span><span class="o">.</span><span class="n">ipv4</span><span class="p">()</span><span class="o">.</span><span class="n">udp</span><span class="p">()</span>
+</code></pre></div>
+<p>The <code>f1.packet</code> is an iterator which holds the items of type <code>snappi.FlowHeader</code> (a <strong>polymorphic</strong> type, instead of the <strong>non-polymorphic</strong> types). Hence, snappi automatically does the following under the hood:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">eth1</span><span class="p">,</span> <span class="n">ip1</span><span class="p">,</span> <span class="n">udp1</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">packet</span><span class="o">.</span><span class="n">header</span><span class="p">()</span><span class="o">.</span><span class="n">header</span><span class="p">()</span><span class="o">.</span><span class="n">header</span><span class="p">()</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># set enum choice for each header and initialize intended object with empty</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1"># fields just by accessing it</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="n">eth1</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">ETHERNET</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">eth1</span><span class="o">.</span><span class="n">ethernet</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="n">ip1</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">IPV4</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">ip1</span><span class="o">.</span><span class="n">ipv4</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="n">udp1</span><span class="o">.</span><span class="n">choice</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">UDP</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">udp1</span><span class="o">.</span><span class="n">udp</span>
+</code></pre></div>
+<p>At this point, the headers still contain the default field values. Now, you can assign specific values to the various header fields.</p>
+<blockquote>
+<p>The checksum and length fields in the most of the headers are automatically calculated and inserted before the packets are sent.</p>
+</blockquote>
+<h3 id="setup-ethernet">Setup Ethernet</h3>
+<p>For the Ethernet header, assign a static source and the destination MAC address value. The ethernet type field is <em>automatically</em> set to <code>0x800</code>, since the next header is IPv4.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># set source and destination MAC addresses</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">eth1</span><span class="o">.</span><span class="n">src</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">eth1</span><span class="o">.</span><span class="n">dst</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;00:AA:00:00:04:00&quot;</span><span class="p">,</span> <span class="s2">&quot;00:AA:00:00:00:AA&quot;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">eth2</span><span class="o">.</span><span class="n">src</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">eth2</span><span class="o">.</span><span class="n">dst</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;00:AA:00:00:00:AA&quot;</span><span class="p">,</span> <span class="s2">&quot;00:AA:00:00:04:00&quot;</span>
+</code></pre></div>
+<h3 id="setup-ipv4">Setup IPv4</h3>
+<p>For IPv4 header also, assign a static source and the destination IPv4 address value. The IP protocol field is <em>automatically</em> set to <code>0x11</code>, since the next protocol in the stack is UDP.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># set source and destination IPv4 addresses</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">ip1</span><span class="o">.</span><span class="n">src</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">ip1</span><span class="o">.</span><span class="n">dst</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="s2">&quot;10.0.0.2&quot;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">ip2</span><span class="o">.</span><span class="n">src</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">ip2</span><span class="o">.</span><span class="n">dst</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;10.0.0.2&quot;</span><span class="p">,</span> <span class="s2">&quot;10.0.0.1&quot;</span>
+</code></pre></div>
+<h3 id="setup-udp">Setup UDP</h3>
+<p>With the UDP header, instead of assigning a single (fixed) value for the header fields, assign multiple values.</p>
+<p>You can achieve this in snappi by using <code>increment</code>, <code>decrement</code>, and <code>list</code> patterns.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># set incrementing port numbers as source UDP ports</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">udp1</span><span class="o">.</span><span class="n">src_port</span><span class="o">.</span><span class="n">increment</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">5000</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">udp1</span><span class="o">.</span><span class="n">src_port</span><span class="o">.</span><span class="n">increment</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mi">2</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">udp1</span><span class="o">.</span><span class="n">src_port</span><span class="o">.</span><span class="n">increment</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">udp2</span><span class="o">.</span><span class="n">src_port</span><span class="o">.</span><span class="n">increment</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="mi">6000</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="n">udp2</span><span class="o">.</span><span class="n">src_port</span><span class="o">.</span><span class="n">increment</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="mi">4</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">udp2</span><span class="o">.</span><span class="n">src_port</span><span class="o">.</span><span class="n">increment</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="c1"># assign list of port numbers as destination UDP ports</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="n">udp1</span><span class="o">.</span><span class="n">dst_port</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4000</span><span class="p">,</span> <span class="mi">4044</span><span class="p">,</span> <span class="mi">4060</span><span class="p">,</span> <span class="mi">4074</span><span class="p">]</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="n">udp2</span><span class="o">.</span><span class="n">dst_port</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8000</span><span class="p">,</span> <span class="mi">8044</span><span class="p">,</span> <span class="mi">8060</span><span class="p">,</span> <span class="mi">8074</span><span class="p">,</span> <span class="mi">8082</span><span class="p">,</span> <span class="mi">8084</span><span class="p">]</span>
+</code></pre></div>
+<p>The above snippet will result in a sequence of packets as shown in the figure below.</p>
+<p><img alt="hello-snappi-packets" src="../../res/hello-snappi-packets.png" /></p>
+<blockquote>
+<p>The patterns for headers fields in snappi provide a very flexible way to generate millions of unique packets to test the DUT functionalities, like hashing based on 5-tuple. For more information, see <a href="../snappi-constructs/">common snappi constructs</a> .</p>
+</blockquote>
+<h2 id="start-capture-and-traffic">Start Capture and Traffic</h2>
+<p>After you have added all the intended configuration parameters to the <code>cfg</code>, do the following:</p>
+<ul>
+<li>Push it to the controller, so that the connection with the intended traffic-engines can be established and the intended configuration is applied (to each one of them).</li>
+<li>Start capturing packets on the configured ports.</li>
+<li>Start sending packets from the configured ports.</li>
+</ul>
+<p>Every time the <code>api.set_config()</code> is called, it essentially resets the state of the controller by <strong>tearing down</strong> any previous connections with traffic-engines and <strong>overriding</strong> any previous configuration. If the call fails at some point, <code>api.get_config()</code> will return an empty config.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># push configuration to controller</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="n">api</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># start packet capture on configured ports</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="n">cs</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">capture_state</span><span class="p">()</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="n">cs</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">START</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">api</span><span class="o">.</span><span class="n">set_capture_state</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="c1"># start transmitting configured flows</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="n">ts</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">transmit_state</span><span class="p">()</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="n">ts</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">START</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="n">api</span><span class="o">.</span><span class="n">set_transmit_state</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>The transmit or capture will be started on all configured flows or ports respectively, unless you provide any specific flow or port name. For example, <code>cs.port_names = ['p1']</code>, <code>ts.flow_names = ['f1']</code>.</p>
+</blockquote>
+<h2 id="fetch-and-validate-metrics">Fetch and Validate Metrics</h2>
+<p>As you are sending 1000 packets, at a rate of 1000 packets per second, it should take 1 second for the transmit to complete. You can validate the same by using <code>metrics</code>.</p>
+<p>The API supports different kinds of metrics, but focus on the <code>port_metrics</code> which are similar to the linux network interface stats.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># create a port metrics request and filter based on port names</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">req</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">metrics_request</span><span class="p">()</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">req</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">port_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="p">]</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># include only sent and received packet counts</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">req</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">column_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">req</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">FRAMES_TX</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">port</span><span class="o">.</span><span class="n">FRAMES_RX</span><span class="p">]</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># fetch port metrics</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="n">res</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_metrics</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="c1"># calculate total frames sent and received across all configured ports</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="n">total_tx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">frames_tx</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">port_metrics</span><span class="p">])</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="n">total_rx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">frames_rx</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">port_metrics</span><span class="p">])</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="n">expected</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">f</span><span class="o">.</span><span class="n">duration</span><span class="o">.</span><span class="n">fixed_packets</span><span class="o">.</span><span class="n">packets</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">flows</span><span class="p">])</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="k">assert</span> <span class="n">expected</span> <span class="o">==</span> <span class="n">total_tx</span> <span class="ow">and</span> <span class="n">total_rx</span> <span class="o">&gt;=</span> <span class="n">expected</span>
+</code></pre></div>
+<blockquote>
+<p>Note: Usually this snippet needs to be executed multiple times, until the assertion in the end stands true or a timeout occurs. You can use a function called <code>wait_for()</code> in the <code>hello_snappi.py</code> script to achieve this.</p>
+</blockquote>
+<h2 id="fetch-and-validate-captures">Fetch and Validate Captures</h2>
+<p>Validation by using metrics is limited to counters (for example, total transmitted, total received). To really inspect each packet received, you can use the capture API.</p>
+<p>This API is a little different from the others, in the following ways:</p>
+<ul>
+<li>It returns a sequence of raw bytes (representing <code>.pcap</code> file) instead of a JSON string.</li>
+<li>It needs to be fed to a tool that can inspect <code>.pcap</code> files. For example, <code>dpkt</code> or <code>tcpdump</code>.</li>
+</ul>
+<p>This snippet uses <code>dpkt</code> to ensure that each packet received is a valid UDP packet.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">ports</span><span class="p">:</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>  <span class="c1"># create capture request and filter based on port name</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>  <span class="n">req</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">capture_request</span><span class="p">()</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>  <span class="n">req</span><span class="o">.</span><span class="n">port_name</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>  <span class="c1"># fetch captured pcap bytes and feed it to pcap parser dpkt</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>  <span class="n">pcap</span> <span class="o">=</span> <span class="n">dpkt</span><span class="o">.</span><span class="n">pcap</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">get_capture</span><span class="p">(</span><span class="n">req</span><span class="p">))</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>  <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">buf</span> <span class="ow">in</span> <span class="n">pcap</span><span class="p">:</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>      <span class="c1"># check if current packet is a valid UDP packet</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>      <span class="n">eth</span> <span class="o">=</span> <span class="n">dpkt</span><span class="o">.</span><span class="n">ethernet</span><span class="o">.</span><span class="n">Ethernet</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>      <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">eth</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">dpkt</span><span class="o">.</span><span class="n">udp</span><span class="o">.</span><span class="n">UDP</span><span class="p">)</span>
+</code></pre></div>
+<p>Optionally, the following snippet can be used in order to do <code>tcpdump -r cap.pcap</code> (inspect captures by using tcpdump).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">pcap_bytes</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_capture</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;cap.pcap&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  <span class="n">p</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">pcap_bytes</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</code></pre></div>
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+<p><code>snappi</code> provides a fair level of abstraction and ease-of-use while constructing traffic configuration, compared to the <a href="https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f/configs/hello_snappi.json">equivalent in JSON</a>. More such comparisons can be found in <a href="../snappi-constructs/">common snappi constructs</a>.</p>
+<p>For more information on snappi (per-flow metrics, latency measurements, custom payloads, and etc) and examples on the pytest-based test scripts and utilities, see <a href="https://github.com/open-traffic-generator/snappi-tests/tree/3ffe20f">snappi-tests</a>.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/open-traffic-generator" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://ixia-c.slack.com" target="_blank" rel="noopener" title="ixia-c.slack.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M94.1 315.1c0 25.9-21.2 47.1-47.1 47.1S0 341 0 315.1 21.2 268 47.1 268h47.1v47.1zm23.7 0c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1v117.8c0 25.9-21.2 47.1-47.1 47.1s-47.1-21.2-47.1-47.1zm47.1-189c-25.9 0-47.1-21.2-47.1-47.1s21.2-47 47.1-47S212 53.2 212 79.1v47.1h-47.1zm0 23.7c25.9 0 47.1 21.2 47.1 47.1S190.8 244 164.9 244H47.1C21.2 244 0 222.8 0 196.9s21.2-47.1 47.1-47.1zm189 47.1c0-25.9 21.2-47.1 47.1-47.1s47 21.2 47 47.1-21.2 47.1-47.1 47.1h-47.1v-47.1zm-23.7 0c0 25.9-21.2 47.1-47.1 47.1S236 222.8 236 196.9V79.1c0-25.9 21.2-47.1 47.1-47.1s47.1 21.2 47.1 47.1zm-47.1 189c25.9 0 47.1 21.2 47.1 47.1s-21.2 47-47.1 47-47.1-21.2-47.1-47.1v-47.1h47.1zm0-23.7c-25.9 0-47.1-21.2-47.1-47.1s21.2-47.1 47.1-47.1h117.8c25.9 0 47.1 21.2 47.1 47.1s-21.2 47.1-47.1 47.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.instant", "navigation.tracking", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
