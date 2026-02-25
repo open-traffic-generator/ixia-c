@@ -35,6 +35,7 @@
         ```
             ports/port[name=*]/state/data-integrity
         ```
+      Note: `featureprofiles` users needs to sync to latest otherwise retrieval of OTG Port counters/state using gNMI might give incorrect results.
     
     Note: Only frames generated from flows will have `data-integrity` enabled.
 
@@ -52,6 +53,7 @@
 
       bgp-peers/bgp-peer[name=*]/unicast-ipv6-prefixes/unicast-ipv6-prefix/state/extended-community[i]/structured/transitive_2octet_as_type/link_bandwidth_subtype
     ```
+    Note: `featureprofiles` users needs to sync to latest otherwise retrieval of OTG BGP counters/state using gNMI might give incorrect results.
 
 ### Bug Fix(s):
 * <b><i>Ixia-C & UHD400</i></b>: Issue is fixed in BGP/BGP+ where the pod/container would sometimes restart on trying to start BGP for the first time with `ixstack_bgp_accept_check` backtrace present in the protocol-engine logs, especially on slower systems.
