@@ -2,65 +2,55 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.45.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.45.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.45.0](https://pypi.org/project/snappi/1.45.0)        |
-| gosnappi                      | [1.45.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.45.0)        |
-| keng-controller               | [1.45.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| Open Traffic Generator API    | [1.48.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.48.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.48.0](https://pypi.org/project/snappi/1.48.0)        |
+| gosnappi                      | [1.48.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.48.0)        |
+| keng-controller               | [1.48.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.504](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.45.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.507](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.48.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.45.1](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.45.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.48.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.48.0-5](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 
 
 ### Release Feature(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for enabling and fetching `data-integrity` port statistics in `set_config` and `get_metrics`. [details](https://github.com/open-traffic-generator/models/pull/454)
-    - To configure enable `data-integrity` at global level.
-    ```go
-        cfg.Options().PortOptions().SetDataIntegrity(true)
-    ```
-    - to fetch `data-integrity` metrics use the following snippet. 
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added for retrieval of BGP MPLS IPv4/v6 labeled unicast prefixes. [details](https://github.com/open-traffic-generator/models/pull/447)
+    - To enable storage of MPLS prefixes, 
         ```go
-            req := gosnappi.NewMetricsRequest()
-            reqPort := req.Port()
-            reqPort.SetPortNames([]string{"port1", "port2"})
-            res, err := client.GetMetrics(req)
+            bgpPeer.LearnedInformationFilter().SetIpv4MplsUnicastPrefix(true).SetIpv6MplsUnicastPrefix(true)
+         ```
+    - To fetch prefixes,
+        ```go
+            req := gosnappi.NewStatesRequest()
+            req.BgpPrefixes().SetBgpPeerNames(peerNames)
+            req.BgpPrefixes().SetPrefixFilters([]gosnappi.BgpPrefixStateRequestPrefixFiltersEnum{
+                gosnappi.BgpPrefixStateRequestPrefixFilters.IPV4_MPLS_UNICAST,
+                gosnappi.BgpPrefixStateRequestPrefixFilters.IPV6_MPLS_UNICAST,
+            })
+            res, _ := client.GetStates(req)
+            // MPLS Prefix information can be accessed within the following objects.
+            res.BgpPrefixes().Ipv4MplsUnicastPrefixes()
+            res.BgpPrefixes().Ipv6MplsUnicastPrefixes()
         ```
-        - If `data-integrity` is enabled, new object called `data-integrity` will be returned in the `port` metrics which will contain two new fields `total-frames-rx` and `error-frames-rx`.
+    Note: `gNMI` support will be added in subsequent sprints.
 
-    - gNMI support [details](https://github.com/open-traffic-generator/models-yang/pull/51):
-        ```
-            ports/port[name=*]/state/data-integrity
-        ```
-      Note: `featureprofiles` users needs to sync to latest otherwise retrieval of OTG Port counters/state using gNMI might give incorrect results.
-    
-    Note: Only frames generated from flows will have `data-integrity` enabled.
-
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added for capturing `rx` packets on ports using `pcapng` format.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Support added for sending and withdrawing IPv4 routes from BGPv4 peers using `MP_REACH/UNREACH` NLRIs. [details](https://github.com/open-traffic-generator/models/pull/439)
     ```go
-        c1 := config.Captures().Add().SetName("Capture")
-        c1.SetPortNames([]string{"port1"})
-        c1.SetFormat("pcapng")
-
+        bgpPeer := bgpIntf.
+                Peers().
+                Add().
+                ...
+                .SetTraditionalNlriForIpv4Routes(false) 
     ```
-
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: gNMI support is added for `link-bandwidth` subtype in `transitive_2octet_as_type` under `extended_communities` for BGP/BGP+ routes in `get_states`. [details](https://github.com/open-traffic-generator/models-yang/pull/50)
-    ```
-      bgp-peers/bgp-peer[name=*]/unicast-ipv4-prefixes/unicast-ipv4-prefix/state/extended-community[i]/structured/transitive_2octet_as_type/link_bandwidth_subtype
-
-      bgp-peers/bgp-peer[name=*]/unicast-ipv6-prefixes/unicast-ipv6-prefix/state/extended-community[i]/structured/transitive_2octet_as_type/link_bandwidth_subtype
-    ```
-    Note: `featureprofiles` users needs to sync to latest otherwise retrieval of OTG BGP counters/state using gNMI might give incorrect results.
+    Note: Default behavior is to send/withdraw IPv4 routes from BGPv4 peers using `Traditional REACH/UNREACH` NLRI.
 
 ### Bug Fix(s):
-* <b><i>Ixia-C & UHD400</i></b>: Issue is fixed in BGP/BGP+ where the pod/container would sometimes restart on trying to start BGP for the first time with `ixstack_bgp_accept_check` backtrace present in the protocol-engine logs, especially on slower systems.
+<b><i>Ixia-C & UHD400</i></b> Issue is fixed in DHCPv4 client where the client was unable to use the offered address provided by pre-configured DHCPv4 server.
 
-* <b><i>Ixia-C & UHD400</i></b>: The default mode of transmission of BGPv4 routes from BGP peers is changed from `MP_REACH/UNREACH` to `Traditional REACH/UNREACH`, to bring it in sync with default behavior of Ixia Chassis & Appliances(Novus, AresOne).
-
-* <b><i>otg-gnmi-server</i></b>: Issue is fixed in `models-yang` due to which error `schema "lsp-id": "192000002001-00-00" does not match regular expression pattern "^([0-9a-fA-F]*)$"` would be seen during gNMI client validation when accessing ISIS `lsp-id` using `/isis-routers/isis-router[name=*]/state/link-state-database/lsp-states/lsps[lsp-id=*][pdu-type=*]/state/lsp-id`.
+<b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b> Issue is fixed for RSVP-TE where assigned ERO was not being published for get_states for rsvp_lsps[i].ipv4_lsps[j].eros on the ingress test port.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
