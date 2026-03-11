@@ -55,7 +55,7 @@
 ### Bug Fix(s):
 <b><i>Ixia-C & UHD400</i></b> Issue is fixed in DHCPv4 client where the client was unable to use the offered address provided by pre-configured DHCPv4 server.
 
-<b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b> Issue is fixed for RSVP-TE where assigned ERO was not being published for get_states for rsvp_lsps[i].ipv4_lsps[j].eros on the ingress test port.
+<b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b> Issue is fixed for RSVP-TE where assigned ERO was not being published for get_states for `rsvp_lsps[i].ipv4_lsps[j].eros` on the ingress test port.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
