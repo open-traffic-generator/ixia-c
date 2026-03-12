@@ -16,7 +16,7 @@ jobs:
         with: 
           submodules: true
       - name: Setup docker
-        uses: docker-practice/actions-setup-docker@master
+        uses: docker/setup-buildx-action@v3
       - name: Deploy Ixia-C
         run: |
           sed -n '58,61p' readme.md > deploy.sh
@@ -45,7 +45,7 @@ jobs:
         with: 
           submodules: true
       - name: Setup docker
-        uses: docker-practice/actions-setup-docker@master
+        uses: docker/setup-buildx-action@v3
       - name: Deploy Ixia-C
         run: |
           sed -n '58,61p' readme.md > deploy.sh
@@ -82,7 +82,7 @@ jobs:
         with: 
           submodules: true
       - name: Setup docker
-        uses: docker-practice/actions-setup-docker@master
+        uses: docker/setup-buildx-action@v3
       - name: Setup Go
         uses: actions/setup-go@v3
         with:
@@ -121,7 +121,7 @@ jobs:
         with: 
           submodules: true
       - name: Setup docker
-        uses: docker-practice/actions-setup-docker@master
+        uses: docker/setup-buildx-action@v3
       - name: Setup Go
         uses: actions/setup-go@v3
         with:
