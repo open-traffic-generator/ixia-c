@@ -88,12 +88,14 @@ kcos system introspection apps-l23 status-fast-path
 
 ```sh
 kcos system introspection apps-l23 enable-fast-path
+kcos system reboot
 ```
 
 ### ❌ Disable L23 Mode
 
 ```sh
 kcos system introspection apps-l23 disable-fast-path
+kcos system reboot
 ```
 
 ## 🌐 OTG Port Configuration
