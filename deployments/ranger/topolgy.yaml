@@ -1,0 +1,58 @@
+version: "2"
+ 
+services:
+  keng-layer23-hw-server:
+    image: ghcr.io/open-traffic-generator/keng-layer23-hw-server:1.49.0-4
+    restart: always
+    ports:
+      - "5001:5001"
+    command:
+      - "dotnet"
+      - "otg-ixhw.dll"
+      - "--trace"
+      - "--log-level"
+      - "trace"
+      - "--save-cpf-config"
+      - "--grpc-trace-collector"
+      - "jaeger:4317"
+      - "--enable-fast-path"
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "2"
+        mode: "non-blocking"
+  otg-gnmi-server:
+    image: ghcr.io/open-traffic-generator/otg-gnmi-server:1.48.0
+    restart: always
+    ports:
+      - "50051:50051"
+    command:
+      - "-http-server"
+      - "https://keng-controller:8443"
+      - "--debug"
+    logging:
+      driver: "local"
+      options:
+        mode: "non-blocking"
+  keng-controller:
+    image: ghcr.io/open-traffic-generator/keng-controller:1.48.0-5
+    restart: always
+    ports:
+      - "8443:8443"
+      - "40051:40051"
+    command:
+      - "--accept-eula"
+      - "--keng-layer23-hw-server"
+      - "keng-layer23-hw-server:5001"
+      - "--grpc-max-msg-size"
+      - "500"
+      - "--disable-version-check"
+    logging:
+      driver: "local"
+      options:
+        max-size: "10m"
+        max-file: "2"
+        mode: "non-blocking"
+    environment:
+      - LICENSE_SERVERS=localhost 
