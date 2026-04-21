@@ -6,7 +6,7 @@ keng-controller: 1.53.0-1
 ixia-c-traffic-engine: 1.8.0.245
 ixia-c-protocol-engine: 1.00.0.522
 otg-gnmi-server: 1.53.0
-keng-operator: 0.3.34
+keng-operator: 0.4.0
 keng-layer23-hw-server: 1.53.0-3
 keng-app-usage-reporter: 0.0.1-52
 ixia-c-one: 1.53.0-1

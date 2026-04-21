@@ -10,7 +10,7 @@
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.522](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
 | keng-layer23-hw-server        | [1.53.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
-| keng-operator                 | [0.3.34](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
+| keng-operator                 | [0.4.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.53.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
 | ixia-c-one                    | [1.53.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
