@@ -89,7 +89,7 @@
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where incorrect information was being returned for contents of `is_reachability_tlvs` and `extended_is_reachability_tlvs`.
     - In `get_states` response for `isis_lsps.lsps[i].tlvs[j].is_reachability_tlvs[k]/extended_is_reachability_tlvs[k]`.
     - In gNMI response for `isis-routers/isis-router[name=*]/state/link-state-database/lsp-states/lsps[lsp-id=*][pdu-type=*]/tlvs/is-reachability|extended-is-reachability`.
-* <b><i>Ixia-C & UHD400</i></b>: Issue is fixed where intermittent crash was seen for long duration rus with multiple tests when starting `BGP/BGP+` with back trace containing `"ix_set_ifindex, nsm_util_interface_address_add, bgp_nsm_recv_address"` keywords.
+* <b><i>Ixia-C & UHD400</i></b>: Issue is fixed where intermittent crash was seen for long duration run with multiple tests when starting `BGP/BGP+` with back trace containing `"ix_set_ifindex, nsm_util_interface_address_add, bgp_nsm_recv_address"` keywords.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
