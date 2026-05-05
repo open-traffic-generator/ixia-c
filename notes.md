@@ -5,91 +5,49 @@
 | Open Traffic Generator API    | [1.53.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.53.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.53.0](https://pypi.org/project/snappi/1.53.0)        |
 | gosnappi                      | [1.53.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.53.0)        |
-| keng-controller               | [1.53.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [1.53.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.522](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.53.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.523](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.53.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.4.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.53.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.53.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.53.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.53.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
+
+### Notes:
+* <b><i>featureprofiles</b></i>: Users needs to sync to latest `featureprofiles` when upgrading to `Release v1.53.0-12`, otherwise retrieval of OTG Port counters/state and BGP/BGP+ Peer state using gNMI might give incorrect results.
+* <b><i>Deprecated IxOS Versions</b></i>: For Ixia Chassis & Appliances(Novus, AresOne) users,
+    - IxOS versions earlier than `10.80.EA` are considered deprecated and will trigger a warning.
+    - Upgrade to `10.80.EA` or later is strongly recommended.
+    - Support for versions below `10.80.EA` will be discontinued in a future release (not before June 30, 2026)."
 
 
 ### Release Feature(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for disabling/enabling ISIS Simulated Links on the fly. [details](https://github.com/open-traffic-generator/models/pull/465)
-    ```go
-        cs := gosnappi.NewControlState()
-        cs.Protocol().Isis().SimulatedLinks().
-            SetNames([]string{"isisSimLink1", "isisSimLink2"}).
-            SetState(gosnappi.StateProtocolIsisSimLinksState.DOWN/UP)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: gNMI support added for port `speed` in port metrics. This will contain the negotiated HW port speed in `KBps`.
+    ```gNMI
+        ports/port[name=*]/state/speed
     ```
-    Note: Links will be disconnected from both directions for supplied simulated links.
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added port speed in port metrics. [details](https://github.com/open-traffic-generator/models/pull/472)
-    - New attribute named `speed` is now available in port metrics response. This will contain the negotiated HW port speed in `KBps`. 
     - Examples are given below.
         - 100 Gbps is 100 * 1000 * 1000 / 8 = 12500000 KBps,
         - 1.6 Tbps (high performance devices) is 1.6 * 1000 * 1000 * 1000 / 8 = 200000000 KBps,
         - 10 Mbps (legacy devices) is 10 * 1000 / 8 = 1250 KBps
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for GTPv1 & GTPv2 packet headers in flows.
-    - To configure GTPv2 packet:
-        ```go
-            flow := config.Flows().Add()
-            ...
-            eth := flow.Packet().Add().Ethernet()
-            ...
-            ip := flow.Packet().Add().Ipv4()
-            ...
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: gNMI supported added for BGP/BGP+ MPLS unicast learned information.
+    ```gNMI
+        bgp-peers/bgp-peer[name=*]/ipv4-mpls-unicast-prefixes/ipv4-mpls-unicast-prefix[address=*][prefix-length=*][origin=*][path-id=*]/state/labels
 
-            udp := flow.Packet().Add().Udp()
-            udp.SrcPort().SetValue(uint32(5000))
-            udp.DstPort().SetValue(uint32(2123)) // 2123 is GTPv2
+        bgp-peers/bgp-peer[name=*]/ipv6-mpls-unicast-prefixes/ipv6-mpls-unicast-prefix[address=*][prefix-length=*][origin=*][path-id=*]/state/labels
+    ```
+    Note: Other attributes are exposed in the similar manner as for `unicast-ipv4/v6-prefixes`.
+        
 
-            gtp := flow.Packet().Add().Gtpv2()
-            gtp.PiggybackingFlag().SetValue(1)
-            gtp.TeidFlag().SetValue(1)
-            gtp.MessageType().SetValue(32)
-            gtp.Teid().SetValue(1)
-            gtp.SequenceNumber().SetValue(10)
-            gtp.Spare1().SetValue(1)
-            gtp.Spare2().SetValue(1)
-        ```
-    - To configure GTPv1 flow:
-        ```go
-            flow := config.Flows().Add()
-            ...
-            eth := flow.Packet().Add().Ethernet()
-            ...
-            ip := flow.Packet().Add().Ipv4()
-            ...
-
-            udp := flow.Packet().Add().Udp()
-            udp.SrcPort().SetValue(uint32(4000))
-            udp.DstPort().SetValue(uint32(2152)) // 2152 is GTPv1
-
-            gtp := flow.Packet().Add().Gtpv1()
-            gtp.MessageType().SetValue(255)
-            gtp.Teid().SetValue(10)
-
-            inner := flow.Packet().Add().Ipv4()
-            inner.Src().SetValue("11.0.0.1")
-            inner.Dst().SetValue("12.0.0.1")
-        ```
-    Note: GTPv1 & GTPv2 flows are already supported in `Ixia-C`.
-
-* <b><i>Keng-Operator</i></b>: Deprecated `gcr.io/kubebuilder/kube-rbac-proxy` is now removed.
-    Note: Users of the `keng-operator` should now use the `yaml` published corresponding to the release at [ixiatg-operator.yaml(v0.4.0)](https://github.com/open-traffic-generator/keng-operator/releases/download/v0.4.0/ixiatg-operator.yaml)
-
-    Example: The `yaml` at [openconfig/kne/manifests/keysight/ixiatg-operator.yaml](https://github.com/openconfig/kne/blob/main/manifests/keysight/ixiatg-operator.yaml) for usage in KNE environment.
     
 ### Bug Fix(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Attempted fix is included for intermittent issue where a test initially fails with `"context deadline exceeded"` for `set_config` and subsequent API calls, returned the error `"Processing of previous API in keng-layer23-hw-server still in progress. Cannot execute current API"`. 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where incorrect information was being returned for contents of `is_reachability_tlvs` and `extended_is_reachability_tlvs`.
-    - In `get_states` response for `isis_lsps.lsps[i].tlvs[j].is_reachability_tlvs[k]/extended_is_reachability_tlvs[k]`.
-    - In gNMI response for `isis-routers/isis-router[name=*]/state/link-state-database/lsp-states/lsps[lsp-id=*][pdu-type=*]/tlvs/is-reachability|extended-is-reachability`.
-* <b><i>Ixia-C & UHD400</i></b>: Issue is fixed where intermittent crash was seen for long duration run with multiple tests when starting `BGP/BGP+` with back trace containing `"ix_set_ifindex, nsm_util_interface_address_add, bgp_nsm_recv_address"` keywords.
+* <b><i>Ixia-C</i></b>: Issue is fixed where increment/decrement was not working for the field `flows[i].packet[j].ipv4.time_to_live`.
+* <b><i>Ixia-C</i></b>: Issue is fixed where increment/decrement was not working for the field `flows[i].packet[j].ipv4.priority.raw`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where enabling OSPFv2 Traffic Engineering was resulting in `SetConfig` failure with `"Object reference not set to an instance of an object."` error.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `GetStates` for `ipv4/v6_neighbors` was failing with `"Object reference not set to an instance of an object"` error if simulated interfaces were included in the configuration.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
