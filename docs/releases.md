@@ -1,7 +1,7 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v1.53.0-12 (Latest)
-> 5th May, 2026
+## Release  v1.53.0-13 (Latest)
+> 6th May, 2026
 
 ### Build Details
 
@@ -10,18 +10,18 @@
 | Open Traffic Generator API    | [1.53.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.53.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.53.0](https://pypi.org/project/snappi/1.53.0)        |
 | gosnappi                      | [1.53.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.53.0)        |
-| keng-controller               | [1.53.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [1.53.0-13](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.523](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.53.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-layer23-hw-server        | [1.53.0-10](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.4.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.53.2](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.53.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [1.53.0-13](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 
 ### Notes:
-* <b><i>featureprofiles</b></i>: Users needs to sync to latest `featureprofiles` when upgrading to `Release v1.53.0-12`, otherwise retrieval of OTG Port counters/state and BGP/BGP+ Peer state using gNMI might give incorrect results.
+* <b><i>featureprofiles</b></i>: Users needs to sync to latest `featureprofiles` when upgrading to `Release v1.53.0-13`, otherwise retrieval of OTG Port counters/state and BGP/BGP+ Peer state using gNMI might give incorrect results.
 * <b><i>Deprecated IxOS Versions</b></i>: For Ixia Chassis & Appliances(Novus, AresOne) users,
     - IxOS versions earlier than `10.80.EA` are considered deprecated and will trigger a warning.
     - Upgrade to `10.80.EA` or later is strongly recommended.

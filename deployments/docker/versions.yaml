@@ -1,13 +1,13 @@
-release: 1.53.0-12
+release: 1.53.0-13
 open-traffic-generator: 1.53.0
 snappi: 1.53.0
 gosnappi: 1.53.0
-keng-controller: 1.53.0-12
+keng-controller: 1.53.0-13
 ixia-c-traffic-engine: 1.8.0.245
 ixia-c-protocol-engine: 1.00.0.523
 otg-gnmi-server: 1.53.2
 keng-operator: 0.4.0
-keng-layer23-hw-server: 1.53.0-9
+keng-layer23-hw-server: 1.53.0-10
 keng-app-usage-reporter: 0.0.1-52
-ixia-c-one: 1.53.0-12
+ixia-c-one: 1.53.0-13
 uhd400: 1.5.10
