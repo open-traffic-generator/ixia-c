@@ -2,34 +2,52 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.54.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.54.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.54.0](https://pypi.org/project/snappi/1.54.0)        |
-| gosnappi                      | [1.54.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.54.0)        |
-| keng-controller               | [1.54.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
-| ixia-c-traffic-engine         | [1.8.0.245](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
+| Open Traffic Generator API    | [1.55.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.55.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.55.0](https://pypi.org/project/snappi/1.55.0)        |
+| gosnappi                      | [1.55.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.55.0)        |
+| keng-controller               | [1.55.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| ixia-c-traffic-engine         | [1.8.0.544](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.528](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.54.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.530](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.55.0-3](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.4.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.54.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.54.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.55.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.55.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 
 
 ### Release Feature(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for changing the metric of ISIS Simulated Links on the fly. [details](https://github.com/open-traffic-generator/models/pull/476)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for CFM packet header for `op_code` of type `ccm`, `lbm` and `lbr` in flows. [details](https://github.com/open-traffic-generator/models/pull/468)
+  - User can configure CCM message using following snippet,
     ```go
-        cu := gosnappi.NewConfigUpdate()
-        cu.Protocols().Isis().Interfaces().Add().
-            SetNames([]string{"sim-link1", "sim-link2"}).
-            Attributes().Add().SetMetric(100)
-        // Additional groups of simulated links can be added 
-        // for which metric has to be changed to a different value.
-        msg1, err := client.UpdateConfig(cu)
+        flow1.Packet().Add().Ethenet()
+        cfmPdu := flow1.Packet().Add().Cfm()
+        ...
+        cfmPdu.SetMdLevel(0)
+        ccm := cfmPdu.OpCode().Ccm()
+        ...
+        ccm.MaEndpointIdentifier().SetValue(1000)
+        cfm := ccm.EthernetOamProtocol().Cfm()
+        cfm.MdName().SetCharStr("testdomain")
+        cfm.ShortMaName().SetCharStr("test")
     ```
-    
+  - User can configure LBM message using following snippet,
+    ```go
+      flow2.Packet().Add().Ethenet()
+      cfmPdu := flow2.Packet().Add().Cfm()
+      cfmPdu.SetMdLevel(0)
+      lbm := cfm.OpCode().Lbm()
+      lbm.TransactionId().SetValue(100)
+    ```
+         
 ### Bug Fix(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where providing port locations in new format ("<chassis>/<card>.<port>") for `AresOne` configured in breakout mode was returning an error on `set_config`.
+* <b><i>Ixia-C</i></b>: Issue is fixed where `flow[i].packet[j].ipv4.options[k].choice=router_alert` was resulting in error `"Flow <name> has IPv4 options specified, which is currently supported for OTG-HW only"` on `set_config`. This was affecting tests which required RSVP raw traffic flows.
+
+* <b><i>Ixia-C & UHD400</i></b>: Issue is fixed where if previously tests had been run which had loopback interfaces configured, running BMP tests in active mode would intermittently result in a `ixia-c-protocol-engine` crash.
+
+* <b><i>Ixia-C & UHD400</i></b>: Issue is fixed where if previously tests had been run which had loopback interfaces configured, running BMP tests in passive mode would result in BMP session not coming up.
+
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where sometimes errors from `keng-layer23-hw-server` was not being propagated to the test program where the error message exceeded 8000 bytes.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.

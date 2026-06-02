@@ -19,7 +19,7 @@
             --name=keng-controller                              \
             --publish 0.0.0.0:8443:8443                         \
             --publish 0.0.0.0:40051:40051                       \
-            ghcr.io/open-traffic-generator/keng-controller:1.54.0-1                              \
+            ghcr.io/open-traffic-generator/keng-controller:1.55.0-1                              \
             --accept-eula                                       \
             --trace                                             \
             --disable-app-usage-reporter
@@ -40,7 +40,7 @@
             -e OPT_NO_PINNING="Yes"                             \
             -e WAIT_FOR_IFACE="Yes"                             \
             -e OPT_ADAPTIVE_CPU_USAGE="Yes"                              \
-            ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.245             
+            ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.544             
 
         # for network interface eth2
         docker run --privileged -d                           \
@@ -51,7 +51,7 @@
             -e OPT_NO_PINNING="Yes"                             \
             -e WAIT_FOR_IFACE="Yes"                             \
             -e OPT_ADAPTIVE_CPU_USAGE="Yes"                              \
-            ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.245
+            ghcr.io/open-traffic-generator/ixia-c-traffic-engine:1.8.0.544
      ```
 
 4. Start one or more instances of `protocol-engine`.
@@ -64,14 +64,14 @@
             --net=container:ixia-c-traffic-engine-eth1     \
             --name=ixia-c-protocol-engine-eth1            \
             -e INTF_LIST="eth1"                            \
-            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.528                       \
+            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.530                       \
 
         # for network interface eth2
         docker run --privileged -d                           \
             --net=container:ixia-c-traffic-engine-eth2     \
             --name=ixia-c-protocol-engine-eth2            \
             -e INTF_LIST="eth2"                            \
-            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.528  
+            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.530  
      ```
 
 5. Ensure existing network interfaces are `Up` and have `Promiscuous` mode enabled.
