@@ -53,8 +53,8 @@
     ```
 
 ### Bug Fix(s):
-* <b><i>Ixia-C</i></b>: Issue is fixed where the protocol type was not getting automatically set for IPv4/v6/GRE header preceeding MPLS header.
-* <b><i>Ixia-C</i></b>: Issue is fixed to handle auto `protocol` type for IPv4/v6 header preceding MPLS and MPLS header preceding GRE, or return a more specific warnings for unsupported header sequence in flows with `protocol` type set as `auto`.
+* <b><i>Ixia-C</i></b>: Issue is fixed where, if multiple flows are configured with flow tracking disabled , only the first such flow was being erroneously transmitted even if start is triggered for all or other configured flows.
+* <b><i>Ixia-C</i></b>: Issue is fixed to handle auto `protocol` type for IPv4/v6 header preceding MPLS, or return a more specific warning for unsupported header sequence in flows with `protocol` type set as `auto`.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
