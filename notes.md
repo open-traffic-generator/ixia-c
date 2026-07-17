@@ -5,56 +5,46 @@
 | Open Traffic Generator API    | [1.58.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.58.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.58.0](https://pypi.org/project/snappi/1.58.0)        |
 | gosnappi                      | [1.58.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.58.0)        |
-| keng-controller               | [1.58.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [1.58.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.544](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.532](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.58.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.533](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.58.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.4.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.58.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.58.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.58.1](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.58.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 | <b>ARM64</b>                                  |
-| keng-controller-arm64         | [1.58.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller-arm64)    |
+| keng-controller-arm64         | [1.58.0-12](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller-arm64)    |
 | ixia-c-traffic-engine-arm64   | [1.8.0.563](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine-arm64)       |
 
 
 ### Release Feature(s):
-* <b><i>Ixia Chassis & Appliances(AresOne-P)</i></b>: Support added for Macsec & MKA over devices. [details](https://github.com/open-traffic-generator/models/pull/459)
-  ```go
-      // -- Macsec Config
-      device := config.Devices().Add().SetName("device1")
-      eth1 := device.Ethernets().Add().SetName("eth1").SetMac("00:00:11:01:01:01")
-      eth1.Connection().SetPortName("p1")
-      ...
-      macsec := device.Macsec().EthernetInterfaces().Add().SetEthName(eth1.Name()).SecureEntity().SetName("eth1-macsec")
-      macsec.DataPlane().Encapsulation().CryptoEngine().EncryptDecrypt().HardwareAcceleration().InlineCrypto()
-      mka := macsec.KeyGenerationProtocol().Mka().SetName("eth1-mka")
-      mka.Basic().KeySource().Psk()
-      mka.Basic().KeySource().Psks().Add().
-        SetCakValue("0123456789ABCDEF0123456789ABCDEF").SetCakName("AABBCCDD")
-      mka.Tx().SecureChannels().Add().SetName("eth1-sc").SetSystemId(eth1.Mac())
-  ```
-
-  <b><i>Notes</i></b>:
-    - This feature is supported only on AresOne-P load module in all fan-out Macsec modes.
-    - IxOS version 26.1.2605.1 0.HF002490 must be installed on the chassis which is a hot fix build over IxOS 26.1.EA release.
-    - To see decrypted packets, Keysight specific wireshark should be used, which can be download from: [version: 3.2.6.345](https://downloads.ixiacom.com/support/downloads_and_updates/public/IxNetwork/26.0.0/26.0.2601.6/wireshark.exe)
-    - If an issue is encountered during Macsec testing on this hardware which is not resolved after rebooting the ports, it might be required to switch the ports to non-macsec mode and back to macsec mode for the ports to become usable again.
-      - This can be done through WebUI or using RestAPI calls to the chassis.
-
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for enabling/disabling Overload Bit for ISIS simulated routers on the fly. [details](https://github.com/open-traffic-generator/models/pull/479)
+* <b><i>Ixia-C</i></b>: Support added for extended IPv6 routing header type 4(IPv6 SR) in flows.
     ```go
-         setAction := gosnappi.NewControlAction()
-            setOlBit := setAction.Protocol().Isis().UpdateOverloadBit()
-            setOlBit.SetRouterNames([]string{"isis-sim1", "isis-sim2"})
-            setOlBit.Set()/Unset()
-        client.Api().SetControlAction(setAction)
+        // go-snappi snippet​
+        f1Eth := f1.Packet().Add().Ethernet()​
+        ...
+        f1Ip := f1.Packet().Add().Ipv6()​
+        ...​
+
+        // IPv6 SR Header ​
+        f1ExtHdr := f1.Packet().Add().Ipv6ExtensionHeader()​
+        f1SR := f1ExtHdr.Routing().SegmentRouting()​​
+        f1SegList := f1SR.SegmentList()​
+        f1SegList.Add().Segment().SetValue("5000:0:0:1:0:0:0:1")​
+        f1SegList.Add().Segment().SetValue("1000:0:0:1:0:0:0:1")​
+        ...
     ```
 
 ### Bug Fix(s):
-* <b><i>Ixia-C</i></b>: Issue is fixed where, if multiple flows are configured with flow tracking disabled , only the first such flow was being erroneously transmitted even if start is triggered for all or other configured flows.
-* <b><i>Ixia-C</i></b>: Issue is fixed to handle auto `protocol` type for IPv4/v6 header preceding MPLS, or return a more specific warning for unsupported header sequence in flows with `protocol` type set as `auto`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where, BGP protocol `set_control_state` would return error `"Error occurred while starting protocol ... Unable find type: Ixia.Aptixia.Cpf.pcpu.BgpIpv4PeerPCPU"` intermittently, in setups where a chassis is being used concurrently by IxNetwork and Keng users. This would happen in certain scenarios when the protocol start from both the clients would occur very close to each other.
+
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Issue is fixed where, during a ISIS graceful restart, ISIS does not maintain existing adjacency with the DUT that is already up when the graceful restart is triggered.
+ 
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where, for a lag with multiple member ports, flows were not switching to available active member ports when the member port being used for transmission of packets for the flow was going down.
+
+* <b><i>otg-gnmi-server</i></b>: Issue is fixed, gNMI is silently failing for batch queries where only the first provided path was being processed. This will now throw a clear error `"Batch query is not supported. The SubscriptionList must contain exactly one path (wildcards are allowed), but received <n>"`.
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
