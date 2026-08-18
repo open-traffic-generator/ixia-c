@@ -2,27 +2,51 @@
 
 | Component                     | Version       |
 |-------------------------------|---------------|
-| Open Traffic Generator API    | [1.58.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.58.0/artifacts/openapi.yaml)         |
-| snappi                        | [1.58.0](https://pypi.org/project/snappi/1.58.0)        |
-| gosnappi                      | [1.58.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.58.0)        |
-| keng-controller               | [1.58.0-16](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| Open Traffic Generator API    | [1.61.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.61.0/artifacts/openapi.yaml)         |
+| snappi                        | [1.61.0](https://pypi.org/project/snappi/1.61.0)        |
+| gosnappi                      | [1.61.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.61.0)        |
+| keng-controller               | [1.61.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.544](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
-| ixia-c-protocol-engine        | [1.00.0.533](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.58.0-6](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| ixia-c-protocol-engine        | [1.00.0.534](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
+| keng-layer23-hw-server        | [1.61.0-2](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.4.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
-| otg-gnmi-server               | [1.58.1](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.58.0-16](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| otg-gnmi-server               | [1.61.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
+| ixia-c-one                    | [1.61.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 | <b>ARM64</b>                                  |
-| keng-controller-arm64         | [1.58.0-16](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller-arm64)    |
+| keng-controller-arm64         | [1.61.0-1](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller-arm64)    |
 | ixia-c-traffic-engine-arm64   | [1.8.0.563](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine-arm64)       |
 
 
-### Bug Fix(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where, in certain scenarios `keng-layer23-hw-server` container was observed to be taking up close to 100% cpu even when no tests were actively being run on it.
+### Release Feature(s):
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for `packet_loss_duration` in flow metrics.
+    - User needs to enable `packet_loss_duration` flow option during configuration to allow publishing of this metric.
+        ```go
+            config.Options().FlowOptions().SetPacketLossDuration(true)
+        ```
+    - To retrieve the metric use the following snippet.
+        ```go
+            for _, m := range flowMetrics.Items() {
+                if m.HasPacketLossDuration() {
+                    lossDuration := m.PacketLossDuration().Value()
+                }
+            }
+        ```
+    Note: gNMI Support will be available in a future release.
 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where, `get_metrics` for flows was intermittently taking more than 2 minutes to complete and was returning zero values for `frames_tx`, `frames_rx`, `bytes_tx`, and `bytes_rx`.
+* <b><i>otg-gnmi-server</i></b> : Support has been added for batch calls. Users can now provide multiple paths in a single Get request and other supported gNMI calls.
+    - Example: To fetch metrics of two flows and two ports in a single gNMI Get call, combine the following paths in a single query.
+    ```
+        /ports/port[name=p1]
+        /ports/port[name=p2]
+        /flows/flow[name=f1]
+        /flows/flow[name=f2]
+    ```
+
+
+### Bug Fix(s):
+* <b><i>Ixia-C</i></b>: Issue is fixed where `increment`/`decrement` was not working for the field `flows[i].packet[j].ipv6.hop_limit`.
 
 
 ### Known Issues
