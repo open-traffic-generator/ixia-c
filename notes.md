@@ -5,81 +5,57 @@
 | Open Traffic Generator API    | [1.61.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.61.0/artifacts/openapi.yaml)         |
 | snappi                        | [1.61.0](https://pypi.org/project/snappi/1.61.0)        |
 | gosnappi                      | [1.61.0](https://pkg.go.dev/github.com/open-traffic-generator/snappi/gosnappi@v1.61.0)        |
-| keng-controller               | [1.61.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
+| keng-controller               | [1.61.0-14](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller)    |
 | ixia-c-traffic-engine         | [1.8.0.544](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine)       |
 | keng-app-usage-reporter       | [0.0.1-52](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-app-usage-reporter)      |
 | ixia-c-protocol-engine        | [1.00.0.536](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-protocol-engine)    | 
-| keng-layer23-hw-server        | [1.61.0-4](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
+| keng-layer23-hw-server        | [1.61.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-layer23-hw-server)    |
 | keng-operator                 | [0.4.0](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-operator)        | 
 | otg-gnmi-server               | [1.61.0](https://github.com/orgs/open-traffic-generator/packages/container/package/otg-gnmi-server)         |
-| ixia-c-one                    | [1.61.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
+| ixia-c-one                    | [1.61.0-14](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-one/)         |
 | UHD400                        | [1.5.10](https://downloads.ixiacom.com/support/downloads_and_updates/public/UHD400/1.5/1.5.10/artifacts.tar)         |
 | <b>ARM64</b>                                  |
-| keng-controller-arm64         | [1.61.0-9](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller-arm64)    |
+| keng-controller-arm64         | [1.61.0-14](https://github.com/orgs/open-traffic-generator/packages/container/package/keng-controller-arm64)    |
 | ixia-c-traffic-engine-arm64   | [1.8.0.563](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine-arm64)       |
 
 
 ### Release Feature(s):
-* <b><i>Ixia-C</i></b>: Support added for `packet_loss_duration` in flow metrics.
-    - User needs to enable `packet_loss_duration` flow option during configuration to allow publishing of this metric.
-        ```go
-            config.Options().FlowOptions().SetPacketLossDuration(true)
-        ```
-    - To retrieve the metric use the following snippet.
-        ```go
-            for _, m := range flowMetrics.Items() {
-                if m.HasPacketLossDuration() {
-                    lossDuration := m.PacketLossDuration().Value()
-                }
-            }
-        ```
-    Note: gNMI Support will be available in a future release.
+* <b><i>Ixia Chassis & Appliances(AresOne-P)</i></b>: Support added for Macsec & Static Key over LAG & devices.
+  ```go
+      // 32 hex = 128-bit SAK
+	sakA := "AABBCCDDEEFF00112233445566778899"
+	sakB := "00112233445566778899AABBCCDDEEFF"
+	ssci := "00000001"
+	salt := "123456789ABCDEF012345678" // 16-byte salt for XPN; begin for AES-128
+	
+    // macsec interface
+	secy1 := d1.Macsec().EthernetInterfaces().Add().SetEthName(d1Eth.Name()).SecureEntity().SetName("Macsec-1")
+	enc1 := secy1.DataPlane().Encapsulation()
+	enc1.CryptoEngine().EncryptDecrypt().HardwareAcceleration().InlineCrypto()
+	enc1.Tx().SetIncludeSci(true)
 
-* <b><i>Ixia-C</i></b>: Support added for enabling and fetching `data-integrity` port statistics in `set_config` and `get_metrics`. [details](https://github.com/open-traffic-generator/models/pull/454)
-    - To configure enable `data-integrity` at global level.
-    ```go
-        cfg.Options().PortOptions().SetDataIntegrity(true)
-    ```
-    - to fetch `data-integrity` metrics use the following snippet. 
-        ```go
-            req := gosnappi.NewMetricsRequest()
-            reqPort := req.Port()
-            reqPort.SetPortNames([]string{"port1", "port2"})
-            res, err := client.GetMetrics(req)
-        ```
-        - If `data-integrity` is enabled, new object called `data-integrity` will be returned in the `port` metrics which will contain two new fields `total-frames-rx` and `error-frames-rx`.
+     //macsec static-key configuration
+	sk1 := secy1.KeyGenerationProtocol().StaticKey()
+	sk1.SetCipherSuite(gosnappi.SecureEntityStaticKeyCipherSuite.GCM_AES_128)
+	tx1 := sk1.Tx().SecureChannels().Add().SetSystemId(d1Eth.Mac()).SetPortId(1)
+	tx1.Saks().Add().SetSak(sakA).SetSsci(ssci).SetSalt(salt)
+           rx1 := sk1.Rx().SecureChannels().Add().SetDutSciSystemId("00:00:22:02:02:02").SetDutSciPortId(1)
+	rx1.Saks().Add().SetSak(sakB).SetSsci(ssci).SetSalt(salt)
+  ```
 
-    - gNMI support [details](https://github.com/open-traffic-generator/models-yang/pull/51):
-        ```
-            ports/port[name=*]/state/data-integrity
-        ```
-      Note: `featureprofiles` users needs to sync to latest otherwise retrieval of OTG Port counters/state using gNMI might give incorrect results.
-    
-    Note: Only frames generated from flows will have `data-integrity` enabled.
-
-* <b><i>Ixia-C & UHD400</i></b>: Support added for enabling/disabling Overload Bit for ISIS simulated routers on the fly. [details](https://github.com/open-traffic-generator/models/pull/479)
-    ```go
-         setAction := gosnappi.NewControlAction()
-            setOlBit := setAction.Protocol().Isis().UpdateOverloadBit()
-            setOlBit.SetRouterNames([]string{"isis-sim1", "isis-sim2"})
-            setOlBit.Set()/Unset()
-        client.Api().SetControlAction(setAction)
-    ```
-
-* <b><i>Ixia-C & UHD400</i></b>: Support added for changing the metric of ISIS Simulated Links on the fly. [details](https://github.com/open-traffic-generator/models/pull/476)
-    ```go
-        cu := gosnappi.NewConfigUpdate()
-        cu.Protocols().Isis().Interfaces().Add().
-            SetNames([]string{"sim-link1", "sim-link2"}).
-            Attributes().Add().SetMetric(100)
-        // Additional groups of simulated links can be added 
-        // for which metric has to be changed to a different value.
-        msg1, err := client.UpdateConfig(cu)
-    ```
+  <b><i>Notes</i></b>:
+    - This feature is supported only on the AresOne-P load module. 
+        - For LAG, the supported mode is RG mode = “4 x 100GE_MACSEC”.
+        - For devices, it is supported in all fan-out MACsec modes.
+    - IxOS version 26.1.2605.1 0.HF002490 must be installed on the chassis which is a hot fix build over IxOS 26.1.EA release.
+    - To see decrypted packets, Keysight specific wireshark should be used, which can be download from: [version: 3.2.6.345](https://downloads.ixiacom.com/support/downloads_and_updates/public/IxNetwork/26.0.0/26.0.2601.6/wireshark.exe)
+    - If an issue is encountered during Macsec testing on this hardware which is not resolved after rebooting the ports, it might be required to switch the ports to non-macsec mode and back to macsec mode for the ports to become usable again.
+      - This can be done through WebUI or using RestAPI calls to the chassis.
 
 
 ### Bug Fix(s):
-* <b><i>Ixia-C</i></b>: Issue is fixed where `get_metrics` was returning error `"panic: runtime error: index out of range [1] with length 0"` intermittently in some scenarios when it was invoked immediately after `set_control_state.traffic.flow_transmit.stop`.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `get_metrics/flows` was sometimes returning TX and RX counters as 0 for the 51st and subsequent flows when more than 50 flows were configured. 
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed for flows containing multiple ethernet headers, where FCS was incorrectly added for inner ethernet header also, further resulting in incorrect data-integrity errors if data-integrity was enabled.
 
 
 ### Known Issues

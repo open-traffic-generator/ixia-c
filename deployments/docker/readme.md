@@ -19,7 +19,7 @@
             --name=keng-controller                              \
             --publish 0.0.0.0:8443:8443                         \
             --publish 0.0.0.0:40051:40051                       \
-            ghcr.io/open-traffic-generator/keng-controller:1.61.0-9                              \
+            ghcr.io/open-traffic-generator/keng-controller:1.61.0-14                              \
             --accept-eula                                       \
             --trace                                             \
             --disable-app-usage-reporter
@@ -71,7 +71,7 @@
             --net=container:ixia-c-traffic-engine-eth2     \
             --name=ixia-c-protocol-engine-eth2            \
             -e INTF_LIST="eth2"                            \
-            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.536  
+            ghcr.io/open-traffic-generator/ixia-c-protocol-engine:1.00.0.536 
      ```
 
 5. Ensure existing network interfaces are `Up` and have `Promiscuous` mode enabled.
