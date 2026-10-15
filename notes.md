@@ -20,42 +20,73 @@
 
 
 ### Release Feature(s):
-* <b><i>Ixia Chassis & Appliances(AresOne-P)</i></b>: Support added for Macsec & Static Key over LAG & devices.
-  ```go
-      // 32 hex = 128-bit SAK
-	sakA := "AABBCCDDEEFF00112233445566778899"
-	sakB := "00112233445566778899AABBCCDDEEFF"
-	ssci := "00000001"
-	salt := "123456789ABCDEF012345678" // 16-byte salt for XPN; begin for AES-128
-	
-    // macsec interface
-	secy1 := d1.Macsec().EthernetInterfaces().Add().SetEthName(d1Eth.Name()).SecureEntity().SetName("Macsec-1")
-	enc1 := secy1.DataPlane().Encapsulation()
-	enc1.CryptoEngine().EncryptDecrypt().HardwareAcceleration().InlineCrypto()
-	enc1.Tx().SetIncludeSci(true)
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Support added for OSPFv2 Segment Routing for Emulated and Simulated OSPFv2 Routers.
+    - To configure OSPFv2 Segment Routing at router level, use the following snippet.
+    ```go
+        sr := ospf.SegmentRouting()
+        sr.SetAlgorithms([]uint32{0})
+        sr.SrgbRanges().Add().SetStartingSid(16000).SetRange(8000)
+        sr.SrlbRanges().Add().SetStartingSid(15000).SetRange(1000)
 
-     //macsec static-key configuration
-	sk1 := secy1.KeyGenerationProtocol().StaticKey()
-	sk1.SetCipherSuite(gosnappi.SecureEntityStaticKeyCipherSuite.GCM_AES_128)
-	tx1 := sk1.Tx().SecureChannels().Add().SetSystemId(d1Eth.Mac()).SetPortId(1)
-	tx1.Saks().Add().SetSak(sakA).SetSsci(ssci).SetSalt(salt)
-           rx1 := sk1.Rx().SecureChannels().Add().SetDutSciSystemId("00:00:22:02:02:02").SetDutSciPortId(1)
-	rx1.Saks().Add().SetSak(sakB).SetSsci(ssci).SetSalt(salt)
-  ```
+        // Configure Node SID as per below snippet.
+        routes := ospf.V4Routes().Add().SetName("node_sid_route")
+        routes.Addresses().Add().
+          SetAddress("1.1.1.1").
+          SetPrefix(32)
+        routes.RouteOrigin().IntraArea().Flags().
+          SetNFlag(true).
+          SetAFlag(false)
 
-  <b><i>Notes</i></b>:
-    - This feature is supported only on the AresOne-P load module. 
-        - For LAG, the supported mode is RG mode = “4 x 100GE_MACSEC”.
-        - For devices, it is supported in all fan-out MACsec modes.
-    - IxOS version 26.1.2605.1 0.HF002490 must be installed on the chassis which is a hot fix build over IxOS 26.1.EA release.
-    - To see decrypted packets, Keysight specific wireshark should be used, which can be download from: [version: 3.2.6.345](https://downloads.ixiacom.com/support/downloads_and_updates/public/IxNetwork/26.0.0/26.0.2601.6/wireshark.exe)
-    - If an issue is encountered during Macsec testing on this hardware which is not resolved after rebooting the ports, it might be required to switch the ports to non-macsec mode and back to macsec mode for the ports to become usable again.
-      - This can be done through WebUI or using RestAPI calls to the chassis.
+        routes.PrefixSids().Add().
+          SetSidIndices([]uint32{1}).
+          SetNpFlag(true).
+          SetMFlag(false).
+          SetEFlag(false).
+          SetAlgorithm(0)​
+    ```
+  
+    - To configure Adjacency-SID under `devices[i].ospfv2.interfaces[i].adjacency_sids[j]` use the following snippet.
+    ```go
+        ospfIntf.AdjacencySids().Add().
+          SetSidIndices([]uint32{401}).
+          SetBFlag(false).
+          SetGFlag(false).
+          SetPFlag(true).
+          SetWeight(10)​
+    ```
 
+    - To configure OSPFv2 routes with Prefix SIDs, use the following snippet.
+      ```go
+        srRoutes := ospf.V4Routes().Add().SetName("sr_routes")
+        srRoutes.Addresses().Add().
+          SetAddress("10.10.10.0").
+          SetPrefix(24).
+          SetCount(1000)
+        srRoutes.PrefixSids().Add().
+          SetSidIndices([]uint32{100}).
+          SetNpFlag(true).
+          SetAlgorithm(0)
+      ```
+
+    - To configure traffic using Segment Routing MPLS Labels use the following snippet.
+    ```go
+        eth := flow.Packet().Add().Ethernet()​
+        eth.Src().SetValue(ethIntf.Mac())​
+        eth.Dst().Auto()​
+        mpls := flow.Packet().Add().Mpls()​
+        mpls.Label().SetValue(uint32(16002))​ // Set the Segment Routing MPLS Label to which traffic has to be steered.​
+        ip := flow.Packet().Add().Ipv4()
+        ip.Src().SetValue("10.10.10.1")
+        ip.Dst().SetValue("11.11.11.1")
+    ```
+  
+    Note: gNMI support will be available in later releases for `get_states` enhancements.
+
+* <b><i>gosnappi</i></b>: gosnappi `>=v1.62.0` required go version `>=1.26`.
 
 ### Bug Fix(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed where `get_metrics/flows` was sometimes returning TX and RX counters as 0 for the 51st and subsequent flows when more than 50 flows were configured. 
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed for flows containing multiple ethernet headers, where FCS was incorrectly added for inner ethernet header also, further resulting in incorrect data-integrity errors if data-integrity was enabled.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: An attempted fix is included for the issue where `set_control_state.traffic.flow_transmit.state=start` was returning error `"Sequence contained null element (Parameter 'values')"`.
+* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Issue is fixed where two ports with identical locations were being incorrectly accepted. This will now return an error that duplicate port locations are not allowed.
 
 
 ### Known Issues
