@@ -82,7 +82,7 @@
   
     Note: gNMI support will be available in later releases for `get_states` enhancements.
 
-* <b><i>gosnappi</i></b>: gosnappi `>=v1.62.0` required go version `>=1.26`.
+* <b><i>gosnappi</i></b>: gosnappi `>=v1.62.0` requires go version `>=1.26`.
 
 ### Bug Fix(s):
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: An attempted fix is included for the issue where `set_control_state.traffic.flow_transmit.state=start` was returning error `"Sequence contained null element (Parameter 'values')"`.
