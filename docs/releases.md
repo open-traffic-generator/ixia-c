@@ -1,6 +1,9 @@
 # Ixia-c Release Notes and Version Compatibility
 
-## Release  v1.61.0-15 (Latest)
+## Release  v1.62.0-1 (Latest)
+> 15th October, 2026
+
+## Release  v1.61.0-15 
 > 15th September, 2026
 
 ### Build Details
