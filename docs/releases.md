@@ -3,6 +3,9 @@
 ## Release  v1.62.0-1 (Latest)
 > 15th October, 2026
 
+## Release  v1.62.0-1 (Latest)
+> 15th October, 2026
+
 | Component                     | Version       |
 |-------------------------------|---------------|
 | Open Traffic Generator API    | [1.62.0](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/open-traffic-generator/models/v1.62.0/artifacts/openapi.yaml)         |

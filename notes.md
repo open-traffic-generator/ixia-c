@@ -19,15 +19,12 @@
 | ixia-c-traffic-engine-arm64   | [1.8.0.563](https://github.com/orgs/open-traffic-generator/packages/container/package/ixia-c-traffic-engine-arm64)       |
 
 
-### Release Feature(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: Issue is fixed
-
-* <b><i>gosnappi</i></b>: gosnappi `>=v1.62.0` requires go version `>=1.26`.
-
 ### Bug Fix(s):
-* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: An attempted fix is included for the issue where `set_control_state.traffic.flow_transmit.state=start` was returning error `"Sequence contained null element (Parameter 'values')"`.
-* <b><i>Ixia-C, Ixia Chassis & Appliances(Novus, AresOne) & UHD400</i></b>: Issue is fixed where two ports with identical locations were being incorrectly accepted. This will now return an error that duplicate port locations are not allowed.
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: An error is now properly returned when `set_config` fails to clear port ownership due to a disconnected chassis connection, enabling the caller to implement corrective measures.
 
+* <b><i>Ixia-C & UHD400</i></b>: `get_states` now returns IPv6 neighbor addresses in the same format as configured gateway addresses, fixing comparison failures caused by format inconsistency (e.g., compressed vs. expanded notation).
+
+* <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: `set_control_state.traffic.flow_transmit.state=start` now works correctly with MACsec-enabled device endpoints (previously failed with error <i>"Unable to resolve the destination MAC address ..."</i>).
 
 ### Known Issues
 * <b><i>Ixia Chassis & Appliances(Novus, AresOne)</i></b>: If `keng-layer23-hw-server` version is upgraded/downgraded, the ports which will be used from this container must be rebooted once before running the tests.
